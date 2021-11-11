@@ -7,6 +7,21 @@
 
 class Random
 {
+private:
+        float r_random = 0.25f;
+
+        float IFloat() const;
+
+        Random() = default;
+
+public:
+        Random(const Random&) = delete;
+
+        Random& operator=(const Random&) = delete;
+
+        static Random& Get();
+
+        static float GetRandom();
 };
 
 #endif // ADVANCED_PROGRAMMING_DOODLEJUMP_RANDOM_H
