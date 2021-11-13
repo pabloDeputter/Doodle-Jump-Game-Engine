@@ -1,7 +1,12 @@
 #include <iostream>
 
-int main(int argc, char* argv[]) {
+/* TODO
+ * Compile different directories, such Utils should never be compiled again
+ */
 
-    std::cout << "hello world\n";
-    return 0;
+int main(int argc, char* argv[])
+{
+
+        std::cout << "hello world\n";
+        return 0;
 }

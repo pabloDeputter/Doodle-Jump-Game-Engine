@@ -4,7 +4,7 @@
 # Usage
 # -----
 #
-# When you try to locate the SFML libraries, you must specify which modules you want to use (system, window, graphics, network, audio, main).
+# When you try to locate the SFML libraries, you must specify which modules you want to use (system, window, graphics, network, Audio, main).
 # If none is given, the SFML_LIBRARIES variable will be empty and you'll end up linking to nothing.
 # example:
 #   find_package(SFML COMPONENTS system window graphics) // find the system, graphics and window modules
@@ -35,7 +35,7 @@
 # ------
 #
 # This script defines the following variables:
-# - For each specified module XXX (system, window, graphics, network, audio, main):
+# - For each specified module XXX (system, window, graphics, network, Audio, main):
 #   - SFML_XXX_LIBRARY_DEBUG:   the name of the debug library of the xxx module (set to SFML_XXX_LIBRARY_RELEASE is no debug version is found)
 #   - SFML_XXX_LIBRARY_RELEASE: the name of the release library of the xxx module (set to SFML_XXX_LIBRARY_DEBUG is no release version is found)
 #   - SFML_XXX_LIBRARY:         the name of the library to link to for the xxx module (includes both debug and optimized names if necessary)
@@ -45,7 +45,7 @@
 # - SFML_INCLUDE_DIR: the path where SFML headers are located (the directory containing the SFML/Config.hpp file)
 #
 # example:
-#   find_package(SFML 2 COMPONENTS system window graphics audio REQUIRED)
+#   find_package(SFML 2 COMPONENTS system window graphics Audio REQUIRED)
 #   include_directories(${SFML_INCLUDE_DIR})
 #   add_executable(myapp ...)
 #   target_link_libraries(myapp ${SFML_LIBRARIES})
