@@ -11,15 +11,17 @@ namespace Model {
 
 class Platform : public Entity
 {
-private:
-        //        Model::PlatformType sort;
 
 public:
-        std::string getType() const override { return "platform"; }
+        enum Sort
+        {
+                Static = 0,
+                Horizontal = 1,
+                Vertical = 2,
+                Temporary = 3
+        };
 
-        //        const Model::PlatformType& getSort() const { return Platform::sort; }
-        //
-        //        void setSort(Model::PlatformType s) { Platform::sort = s; }
+        Model::Type getType() const override { return Model::Type::ePlatform; }
 };
 } // namespace Model
 

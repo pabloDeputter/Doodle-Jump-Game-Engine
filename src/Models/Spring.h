@@ -12,7 +12,7 @@ namespace Model {
 class Spring : public Entity
 {
 public:
-        std::string getType() const override { return "spring"; }
+        Model::Type getType() const override { return Model::Type::eSpring; }
 };
 } // namespace Model
 

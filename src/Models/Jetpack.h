@@ -12,7 +12,7 @@ namespace Model {
 class Jetpack : public Entity
 {
 public:
-        std::string getType() const override { return "jetpack"; }
+        Model::Type getType() const override { return Model::Type::eJetpack; }
 };
 } // namespace Model
 

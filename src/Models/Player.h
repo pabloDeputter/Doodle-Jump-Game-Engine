@@ -11,7 +11,8 @@ namespace Model {
 
 class Player : public Entity
 {
-        std::string getType() const override { return "player"; }
+public:
+        Model::Type getType() const override { return Model::Type::ePlayer; }
 };
 } // namespace Model
 
