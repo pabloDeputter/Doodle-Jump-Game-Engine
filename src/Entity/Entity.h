@@ -7,7 +7,7 @@
 
 #include <string>
 
-#include "Observable.h"
+#include "../Observer/Observable.h"
 
 /**
  * @brief Namespace holds all models

@@ -5,6 +5,8 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_RANDOM_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_RANDOM_H
 
+namespace Utils {
+
 class Random
 {
 private:
@@ -14,14 +16,15 @@ private:
 
         Random() = default;
 
+        static Random& Get();
+
 public:
         Random(const Random&) = delete;
 
         Random& operator=(const Random&) = delete;
 
-        static Random& Get();
-
         static float GetRandom();
 };
+} // namespace Utils
 
 #endif // ADVANCED_PROGRAMMING_DOODLEJUMP_RANDOM_H

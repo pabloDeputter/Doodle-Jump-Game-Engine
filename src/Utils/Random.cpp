@@ -4,6 +4,8 @@
 
 #include "Random.h"
 
+using namespace Utils;
+
 float Random::IFloat() const { return r_random; }
 
 Random& Random::Get()
@@ -11,4 +13,5 @@ Random& Random::Get()
         static Random instance;
         return instance;
 }
+
 float Random::GetRandom() { return Get().IFloat(); }

@@ -15,19 +15,23 @@ FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
 # The source files to compile
 SET(SRC main.cpp
         src/Utils/Random.cpp
-        src/Models/Entity.cpp
-        src/Models/Platform.cpp
-        src/Models/Platform.h
-        src/Models/Spring.cpp
-        src/Models/Spring.h
-        src/Models/Jetpack.cpp
-        src/Models/Jetpack.h
-        src/Models/Player.cpp
-        src/Models/Player.h
-        src/Models/IObserver.cpp
-        src/Models/IObserver.h
-        src/Models/Observable.cpp
-        src/Models/Observable.h)
+        src/Entity/Entity.cpp
+        src/Entity/Platform.cpp
+        src/Entity/Platform.h
+        src/Entity/Spring.cpp
+        src/Entity/Spring.h
+        src/Entity/Jetpack.cpp
+        src/Entity/Jetpack.h
+        src/Entity/Player.cpp
+        src/Entity/Player.h
+        src/Observer/IObserver.cpp
+        src/Observer/IObserver.h
+        src/Observer/Observable.cpp
+        src/Observer/Observable.h
+        Game.cpp
+        Game.h
+        src/Utils/Stopwatch.cpp
+        src/Utils/Stopwatch.h)
 
 # Add include dirs for SFML
 # (The SFML_INCLUDE_DIR variable is defined by FindSFML.cmake, if SFML was found)
