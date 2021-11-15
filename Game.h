@@ -15,18 +15,21 @@ namespace Game {
 class Game
 {
         sf::RenderWindow mWindow;
-        sf::CircleShape mPlayer;
+        sf::Sprite mPlayer;
+        sf::Texture mTexture;
         bool mIsMovingUp;
         bool mIsMovingDown;
         bool mIsMovingLeft;
         bool mIsMovingRight;
 
 public:
-        Game() : mWindow(sf::VideoMode(750, 1000), "Doodle Jump"), mPlayer()
+        Game() : mWindow(sf::VideoMode(3840, 2060), "Doodle Jump"), mPlayer()
         {
-                mPlayer.setRadius(40.f);
-                mPlayer.setPosition(100.f, 100.f);
-                mPlayer.setFillColor(sf::Color::Cyan);
+                if (!mTexture.loadFromFile("texture_1.png")) {
+                        std::cerr << "error loading tex\n";
+                }
+                mPlayer.setTexture(mTexture);
+                mPlayer.setPosition(200.f, 100.f);
         }
 
         void handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
