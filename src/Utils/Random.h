@@ -12,9 +12,9 @@ class Random
 private:
         float r_random = 0.25f;
 
-        float IFloat() const;
-
         Random() = default;
+
+        float IFloat() const;
 
         static Random& Get();
 

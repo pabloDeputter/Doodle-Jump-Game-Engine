@@ -31,7 +31,7 @@ SET(SRC main.cpp
         Game.cpp
         Game.h
         src/Utils/Stopwatch.cpp
-        src/Utils/Stopwatch.h)
+        src/Utils/Stopwatch.h src/Utils/Transform.cpp src/Utils/Transform.h)
 
 # Add include dirs for SFML
 # (The SFML_INCLUDE_DIR variable is defined by FindSFML.cmake, if SFML was found)
