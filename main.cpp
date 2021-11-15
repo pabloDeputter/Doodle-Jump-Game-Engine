@@ -12,11 +12,8 @@
 int main(int argc, char* argv[])
 {
 
-        for (int i = 0; i < 100; i++) {
-                auto a = Utils::Stopwatch::Delta();
-                std::cout << a << std::endl;
-                std::this_thread::sleep_for(std::chrono::seconds(1));
-        }
+        Game::Game* a = new Game::Game();
+        a->run();
 
         //        std::cout << "Hello world\n";
         return 0;

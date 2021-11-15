@@ -7,6 +7,8 @@
 
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
+#include "src/Utils/Stopwatch.h"
+#include <iostream>
 
 namespace Game {
 
@@ -29,11 +31,11 @@ public:
 
         void handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
         {
-                if (key == sf::Keyboard::W) {
+                if (key == sf::Keyboard::Z) {
                         mIsMovingUp = isPressed;
                 } else if (key == sf::Keyboard::S) {
                         mIsMovingDown = isPressed;
-                } else if (key == sf::Keyboard::A) {
+                } else if (key == sf::Keyboard::Q) {
                         mIsMovingLeft = isPressed;
                 } else if (key == sf::Keyboard::D) {
                         mIsMovingRight = isPressed;
@@ -62,13 +64,13 @@ public:
         {
                 sf::Vector2f movement(0.f, 0.f);
                 if (mIsMovingUp)
-                        movement.y -= 5.f;
+                        movement.y -= 1.f;
                 if (mIsMovingDown)
-                        movement.y += 5.f;
+                        movement.y += 1.f;
                 if (mIsMovingLeft)
-                        movement.x -= 5.f;
+                        movement.x -= 1.f;
                 if (mIsMovingRight)
-                        movement.x += 5.f;
+                        movement.x += 1.f;
                 mPlayer.move(movement * deltaTime.asSeconds());
         }
         void render()
@@ -77,22 +79,25 @@ public:
                 mWindow.draw(mPlayer);
                 mWindow.display();
         }
-
         void run()
         {
-                sf::Clock clock;
-                sf::Time timeSinceLastUpdate = sf::Time::Zero;
-                sf::Time timePerFrame = sf::seconds(1.f / 60.f);
+                Utils::Stopwatch::Start();
+                float timeSinceLastUpdate = 0.0f;
+                float timePerFrame = (1.0 / 60.0f);
+
+                //                sf::Clock clock;
+                //                sf::Time timeSinceLastUpdate = sf::Time::Zero;
+                //                auto timePerFrame = sf::seconds(1.0f / 60.0f);
+
                 while (mWindow.isOpen()) {
                         processEvents();
-                        timeSinceLastUpdate += clock.restart();
-
+                        timeSinceLastUpdate += Utils::Stopwatch::Delta();
+                        //                        timeSinceLastUpdate += clock.restart();
                         while (timeSinceLastUpdate > timePerFrame) {
                                 timeSinceLastUpdate -= timePerFrame;
                                 processEvents();
-                                update(timePerFrame);
+                                update(sf::seconds(1.0 / 60.0f));
                         }
-
                         render();
                 }
         }

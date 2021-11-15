@@ -23,13 +23,13 @@ enum Type
         eJetpack = 1,
         eSpring = 2,
         ePlatform = 3,
-        eEntity = 4
 };
 
 class Entity : public Observer::Observable
 {
 public:
-        virtual Model::Type getType() const { return Model::Type::eEntity; }
+        // Pure virtual
+        virtual Model::Type getType() const = 0;
 };
 } // namespace Model
 

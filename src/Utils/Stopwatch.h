@@ -13,7 +13,7 @@ namespace Utils {
 class Stopwatch
 {
 private:
-        std::chrono::high_resolution_clock::time_point s_time;
+        std::chrono::high_resolution_clock::time_point mTime;
 
 private:
         Stopwatch() = default;
@@ -22,12 +22,16 @@ private:
 
         float IDelta();
 
+        void IStart();
+
 public:
         Stopwatch(const Stopwatch&) = delete;
 
         Stopwatch& operator=(const Stopwatch&) = delete;
 
         static float Delta();
+
+        static void Start();
 };
 } // namespace Utils
 
