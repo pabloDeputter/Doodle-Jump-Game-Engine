@@ -16,7 +16,8 @@ namespace Game {
 class Game
 {
         sf::RenderWindow mWindow;
-        sf::Sprite mPlayer;
+        //        sf::Sprite mPlayer;
+        sf::RectangleShape mPlayer;
         sf::Texture mTexture;
         bool mIsMovingUp;
         bool mIsMovingDown;
@@ -25,17 +26,19 @@ class Game
 
         sf::Vector2f currentVelocity;
         sf::Vector2f currentDirection;
-        float maxVelocity = 50.f;
-        float acceleration = 2.f;
-        float drag = .5f;
+        float maxVelocity = 25.f;
+        float acceleration = 2.5f;
+        float drag = 0.5f;
 
 public:
         Game() : mWindow(sf::VideoMode(3840, 2060), "Doodle Jump"), mPlayer()
         {
+                mWindow.setFramerateLimit(60);
                 if (!mTexture.loadFromFile("texture_1.png")) {
                         std::cerr << "error loading tex\n";
                 }
-                mPlayer.setTexture(mTexture);
+                mPlayer.setSize({100.f, 100.f});
+                mPlayer.setFillColor(sf::Color::Cyan);
                 mPlayer.setPosition(200.f, 100.f);
         }
 
@@ -70,78 +73,75 @@ public:
                         }
                 }
         }
-        void update(sf::Time deltaTime)
+        void update(float deltaTime)
         {
+                std::cout << "DeltaTime: " << deltaTime << std::endl;
                 currentDirection = sf::Vector2f(0.f, 0.f);
 
                 sf::Vector2f movement(0.f, 0.f);
+                // Movement + Direction
                 if (mIsMovingUp) {
-                        currentDirection.y -= 1.f;
-
-                        if (currentVelocity.y < maxVelocity) {
-                                currentVelocity.y += acceleration * currentDirection.y;
-                        }
-                        //                        movement.y -= 1.f;
-                }
-                if (mIsMovingDown) {
-                        currentDirection.y += 1.f;
+                        currentDirection.y = -1.f;
 
                         if (currentVelocity.y > -maxVelocity) {
-                                currentVelocity.y += acceleration * currentDirection.y;
+                                currentVelocity.y +=
+                                    acceleration * currentDirection.y * deltaTime * 56.657223796033994f;
                         }
-                        //                        movement.y += 1.f;
-                }
-                if (mIsMovingLeft) {
-                        currentDirection.x -= 1.f;
+                } else if (mIsMovingDown) {
+                        currentDirection.y = 1.f;
+
+                        if (currentVelocity.y < maxVelocity) {
+                                currentVelocity.y +=
+                                    acceleration * currentDirection.y * deltaTime * 56.657223796033994f;
+                        }
+                } else if (mIsMovingLeft) {
+                        currentDirection.x = -1.f;
 
                         if (currentVelocity.x > -maxVelocity) {
-                                currentVelocity.x += acceleration * currentDirection.x;
+                                currentVelocity.x +=
+                                    acceleration * currentDirection.x * deltaTime * 56.657223796033994f;
                         }
-
-                        //                        movement.x -= 1.f;
-                }
-                if (mIsMovingRight) {
-                        currentDirection.x += 1.f;
+                } else if (mIsMovingRight) {
+                        currentDirection.x = 1.f;
 
                         if (currentVelocity.x < maxVelocity) {
-                                currentVelocity.x += acceleration * currentDirection.x;
+                                currentVelocity.x +=
+                                    acceleration * currentDirection.x * deltaTime * 56.657223796033994f;
                         }
-                        //                        movement.x += 1.f;
                 }
                 // Drag
                 if (currentVelocity.x > 0.f) {
 
-                        currentVelocity.x -= drag;
+                        currentVelocity.x -= drag * deltaTime * 56.657223796033994f;
                         if (currentVelocity.x < 0.f) {
                                 // Velocity can't be negative, just slow down
                                 currentVelocity.x = 0.0f;
                         }
-                } else if (currentVelocity.y < 0.f) {
-
-                        currentVelocity.y += drag;
-                        if (currentVelocity.y > 0.f) {
-                                // Velocity can't be negative, just slow down
-                                currentVelocity.y = 0.0f;
-                        }
-                }
-                if (currentVelocity.y > 0.f) {
-
-                        currentVelocity.y -= drag;
-                        if (currentVelocity.y < 0.f) {
-                                // Velocity can't be negative, just slow down
-                                currentVelocity.y = 0.0f;
-                        }
                 } else if (currentVelocity.x < 0.f) {
 
-                        currentVelocity.x += drag;
+                        currentVelocity.x += drag * deltaTime * 56.657223796033994f;
                         if (currentVelocity.x > 0.f) {
                                 // Velocity can't be negative, just slow down
                                 currentVelocity.x = 0.0f;
                         }
                 }
+                if (currentVelocity.y > 0.f) {
+                        currentVelocity.y -= drag * deltaTime * 56.657223796033994f;
+                        if (currentVelocity.y < 0.f) {
+                                // Velocity can't be negative, just slow down
+                                currentVelocity.y = 0.0f;
+                        }
+                } else if (currentVelocity.y < 0.f) {
+                        currentVelocity.y += drag * deltaTime * 56.657223796033994f;
+                        if (currentVelocity.y > 0.f) {
+                                // Velocity can't be negative, just slow down
+                                currentVelocity.y = 0.0f;
+                        }
+                }
 
                 // Finally move
-                mPlayer.move(currentVelocity.x, currentVelocity.y);
+                mPlayer.move(currentVelocity.x * deltaTime * 56.657223796033994f,
+                             currentVelocity.y * deltaTime * 56.657223796033994f);
 
                 //                movement.x = movement.x * (float)deltaTime.asMilliseconds();
                 //                movement.y = movement.y * (float)deltaTime.asMilliseconds();
@@ -155,31 +155,30 @@ public:
         }
         void run()
         {
+                sf::Clock clock;
+                float dt;
+
                 Utils::Stopwatch::Start();
-                float timeSinceLastUpdate = 0.0f;
-                float frameRate = 60.0f;
-                // Time per frame in milliseconds
-                float timePerFrame = (1000.0f / frameRate);
+                //                float timeSinceLastUpdate = 0.f;
+                //                float frameRate = 60.f;
+                ////                 Time per frame in milliseconds
+                //                float timePerFrame = (1000.f / frameRate);
 
                 while (mWindow.isOpen()) {
                         processEvents();
-                        auto a = Utils::Stopwatch::Delta();
-                        timeSinceLastUpdate += a;
 
-                        //                        if (timeSinceLastUpdate < timePerFrame) {
-                        //                                auto ms_sleep = timePerFrame - timeSinceLastUpdate;
-                        //                                std::chrono::milliseconds ms{static_cast<long int>(ms_sleep)};
-                        //                                std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+                        dt = clock.restart().asSeconds();
+                        std::cout << "sf::Clock: " << dt << std::endl;
+                        //                        std::cout << "Utils::Stopwatch: " << Utils::Stopwatch::Delta() <<
+                        //                        std::endl;
+                        update(Utils::Stopwatch::Delta());
+
+                        //                        timeSinceLastUpdate += Utils::Stopwatch::Delta();
+                        //                        while (timeSinceLastUpdate > timePerFrame) {
+                        //                                timeSinceLastUpdate -= timePerFrame;
+                        //                                processEvents();
+                        //                                update(timeSinceLastUpdate);
                         //                        }
-                        //                        processEvents();
-                        //                        update(sf::milliseconds(1000.0f / 60.0f));
-                        //
-                        while (timeSinceLastUpdate > timePerFrame) {
-                                timeSinceLastUpdate -= timePerFrame;
-                                processEvents();
-                                update(sf::milliseconds((int32_t)timePerFrame));
-                                //                                update(sf::milliseconds(1.0f / 60.0f));
-                        }
                         render();
                 }
         }
