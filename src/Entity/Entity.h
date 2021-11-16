@@ -20,9 +20,8 @@ namespace Model {
 enum Type
 {
         ePlayer = 0,
-        eJetpack = 1,
-        eSpring = 2,
-        ePlatform = 3,
+        eBonus = 1,
+        ePlatform = 2,
 };
 
 class Entity : public Observer::Subject

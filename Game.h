@@ -23,6 +23,12 @@ class Game
         bool mIsMovingLeft;
         bool mIsMovingRight;
 
+        sf::Vector2f currentVelocity;
+        sf::Vector2f currentDirection;
+        float maxVelocity = 50.f;
+        float acceleration = 2.f;
+        float drag = .5f;
+
 public:
         Game() : mWindow(sf::VideoMode(3840, 2060), "Doodle Jump"), mPlayer()
         {
@@ -66,18 +72,80 @@ public:
         }
         void update(sf::Time deltaTime)
         {
+                currentDirection = sf::Vector2f(0.f, 0.f);
+
                 sf::Vector2f movement(0.f, 0.f);
-                if (mIsMovingUp)
-                        movement.y -= 1.f;
-                if (mIsMovingDown)
-                        movement.y += 1.f;
-                if (mIsMovingLeft)
-                        movement.x -= 1.f;
-                if (mIsMovingRight)
-                        movement.x += 1.f;
-                movement.x = movement.x * (float)deltaTime.asMilliseconds();
-                movement.y = movement.y * (float)deltaTime.asMilliseconds();
-                mPlayer.move(movement);
+                if (mIsMovingUp) {
+                        currentDirection.y -= 1.f;
+
+                        if (currentVelocity.y < maxVelocity) {
+                                currentVelocity.y += acceleration * currentDirection.y;
+                        }
+                        //                        movement.y -= 1.f;
+                }
+                if (mIsMovingDown) {
+                        currentDirection.y += 1.f;
+
+                        if (currentVelocity.y > -maxVelocity) {
+                                currentVelocity.y += acceleration * currentDirection.y;
+                        }
+                        //                        movement.y += 1.f;
+                }
+                if (mIsMovingLeft) {
+                        currentDirection.x -= 1.f;
+
+                        if (currentVelocity.x > -maxVelocity) {
+                                currentVelocity.x += acceleration * currentDirection.x;
+                        }
+
+                        //                        movement.x -= 1.f;
+                }
+                if (mIsMovingRight) {
+                        currentDirection.x += 1.f;
+
+                        if (currentVelocity.x < maxVelocity) {
+                                currentVelocity.x += acceleration * currentDirection.x;
+                        }
+                        //                        movement.x += 1.f;
+                }
+                // Drag
+                if (currentVelocity.x > 0.f) {
+
+                        currentVelocity.x -= drag;
+                        if (currentVelocity.x < 0.f) {
+                                // Velocity can't be negative, just slow down
+                                currentVelocity.x = 0.0f;
+                        }
+                } else if (currentVelocity.y < 0.f) {
+
+                        currentVelocity.y += drag;
+                        if (currentVelocity.y > 0.f) {
+                                // Velocity can't be negative, just slow down
+                                currentVelocity.y = 0.0f;
+                        }
+                }
+                if (currentVelocity.y > 0.f) {
+
+                        currentVelocity.y -= drag;
+                        if (currentVelocity.y < 0.f) {
+                                // Velocity can't be negative, just slow down
+                                currentVelocity.y = 0.0f;
+                        }
+                } else if (currentVelocity.x < 0.f) {
+
+                        currentVelocity.x += drag;
+                        if (currentVelocity.x > 0.f) {
+                                // Velocity can't be negative, just slow down
+                                currentVelocity.x = 0.0f;
+                        }
+                }
+
+                // Finally move
+                mPlayer.move(currentVelocity.x, currentVelocity.y);
+
+                //                movement.x = movement.x * (float)deltaTime.asMilliseconds();
+                //                movement.y = movement.y * (float)deltaTime.asMilliseconds();
+                //                mPlayer.move(movement);
         }
         void render()
         {
@@ -95,7 +163,8 @@ public:
 
                 while (mWindow.isOpen()) {
                         processEvents();
-                        timeSinceLastUpdate += Utils::Stopwatch::Delta();
+                        auto a = Utils::Stopwatch::Delta();
+                        timeSinceLastUpdate += a;
 
                         //                        if (timeSinceLastUpdate < timePerFrame) {
                         //                                auto ms_sleep = timePerFrame - timeSinceLastUpdate;

@@ -8,23 +8,17 @@ using namespace Utils;
 
 Stopwatch& Stopwatch::Get()
 {
-
         static Stopwatch instance;
         return instance;
 }
 
 float Stopwatch::IDelta()
 {
-
-        //        auto ms_delta =
-        //        std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now()
-        //                                                                              - mTime);
-        //        return ms_delta.count();
-
-        std::chrono::duration<float, std::milli> delta = std::chrono::high_resolution_clock::now() - mTime;
-        // TODO - reset
+        std::chrono::duration<float, std::milli> ms_delta = std::chrono::high_resolution_clock::now() - mTime;
+        // Reset / lap stopwatch
         mTime = std::chrono::high_resolution_clock::now();
-        return delta.count();
+        // Return milliseconds as float
+        return ms_delta.count();
 }
 
 void Stopwatch::IStart() { mTime = std::chrono::high_resolution_clock::now(); }

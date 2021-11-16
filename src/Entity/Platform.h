@@ -15,10 +15,10 @@ class Platform : public Entity
 public:
         enum Sort
         {
-                Static = 0,
-                Horizontal = 1,
-                Vertical = 2,
-                Temporary = 3
+                eStatic = 0,
+                eHorizontal = 1,
+                eVertical = 2,
+                eTemporary = 3
         };
 
         Model::Type getType() const override { return Model::Type::ePlatform; }

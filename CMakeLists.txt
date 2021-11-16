@@ -18,10 +18,6 @@ SET(SRC main.cpp
         src/Entity/Entity.cpp
         src/Entity/Platform.cpp
         src/Entity/Platform.h
-        src/Entity/Spring.cpp
-        src/Entity/Spring.h
-        src/Entity/Jetpack.cpp
-        src/Entity/Jetpack.h
         src/Entity/Player.cpp
         src/Entity/Player.h
         src/Observer/IObserver.cpp
@@ -31,7 +27,7 @@ SET(SRC main.cpp
         Game.cpp
         Game.h
         src/Utils/Stopwatch.cpp
-        src/Utils/Stopwatch.h src/Utils/Transform.cpp src/Utils/Transform.h)
+        src/Utils/Stopwatch.h src/Utils/Transform.cpp src/Utils/Transform.h src/Entity/Bonus.cpp src/Entity/Bonus.h)
 
 # Add include dirs for SFML
 # (The SFML_INCLUDE_DIR variable is defined by FindSFML.cmake, if SFML was found)
