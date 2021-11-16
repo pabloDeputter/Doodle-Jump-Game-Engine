@@ -9,6 +9,7 @@
 #include "SFML/Window.hpp"
 #include "src/Utils/Stopwatch.h"
 #include <iostream>
+#include <thread>
 
 namespace Game {
 
@@ -74,7 +75,9 @@ public:
                         movement.x -= 1.f;
                 if (mIsMovingRight)
                         movement.x += 1.f;
-                mPlayer.move(movement * deltaTime.asSeconds());
+                movement.x = movement.x * (float)deltaTime.asMilliseconds();
+                movement.y = movement.y * (float)deltaTime.asMilliseconds();
+                mPlayer.move(movement);
         }
         void render()
         {
@@ -86,20 +89,27 @@ public:
         {
                 Utils::Stopwatch::Start();
                 float timeSinceLastUpdate = 0.0f;
-                float timePerFrame = (1.0 / 60.0f);
-
-                //                sf::Clock clock;
-                //                sf::Time timeSinceLastUpdate = sf::Time::Zero;
-                //                auto timePerFrame = sf::seconds(1.0f / 60.0f);
+                float frameRate = 60.0f;
+                // Time per frame in milliseconds
+                float timePerFrame = (1000.0f / frameRate);
 
                 while (mWindow.isOpen()) {
                         processEvents();
                         timeSinceLastUpdate += Utils::Stopwatch::Delta();
-                        //                        timeSinceLastUpdate += clock.restart();
+
+                        //                        if (timeSinceLastUpdate < timePerFrame) {
+                        //                                auto ms_sleep = timePerFrame - timeSinceLastUpdate;
+                        //                                std::chrono::milliseconds ms{static_cast<long int>(ms_sleep)};
+                        //                                std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+                        //                        }
+                        //                        processEvents();
+                        //                        update(sf::milliseconds(1000.0f / 60.0f));
+                        //
                         while (timeSinceLastUpdate > timePerFrame) {
                                 timeSinceLastUpdate -= timePerFrame;
                                 processEvents();
-                                update(sf::seconds(1.0 / 60.0f));
+                                update(sf::milliseconds((int32_t)timePerFrame));
+                                //                                update(sf::milliseconds(1.0f / 60.0f));
                         }
                         render();
                 }

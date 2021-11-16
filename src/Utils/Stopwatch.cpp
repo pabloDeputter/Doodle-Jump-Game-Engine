@@ -16,9 +16,14 @@ Stopwatch& Stopwatch::Get()
 float Stopwatch::IDelta()
 {
 
-        std::chrono::duration<float> delta = std::chrono::high_resolution_clock::now() - mTime;
+        //        auto ms_delta =
+        //        std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now()
+        //                                                                              - mTime);
+        //        return ms_delta.count();
+
+        std::chrono::duration<float, std::milli> delta = std::chrono::high_resolution_clock::now() - mTime;
         // TODO - reset
-        //        mTime = std::chrono::high_resolution_clock::now();
+        mTime = std::chrono::high_resolution_clock::now();
         return delta.count();
 }
 

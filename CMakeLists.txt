@@ -26,8 +26,8 @@ SET(SRC main.cpp
         src/Entity/Player.h
         src/Observer/IObserver.cpp
         src/Observer/IObserver.h
-        src/Observer/Observable.cpp
-        src/Observer/Observable.h
+        src/Observer/Subject.cpp
+        src/Observer/Subject.h
         Game.cpp
         Game.h
         src/Utils/Stopwatch.cpp

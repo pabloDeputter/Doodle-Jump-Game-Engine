@@ -7,7 +7,7 @@
 
 #include <string>
 
-#include "../Observer/Observable.h"
+#include "../Observer/Subject.h"
 
 /**
  * @brief Namespace holds all models
@@ -25,7 +25,7 @@ enum Type
         ePlatform = 3,
 };
 
-class Entity : public Observer::Observable
+class Entity : public Observer::Subject
 {
 private:
         float mX = 0.f;
