@@ -12,10 +12,14 @@ Transform& Transform::Get()
         return instance;
 }
 
-void Transform::ISetDimensions(int width, int height)
+void Transform::ISetDimensions(float width, float height)
 {
         mWindowHeight = width;
         mWindowWidth = height;
 }
 
-void Transform::SetDimensions(int width, int height) { Get().ISetDimensions(width, height); }
+std::pair<float, float> Transform::IGetDimensions() const { return std::make_pair(mWindowHeight, mWindowWidth); }
+
+void Transform::SetDimensions(float width, float height) { Get().ISetDimensions(width, height); }
+
+std::pair<float, float> Transform::GetDimensions() { return Get().IGetDimensions(); }

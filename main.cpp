@@ -13,7 +13,7 @@
 int main(int argc, char* argv[])
 {
 
-        Game::Game* a = new Game::Game();
+        Game* a = new Game();
         a->run();
 
         //        std::cout << "Hello world\n";

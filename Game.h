@@ -5,17 +5,17 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
 
+#include "src/Utils/Stopwatch.h"
+#include "src/Utils/Transform.h"
+
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
-#include "src/Utils/Stopwatch.h"
 #include <iostream>
-#include <thread>
-
-namespace Game {
 
 class Game
 {
-        sf::RenderWindow mWindow;
+        std::unique_ptr<sf::RenderWindow> mWindow;
+
         sf::RectangleShape mPlayer;
         sf::RectangleShape mCollisionBox;
         sf::Texture mTexture;
@@ -30,56 +30,15 @@ class Game
         float acceleration = 1.5f;
         float drag = 0.6f;
 public:
-        Game() : mWindow(sf::VideoMode(3840, 2060), "Doodle Jump"), mPlayer()
-        {
-                //                                mWindow.setFramerateLimit(60);
-                if (!mTexture.loadFromFile("texture_2.png")) {
-                        std::cerr << "error loading tex\n";
-                }
-                mPlayer.setSize(sf::Vector2f(50.f, 50.f));
-                mPlayer.setFillColor(sf::Color::Cyan);
-                mPlayer.setPosition(2048.f, 100.f);
-                //                mPlayer.setTexture(mTexture);
-                //                mPlayer.setScale(1.f, 1.f);
+        Game();
 
-                mCollisionBox.setOutlineColor(sf::Color::Red);
-                mCollisionBox.setOutlineThickness(1.f);
-                mCollisionBox.setFillColor(sf::Color::Transparent);
-                mCollisionBox.setSize(sf::Vector2f(50.f, 50.f));
-                mCollisionBox.scale(1.4f, 1.4f);
-        }
+        void processEvents();
 
-        void handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
-        {
-                if (key == sf::Keyboard::Z) {
-                        mIsMovingUp = isPressed;
-                } else if (key == sf::Keyboard::S) {
-                        mIsMovingDown = isPressed;
-                } else if (key == sf::Keyboard::Q) {
-                        mIsMovingLeft = isPressed;
-                } else if (key == sf::Keyboard::D) {
-                        mIsMovingRight = isPressed;
-                }
-        }
+        void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
 
-        void processEvents()
-        {
-                sf::Event event;
-                while (mWindow.pollEvent(event)) {
+        void render();
 
-                        switch (event.type) {
-                        case sf::Event::KeyPressed:
-                                handlePlayerInput(event.key.code, true);
-                                break;
-                        case sf::Event::KeyReleased:
-                                handlePlayerInput(event.key.code, false);
-                                break;
-                        case sf::Event::Closed:
-                                mWindow.close();
-                                break;
-                        }
-                }
-        }
+        void run();
 
         void autoJump(float deltaTime)
         {
@@ -259,30 +218,6 @@ public:
                 std::cout << "DT: " << deltaTime << " - "
                           << "FPS: " << 1.f / deltaTime << std::endl;
         }
-
-        void render()
-        {
-                mWindow.clear();
-                mCollisionBox.setPosition(mPlayer.getPosition().x - 0.2f * mPlayer.getSize().x,
-                                          mPlayer.getPosition().y - 0.2f * mPlayer.getSize().y);
-                mWindow.draw(mCollisionBox);
-                mWindow.draw(mPlayer);
-                mWindow.display();
-        }
-
-        void run()
-        {
-                Utils::Stopwatch::Start();
-
-                while (mWindow.isOpen()) {
-                        processEvents();
-                        //                        update(Utils::Stopwatch::Delta());
-                        autoJump(Utils::Stopwatch::Delta());
-
-                        render();
-                }
-        }
 };
-} // namespace Game
 
 #endif // ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
