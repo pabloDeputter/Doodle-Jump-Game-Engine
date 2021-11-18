@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "src/Game.h"
 #include "src/Utils/Random.h"
 #include "src/Utils/Stopwatch.h"
 #include <iostream>
@@ -7,14 +7,14 @@
 
 /* TODO
  * Compile different directories, such Utils should never be compiled again
- * IObserver class should be base class of all entities?
+ * Observer class should be base class of all entities?
  */
 
 int main(int argc, char* argv[])
 {
 
-        Game* a = new Game();
-        a->run();
+        //        Game* a = new Game();
+        //        a->run();
 
         //        std::cout << "Hello world\n";
         return 0;

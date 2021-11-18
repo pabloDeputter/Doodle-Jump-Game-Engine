@@ -5,8 +5,8 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
 
-#include "src/Utils/Stopwatch.h"
-#include "src/Utils/Transform.h"
+#include "Utils/Stopwatch.h"
+#include "Utils/Transform.h"
 
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
