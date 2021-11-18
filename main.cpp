@@ -15,7 +15,6 @@ int main(int argc, char* argv[])
 
         Game::Game* a = new Game::Game();
         a->run();
-        //        std::cout << Utils::Random::GetRandom(());
 
         //        std::cout << "Hello world\n";
         return 0;

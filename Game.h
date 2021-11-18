@@ -16,8 +16,8 @@ namespace Game {
 class Game
 {
         sf::RenderWindow mWindow;
-        //        sf::Sprite mPlayer;
-        sf::Sprite mPlayer;
+        sf::RectangleShape mPlayer;
+        sf::RectangleShape mCollisionBox;
         sf::Texture mTexture;
         bool mIsMovingUp;
         bool mIsMovingDown;
@@ -29,19 +29,24 @@ class Game
         float maxVelocity = 27.f;
         float acceleration = 1.5f;
         float drag = 0.6f;
-
 public:
         Game() : mWindow(sf::VideoMode(3840, 2060), "Doodle Jump"), mPlayer()
         {
-                //                mWindow.setFramerateLimit(60);
+                //                                mWindow.setFramerateLimit(60);
                 if (!mTexture.loadFromFile("texture_2.png")) {
                         std::cerr << "error loading tex\n";
                 }
-                //                mPlayer.setSize({100.f, 100.f});
-                //                mPlayer.setFillColor(sf::Color::Cyan);
+                mPlayer.setSize(sf::Vector2f(50.f, 50.f));
+                mPlayer.setFillColor(sf::Color::Cyan);
                 mPlayer.setPosition(2048.f, 100.f);
-                mPlayer.setTexture(mTexture);
-                mPlayer.setScale(1.f, 1.f);
+                //                mPlayer.setTexture(mTexture);
+                //                mPlayer.setScale(1.f, 1.f);
+
+                mCollisionBox.setOutlineColor(sf::Color::Red);
+                mCollisionBox.setOutlineThickness(1.f);
+                mCollisionBox.setFillColor(sf::Color::Transparent);
+                mCollisionBox.setSize(sf::Vector2f(50.f, 50.f));
+                mCollisionBox.scale(1.4f, 1.4f);
         }
 
         void handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
@@ -243,12 +248,13 @@ public:
                 if (mPlayer.getPosition().y >= 1000 && !mIsMovingDown &&
                     mPlayer.getPosition().y + (float)(currentVelocity.y * deltaTime * 56.657223796033994f) >= 1000) {
                         currentVelocity *= -1.f;
-                        mPlayer.move(currentVelocity.x * deltaTime * 56.657223796033994f,
-                                     currentVelocity.y * deltaTime * 56.657223796033994f);
-                } else {
-                        mPlayer.move(currentVelocity.x * deltaTime * 56.657223796033994f,
-                                     currentVelocity.y * deltaTime * 56.657223796033994f);
                 }
+
+                mCollisionBox.move(currentVelocity.x * deltaTime * 56.657223796033994f,
+                                   currentVelocity.y * deltaTime * 56.657223796033994f);
+
+                mPlayer.move(currentVelocity.x * deltaTime * 56.657223796033994f,
+                             currentVelocity.y * deltaTime * 56.657223796033994f);
 
                 std::cout << "DT: " << deltaTime << " - "
                           << "FPS: " << 1.f / deltaTime << std::endl;
@@ -257,6 +263,9 @@ public:
         void render()
         {
                 mWindow.clear();
+                mCollisionBox.setPosition(mPlayer.getPosition().x - 0.2f * mPlayer.getSize().x,
+                                          mPlayer.getPosition().y - 0.2f * mPlayer.getSize().y);
+                mWindow.draw(mCollisionBox);
                 mWindow.draw(mPlayer);
                 mWindow.display();
         }

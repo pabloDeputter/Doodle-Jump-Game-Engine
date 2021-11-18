@@ -15,7 +15,7 @@
 namespace Model {
 
 /**
- * @Brief Namespace contains all different entities
+ * @Brief Namespace containing enumerated Entities
  */
 enum Type
 {
@@ -24,13 +24,20 @@ enum Type
         ePlatform = 2,
 };
 
+/**
+ * @brief Class for Entity object
+ */
 class Entity : public Observer::Subject
 {
 private:
-        float mX = 0.f;
-        float mY = 0.f;
+        float mX;      /**< X-coordinate of Entity */
+        float mY;      /**< Y-coordinate of Entity */
+        float mWidth;  /**< Width of Entity collision box */
+        float mHeight; /**< Height of Entity collision box */
 
 public:
+        Entity(float x, float y) : mX(x), mY(y) {}
+
         /**
          * @brief Get the x value of Entity object
          * @return float
@@ -51,7 +58,10 @@ public:
          * @param y float
          */
         void setY(float y);
-
+        /**
+         * @brief Get type of Entity object
+         * @return Model::Type
+         */
         virtual Model::Type getType() const = 0;
 };
 } // namespace Model
