@@ -37,7 +37,7 @@ SET(
         src/World.h
         src/Camera.cpp
         src/Camera.h
-        src/Views/IView.cpp src/Views/IView.h src/Views/PlayerView.cpp src/Views/PlayerView.h src/Views/PlatformView.cpp src/Views/PlatformView.h src/Views/Bonus.cpp src/Views/Bonus.h src/Controllers/IController.cpp src/Controllers/IController.h src/Controllers/PlayerController.cpp src/Controllers/PlayerController.h)
+        src/Views/IView.cpp src/Views/IView.h src/Views/PlayerView.cpp src/Views/PlayerView.h src/Views/PlatformView.cpp src/Views/PlatformView.h src/Controllers/IController.cpp src/Controllers/IController.h src/Controllers/PlayerController.cpp src/Controllers/PlayerController.h)
 
 # Add include dirs for SFML
 # (The SFML_INCLUDE_DIR variable is defined by FindSFML.cmake, if SFML was found)

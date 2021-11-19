@@ -11,6 +11,16 @@ namespace View {
 
 class PlayerView : public IView
 {
+public:
+        PlayerView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<sf::RenderWindow>& window,
+                   const std::string& path)
+            : IView(entity, window, path)
+        {
+        }
+
+        PlayerView() = default;
+
+        ~PlayerView() override = default;
 };
 } // namespace View
 

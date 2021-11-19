@@ -6,11 +6,12 @@
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_ENTITY_H
 
 #include "../../Observer/Subject.h"
+#include "../../Utils/Stopwatch.h"
 
 #include <string>
 
 /**
- * @brief Namespace holds all models
+ * @brief Namespace holds all Models
  */
 namespace Model {
 

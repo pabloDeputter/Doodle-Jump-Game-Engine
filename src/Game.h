@@ -5,7 +5,11 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
 
-#include "Camera.h"
+#include "Controllers/IController.h"
+#include "Controllers/PlayerController.h"
+#include "Views/IView.h"
+#include "Views/PlayerView.h"
+
 #include "Utils/Stopwatch.h"
 #include "Utils/Transform.h"
 
@@ -15,7 +19,11 @@
 
 class Game
 {
-        std::unique_ptr<sf::RenderWindow> mWindow;
+        std::shared_ptr<sf::RenderWindow> mWindow;
+        std::unique_ptr<Controller::IController> mPlayerController;
+
+        std::shared_ptr<View::IView> v;
+        std::shared_ptr<Model::Entity> p;
 
         sf::RectangleShape mPlayer;
         sf::RectangleShape mCollisionBox;
@@ -49,7 +57,6 @@ public:
                         mIsMovingUp = false;
                 }
 
-                //                std::cout << "Current velocity.y: " << currentVelocity.y << std::endl;
                 currentDirection = sf::Vector2f(0.f, 0.f);
 
                 // Collision with bounce

@@ -16,7 +16,7 @@ public:
 
         virtual ~Observer() = default;
 
-        virtual void update() = 0;
+        virtual void onUpdate() = 0;
 };
 } // namespace Observer
 

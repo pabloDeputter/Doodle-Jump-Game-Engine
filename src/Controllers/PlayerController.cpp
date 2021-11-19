@@ -32,3 +32,8 @@ void PlayerController::handlePlayerInput(sf::Keyboard::Key key, bool keyIsPresse
                 player->mIsMovingRight = keyIsPressed;
         }
 }
+
+void PlayerController::onUpdate()
+{
+        std::dynamic_pointer_cast<Model::Player>(mEntity)->move(Utils::Stopwatch::GetDelta());
+}

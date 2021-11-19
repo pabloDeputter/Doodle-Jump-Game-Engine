@@ -7,6 +7,7 @@
 
 #include "../Models/Entity/Entity.h"
 #include "../Models/Entity/Player.h"
+
 #include "../Views/IView.h"
 
 #include <memory>
@@ -17,14 +18,21 @@ class IController
 {
 protected:
         std::shared_ptr<Model::Entity> mEntity;
-        std::unique_ptr<View::IView> mView;
+        std::shared_ptr<View::IView> mView;
 
 public:
+        IController(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<View::IView>& view)
+            : mEntity(entity), mView(view)
+        {
+        }
+
         IController() = default;
 
         virtual ~IController() = default;
 
         virtual void onEvent(sf::Event event) = 0;
+
+        virtual void onUpdate() = 0;
 };
 } // namespace Controller
 

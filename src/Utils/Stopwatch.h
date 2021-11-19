@@ -8,12 +8,16 @@
 #include <cfloat>
 #include <chrono>
 
+/**
+ * @brief Namespace holds all Utils
+ */
 namespace Utils {
 
 class Stopwatch
 {
 private:
         std::chrono::high_resolution_clock::time_point mTime;
+        float mDeltaTime;
 
 private:
         Stopwatch() = default;
@@ -21,6 +25,8 @@ private:
         static Stopwatch& Get();
 
         float IDelta();
+
+        float IGetDelta();
 
         void IStart();
 
@@ -30,6 +36,8 @@ public:
         Stopwatch& operator=(const Stopwatch&) = delete;
 
         static float Delta();
+
+        static float GetDelta();
 
         static void Start();
 };

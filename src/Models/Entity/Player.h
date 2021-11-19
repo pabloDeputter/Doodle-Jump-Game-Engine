@@ -7,6 +7,8 @@
 
 #include "Entity.h"
 
+#include <iostream>
+
 namespace Model {
 
 class Player : public Entity
@@ -25,7 +27,13 @@ public:
         bool mIsMovingRight;
 
 public:
+        Player() = default;
+
+        ~Player() override = default;
+
         Model::Type getType() const override { return Model::Type::ePlayer; }
+
+        void move(float deltaTime);
 };
 } // namespace Model
 

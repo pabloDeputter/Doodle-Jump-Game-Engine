@@ -14,7 +14,7 @@ namespace Observer {
 
 class Subject
 {
-        // private:
+protected:
         std::vector<std::shared_ptr<Observer>> mObservers;
 
 public:

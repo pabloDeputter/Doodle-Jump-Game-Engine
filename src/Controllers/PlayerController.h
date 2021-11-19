@@ -12,9 +12,16 @@ namespace Controller {
 class PlayerController : public IController
 {
 public:
+        PlayerController(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<View::IView>& view)
+            : IController(entity, view)
+        {
+        }
+
         void onEvent(sf::Event event) override;
 
         void handlePlayerInput(sf::Keyboard::Key key, bool keyIsPressed);
+
+        void onUpdate() override;
 };
 } // namespace Controller
 

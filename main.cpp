@@ -11,8 +11,8 @@
 int main(int argc, char* argv[])
 {
 
-        //        Game* a = new Game();
-        //        a->run();
+        Game* a = new Game();
+        a->run();
 
         //        std::cout << "Hello world\n";
         return 0;

@@ -7,7 +7,7 @@
 Game::Game()
 {
 
-        mWindow = std::make_unique<sf::RenderWindow>(sf::VideoMode(1000, 2060), "Doodle Jump");
+        mWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(1000, 2060), "Doodle Jump");
         //        mWindow->setFramerateLimit(60);
         mPlayer.setSize(sf::Vector2f(50.f, 50.f));
         mPlayer.setFillColor(sf::Color::Cyan);
@@ -20,6 +20,12 @@ Game::Game()
         mCollisionBox.scale(1.4f, 1.4f);
 
         Utils::Transform::SetDimensions((float)mWindow->getSize().x, (float)mWindow->getSize().y);
+
+        p = std::make_shared<Model::Player>();
+        v = std::make_shared<View::PlayerView>(p, mWindow, "Resource/Image/texture_1.png");
+        p->registerObserver(v);
+
+        mPlayerController = std::make_unique<Controller::PlayerController>(p, v);
 }
 
 void Game::processEvents()
@@ -30,9 +36,11 @@ void Game::processEvents()
                 switch (event.type) {
                 case sf::Event::KeyPressed:
                         Game::handlePlayerInput(event.key.code, true);
+                        mPlayerController->onEvent(event);
                         break;
                 case sf::Event::KeyReleased:
                         Game::handlePlayerInput(event.key.code, false);
+                        mPlayerController->onEvent(event);
                         break;
                 case sf::Event::Closed:
                         mWindow->close();
@@ -69,9 +77,16 @@ void Game::run()
         Utils::Stopwatch::Start();
 
         while (mWindow->isOpen()) {
+
                 processEvents();
-                update(Utils::Stopwatch::Delta());
+                Utils::Stopwatch::Delta();
+                mPlayerController->onUpdate();
+                mWindow->clear();
+                v->onDraw();
+                mWindow->display();
+                //                update(Utils::Stopwatch::Delta());
+
                 //                autoJump(Utils::Stopwatch::Delta());
-                render();
+                //                render();
         }
 }
