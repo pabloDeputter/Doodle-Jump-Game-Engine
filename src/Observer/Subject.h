@@ -8,6 +8,7 @@
 #include "Observer.h"
 
 #include <algorithm>
+#include <memory>
 #include <vector>
 
 namespace Observer {
