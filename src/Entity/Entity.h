@@ -15,7 +15,7 @@
 namespace Model {
 
 /**
- * @Brief Namespace containing enumerated Entities
+ * @Brief Enum containing enumerated Entities
  */
 enum Type
 {
@@ -30,12 +30,16 @@ enum Type
 class Entity : public Observer::Subject
 {
 private:
-        float mX;      /**< X-coordinate of Entity */
-        float mY;      /**< Y-coordinate of Entity */
-        float mWidth;  /**< Width of Entity collision box */
-        float mHeight; /**< Height of Entity collision box */
+        float mX;        /**< X-coordinate of Entity */
+        float mY;        /**< Y-coordinate of Entity */
+        float mWidth{};  /**< Width of Entity collision box */
+        float mHeight{}; /**< Height of Entity collision box */
 
 public:
+        Entity() = default;
+
+        virtual ~Entity() = default;
+
         Entity(float x, float y) : mX(x), mY(y) {}
 
         /**

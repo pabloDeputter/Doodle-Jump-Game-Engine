@@ -14,15 +14,7 @@ class Random
 private:
         Random() = default;
 
-        template <typename T>
-        T IRandom() const
-        {
-                std::random_device random_device;
-                std::mt19937 random_engine(random_device());
-                std::normal_distribution<T> normal_distribution;
-
-                return normal_distribution(random_engine);
-        }
+        float IRandom(float a, float b) const;
 
         static Random& Get();
 
@@ -31,11 +23,7 @@ public:
 
         Random& operator=(const Random&) = delete;
 
-        template <typename T>
-        static T GetRandom(T t)
-        {
-                return Get().template IRandom<T>();
-        }
+        static float GetRandom(float a, float b);
 };
 } // namespace Utils
 

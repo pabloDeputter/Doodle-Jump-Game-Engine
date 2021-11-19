@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16.3)
 project(Advanced_Programming_DoodleJump)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "-Wall")
 
 
@@ -13,7 +13,8 @@ SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/Modules/
 FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
 
 # The source files to compile
-SET(SRC main.cpp
+SET(
+        SRC main.cpp
         src/Utils/Random.cpp
         src/Entity/Entity.cpp
         src/Entity/Platform.cpp
@@ -27,7 +28,16 @@ SET(SRC main.cpp
         src/Game.cpp
         src/Game.h
         src/Utils/Stopwatch.cpp
-        src/Utils/Stopwatch.h src/Utils/Transform.cpp src/Utils/Transform.h src/Entity/Bonus.cpp src/Entity/Bonus.h src/World.cpp src/World.h)
+        src/Utils/Stopwatch.h
+        src/Utils/Transform.cpp
+        src/Utils/Transform.h
+        src/Entity/Bonus.cpp
+        src/Entity/Bonus.h
+        src/World.cpp
+        src/World.h
+        src/Camera.cpp
+        src/Camera.h
+)
 
 # Add include dirs for SFML
 # (The SFML_INCLUDE_DIR variable is defined by FindSFML.cmake, if SFML was found)

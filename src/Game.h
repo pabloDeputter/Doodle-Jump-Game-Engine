@@ -5,6 +5,7 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
 
+#include "Camera.h"
 #include "Utils/Stopwatch.h"
 #include "Utils/Transform.h"
 
@@ -215,8 +216,8 @@ public:
                 mPlayer.move(currentVelocity.x * deltaTime * 56.657223796033994f,
                              currentVelocity.y * deltaTime * 56.657223796033994f);
 
-                std::cout << "DT: " << deltaTime << " - "
-                          << "FPS: " << 1.f / deltaTime << std::endl;
+                //                std::cout << "DT: " << deltaTime << " - "
+                //                          << "FPS: " << 1.f / deltaTime << std::endl;
         }
 };
 

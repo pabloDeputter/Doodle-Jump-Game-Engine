@@ -14,7 +14,7 @@ namespace Observer {
 
 class Subject
 {
-private:
+        // private:
         std::vector<std::shared_ptr<Observer>> mObservers;
 
 public:
@@ -24,7 +24,7 @@ public:
 
         void registerObserver(const std::shared_ptr<Observer>& observer);
 
-        void removeObserver(const std::shared_ptr<Observer>& observer);
+        ////        void removeObserver(const std::shared_ptr<Observer>& observer);
 
         void notifyObserver() const;
 };

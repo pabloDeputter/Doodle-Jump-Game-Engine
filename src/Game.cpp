@@ -7,11 +7,11 @@
 Game::Game()
 {
 
-        mWindow = std::make_unique<sf::RenderWindow>(sf::VideoMode(3840, 2060), "Doodle Jump");
+        mWindow = std::make_unique<sf::RenderWindow>(sf::VideoMode(1000, 2060), "Doodle Jump");
         //        mWindow->setFramerateLimit(60);
         mPlayer.setSize(sf::Vector2f(50.f, 50.f));
         mPlayer.setFillColor(sf::Color::Cyan);
-        mPlayer.setPosition(2048.f, 100.f);
+        mPlayer.setPosition(500.f, 500.f);
 
         mCollisionBox.setOutlineColor(sf::Color::Red);
         mCollisionBox.setOutlineThickness(1.f);
@@ -70,8 +70,8 @@ void Game::run()
 
         while (mWindow->isOpen()) {
                 processEvents();
-                //                update(Utils::Stopwatch::Delta());
-                autoJump(Utils::Stopwatch::Delta());
+                update(Utils::Stopwatch::Delta());
+                //                autoJump(Utils::Stopwatch::Delta());
                 render();
         }
 }
