@@ -1,4 +1,5 @@
 #include "src/Game.h"
+#include <exception>
 #include <iostream>
 #include <memory>
 #include <thread>
@@ -11,8 +12,12 @@
 int main(int argc, char* argv[])
 {
 
-        Game* a = new Game();
-        a->run();
+        try {
+                Game* a = new Game();
+                a->run();
+        } catch (...) {
+                std::cout << "runtime error\n;";
+        }
 
         //        std::cout << "Hello world\n";
         return 0;

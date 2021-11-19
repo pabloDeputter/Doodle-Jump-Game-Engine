@@ -12,7 +12,13 @@ IView::IView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr
         mEntity = entity;
         mWindow = window;
         mTexture = std::make_unique<sf::Texture>();
-        mTexture->loadFromFile(path);
+
+        try {
+                mTexture->loadFromFile(path);
+                throw "Texture couldn't be loaded!\n";
+        } catch (...) {
+        }
+
         mSprite = std::make_unique<sf::Sprite>();
         mSprite->setTexture(*mTexture);
 }
