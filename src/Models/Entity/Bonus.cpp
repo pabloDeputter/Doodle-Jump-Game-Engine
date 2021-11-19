@@ -6,6 +6,6 @@
 
 using namespace Model;
 
-Bonus::Sort Bonus::getMSort() const { return Bonus::eSpring; }
+Bonus::Sort Bonus::getMSort() const { return mSort; }
 
 void Bonus::setMSort(Bonus::Sort sort) { mSort = sort; }

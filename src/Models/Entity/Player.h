@@ -14,9 +14,15 @@ class Player : public Entity
 private:
         std::pair<float, float> mVelocity;  /**< Current velocity of Player */
         std::pair<float, float> mDirection; /**< Current direction of Player */
-        const float maxVelocity = 27.f;     /**< Max velocity Player can achieve */
-        const float acceleration = 1.5;     /**< Acceleration of Player */
-        const float drag = 0.6f;            /**< Resistance applied to Player */
+
+        const float mMaxVelocity = 27.f; /**< Max velocity Player can achieve */
+        const float mAcceleration = 1.5; /**< Acceleration of Player */
+        const float mDrag = 0.6f;        /**< Resistance applied to Player */
+public:
+        bool mIsMovingUp;
+        bool mIsMovingDown;
+        bool mIsMovingLeft;
+        bool mIsMovingRight;
 
 public:
         Model::Type getType() const override { return Model::Type::ePlayer; }

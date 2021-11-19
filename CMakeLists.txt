@@ -16,11 +16,11 @@ FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
 SET(
         SRC main.cpp
         src/Utils/Random.cpp
-        src/Entity/Entity.cpp
-        src/Entity/Platform.cpp
-        src/Entity/Platform.h
-        src/Entity/Player.cpp
-        src/Entity/Player.h
+        src/Models/Entity/Entity.cpp
+        src/Models/Entity/Platform.cpp
+        src/Models/Entity/Platform.h
+        src/Models/Entity/Player.cpp
+        src/Models/Entity/Player.h
         src/Observer/Observer.cpp
         src/Observer/Observer.h
         src/Observer/Subject.cpp
@@ -31,13 +31,13 @@ SET(
         src/Utils/Stopwatch.h
         src/Utils/Transform.cpp
         src/Utils/Transform.h
-        src/Entity/Bonus.cpp
-        src/Entity/Bonus.h
+        src/Models/Entity/Bonus.cpp
+        src/Models/Entity/Bonus.h
         src/World.cpp
         src/World.h
         src/Camera.cpp
         src/Camera.h
-)
+        src/Views/IView.cpp src/Views/IView.h src/Views/PlayerView.cpp src/Views/PlayerView.h src/Views/PlatformView.cpp src/Views/PlatformView.h src/Views/Bonus.cpp src/Views/Bonus.h src/Controllers/IController.cpp src/Controllers/IController.h src/Controllers/PlayerController.cpp src/Controllers/PlayerController.h)
 
 # Add include dirs for SFML
 # (The SFML_INCLUDE_DIR variable is defined by FindSFML.cmake, if SFML was found)

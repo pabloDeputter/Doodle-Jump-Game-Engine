@@ -11,7 +11,6 @@ namespace Model {
 
 class Platform : public Entity
 {
-
 public:
         enum Sort
         {
@@ -21,7 +20,25 @@ public:
                 eTemporary = 3
         };
 
+private:
+        Platform::Sort mSort;
+
+public:
+        /**
+         * @brief Get type of Entity object
+         * @return Model::Type
+         */
         Model::Type getType() const override { return Model::Type::ePlatform; }
+        /**
+         * @brief Get sort of Platform object
+         * @return
+         */
+        Sort getMSort() const;
+        /**
+         * @brief Set sort of Platform object
+         * @param sort Bonus::Sort
+         */
+        void setMSort(Sort sort);
 };
 } // namespace Model
 

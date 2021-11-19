@@ -5,8 +5,8 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_WORLD_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_WORLD_H
 
-#include "Entity/Entity.h"
-#include "Entity/Player.h"
+#include "Models/Entity/Entity.h"
+#include "Models/Entity/Player.h"
 
 #include <memory>
 #include <vector>

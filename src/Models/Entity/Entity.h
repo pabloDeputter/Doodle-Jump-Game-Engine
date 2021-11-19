@@ -5,7 +5,7 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_ENTITY_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_ENTITY_H
 
-#include "../Observer/Subject.h"
+#include "../../Observer/Subject.h"
 
 #include <string>
 
@@ -29,7 +29,7 @@ enum Type
  */
 class Entity : public Observer::Subject
 {
-private:
+protected:
         float mX;        /**< X-coordinate of Entity */
         float mY;        /**< Y-coordinate of Entity */
         float mWidth{};  /**< Width of Entity collision box */
