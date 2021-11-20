@@ -25,9 +25,10 @@ class Game
         std::shared_ptr<View::IView> v;
         std::shared_ptr<Model::Entity> p;
 
-        sf::RectangleShape mPlayer;
+        sf::Sprite mPlayer;
         sf::RectangleShape mCollisionBox;
         sf::Texture mTexture;
+        sf::IntRect mRect;
         bool mIsMovingUp;
         bool mIsMovingDown;
         bool mIsMovingLeft;

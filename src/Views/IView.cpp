@@ -31,6 +31,5 @@ void IView::onDraw()
 
 void IView::onUpdate()
 {
-        //        std::cout << "IView::onUpdate()\n";
         mSprite->setPosition(sf::Vector2f(mEntity->getX(), mEntity->getY()));
 }

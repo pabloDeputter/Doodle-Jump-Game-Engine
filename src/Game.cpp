@@ -9,20 +9,24 @@ Game::Game()
 
         mWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(1000, 2060), "Doodle Jump");
         //        mWindow->setFramerateLimit(60);
-        mPlayer.setSize(sf::Vector2f(50.f, 50.f));
-        mPlayer.setFillColor(sf::Color::Cyan);
         mPlayer.setPosition(500.f, 500.f);
+        mTexture.loadFromFile("Resource/Image/spriteSheet_player.png");
+        mRect = sf::IntRect(0, 0, 64, 64);
 
-        mCollisionBox.setOutlineColor(sf::Color::Red);
-        mCollisionBox.setOutlineThickness(1.f);
-        mCollisionBox.setFillColor(sf::Color::Transparent);
-        mCollisionBox.setSize(sf::Vector2f(50.f, 50.f));
-        mCollisionBox.scale(1.4f, 1.4f);
+        mPlayer.setTexture(mTexture);
+        mPlayer.setTextureRect(mRect);
+        mPlayer.scale(2.f, 2.f);
+
+        //        mCollisionBox.setOutlineColor(sf::Color::Red);
+        //        mCollisionBox.setOutlineThickness(1.f);
+        //        mCollisionBox.setFillColor(sf::Color::Transparent);
+        //        mCollisionBox.setSize(sf::Vector2f(50.f, 50.f));
+        //        mCollisionBox.scale(1.4f, 1.4f);
 
         Utils::Transform::SetDimensions((float)mWindow->getSize().x, (float)mWindow->getSize().y);
 
         p = std::make_shared<Model::Player>();
-        v = std::make_shared<View::PlayerView>(p, mWindow, "Resource/Image/texture_1.png");
+        v = std::make_shared<View::PlayerView>(p, mWindow, "Resource/Image/spriteSheet_player.png");
         p->registerObserver(v);
 
         mPlayerController = std::make_unique<Controller::PlayerController>(p, v);
@@ -65,9 +69,9 @@ void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 void Game::render()
 {
         mWindow->clear();
-        mCollisionBox.setPosition(mPlayer.getPosition().x - 0.2f * mPlayer.getSize().x,
-                                  mPlayer.getPosition().y - 0.2f * mPlayer.getSize().y);
-        mWindow->draw(mCollisionBox);
+        //        mCollisionBox.setPosition(mPlayer.getPosition().x - 0.2f * mPlayer.getSize().x,
+        //                                  mPlayer.getPosition().y - 0.2f * mPlayer.getSize().y);
+        //        mWindow->draw(mCollisionBox);
         mWindow->draw(mPlayer);
         mWindow->display();
 }
@@ -76,17 +80,50 @@ void Game::run()
 {
         Utils::Stopwatch::Start();
 
+        // Animation
+        float lastAnimation = 0;
+        bool forward = true;
+
         while (mWindow->isOpen()) {
 
                 processEvents();
-                Utils::Stopwatch::Delta();
-                mPlayerController->onUpdate();
-                mWindow->clear();
-                v->onDraw();
-                mWindow->display();
-                //                update(Utils::Stopwatch::Delta());
+                //                Utils::Stopwatch::Delta();
+                //                mPlayerController->onUpdate();
+                //                mWindow->clear();
+                //                v->onDraw();
+                //                mWindow->display();
+                update(Utils::Stopwatch::Delta());
+
+                // Animation
+                lastAnimation += Utils::Stopwatch::GetDelta();
+                if (lastAnimation > .5f) {
+
+                        std::cout << mRect.left << " - " << mRect.top << "\n";
+
+                        if (mRect.left == 192 && mRect.top == 0 && forward) {
+                                mRect.left = -64;
+                                mRect.top = 64;
+                                forward = true;
+                        } else if (mRect.left == 192 && mRect.top == 64) {
+                                forward = false;
+                        } else if (mRect.left == 0 && mRect.top == 64 && !forward) {
+                                mRect.left = 256;
+                                mRect.top = 0;
+                        } else if (mRect.left == 0 && mRect.top == 0 && !forward) {
+                                forward = true;
+                        }
+
+                        if (forward)
+                                mRect.left += 64;
+                        else {
+                                mRect.left -= 64;
+                        }
+
+                        mPlayer.setTextureRect(mRect);
+                        lastAnimation = 0.f;
+                }
 
                 //                autoJump(Utils::Stopwatch::Delta());
-                //                render();
+                render();
         }
 }
