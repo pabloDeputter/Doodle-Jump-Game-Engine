@@ -10,12 +10,14 @@ Game::Game()
         mWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(1000, 2060), "Doodle Jump");
         //        mWindow->setFramerateLimit(60);
         mPlayer.setPosition(500.f, 500.f);
-        mTexture.loadFromFile("Resource/Image/spriteSheet_player.png");
-        mRect = sf::IntRect(0, 0, 64, 64);
+        mTexture.loadFromFile("Resource/Image/spritesheet_platform.png");
+        mRect = sf::IntRect(0, 264 * 3, 932, 264);
+        //        mRect = sf::IntRect(0, 264 * 3, 932, 264);
+        //        mPlayer.scale(.2f, .2f);
 
         mPlayer.setTexture(mTexture);
         mPlayer.setTextureRect(mRect);
-        mPlayer.scale(2.f, 2.f);
+        mPlayer.scale(.2f, .2f);
 
         //        mCollisionBox.setOutlineColor(sf::Color::Red);
         //        mCollisionBox.setOutlineThickness(1.f);
@@ -26,7 +28,7 @@ Game::Game()
         Utils::Transform::SetDimensions((float)mWindow->getSize().x, (float)mWindow->getSize().y);
 
         p = std::make_shared<Model::Player>();
-        v = std::make_shared<View::PlayerView>(p, mWindow, "Resource/Image/spriteSheet_player.png");
+        v = std::make_shared<View::PlayerView>(p, mWindow, "Resource/Image/spritesheet_player.png");
         p->registerObserver(v);
 
         mPlayerController = std::make_unique<Controller::PlayerController>(p, v);
@@ -94,34 +96,34 @@ void Game::run()
                 //                mWindow->display();
                 update(Utils::Stopwatch::Delta());
 
-                // Animation
-                lastAnimation += Utils::Stopwatch::GetDelta();
-                if (lastAnimation > .5f) {
-
-                        std::cout << mRect.left << " - " << mRect.top << "\n";
-
-                        if (mRect.left == 192 && mRect.top == 0 && forward) {
-                                mRect.left = -64;
-                                mRect.top = 64;
-                                forward = true;
-                        } else if (mRect.left == 192 && mRect.top == 64) {
-                                forward = false;
-                        } else if (mRect.left == 0 && mRect.top == 64 && !forward) {
-                                mRect.left = 256;
-                                mRect.top = 0;
-                        } else if (mRect.left == 0 && mRect.top == 0 && !forward) {
-                                forward = true;
-                        }
-
-                        if (forward)
-                                mRect.left += 64;
-                        else {
-                                mRect.left -= 64;
-                        }
-
-                        mPlayer.setTextureRect(mRect);
-                        lastAnimation = 0.f;
-                }
+                //                // Animation
+                //                lastAnimation += Utils::Stopwatch::GetDelta();
+                //                if (lastAnimation > .5f) {
+                //
+                //                        std::cout << mRect.left << " - " << mRect.top << "\n";
+                //
+                //                        if (mRect.left == 192 && mRect.top == 0 && forward) {
+                //                                mRect.left = -64;
+                //                                mRect.top = 64;
+                //                                forward = true;
+                //                        } else if (mRect.left == 192 && mRect.top == 64) {
+                //                                forward = false;
+                //                        } else if (mRect.left == 0 && mRect.top == 64 && !forward) {
+                //                                mRect.left = 256;
+                //                                mRect.top = 0;
+                //                        } else if (mRect.left == 0 && mRect.top == 0 && !forward) {
+                //                                forward = true;
+                //                        }
+                //
+                //                        if (forward)
+                //                                mRect.left += 64;
+                //                        else {
+                //                                mRect.left -= 64;
+                //                        }
+                //
+                //                        mPlayer.setTextureRect(mRect);
+                //                        lastAnimation = 0.f;
+                //                }
 
                 //                autoJump(Utils::Stopwatch::Delta());
                 render();

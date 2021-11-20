@@ -9,6 +9,11 @@
  * Observer class should be base class of all entities?
  */
 
+/* TODO
+ * Check collision between player and entity --> check entity --> platform --> check if mVelocity.y > 0;
+ *
+ */
+
 int main(int argc, char* argv[])
 {
 
