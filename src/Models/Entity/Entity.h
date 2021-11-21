@@ -24,7 +24,6 @@ enum Type
         eBonus = 1,
         ePlatform = 2,
 };
-
 /**
  * @brief Class for Entity object
  */
@@ -37,12 +36,20 @@ protected:
         float mHeight{}; /**< Height of Entity collision box */
 
 public:
+        /**
+         * @brief Default constructor
+         */
         Entity() = default;
-
+        /**
+         * @brief Default constructor
+         */
         virtual ~Entity() = default;
-
+        /**
+         * @brief Custom constructor
+         * @param x float
+         * @param y float
+         */
         Entity(float x, float y) : mX(x), mY(y) {}
-
         /**
          * @brief Get the x value of Entity object
          * @return float
@@ -63,6 +70,32 @@ public:
          * @param y float
          */
         void setY(float y);
+        /**
+         * @brief Get width of Entity object
+         * @return float
+         */
+        float getWidth() const;
+        /**
+         * @brief Get height of Entity object
+         * @return float
+         */
+        float getHeight() const;
+        /**
+         * @brief Set width of Entity object
+         * @param width float
+         */
+        void setWidth(float width);
+        /**
+         * @brief Set height of Entity object
+         * @param height float
+         */
+        void setHeight(float height);
+        /**
+         * @brief Move Entity object in x and y direction
+         * @param x float, added to mX
+         * @param y float, added to mY
+         */
+        void move(float x, float y);
         /**
          * @brief Get type of Entity object
          * @return Model::Type
