@@ -19,16 +19,13 @@ public:
         {
                 mTexture = std::make_unique<sf::Texture>();
 
-                if (std::dynamic_pointer_cast<Model::Platform>(entity)->getSort() == Model::Platform::eStatic) {
+                if (std::dynamic_pointer_cast<Model::Platform>(entity)->getType() == Model::eStatic) {
                         mTexture->loadFromFile("resource/Image/platform_1.png");
-                } else if (std::dynamic_pointer_cast<Model::Platform>(entity)->getSort() ==
-                           Model::Platform::eHorizontal) {
+                } else if (std::dynamic_pointer_cast<Model::Platform>(entity)->getType() == Model::eHorizontal) {
                         mTexture->loadFromFile("resource/Image/platform_2.png");
-                } else if (std::dynamic_pointer_cast<Model::Platform>(entity)->getSort() ==
-                           Model::Platform::eVertical) {
+                } else if (std::dynamic_pointer_cast<Model::Platform>(entity)->getType() == Model::eVertical) {
                         mTexture->loadFromFile("resource/Image/platform_3.png");
-                } else if (std::dynamic_pointer_cast<Model::Platform>(entity)->getSort() ==
-                           Model::Platform::eTemporary) {
+                } else if (std::dynamic_pointer_cast<Model::Platform>(entity)->getType() == Model::eTemporary) {
                         mTexture->loadFromFile("resource/Image/platform_4.png");
                 }
 

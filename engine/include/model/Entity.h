@@ -21,7 +21,10 @@ enum Type
 {
         ePlayer = 0,
         eBonus = 1,
-        ePlatform = 2,
+        eStatic = 2,
+        eHorizontal = 3,
+        eVertical = 4,
+        eTemporary = 5
 };
 /**
  * @brief Class for Entity object

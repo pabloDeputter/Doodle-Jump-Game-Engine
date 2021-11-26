@@ -25,6 +25,7 @@ std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IControlle
             std::make_shared<Controller::PlatformController>(platform);
         // Register platformView as Observer to Subject platform
         platform->registerObserver(platformView);
+        // TODO - initBounds()
         static int i = 0;
         if (i == 0) {
                 platform->setX(200);

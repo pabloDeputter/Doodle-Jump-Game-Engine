@@ -13,17 +13,8 @@ namespace Model {
 
 class Platform : public Entity
 {
-public:
-        enum Sort
-        {
-                eStatic = 0,
-                eHorizontal = 1,
-                eVertical = 2,
-                eTemporary = 3
-        };
-
 private:
-        Platform::Sort mSort;
+        Model::Type mSort;
 
         std::pair<float, float> mBoundX = {0.f, 0.f};
         bool mMovingForward = true;
@@ -53,22 +44,11 @@ public:
          * @brief Get type of Entity object
          * @return Model::Type
          */
-        Model::Type getType() const override { return Model::Type::ePlatform; }
+        Model::Type getType() const override { return mSort; }
 
         void move(bool collision) override;
 
         void initBounds();
-
-        /**
-         * @brief Get sort of Platform object
-         * @return
-         */
-        Sort getSort() const;
-        /**
-         * @brief Set sort of Platform object
-         * @param sort Bonus::Sort
-         */
-        void setSort(Sort sort);
 };
 } // namespace Model
 
