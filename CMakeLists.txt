@@ -1,53 +1,26 @@
 cmake_minimum_required(VERSION 3.16.3)
-project(Advanced_Programming_DoodleJump)
+project(DoodleJump VERSION 1.0)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS "-Wall")
-
+SET(CMAKE_CXX_STANDARD 17)
+SET(CMAKE_CXX_FLAGS "-Wall")
 
 # Extend the CMake module path to find the FindSFML.cmake
 # file in {project root}/cmake/Modules
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/Modules/")
 
 # Look for SFML >= 2.0, with the specific subcomponents listed below
-FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
-
-# The source files to compile
-SET(
-        SRC main.cpp
-        src/Utils/Random.cpp
-        src/Models/Entity/Entity.cpp
-        src/Models/Entity/Platform.cpp
-        src/Models/Entity/Platform.h
-        src/Models/Entity/Player.cpp
-        src/Models/Entity/Player.h
-        src/Observer/Observer.cpp
-        src/Observer/Observer.h
-        src/Observer/Subject.cpp
-        src/Observer/Subject.h
-        src/Game.cpp
-        src/Game.h
-        src/Utils/Stopwatch.cpp
-        src/Utils/Stopwatch.h
-        src/Utils/Transform.cpp
-        src/Utils/Transform.h
-        src/Models/Entity/Bonus.cpp
-        src/Models/Entity/Bonus.h
-        src/World.cpp
-        src/World.h
-        src/Camera.cpp
-        src/Camera.h
-        src/Views/IView.cpp src/Views/IView.h src/Views/PlayerView.cpp src/Views/PlayerView.h src/Views/PlatformView.cpp src/Views/PlatformView.h src/Controllers/IController.cpp src/Controllers/IController.h src/Controllers/PlayerController.cpp src/Controllers/PlayerController.h)
+FIND_PACKAGE(SFML 2 COMPONENTS system window graphics audio)
 
 # Add include dirs for SFML
 # (The SFML_INCLUDE_DIR variable is defined by FindSFML.cmake, if SFML was found)
 INCLUDE_DIRECTORIES(${SFML_INCLUDE_DIR})
 
-# The program we're compiling with the sources set above
-ADD_EXECUTABLE(DoodleJump ${SRC})
+ADD_SUBDIRECTORY(engine)
+ADD_SUBDIRECTORY(game)
 
-# Link target to SFML libs
-# (The SFML_LIBRARIES variable is defined by FindSFML.cmake, if SFML was found)
-TARGET_LINK_LIBRARIES(DoodleJump ${SFML_LIBRARIES})
+ADD_EXECUTABLE(DoodleJump src/main.cpp)
+
+TARGET_LINK_LIBRARIES(DoodleJump PUBLIC engine)
+TARGET_LINK_LIBRARIES(DoodleJump PUBLIC game)
 
 INSTALL(TARGETS DoodleJump DESTINATION ${PROJECT_SOURCE_DIR}/bin)
