@@ -23,8 +23,8 @@ public:
                 mSprite->setTexture(*mTexture);
                 mSprite->scale(2.f, 2.f);
 
-                entity->setWidth((float)mTexture->getSize().x * 1.2f);
-                entity->setHeight((float)mTexture->getSize().y * 1.5f);
+                entity->setWidth((float)mTexture->getSize().x * .012f);
+                entity->setHeight((float)mTexture->getSize().y * .015f);
         }
 
         //        PlayerView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<sf::RenderWindow>&

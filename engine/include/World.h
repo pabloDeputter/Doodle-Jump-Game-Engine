@@ -11,6 +11,7 @@
 
 #include "AbstractFactory.h"
 
+#include "util/Camera.h"
 #include "util/Collision.h"
 
 #include <iostream>
@@ -25,9 +26,8 @@ private:
 
         std::vector<std::shared_ptr<Model::Entity>> mEntities;
         std::vector<std::shared_ptr<Controller::IController>> mControllers;
-
 public:
-        World() = default;
+        World();
 
         ~World() = default;
         /**

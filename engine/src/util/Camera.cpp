@@ -4,21 +4,39 @@
 
 #include "util/Camera.h"
 
-void Camera::setViewportDimensions(float width, float height)
+using namespace Utils;
+
+Camera& Camera::getInstance()
 {
-        mViewportWidth = width;
-        mViewportHeight = height;
+        static Camera camera;
+        return camera;
 }
 
-std::pair<float, float> Camera::getViewPortDimensions() const
+void Camera::setWindowDimensions(float right, float bottom, float left, float top)
 {
-        return std::make_pair(mViewportWidth, mViewportHeight);
+        mWindowLeft = left;
+        mWindowRight = right;
+        mWindowTop = top;
+        mWindowBottom = bottom;
 }
 
-void Camera::setCameraDimensions(float width, float height)
+void Camera::setGameDimensions(float right, float bottom, float left, float top)
 {
-        mCameraWidth = width;
-        mCameraHeight = height;
+        mGameLeft = left;
+        mGameRight = right;
+        mGameTop = top;
+        mGameBottom = bottom;
 }
 
-std::pair<float, float> Camera::getCameraDimensions() const { return std::make_pair(mCameraWidth, mCameraHeight); }
+std::pair<float, float> Camera::transform(float x, float y) const
+{
+        // Transform x coordinate
+        float windowX = ((mWindowRight - mWindowLeft) / (mGameRight - mGameLeft)) * x -
+                        ((mWindowRight - mWindowLeft) / (mGameRight - mGameLeft) * 0.f - mWindowLeft);
+        // Transform y coordinate
+        float windowY = ((mWindowBottom - mWindowTop) / (mGameBottom - mGameTop)) * y -
+                        ((mWindowBottom - mWindowTop) / (mGameBottom - mGameTop) * 0.f - mWindowTop);
+        return {windowX, windowY};
+}
+
+std::pair<float, float> Camera::getPosition() const { return {mCameraX, mCameraY}; }

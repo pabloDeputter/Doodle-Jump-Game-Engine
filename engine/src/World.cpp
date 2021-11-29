@@ -4,6 +4,8 @@
 
 #include "World.h"
 
+World::World() { Utils::Camera::getInstance().setGameDimensions(8.f, 14.4f); }
+
 void World::events(const std::string& move, bool isPressed)
 {
         for (auto& i : mControllers) {

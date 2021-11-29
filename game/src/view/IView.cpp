@@ -16,7 +16,13 @@ void IView::onDraw() { mWindow->draw(*mSprite); }
 
 void IView::onTrigger()
 {
-        mSprite->setPosition(sf::Vector2f(mEntity->getX(), mEntity->getY()));
+        // TODO - update
+        auto p = Utils::Camera::getInstance().transform(mEntity->getX(), mEntity->getY());
+
+        //        mSprite->setPosition(sf::Vector2f(mEntity->getX(), mEntity->getY()));
+
+        mSprite->setPosition(sf::Vector2f(p.first, p.second));
+
         // TODO - remove - collision box
         //        auto rect = sf::RectangleShape();
         //        rect.setPosition(mSprite->getGlobalBounds().left, mSprite->getGlobalBounds().top);

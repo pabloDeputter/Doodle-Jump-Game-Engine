@@ -5,7 +5,7 @@
 #include "util/Collision.h"
 
 using namespace Utils;
-
+#include <iostream>
 bool Collision::checkCollision(const std::shared_ptr<Model::Entity>& l, const std::shared_ptr<Model::Entity>& r)
 {
         if (l->getX() + l->getWidth() >= r->getX() &&  // l right edge is past r left edge

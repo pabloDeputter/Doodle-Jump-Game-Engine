@@ -9,6 +9,7 @@
 #include "model/Player.h"
 
 #include "Observer.h"
+#include "util/Camera.h"
 
 #include "SFML/Graphics.hpp"
 #include <memory>

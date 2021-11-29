@@ -14,6 +14,11 @@ std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IControlle
             std::make_shared<Controller::PlayerController>(player);
         // Register playerView as Observer to Subject player
         player->registerObserver(playerView);
+
+        // TODO - remove
+        player->setX(0.f);
+        player->setY(0.f);
+
         return std::make_pair(player, playerController);
 }
 
@@ -28,14 +33,14 @@ std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IControlle
         // TODO - initBounds()
         static int i = 0;
         if (i == 0) {
-                platform->setX(200);
-                platform->setY(1400);
+                platform->setX(Utils::Random::GetRandom(0.f, 8.f));
+                platform->setY(Utils::Random::GetRandom(0.f, 14.4f));
         }
-        // TODO - remove
-        //        if (i == 1) {
-        //                platform->setX(400);
-        //                platform->setY(720);
-        //        }
-        //        i++;
+        //         TODO - remove
+        if (i == 1) {
+                platform->setX(Utils::Random::GetRandom(0.f, 8.f));
+                platform->setY(Utils::Random::GetRandom(0.f, 14.4f));
+        }
+        i++;
         return std::make_pair(platform, platformController);
 }

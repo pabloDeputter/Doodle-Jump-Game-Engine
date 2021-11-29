@@ -34,8 +34,8 @@ public:
                 mSprite->scale(.3f, .3f);
 
                 // TODO - IntRect sprite sheet
-                entity->setWidth((float)mTexture->getSize().x * .2f);
-                entity->setHeight((float)mTexture->getSize().y * .2f);
+                entity->setWidth((float)mTexture->getSize().x * .002f);
+                entity->setHeight((float)mTexture->getSize().y * .002f);
         }
 
         PlatformView() = default;

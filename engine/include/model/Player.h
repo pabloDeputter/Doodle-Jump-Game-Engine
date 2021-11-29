@@ -7,6 +7,8 @@
 
 #include "Entity.h"
 
+#include "util/Camera.h"
+
 /**
  * @brief Namespace holds all model
  */
@@ -20,9 +22,9 @@ private:
         std::pair<float, float> mVelocity;  /**< Current velocity of Player */
         std::pair<float, float> mDirection; /**< Current direction of Player */
 
-        const float mMaxVelocity = 27.f; /**< Max velocity Player can achieve */
-        const float mAcceleration = 1.5; /**< Acceleration of Player */
-        const float mDrag = 0.6f;        /**< Resistance applied to Player */
+        const float mMaxVelocity = 0.27f;  /**< Max velocity Player can achieve */
+        const float mAcceleration = 0.015; /**< Acceleration of Player */
+        const float mDrag = 0.006f;        /**< Resistance applied to Player */
 
         bool mIsMovingUp;    /**< Player is moving up */
         bool mIsMovingDown;  /**< Player is moving down */

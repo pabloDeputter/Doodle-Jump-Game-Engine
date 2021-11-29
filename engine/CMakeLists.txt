@@ -6,7 +6,6 @@ SET(SRC
         src/util/Collision.cpp
         src/util/Random.cpp
         src/util/Stopwatch.cpp
-        src/util/Transform.cpp
         src/util/Camera.cpp
         src/controller/IController.cpp
         src/controller/PlatformController.cpp
