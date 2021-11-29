@@ -24,7 +24,8 @@ enum Type
         eStatic = 2,
         eHorizontal = 3,
         eVertical = 4,
-        eTemporary = 5
+        eTemporary = 5,
+        eBackground = 6
 };
 /**
  * @brief Class for Entity object

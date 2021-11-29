@@ -3,6 +3,7 @@ SET(SRC
         src/model/Player.cpp
         src/model/Platform.cpp
         src/model/Bonus.cpp
+        src/model/Background.cpp
         src/util/Collision.cpp
         src/util/Random.cpp
         src/util/Stopwatch.cpp

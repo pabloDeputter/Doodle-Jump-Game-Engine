@@ -73,6 +73,8 @@ public:
          */
         std::pair<float, float> transform(float x, float y) const;
 
+        std::pair<float, float> inverseTransform(float x, float y) const;
+
         void move(float x, float y)
         {
                 mCameraX = x - mWindowRight / 2;
@@ -84,6 +86,10 @@ public:
          * @return std::pair<float, float> - Camera coordinates
          */
         std::pair<float, float> getPosition() const;
+
+        std::pair<float, float> getWindowDimensions() const;
+
+        std::pair<float, float> getGameDimensiosn() const;
 };
 } // namespace Utils
 

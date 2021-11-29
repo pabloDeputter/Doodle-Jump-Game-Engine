@@ -44,3 +44,14 @@ std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IControlle
         i++;
         return std::make_pair(platform, platformController);
 }
+std::shared_ptr<Model::Entity> ConcreteFactory::createBackground()
+{
+        std::shared_ptr<Model::Entity> background = std::make_shared<Model::Background>();
+        std::shared_ptr<View::IView> backgroundView = std::make_shared<View::BackgroundView>(background, mWindow);
+        background->registerObserver(backgroundView);
+
+        background->setX(1.f);
+        background->setY(0.f);
+
+        return background;
+}

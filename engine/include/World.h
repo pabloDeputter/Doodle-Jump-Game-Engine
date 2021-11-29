@@ -26,8 +26,13 @@ private:
 
         std::vector<std::shared_ptr<Model::Entity>> mEntities;
         std::vector<std::shared_ptr<Controller::IController>> mControllers;
+
+        std::shared_ptr<Model::AbstractFactory> mFactory;
+
+        std::vector<std::shared_ptr<Model::Entity>> mBackground;
+
 public:
-        World();
+        World(std::shared_ptr<Model::AbstractFactory>& factory);
 
         ~World() = default;
         /**
@@ -48,8 +53,12 @@ public:
         void addEntity(
             const std::pair<std::shared_ptr<Model::Entity>, const std::shared_ptr<Controller::IController>>& entity);
 
+        void addBackground(const std::shared_ptr<Model::Entity>& entity);
+
         void addPlayer(
             const std::pair<std::shared_ptr<Model::Entity>, const std::shared_ptr<Controller::IController>>& entity);
+
+        void createBackground();
 };
 
 #endif // ADVANCED_PROGRAMMING_DOODLEJUMP_WORLD_H

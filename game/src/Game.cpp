@@ -7,8 +7,8 @@
 Game::Game()
 {
         mWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(800.f, 1440.f), "Doodle Jump");
-        mWorld = std::make_shared<World>();
         mFactory = std::make_shared<View::ConcreteFactory>(mWindow);
+        mWorld = std::make_shared<World>(mFactory);
         mWindow->setFramerateLimit(60);
 
         Utils::Camera::getInstance().setWindowDimensions(800.f, 1440.f);
@@ -52,13 +52,15 @@ void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 
 void Game::render()
 {
-        mWindow->clear();
+        mWindow->clear(sf::Color(20, 20, 35));
         mWorld->render();
         mWindow->display();
 }
 
 void Game::run()
 {
+        mWorld->createBackground();
+
         Utils::Stopwatch::Start();
 
         auto a = mFactory->createPlayer();
@@ -66,7 +68,6 @@ void Game::run()
         mWorld->addPlayer(a);
         mWorld->addEntity(mFactory->createPlatform());
         mWorld->addEntity(mFactory->createPlatform());
-
         //        float lastY = 0.f;
 
         while (mWindow->isOpen()) {

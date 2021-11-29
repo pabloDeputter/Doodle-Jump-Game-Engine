@@ -24,6 +24,8 @@ public:
 
         virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
         createPlatform() = 0;
+
+        virtual std::shared_ptr<Model::Entity> createBackground() = 0;
 };
 } // namespace Model
 

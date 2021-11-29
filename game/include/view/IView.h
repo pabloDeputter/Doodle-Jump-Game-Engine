@@ -11,6 +11,8 @@
 #include "Observer.h"
 #include "util/Camera.h"
 
+#include "util/Resourcemanager.h"
+
 #include "SFML/Graphics.hpp"
 #include <memory>
 
