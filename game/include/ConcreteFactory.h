@@ -35,6 +35,9 @@ public:
 
         std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createPlayer() override;
 
+        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createStaticPlatform()
+            override;
+
         std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createPlatform() override;
 
         std::shared_ptr<Model::Entity> createBackground() override;

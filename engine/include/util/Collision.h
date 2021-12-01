@@ -7,6 +7,8 @@
 
 #include "model/Entity.h"
 
+#include "util/Camera.h"
+
 namespace Utils {
 
 class Collision

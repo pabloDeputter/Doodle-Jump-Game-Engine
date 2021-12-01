@@ -92,7 +92,7 @@ void Player::move(bool collision)
                 }
         }
 
-        // Finally move Player
+        // Finally, move Player
         Entity::move(mVelocity.first * Utils::Stopwatch::GetDelta() * 56.657223796033994f,
                      mVelocity.second * Utils::Stopwatch::GetDelta() * 56.657223796033994f);
 }

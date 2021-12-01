@@ -15,11 +15,26 @@ std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IControlle
         // Register playerView as Observer to Subject player
         player->registerObserver(playerView);
 
-        // TODO - remove
-        player->setX(0.f);
-        player->setY(0.f);
+        player->setX(Utils::Camera::getInstance().getGameDimensiosn().first / 2.f);
+        player->setY(Utils::Camera::getInstance().getGameDimensiosn().second / 2.f);
 
-        return std::make_pair(player, playerController);
+        //        // TODO - remove
+        //        player->setX(.f);
+        //        player->setY(0.f);
+
+        return {player, playerController};
+}
+
+std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
+ConcreteFactory::createStaticPlatform()
+{
+        std::shared_ptr<Model::Entity> platform = std::make_shared<Model::Platform>(Model::eStatic);
+        std::shared_ptr<View::IView> platformView = std::make_shared<View::PlatformView>(platform, mWindow);
+        std::shared_ptr<Controller::IController> platformController =
+            std::make_shared<Controller::PlatformController>(platform);
+        platform->registerObserver(platformView);
+
+        return {platform, platformController};
 }
 
 std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> ConcreteFactory::createPlatform()
@@ -42,7 +57,7 @@ std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IControlle
                 platform->setY(Utils::Random::GetRandom(0.f, 14.4f));
         }
         i++;
-        return std::make_pair(platform, platformController);
+        return {platform, platformController};
 }
 std::shared_ptr<Model::Entity> ConcreteFactory::createBackground()
 {

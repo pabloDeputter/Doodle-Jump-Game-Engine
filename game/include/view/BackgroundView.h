@@ -22,6 +22,7 @@ public:
                 mSprite = std::make_unique<sf::Sprite>();
                 mSprite->setTexture(*mTexture);
                 mSprite->scale(.5f, .5f);
+                mSprite->setColor(sf::Color(255, 255, 255, 200));
 
                 mEntity->setWidth((float)mTexture->getSize().x * mSprite->getScale().x);
                 mEntity->setHeight((float)mTexture->getSize().y * mSprite->getScale().y);

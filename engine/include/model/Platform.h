@@ -23,6 +23,8 @@ private:
         bool mMovingDown = true;
 
 public:
+        explicit Platform(Model::Type sort) : mSort(sort) {}
+
         Platform()
         {
                 float rand = Utils::Random::GetRandom(0.f, 1.f);

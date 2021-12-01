@@ -37,6 +37,14 @@ void World::update()
         if (flagCollision)
                 return;
         mPlayerController->onUpdate(false);
+
+        //        if (mPlayer->getY() > mMaxHeight) {
+        //                mMaxHeight = mPlayer->getY();
+        //                Utils::Camera::getInstance().move(0.f, mMaxHeight);
+        //                std::cout << "mMaxHeight: " << mMaxHeight << "\n";
+        //                std::cout << "mCamera.second: " << Utils::Camera::getInstance().getPosition().second << "\n";
+        //
+        //        }
 }
 
 void World::render()
@@ -68,8 +76,11 @@ void World::addPlayer(
         mPlayerController = entity.second;
 }
 
-void World::createBackground()
+void World::initializeWorld()
 {
+
+        //        World::addPlayer(mFactory->createPlayer());
+
         auto bg = mFactory->createBackground();
 
         float width = bg->getWidth();
@@ -78,6 +89,8 @@ void World::createBackground()
         float width_ = Utils::Camera::getInstance().inverseTransform(width, height).first;
         float height_ = Utils::Camera::getInstance().inverseTransform(width, height).second;
 
+        //        std::cout << width_ << " : " << height_ << "\n";
+
         for (float i = 0.f; i < Utils::Camera::getInstance().getGameDimensiosn().first; i += width_) {
                 for (float j = 0.f; j < Utils::Camera::getInstance().getGameDimensiosn().second; j += height_) {
                         auto n = mFactory->createBackground();
@@ -85,5 +98,18 @@ void World::createBackground()
                         n->setY(j);
                         mBackground.emplace_back(n);
                 }
+        }
+
+        auto platform = mFactory->createPlatform().first;
+
+        auto dim = Utils::Camera::getInstance().inverseTransform(platform->getWidth(), platform->getHeight());
+
+        std::cout << dim.first << " : " << dim.second << "\n";
+
+        for (float i = 0.f; i < Utils::Camera::getInstance().getGameDimensiosn().first; i += dim.first) {
+                auto n = mFactory->createStaticPlatform();
+                n.first->setX(i);
+                n.first->setY(Utils::Camera::getInstance().getGameDimensiosn().second);
+                World::addEntity(n);
         }
 }

@@ -31,11 +31,11 @@ public:
 
                 mSprite = std::make_unique<sf::Sprite>();
                 mSprite->setTexture(*mTexture);
-                mSprite->scale(.3f, .3f);
+                mSprite->scale(.25f, .25f);
 
                 // TODO - IntRect sprite sheet
-                entity->setWidth((float)mTexture->getSize().x * .002f);
-                entity->setHeight((float)mTexture->getSize().y * .002f);
+                entity->setWidth((float)mTexture->getSize().x * .25f);
+                entity->setHeight((float)mTexture->getSize().y * .25f);
         }
 
         PlatformView() = default;
