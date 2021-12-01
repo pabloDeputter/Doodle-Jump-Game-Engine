@@ -60,11 +60,11 @@ public:
         /**
          * @brief Set game dimensions
          * @param right float
-         * @param bottom float
-         * @param left float
          * @param top float
+         * @param left float
+         * @param bottom float
          */
-        void setGameDimensions(float right, float bottom, float left = 0, float top = 0);
+        void setGameDimensions(float right, float top, float left = 0, float bottom = 0);
         /**
          * @brief Transform world coordinates to viewport / window coordinates
          * @param x float - x coordinate
@@ -77,8 +77,8 @@ public:
 
         void move(float x, float y)
         {
-                mCameraX = x - mWindowRight / 2;
-                mCameraY = y - mWindowBottom / 2;
+                mCameraX = x;
+                mCameraY = y;
         }
 
         /**

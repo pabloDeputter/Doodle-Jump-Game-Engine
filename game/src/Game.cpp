@@ -65,18 +65,12 @@ void Game::run()
 
         auto a = mFactory->createPlayer();
         auto p = a.first;
-        auto b = mFactory->createStaticPlatform();
-        b.first->setX(Utils::Camera::getInstance().getGameDimensiosn().first / 2.f);
-        b.first->setY((Utils::Camera::getInstance().getGameDimensiosn().second / 2.f) + 1.f);
-
-        mWorld->addEntity(b);
+        p->setY(4.f);
+        p->setY(14.4f);
         mWorld->addPlayer(a);
-        mWorld->addEntity(mFactory->createPlatform());
-        mWorld->addEntity(mFactory->createPlatform());
 
-        float mMaxHeight = 0.f;
-
-        //        float lastY = 0.f;
+        //        mWorld->addEntity(mFactory->createPlatform());
+        //        mWorld->addEntity(mFactory->createPlatform());
 
         while (mWindow->isOpen()) {
 
@@ -84,50 +78,30 @@ void Game::run()
                 processEvents();
                 mWorld->update();
 
-                std::cout << p->getX() << " : " << p->getY() << "\n";
-                if (p->getY() < mMaxHeight) {
-                        mMaxHeight = p->getY();
-                }
+                //                auto m = sf::Mouse::getPosition(*mWindow);
+                //                std::cout << "mMouse: " << m.x << " : " << m.y << "\n";
 
-                //                std::cout << "p: " << p->getX() << " : " << p->getY() << "\n";
-                //                // Transform player world coordinates --> screen coordinates
-                //                auto x = Utils::Camera::getInstance().transform(p->getX(), p->getY());
-                //                std::cout << "x: " << x.first << " : " << x.second << "\n";
+                //                std::cout << "mPlayer: " << p->getX() << " : " << p->getY() << "\n";
+                std::cout << "mPlayer: " << Utils::Camera::getInstance().transform(p->getX(), p->getY()).first << " : "
+                          << Utils::Camera::getInstance().transform(0.f, p->getY()).second << "\n";
+
+                //                auto &mCamera = Utils::Camera::getInstance();
+                //                mCamera.move(p->getX(), p->getY());
+                //                std::cout << "mCamera: " << mCamera.getPosition().first << " : " <<
+                //                mCamera.getPosition().second << "\n";
+
+                //                auto cc =
+                //                Utils::Camera::getInstance().transform(Utils::Camera::getInstance().getPosition().first,
+                //                                                                 Utils::Camera::getInstance().getPosition().second);
                 //
-                //                // Move camera with screen coordinates of player
-                //                Utils::Camera::getInstance().move(x.first, x.second);
-                //                std::cout << "mCamera: " << Utils::Camera::getInstance().getPosition().second << "\n";
+                //
+                //                std::cout << cc.first << " : " << cc.second << "\n";
+                //
+                //                mView.setCenter(cc.first, cc.second);
 
-                //                auto x_ = Utils::Camera::getInstance().transform(0.f, -mMaxHeight);
-                //                Utils::Camera::getInstance().move(0.f, mMaxHeight);
-
-                //                if (mCamera.mCameraX < 0) mCamera.mCameraX = 0;
-                //                if (mCamera.mCameraX > mWindow->getSize().x / 2.f) mCamera.mCameraX =
-                //                mWindow->getSize().x / 2.f;
-
-                //                 TODO - if jumped platform, move up
-                //                if (mCamera.second < lastY) lastY = mCamera.second;
-
-                mView.reset(sf::FloatRect(0.f, Utils::Camera::getInstance().getPosition().second, mWindow->getSize().x,
-                                          mWindow->getSize().y));
-                //                                mView.reset(sf::FloatRect(mCamera.first, mCamera.second,(float)
-                //                                mWindow->getSize().x
-                //                / 2.f, (float) mWindow->getSize().y / 2.f));
-                mWindow->setView(mView);
-
-                //                std::cout << mCamera.first << " : " << mCamera.second << "\n";
-
-                //                mCamera.mCameraX = p->getX() - (float) mWindow->getSize().x / 2.f;
-                //                mCamera.mCameraY = p->getY() - (float) mWindow->getSize().y / 2.f;
-
-                //                if (mCamera.mCameraX < 0) mCamera.mCameraX = 0;
-                //                if (mCamera.mCameraX > mWindow->getSize().x / 2.f) mCamera.mCameraX =
-                //                mWindow->getSize().x / 2.f;
-
-                //                mView.reset(sf::FloatRect(mCamera.mCameraX, mCamera.mCameraY, mWindow->getSize().x,
-                //                mWindow->getSize().y)); mView.reset(sf::FloatRect(mCamera.mCameraX,
-                //                mCamera.mCameraY,(float) mWindow->getSize().x / 2.f, (float) mWindow->getSize().y
-                //                / 2.f)); mWindow->setView(mView);
+                //                mView.reset(sf::FloatRect(0.f, 0.f, (size_t) mWindow->getSize().x,
+                //                                          (size_t) mWindow->getSize().y));
+                //                mWindow->setView(mView);
 
                 render();
         }

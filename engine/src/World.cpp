@@ -7,6 +7,7 @@
 World::World(std::shared_ptr<Model::AbstractFactory>& factory)
 {
         mFactory = factory;
+        mMaxHeight = 0.f;
         Utils::Camera::getInstance().setGameDimensions(8.f, 14.4f);
 }
 
@@ -20,44 +21,50 @@ void World::events(const std::string& move, bool isPressed)
 
 void World::update()
 {
-        bool flagCollision = false;
-        for (auto& i : mControllers) {
-                if (i->getMEntity()->getType() != Model::ePlayer) {
-                        if (std::dynamic_pointer_cast<Model::Player>(mPlayer)->getVelocity().second >= 0 &&
-                            Utils::Collision::checkCollision(mPlayer, i->getMEntity()) &&
-                            mPlayer->getY() < i->getMEntity()->getY()) {
-
-                                flagCollision = true;
-                                mPlayerController->onUpdate(true);
-                        }
-                        i->onUpdate(false);
-                }
-        }
-
-        if (flagCollision)
-                return;
-        mPlayerController->onUpdate(false);
-
-        //        if (mPlayer->getY() > mMaxHeight) {
-        //                mMaxHeight = mPlayer->getY();
-        //                Utils::Camera::getInstance().move(0.f, mMaxHeight);
-        //                std::cout << "mMaxHeight: " << mMaxHeight << "\n";
-        //                std::cout << "mCamera.second: " << Utils::Camera::getInstance().getPosition().second << "\n";
+        //        bool flagCollision = false;
+        //        for (auto& i : mControllers) {
+        //                if (i->getMEntity()->getType() != Model::ePlayer) {
+        //                        if (std::dynamic_pointer_cast<Model::Player>(mPlayer)->getVelocity().second >= 0 &&
+        //                            Utils::Collision::checkCollision(mPlayer, i->getMEntity()) &&
+        //                            mPlayer->getY() < i->getMEntity()->getY()) {
         //
+        //                                flagCollision = true;
+        //                                mPlayerController->onUpdate(true);
+        //                        }
+        //                        i->onUpdate(false);
+        //                }
         //        }
+        //
+        //        if (flagCollision)
+        //                return;
+        //        mPlayerController->onUpdate(false);
 }
 
 void World::render()
 {
-        for (auto& i : mBackground) {
-                i->triggerObserver();
-        }
+        //        std::cout << "mMplayer->getY(): " << mPlayer->getY() << "\n";
+        //        std::cout << "mMaxHeight: " << mMaxHeight << "\n";
+        //        // TODO - edit
+        //        if (mPlayer->getY() > mMaxHeight) {
+        //                mMaxHeight = mPlayer->getY();
+        //                Utils::Camera::getInstance().move(Utils::Camera::getInstance().getGameDimensiosn().first
+        //                / 2.f,
+        //                                                  (-mMaxHeight));
+        //        }
+        //
+        //
+        //        std::cout << Utils::Camera::getInstance().getPosition().first << " : " <<
+        //        Utils::Camera::getInstance().getPosition().second << "\n";
+
+        //        for (auto& i : mBackground) {
+        //                i->triggerObserver();
+        //        }
 
         // TODO - animation
         mPlayer->triggerObserver();
-        for (auto& i : mEntities) {
-                i->triggerObserver();
-        }
+        //        for (auto& i : mEntities) {
+        //                i->triggerObserver();
+        //        }
 }
 
 void World::addEntity(
@@ -78,38 +85,37 @@ void World::addPlayer(
 
 void World::initializeWorld()
 {
-
-        //        World::addPlayer(mFactory->createPlayer());
-
-        auto bg = mFactory->createBackground();
-
-        float width = bg->getWidth();
-        float height = bg->getHeight();
-
-        float width_ = Utils::Camera::getInstance().inverseTransform(width, height).first;
-        float height_ = Utils::Camera::getInstance().inverseTransform(width, height).second;
-
-        //        std::cout << width_ << " : " << height_ << "\n";
-
-        for (float i = 0.f; i < Utils::Camera::getInstance().getGameDimensiosn().first; i += width_) {
-                for (float j = 0.f; j < Utils::Camera::getInstance().getGameDimensiosn().second; j += height_) {
-                        auto n = mFactory->createBackground();
-                        n->setX(i);
-                        n->setY(j);
-                        mBackground.emplace_back(n);
-                }
-        }
-
-        auto platform = mFactory->createPlatform().first;
-
-        auto dim = Utils::Camera::getInstance().inverseTransform(platform->getWidth(), platform->getHeight());
-
-        std::cout << dim.first << " : " << dim.second << "\n";
-
-        for (float i = 0.f; i < Utils::Camera::getInstance().getGameDimensiosn().first; i += dim.first) {
-                auto n = mFactory->createStaticPlatform();
-                n.first->setX(i);
-                n.first->setY(Utils::Camera::getInstance().getGameDimensiosn().second);
-                World::addEntity(n);
-        }
+        //
+        //        //        World::addPlayer(mFactory->createPlayer());
+        //
+        //        auto bg = mFactory->createBackground();
+        //
+        //        float width = bg->getWidth();
+        //        float height = bg->getHeight();
+        //
+        //        float width_ = Utils::Camera::getInstance().inverseTransform(width, height).first;
+        //        float height_ = Utils::Camera::getInstance().inverseTransform(width, height).second;
+        //
+        //        //        std::cout << width_ << " : " << height_ << "\n";
+        //
+        //        for (float i = 0.f; i < Utils::Camera::getInstance().getGameDimensiosn().first; i += width_) {
+        //                for (float j = 0.f; j < Utils::Camera::getInstance().getGameDimensiosn().second; j += height_)
+        //                {
+        //                        auto n = mFactory->createBackground();
+        //                        n->setX(i);
+        //                        n->setY(j);
+        //                        mBackground.emplace_back(n);
+        //                }
+        //        }
+        //
+        //        auto platform = mFactory->createPlatform().first;
+        //
+        //        auto dim = Utils::Camera::getInstance().inverseTransform(platform->getWidth(), platform->getHeight());
+        //
+        //        for (float i = 0.f; i < Utils::Camera::getInstance().getGameDimensiosn().first; i += dim.first) {
+        //                auto n = mFactory->createStaticPlatform();
+        //                n.first->setX(i);
+        //                n.first->setY(Utils::Camera::getInstance().getGameDimensiosn().second);
+        //                World::addEntity(n);
+        //        }
 }

@@ -20,7 +20,7 @@ void Camera::setWindowDimensions(float right, float bottom, float left, float to
         mWindowBottom = bottom;
 }
 
-void Camera::setGameDimensions(float right, float bottom, float left, float top)
+void Camera::setGameDimensions(float right, float top, float left, float bottom)
 {
         mGameLeft = left;
         mGameRight = right;
@@ -33,9 +33,11 @@ std::pair<float, float> Camera::transform(float x, float y) const
         // Transform x coordinate
         float windowX = ((mWindowRight - mWindowLeft) / (mGameRight - mGameLeft)) * x -
                         ((mWindowRight - mWindowLeft) / (mGameRight - mGameLeft) * mGameLeft - mWindowLeft);
+
         // Transform y coordinate
         float windowY = ((mWindowBottom - mWindowTop) / (mGameBottom - mGameTop)) * y -
                         ((mWindowBottom - mWindowTop) / (mGameBottom - mGameTop) * mGameTop - mWindowTop);
+
         return {windowX, windowY};
 }
 
