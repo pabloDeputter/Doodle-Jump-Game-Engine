@@ -65,8 +65,8 @@ void Game::run()
 
         auto a = mFactory->createPlayer();
         auto p = a.first;
-        p->setY(4.f);
-        p->setY(14.4f);
+        p->setX(4.f);
+        p->setY(1.4f);
         mWorld->addPlayer(a);
 
         //        mWorld->addEntity(mFactory->createPlatform());
@@ -82,8 +82,9 @@ void Game::run()
                 //                std::cout << "mMouse: " << m.x << " : " << m.y << "\n";
 
                 //                std::cout << "mPlayer: " << p->getX() << " : " << p->getY() << "\n";
-                std::cout << "mPlayer: " << Utils::Camera::getInstance().transform(p->getX(), p->getY()).first << " : "
-                          << Utils::Camera::getInstance().transform(0.f, p->getY()).second << "\n";
+                //                std::cout << "mPlayer: " << Utils::Camera::getInstance().transform(p->getX(),
+                //                p->getY()).first << " : "
+                //                          << Utils::Camera::getInstance().transform(0.f, p->getY()).second << "\n";
 
                 //                auto &mCamera = Utils::Camera::getInstance();
                 //                mCamera.move(p->getX(), p->getY());

@@ -14,6 +14,7 @@
 #include "util/Resourcemanager.h"
 
 #include "SFML/Graphics.hpp"
+#include <iostream>
 #include <memory>
 
 namespace Observer {

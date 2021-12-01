@@ -81,15 +81,19 @@ public:
                 mCameraY = y;
         }
 
-        /**
-         * @brief Get Camera position
-         * @return std::pair<float, float> - Camera coordinates
-         */
-        std::pair<float, float> getPosition() const;
+        //        /**
+        //         * @brief Get Camera position
+        //         * @return std::pair<float, float> - Camera coordinates
+        //         */
+        //        std::pair<float, float> getPosition() const;
+
+        float getX() const;
+
+        float getY() const;
 
         std::pair<float, float> getWindowDimensions() const;
 
-        std::pair<float, float> getGameDimensiosn() const;
+        std::pair<float, float> getGameDimensions() const;
 };
 } // namespace Utils
 

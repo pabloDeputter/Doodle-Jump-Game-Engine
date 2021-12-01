@@ -5,7 +5,7 @@
 #include "model/Player.h"
 
 using namespace Model;
-
+#include <iostream>
 void Player::move(bool collision)
 {
         // Reset direction of player
@@ -25,12 +25,12 @@ void Player::move(bool collision)
         //                        * 56.657223796033994f;
         //                }
         //         }
-
+        //        std::cout << mVelocity.second << "\n";
         if (collision) {
-                mDirection.second = -1.f;
+                mDirection.second = 1.f;
                 //                mVelocity.second *= -1.f;
 
-                mVelocity.second = -1.f * mMaxVelocity;
+                mVelocity.second = mMaxVelocity;
 
                 //                if (mVelocity.second > -mMaxVelocity) {
                 //                        mVelocity.second += mAcceleration * mDirection.second *
@@ -39,10 +39,10 @@ void Player::move(bool collision)
                 //                }
         }
 
-        if (mVelocity.second >= 0) {
-                mDirection.second = 1.f;
+        if (mVelocity.second <= 0) {
+                mDirection.second = -1.f;
 
-                if (mVelocity.second < mMaxVelocity) {
+                if (mVelocity.second > -mMaxVelocity) {
                         mVelocity.second +=
                             mAcceleration * mDirection.second * Utils::Stopwatch::GetDelta() * 56.657223796033994f;
                 }

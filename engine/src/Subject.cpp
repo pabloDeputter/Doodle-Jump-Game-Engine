@@ -8,6 +8,8 @@ using namespace Observer;
 
 void Subject::registerObserver(const std::shared_ptr<Observer>& observer) { mObservers.emplace_back(observer); }
 
+void Subject::clearObservers() { mObservers.clear(); }
+
 void Subject::triggerObserver() const
 {
         for (auto& i : mObservers) {

@@ -6,6 +6,7 @@
 #define DOODLEJUMP_BACKGROUNDVIEW_H
 
 #include "IView.h"
+#include <filesystem>
 
 namespace View {
 
@@ -17,15 +18,18 @@ public:
         {
                 mTexture = std::make_unique<sf::Texture>();
 
-                mTexture->loadFromFile("resource/Image/background_2.png");
+                mTexture->loadFromFile("resource/Image/background_3.png");
+
+                //                mTexture->loadFromFile("/Users/pablodeputter/Documents/GitHub/Advanced-Programming-DoodleJump/resource/Image/background_3.png");
 
                 mSprite = std::make_unique<sf::Sprite>();
                 mSprite->setTexture(*mTexture);
-                mSprite->scale(.5f, .5f);
-                mSprite->setColor(sf::Color(255, 255, 255, 200));
+                mSprite->scale(2.f, 2.f);
+                mSprite->setColor(sf::Color(255, 255, 255, 255));
 
                 mEntity->setWidth((float)mTexture->getSize().x * mSprite->getScale().x);
                 mEntity->setHeight((float)mTexture->getSize().y * mSprite->getScale().y);
+                mEntity->setHeight(mEntity->getHeight());
         }
 
         ~BackgroundView() override = default;

@@ -25,6 +25,8 @@ public:
 
         void registerObserver(const std::shared_ptr<Observer>& observer);
 
+        void clearObservers();
+
         void triggerObserver() const;
 };
 } // namespace Observer

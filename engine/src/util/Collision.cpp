@@ -5,17 +5,20 @@
 #include "util/Collision.h"
 
 using namespace Utils;
-#include <iostream>
+//#include <iostream>
 bool Collision::checkCollision(const std::shared_ptr<Model::Entity>& l, const std::shared_ptr<Model::Entity>& r)
 {
         // TODO - transform not eerder al gedaan hebben ergens
+        // TODO - offset
         auto a = Utils::Camera::getInstance().inverseTransform(l->getWidth(), l->getHeight());
-        auto lWidth = a.first * 0.9f;
-        auto lHeight = a.second * 0.9f;
+        auto lWidth = a.first;
+        auto lHeight = a.second;
+        lHeight = Utils::Camera::getInstance().getGameDimensions().second - lHeight;
 
         auto b = Utils::Camera::getInstance().inverseTransform(r->getWidth(), r->getHeight());
-        auto rWidth = b.first * 0.9f;
-        auto rHeight = b.second * 0.9f;
+        auto rWidth = b.first;
+        auto rHeight = b.second;
+        rHeight = Utils::Camera::getInstance().getGameDimensions().second - rHeight;
 
         if (l->getX() + lWidth >= r->getX() &&  // l right edge is past r left edge
             l->getX() <= r->getX() + rWidth &&  // l left edge is past r right edge

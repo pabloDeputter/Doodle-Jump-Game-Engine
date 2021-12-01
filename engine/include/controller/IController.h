@@ -18,9 +18,9 @@ protected:
         std::shared_ptr<Model::Entity> mEntity;
 
 public:
-        IController(std::shared_ptr<Model::Entity>& entity) : mEntity(entity) {}
-
         IController() = default;
+
+        IController(std::shared_ptr<Model::Entity>& entity) : mEntity(entity) {}
 
         virtual ~IController() = default;
 

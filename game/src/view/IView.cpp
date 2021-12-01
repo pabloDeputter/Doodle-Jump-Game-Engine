@@ -13,16 +13,25 @@ IView::IView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr
 }
 
 void IView::onDraw() { mWindow->draw(*mSprite); }
-#include <iostream>
+
 void IView::onTrigger()
 {
-        // TODO - holy moly shieeeet
+        // TODO - delete (weak pointers)
+        if (mEntity->getY() < Utils::Camera::getInstance().getY()) {
+                mEntity->onInvisible();
+                return;
+        }
+
         auto& c = Utils::Camera::getInstance();
-        //        auto p = c.transform(mEntity->getX(), mEntity->getY() - c.getPosition().second);
-        auto p = c.transform(mEntity->getX(), mEntity->getY());
+        //        auto p = c.transform(mEntity->getX() - c.getX(), mEntity->getY() - c.getY());
+        // Draw relatively from camera
+        auto p = c.transform(mEntity->getX(), mEntity->getY() - c.getY());
 
+        // TODO - camera.pos() == player.pos()
         mSprite->setPosition(sf::Vector2f(p.first, p.second));
-        //        std::cout << "mSprite" << mSprite->getPosition().x << " : " << mSprite->getPosition().y << "\n";
 
+        // TODO - check sprite pos bij een large nummber
         IView::onDraw();
+
+        //        IView::onDraw();
 }

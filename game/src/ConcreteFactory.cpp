@@ -15,8 +15,8 @@ std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IControlle
         // Register playerView as Observer to Subject player
         player->registerObserver(playerView);
 
-        player->setX(Utils::Camera::getInstance().getGameDimensiosn().first / 2.f);
-        player->setY(Utils::Camera::getInstance().getGameDimensiosn().second / 2.f);
+        player->setX(Utils::Camera::getInstance().getGameDimensions().first / 2.f);
+        player->setY(Utils::Camera::getInstance().getGameDimensions().second / 2.f);
 
         //        // TODO - remove
         //        player->setX(.f);

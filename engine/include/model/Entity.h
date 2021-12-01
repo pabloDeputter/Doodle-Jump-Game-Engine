@@ -108,6 +108,9 @@ public:
          * @return Model::Type
          */
         virtual Model::Type getType() const = 0;
+
+        // TODO - edit
+        virtual void onInvisible() { clearObservers(); }
 };
 } // namespace Model
 

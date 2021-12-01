@@ -54,8 +54,12 @@ std::pair<float, float> Camera::inverseTransform(float x, float y) const
         return {worldX, worldY};
 }
 
-std::pair<float, float> Camera::getPosition() const { return {mCameraX, mCameraY}; }
+// std::pair<float, float> Camera::getPosition() const { return {mCameraX, mCameraY}; }
+
+float Camera::getX() const { return mCameraX; }
+
+float Camera::getY() const { return mCameraY; }
 
 std::pair<float, float> Camera::getWindowDimensions() const { return {mWindowRight, mWindowBottom}; }
 
-std::pair<float, float> Camera::getGameDimensiosn() const { return {mGameRight, mGameBottom}; }
+std::pair<float, float> Camera::getGameDimensions() const { return {mGameRight, mGameTop}; }
