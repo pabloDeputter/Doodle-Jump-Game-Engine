@@ -46,10 +46,10 @@ void World::update()
 void World::render()
 {
 
-        auto plat = mFactory->createStaticPlatform();
-        plat.first->setX(4.f);
-        plat.first->setY(mPlayer->getY() + 1.4f);
-        World::addEntity(plat);
+        //        auto plat = mFactory->createStaticPlatform();
+        //        plat.first->setX(4.f);
+        //        plat.first->setY(mPlayer->getY() + 1.4f);
+        //        World::addEntity(plat);
 
         auto& cc = Utils::Camera::getInstance();
         if (mPlayer->getY() > mMaxHeight) {

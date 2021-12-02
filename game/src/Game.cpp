@@ -8,18 +8,19 @@ Game::Game()
 {
         mWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(800.f, 1440.f), "Doodle Jump");
         mFactory = std::make_shared<View::ConcreteFactory>(mWindow);
-        mWorld = std::make_shared<World>(mFactory);
+        mWorld = std::make_unique<World>(mFactory);
         mWindow->setFramerateLimit(60);
 
+        // Set window dimensions
         Utils::Camera::getInstance().setWindowDimensions(800.f, 1440.f);
 
-        // TODO
+        // TODO - lol
         Utils::Resourcemanager::getInstance().addTexture(Model::ePlayer, "/Image/player.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eBackground, "/Image/background_3.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eStatic, "/Image/platform_1.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eHorizontal, "/Image/platform_2.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eVertical, "/Image/platform_3.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eTemporary, "/Image/platform_4.png");
+        Utils::Resourcemanager::getInstance().addTexture(Model::eBackground, "/Image/background.png");
+        Utils::Resourcemanager::getInstance().addTexture(Model::eStatic, "/Image/platformStatic.png");
+        Utils::Resourcemanager::getInstance().addTexture(Model::eHorizontal, "/Image/platformHorizontal.png");
+        Utils::Resourcemanager::getInstance().addTexture(Model::eVertical, "/Image/platformVertical.png");
+        Utils::Resourcemanager::getInstance().addTexture(Model::eTemporary, "/Image/platformTemporary.png");
 }
 
 void Game::processEvents()

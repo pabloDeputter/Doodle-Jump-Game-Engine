@@ -23,7 +23,7 @@
 class Game
 {
         std::shared_ptr<sf::RenderWindow> mWindow;
-        std::shared_ptr<World> mWorld;
+        std::unique_ptr<World> mWorld;
         std::shared_ptr<Model::AbstractFactory> mFactory;
 
 public:

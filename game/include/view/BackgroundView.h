@@ -18,10 +18,10 @@ public:
         {
                 mTexture = std::make_unique<sf::Texture>();
 
-                //                mTexture->loadFromFile("resource/Image/background_3.png");
+                //                mTexture->loadFromFile("resource/Image/background.png");
 
                 mTexture->loadFromFile("/Users/pablodeputter/Documents/GitHub/Advanced-Programming-DoodleJump/resource/"
-                                       "Image/background_3.png");
+                                       "Image/background.png");
 
                 mSprite = std::make_unique<sf::Sprite>();
                 mSprite->setTexture(*mTexture);
