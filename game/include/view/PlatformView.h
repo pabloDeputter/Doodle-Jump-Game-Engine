@@ -17,12 +17,8 @@ public:
         PlatformView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<sf::RenderWindow>& window)
             : IView(entity, window)
         {
-                mTexture = std::make_unique<sf::Texture>();
-
-                auto& resManager = Utils::Resourcemanager::getInstance();
-
                 Model::Type type = entity->getType();
-                std::shared_ptr<sf::Texture>& tex = resManager.getTextures()->get(type);
+                std::shared_ptr<sf::Texture>& tex = Utils::Resourcemanager::getInstance().getTextures()->get(type);
 
                 // TODO - remove sf::Texture member
                 mSprite = std::make_unique<sf::Sprite>();
@@ -30,8 +26,8 @@ public:
                 mSprite->scale(.25f, .25f);
 
                 // TODO - IntRect sprite sheet
-                entity->setWidth((float)mTexture->getSize().x * .25f);
-                entity->setHeight((float)mTexture->getSize().y * .25f);
+                entity->setWidth((float)tex->getSize().x * mSprite->getScale().x);
+                entity->setHeight((float)tex->getSize().y * mSprite->getScale().y);
         }
 
         PlatformView() = default;

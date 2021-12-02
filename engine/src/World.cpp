@@ -46,10 +46,10 @@ void World::update()
 void World::render()
 {
 
-        //        auto plat = mFactory->createStaticPlatform();
-        //        plat.first->setX(4.f);
-        //        plat.first->setY(mPlayer->getY() + 1.4f);
-        //        World::addEntity(plat);
+        auto plat = mFactory->createStaticPlatform();
+        plat.first->setX(4.f);
+        plat.first->setY(mPlayer->getY() + 1.4f);
+        World::addEntity(plat);
 
         auto& cc = Utils::Camera::getInstance();
         if (mPlayer->getY() > mMaxHeight) {
@@ -60,11 +60,10 @@ void World::render()
         auto itBackground = mBackground.begin();
         while (itBackground != mBackground.end()) {
                 if ((*itBackground)->getY() < cc.getY()) {
-                        std::cout << "bgOutOfView"
-                                  << "\n";
-                        (*itBackground)->triggerObserver();
-                        itBackground = mBackground.erase(itBackground);
-                        continue;
+                        (*itBackground)->setY((*itBackground)->getY() + cc.getGameDimensions().second + 2.f);
+                        //                        (*itBackground)->triggerObserver();
+                        //                        itBackground = mBackground.erase(itBackground);
+                        //                        continue;
                 }
                 (*itBackground)->triggerObserver();
                 itBackground++;
@@ -163,7 +162,7 @@ void World::initializeWorld()
 
         size_t counter = 0;
         for (float i = 0.f; i < Utils::Camera::getInstance().getGameDimensions().first; i += width_) {
-                for (float j = Utils::Camera::getInstance().getGameDimensions().second; j > 0; j -= height_) {
+                for (float j = Utils::Camera::getInstance().getGameDimensions().second; j > -14.4f; j -= height_) {
                         auto n = mFactory->createBackground();
                         n->setX(i);
                         n->setY(j);

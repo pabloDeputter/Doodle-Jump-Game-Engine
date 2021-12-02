@@ -6,6 +6,7 @@
 #define DOODLEJUMP_BACKGROUNDVIEW_H
 
 #include "IView.h"
+
 #include <filesystem>
 
 namespace View {
@@ -16,20 +17,16 @@ public:
         BackgroundView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<sf::RenderWindow>& window)
             : IView(entity, window)
         {
-                mTexture = std::make_unique<sf::Texture>();
-
-                //                mTexture->loadFromFile("resource/Image/background.png");
-
-                mTexture->loadFromFile("/Users/pablodeputter/Documents/GitHub/Advanced-Programming-DoodleJump/resource/"
-                                       "Image/background.png");
+                std::shared_ptr<sf::Texture>& tex =
+                    Utils::Resourcemanager::getInstance().getTextures()->get(Model::eBackground);
 
                 mSprite = std::make_unique<sf::Sprite>();
-                mSprite->setTexture(*mTexture);
-                mSprite->scale(2.f, 2.f);
+                mSprite->setTexture(*tex);
+                mSprite->scale(1.f, 1.f);
                 mSprite->setColor(sf::Color(255, 255, 255, 255));
 
-                mEntity->setWidth((float)mTexture->getSize().x * mSprite->getScale().x);
-                mEntity->setHeight((float)mTexture->getSize().y * mSprite->getScale().y);
+                mEntity->setWidth((float)tex->getSize().x * mSprite->getScale().x);
+                mEntity->setHeight((float)tex->getSize().y * mSprite->getScale().y);
                 mEntity->setHeight(mEntity->getHeight());
         }
 

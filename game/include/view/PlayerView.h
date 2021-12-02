@@ -16,27 +16,16 @@ public:
             : IView(entity, window)
         {
 
-                mTexture = std::make_unique<sf::Texture>();
-
-                mTexture->loadFromFile(
-                    "/Users/pablodeputter/Documents/GitHub/Advanced-Programming-DoodleJump/resource/Image/player.png");
+                std::shared_ptr<sf::Texture>& tex =
+                    Utils::Resourcemanager::getInstance().getTextures()->get(Model::ePlayer);
 
                 mSprite = std::make_unique<sf::Sprite>();
-                mSprite->setTexture(*mTexture);
+                mSprite->setTexture(*tex);
                 mSprite->scale(2.f, 2.f);
 
-                entity->setWidth((float)mTexture->getSize().x * 2.f);
-                entity->setHeight((float)mTexture->getSize().y * 2.f);
+                entity->setWidth((float)tex->getSize().x * mSprite->getScale().x);
+                entity->setHeight((float)tex->getSize().y * mSprite->getScale().y);
         }
-
-        //        PlayerView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<sf::RenderWindow>&
-        //        window)
-        //            : IView(entity, window)
-        //        {
-        //                std::cout << "lol\n";
-        //                mTexture = std::make_unique<sf::Texture>();
-        //                mTexture->loadFromFile("resource/Image/player.png");
-        //        }
 
         PlayerView() = default;
 
