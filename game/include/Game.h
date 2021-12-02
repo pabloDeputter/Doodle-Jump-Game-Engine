@@ -12,8 +12,8 @@
 #include "view/PlayerView.h"
 
 #include "World.h"
-#include "util/Camera.h"
 
+#include "util/Resourcemanager.h"
 #include "util/Stopwatch.h"
 
 #include "SFML/Graphics.hpp"
@@ -24,7 +24,6 @@ class Game
 {
         std::shared_ptr<sf::RenderWindow> mWindow;
         std::shared_ptr<World> mWorld;
-        sf::View mView;
         std::shared_ptr<Model::AbstractFactory> mFactory;
 
 public:

@@ -15,9 +15,11 @@ public:
         PlayerView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<sf::RenderWindow>& window)
             : IView(entity, window)
         {
+
                 mTexture = std::make_unique<sf::Texture>();
 
-                mTexture->loadFromFile("resource/Image/player.png");
+                mTexture->loadFromFile(
+                    "/Users/pablodeputter/Documents/GitHub/Advanced-Programming-DoodleJump/resource/Image/player.png");
 
                 mSprite = std::make_unique<sf::Sprite>();
                 mSprite->setTexture(*mTexture);

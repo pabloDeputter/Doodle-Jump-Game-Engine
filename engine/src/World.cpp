@@ -45,14 +45,29 @@ void World::update()
 
 void World::render()
 {
+
+        auto plat = mFactory->createStaticPlatform();
+        plat.first->setX(4.f);
+        plat.first->setY(mPlayer->getY() + 1.4f);
+        World::addEntity(plat);
+
         auto& cc = Utils::Camera::getInstance();
         if (mPlayer->getY() > mMaxHeight) {
                 mMaxHeight = mPlayer->getY();
                 cc.move(0.f, mMaxHeight - cc.getGameDimensions().second / 2.f);
         }
 
-        for (auto& i : mBackground) {
-                i->triggerObserver();
+        auto itBackground = mBackground.begin();
+        while (itBackground != mBackground.end()) {
+                if ((*itBackground)->getY() < cc.getY()) {
+                        std::cout << "bgOutOfView"
+                                  << "\n";
+                        (*itBackground)->triggerObserver();
+                        itBackground = mBackground.erase(itBackground);
+                        continue;
+                }
+                (*itBackground)->triggerObserver();
+                itBackground++;
         }
 
         // TODO - check if in view
@@ -112,17 +127,27 @@ void World::addPlayer(
 
 void World::initializeWorld()
 {
-        for (int i = 0; i < 10000; i++) {
-                auto plat = mFactory->createStaticPlatform();
-                plat.first->setX(4.f);
-                plat.first->setY(-11.f);
-                World::addEntity(plat);
-        }
+
+        auto plat = mFactory->createStaticPlatform();
+        plat.first->setX(4.f);
+        plat.first->setY(1.4f);
+        World::addEntity(plat);
+
+        ////        for (int i = 0; i < 5000; i++) {
+        ////                auto plat = mFactory->createStaticPlatform();
+        ////                plat.first->setX(4.f);
+        ////                plat.first->setY(-11.f);
+        ////                World::addEntity(plat);
+        ////        }
+        //
 
         auto bg = mFactory->createBackground();
 
         float width = bg->getWidth();
         float height = bg->getHeight();
+
+        // TODO - remove
+        bg->onInvisible();
 
         auto& cc = Utils::Camera::getInstance();
 
@@ -148,14 +173,16 @@ void World::initializeWorld()
         }
 
         //
-        //        auto platform = mFactory->createPlatform().first;
+        //                auto platform = mFactory->createPlatform().first;
         //
-        //        auto dim = Utils::Camera::getInstance().inverseTransform(platform->getWidth(), platform->getHeight());
+        //                auto dim = Utils::Camera::getInstance().inverseTransform(platform->getWidth(),
+        //                platform->getHeight());
         //
-        //        for (float i = 0.f; i < Utils::Camera::getInstance().getGameDimensions().first; i += dim.first) {
-        //                auto n = mFactory->createStaticPlatform();
-        //                n.first->setX(i);
-        //                n.first->setY(Utils::Camera::getInstance().getGameDimensions().second);
-        //                World::addEntity(n);
-        //        }
+        //                for (float i = 0.f; i < Utils::Camera::getInstance().getGameDimensions().first; i +=
+        //                dim.first) {
+        //                        auto n = mFactory->createStaticPlatform();
+        //                        n.first->setX(i);
+        //                        n.first->setY(Utils::Camera::getInstance().getGameDimensions().second);
+        //                        World::addEntity(n);
+        //                }
 }

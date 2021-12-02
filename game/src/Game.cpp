@@ -12,6 +12,14 @@ Game::Game()
         mWindow->setFramerateLimit(60);
 
         Utils::Camera::getInstance().setWindowDimensions(800.f, 1440.f);
+
+        // TODO
+        Utils::Resourcemanager::getInstance().addTexture(Model::ePlayer, "/Image/player.png");
+        Utils::Resourcemanager::getInstance().addTexture(Model::eBackground, "/Image/background_3.png");
+        Utils::Resourcemanager::getInstance().addTexture(Model::eStatic, "/Image/platform_1.png");
+        Utils::Resourcemanager::getInstance().addTexture(Model::eHorizontal, "/Image/platform_2.png");
+        Utils::Resourcemanager::getInstance().addTexture(Model::eVertical, "/Image/platform_3.png");
+        Utils::Resourcemanager::getInstance().addTexture(Model::eTemporary, "/Image/platform_4.png");
 }
 
 void Game::processEvents()
