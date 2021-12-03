@@ -17,14 +17,16 @@ void IView::onDraw() { mWindow->draw(*mSprite); }
 void IView::onTrigger()
 {
         // TODO - delete (weak pointers)
+
         if (mEntity->getY() < Utils::Camera::getInstance().getY()) {
-                //                if (mEntity->getType() == Model::eBackground) std::cout << "lol\n";
+                //                                if (mEntity->getType() == Model::eBackground) std::cout << "lol\n";
                 mEntity->onInvisible();
                 return;
         }
 
         auto& c = Utils::Camera::getInstance();
         //        auto p = c.transform(mEntity->getX() - c.getX(), mEntity->getY() - c.getY());
+
         // Draw relatively from camera
         auto p = c.transform(mEntity->getX(), mEntity->getY() - c.getY());
 
@@ -33,6 +35,12 @@ void IView::onTrigger()
 
         // TODO - check sprite pos bij een large nummber
         IView::onDraw();
+
+        //        if (mEntity->getType() == Model::ePlayer)
+        //        {
+        //                std::cout << "mCamera: " << c.getY() << "\n";
+        //                std::cout << p.first << " : " << p.second << "\n";
+        //        }
 
         //        IView::onDraw();
 }

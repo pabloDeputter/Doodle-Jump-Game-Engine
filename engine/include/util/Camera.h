@@ -30,6 +30,8 @@ private:
         float mCameraX; /**< X-coordinate of Camera */
         float mCameraY; /**< Y-coordinate of Camera */
 
+        float mMaxHeight; /**< Max height Player has jumped */
+
         // TODO - currently unused
         float mCenterX; /** Center of Camera */
         float mCenterY; /** Center of Camera */
@@ -94,6 +96,10 @@ public:
         std::pair<float, float> getWindowDimensions() const;
 
         std::pair<float, float> getGameDimensions() const;
+
+        float getMaxHeight() const;
+
+        bool isMaxHeight(float height);
 };
 } // namespace Utils
 

@@ -27,7 +27,6 @@ public:
 
                 mEntity->setWidth((float)tex->getSize().x * mSprite->getScale().x);
                 mEntity->setHeight((float)tex->getSize().y * mSprite->getScale().y);
-                mEntity->setHeight(mEntity->getHeight());
         }
 
         ~BackgroundView() override = default;

@@ -63,3 +63,14 @@ float Camera::getY() const { return mCameraY; }
 std::pair<float, float> Camera::getWindowDimensions() const { return {mWindowRight, mWindowBottom}; }
 
 std::pair<float, float> Camera::getGameDimensions() const { return {mGameRight, mGameTop}; }
+
+float Camera::getMaxHeight() const { return mMaxHeight; }
+
+bool Camera::isMaxHeight(float height)
+{
+        if (height >= mMaxHeight) {
+                mMaxHeight = height;
+                return true;
+        }
+        return false;
+}

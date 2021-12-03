@@ -13,6 +13,7 @@
 
 #include "util/Camera.h"
 #include "util/Collision.h"
+#include "util/Random.h"
 
 #include <iostream>
 #include <memory>
@@ -30,9 +31,6 @@ private:
         std::shared_ptr<Model::AbstractFactory> mFactory;
 
         std::vector<std::shared_ptr<Model::Entity>> mBackground;
-
-        float mMaxHeight;
-
 public:
         World(std::shared_ptr<Model::AbstractFactory>& factory);
 
@@ -61,6 +59,8 @@ public:
             const std::pair<std::shared_ptr<Model::Entity>, const std::shared_ptr<Controller::IController>>& entity);
 
         void initializeWorld();
+
+        void generate();
 };
 
 #endif // ADVANCED_PROGRAMMING_DOODLEJUMP_WORLD_H

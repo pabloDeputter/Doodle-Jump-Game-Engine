@@ -23,8 +23,8 @@ public:
                 mSprite->setTexture(*tex);
                 mSprite->scale(2.f, 2.f);
 
-                entity->setWidth((float)tex->getSize().x * mSprite->getScale().x);
-                entity->setHeight((float)tex->getSize().y * mSprite->getScale().y);
+                mEntity->setWidth((float)tex->getSize().x * mSprite->getScale().x);
+                mEntity->setHeight((float)tex->getSize().y * mSprite->getScale().y);
         }
 
         PlayerView() = default;

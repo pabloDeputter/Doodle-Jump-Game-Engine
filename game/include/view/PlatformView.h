@@ -26,8 +26,8 @@ public:
                 mSprite->scale(.25f, .25f);
 
                 // TODO - IntRect sprite sheet
-                entity->setWidth((float)tex->getSize().x * mSprite->getScale().x);
-                entity->setHeight((float)tex->getSize().y * mSprite->getScale().y);
+                mEntity->setWidth((float)tex->getSize().x * mSprite->getScale().x);
+                mEntity->setHeight((float)tex->getSize().y * mSprite->getScale().y);
         }
 
         PlatformView() = default;
