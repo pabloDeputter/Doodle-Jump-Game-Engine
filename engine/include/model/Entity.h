@@ -27,14 +27,45 @@ enum Type
         eTemporary = 5,
         eBackground = 6
 };
+
+class CollisionBox
+{
+private:
+        float mLeft;
+        float mWidth;
+        float mBottom;
+        float mHeight;
+
+public:
+        CollisionBox() = default;
+
+        CollisionBox(float left, float width, float bottom, float height)
+            : mLeft(left), mWidth(width), mBottom(bottom), mHeight(height)
+        {
+        }
+
+        ~CollisionBox() = default;
+
+        [[nodiscard]] float getLeft() const { return mLeft; }
+
+        [[nodiscard]] float getWidth() const { return mWidth; }
+
+        [[nodiscard]] float getBottom() const { return mBottom; }
+
+        [[nodiscard]] float getHeight() const { return mHeight; }
+};
+
 /**
  * @brief Class for Entity object
  */
 class Entity : public Observer::Subject
 {
 protected:
-        float mX;        /**< X-coordinate of Entity */
-        float mY;        /**< Y-coordinate of Entity */
+        float mX; /**< X-coordinate of Entity */
+        float mY; /**< Y-coordinate of Entity */
+        CollisionBox mBox;
+        //
+        //
         float mWidth{};  /**< Width of Entity collision box */
         float mHeight{}; /**< Height of Entity collision box */
 public:
@@ -77,6 +108,13 @@ public:
          * @brief Get width of Entity object
          * @return float
          */
+        void setCollisionBox(float width, float height)
+        {
+                mBox = CollisionBox(mX - (width / 2.f), width, mY - (height / 2.f), height);
+        }
+
+        const CollisionBox& getCollisionBox() const { return std::ref(mBox); }
+
         float getWidth() const;
         /**
          * @brief Get height of Entity object
@@ -110,7 +148,7 @@ public:
         virtual Model::Type getType() const = 0;
 
         // TODO - edit
-        virtual void onInvisible() { clearObservers(); }
+        virtual void onInvisible() { clear(); }
 };
 } // namespace Model
 

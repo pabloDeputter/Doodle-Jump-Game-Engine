@@ -70,7 +70,7 @@ void Game::run()
 {
         mWorld->initializeWorld();
 
-        Utils::Stopwatch::Start();
+        Utils::Stopwatch::getInstance().start();
 
         auto a = mFactory->createPlayer();
         auto p = a.first;
@@ -83,12 +83,12 @@ void Game::run()
 
         while (mWindow->isOpen()) {
 
-                Utils::Stopwatch::Delta();
+                Utils::Stopwatch::getInstance().lap();
                 processEvents();
                 mWorld->update();
 
-                //                auto m = sf::Mouse::getPosition(*mWindow);
-                //                std::cout << "mMouse: " << m.x << " : " << m.y << "\n";
+                //                                auto m = sf::Mouse::getPosition(*mWindow);
+                //                                std::cout << "mMouse: " << m.x << " : " << m.y << "\n";
 
                 //                std::cout << "mPlayer: " << p->getX() << " : " << p->getY() << "\n";
                 //                std::cout << "mPlayer: " << Utils::Camera::getInstance().transform(p->getX(),

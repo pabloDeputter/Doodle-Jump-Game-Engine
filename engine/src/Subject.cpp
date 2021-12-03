@@ -6,13 +6,13 @@
 
 using namespace Observer;
 
-void Subject::registerObserver(const std::shared_ptr<Observer>& observer) { mObservers.emplace_back(observer); }
+void Subject::add(const std::shared_ptr<Observer>& observer) { mObservers.emplace_back(observer); }
 
-void Subject::clearObservers() { mObservers.clear(); }
+void Subject::clear() { mObservers.clear(); }
 
-void Subject::triggerObserver() const
+void Subject::trigger() const
 {
-        for (auto& i : mObservers) {
+        for (const auto& i : mObservers) {
                 i->onTrigger();
         }
 }

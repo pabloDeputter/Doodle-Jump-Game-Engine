@@ -12,6 +12,18 @@ Camera& Camera::getInstance()
         return camera;
 }
 
+std::pair<float, float> Camera::getWorldDimensions() const { return {mWorldRight, mWorldTop}; }
+
+void Camera::setWorldDimensions(float right, float top, float left, float bottom)
+{
+        mWorldLeft = left;
+        mWorldRight = right;
+        mWorldTop = top;
+        mWorldBottom = bottom;
+}
+
+std::pair<float, float> Camera::getWindowDimensions() const { return {mWindowRight, mWindowBottom}; }
+
 void Camera::setWindowDimensions(float right, float bottom, float left, float top)
 {
         mWindowLeft = left;
@@ -20,49 +32,43 @@ void Camera::setWindowDimensions(float right, float bottom, float left, float to
         mWindowBottom = bottom;
 }
 
-void Camera::setGameDimensions(float right, float top, float left, float bottom)
-{
-        mGameLeft = left;
-        mGameRight = right;
-        mGameTop = top;
-        mGameBottom = bottom;
-}
-
 std::pair<float, float> Camera::transform(float x, float y) const
 {
         // Transform x coordinate
-        float windowX = ((mWindowRight - mWindowLeft) / (mGameRight - mGameLeft)) * x -
-                        ((mWindowRight - mWindowLeft) / (mGameRight - mGameLeft) * mGameLeft - mWindowLeft);
+        float windowX = ((mWindowRight - mWindowLeft) / (mWorldRight - mWorldLeft)) * x -
+                        ((mWindowRight - mWindowLeft) / (mWorldRight - mWorldLeft) * mWorldLeft - mWindowLeft);
 
         // Transform y coordinate
-        float windowY = ((mWindowBottom - mWindowTop) / (mGameBottom - mGameTop)) * y -
-                        ((mWindowBottom - mWindowTop) / (mGameBottom - mGameTop) * mGameTop - mWindowTop);
+        float windowY = ((mWindowBottom - mWindowTop) / (mWorldBottom - mWorldTop)) * y -
+                        ((mWindowBottom - mWindowTop) / (mWorldBottom - mWorldTop) * mWorldTop - mWindowTop);
 
         return {windowX, windowY};
 }
 
 std::pair<float, float> Camera::inverseTransform(float x, float y) const
 {
-        float A = ((mWindowRight - mWindowLeft) / (mGameRight - mGameLeft));
-        float worldX = ((mWindowRight - mWindowLeft) / (mGameRight - mGameLeft) * mGameLeft - mWindowLeft) + x;
+        // Transform x coordinate
+        float A = ((mWindowRight - mWindowLeft) / (mWorldRight - mWorldLeft));
+        float worldX = ((mWindowRight - mWindowLeft) / (mWorldRight - mWorldLeft) * mWorldLeft - mWindowLeft) + x;
         worldX /= A;
 
-        float B = ((mWindowBottom - mWindowTop) / (mGameBottom - mGameTop));
-        float worldY = ((mWindowBottom - mWindowTop) / (mGameBottom - mGameTop) * mGameTop - mWindowTop) + y;
+        // Transform y coordinate
+        float B = ((mWindowBottom - mWindowTop) / (mWorldBottom - mWorldTop));
+        float worldY = ((mWindowBottom - mWindowTop) / (mWorldBottom - mWorldTop) * mWorldTop - mWindowTop) + y;
         worldY /= B;
 
         return {worldX, worldY};
 }
 
-// std::pair<float, float> Camera::getPosition() const { return {mCameraX, mCameraY}; }
+void Camera::move(float x, float y)
+{
+        mCameraX = x;
+        mCameraY = y;
+}
 
 float Camera::getX() const { return mCameraX; }
 
 float Camera::getY() const { return mCameraY; }
-
-std::pair<float, float> Camera::getWindowDimensions() const { return {mWindowRight, mWindowBottom}; }
-
-std::pair<float, float> Camera::getGameDimensions() const { return {mGameRight, mGameTop}; }
 
 float Camera::getMaxHeight() const { return mMaxHeight; }
 

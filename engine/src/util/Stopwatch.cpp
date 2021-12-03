@@ -6,13 +6,15 @@
 
 using namespace Utils;
 
-Stopwatch& Stopwatch::Get()
+Stopwatch& Stopwatch::getInstance()
 {
         static Stopwatch instance;
         return instance;
 }
 
-float Stopwatch::IDelta()
+void Stopwatch::start() { mTime = std::chrono::high_resolution_clock::now(); }
+
+float Stopwatch::lap()
 {
         std::chrono::duration<float> ms_delta = std::chrono::high_resolution_clock::now() - mTime;
         // Reset / lap stopwatch
@@ -22,12 +24,4 @@ float Stopwatch::IDelta()
         return mDeltaTime;
 }
 
-float Stopwatch::IGetDelta() { return mDeltaTime; }
-
-void Stopwatch::IStart() { mTime = std::chrono::high_resolution_clock::now(); }
-
-float Stopwatch::Delta() { return Get().IDelta(); }
-
-float Stopwatch::GetDelta() { return Get().IGetDelta(); }
-
-void Stopwatch::Start() { Get().IStart(); }
+float Stopwatch::getDelta() { return mDeltaTime; }

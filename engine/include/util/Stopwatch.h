@@ -9,37 +9,56 @@
 #include <chrono>
 
 /**
- * @brief Namespace holds all Utils
+ * @brief Namespace holds all Utilities
  */
 namespace Utils {
-
+/**
+ * @brief Class for Stopwatch
+ */
 class Stopwatch
 {
 private:
-        std::chrono::high_resolution_clock::time_point mTime;
-        float mDeltaTime;
+        std::chrono::high_resolution_clock::time_point mTime; /**< Last recorded time point */
+        float mDeltaTime{}; /**< Time between two recorded time points in milliseconds */
 
-private:
+        /**
+         * @brief Private default constructor
+         */
         Stopwatch() = default;
 
-        static Stopwatch& Get();
-
-        float IDelta();
-
-        float IGetDelta();
-
-        void IStart();
-
 public:
+        /**
+         * @brief Default destructor
+         */
+        ~Stopwatch() = default;
+        /**
+         * @brief Deleted copy constructor
+         */
         Stopwatch(const Stopwatch&) = delete;
-
+        /**
+         * @brief Deleted assignment operator
+         * @return Stopwatch
+         */
         Stopwatch& operator=(const Stopwatch&) = delete;
-
-        static float Delta();
-
-        static float GetDelta();
-
-        static void Start();
+        /**
+         * @brief Get instance of Stopwatch
+         * @return Stopwatch
+         */
+        static Stopwatch& getInstance();
+        /**
+         * @brief Start Stopwatch
+         */
+        void start();
+        /**
+         * @brief Lap one round and return found delta
+         * @return float
+         */
+        [[nodiscard]] float lap();
+        /**
+         * @brief Get latest delta
+         * @return float
+         */
+        [[nodiscard]] float getDelta();
 };
 } // namespace Utils
 

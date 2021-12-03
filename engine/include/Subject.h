@@ -11,23 +11,39 @@
 #include <memory>
 #include <vector>
 
+/**
+ * @brief Namespace holds observer pattern
+ */
 namespace Observer {
-
+/**
+ * @brief Class for Subject / Observable of observer pattern
+ */
 class Subject
 {
 private:
-        std::vector<std::shared_ptr<Observer>> mObservers;
-
+        std::vector<std::shared_ptr<Observer>> mObservers; /**< std::vector containing Observers */
 public:
+        /**
+         * @brief Default constructor
+         */
         Subject() = default;
-
+        /**
+         * @brief Default destructor
+         */
         virtual ~Subject() = default;
-
-        void registerObserver(const std::shared_ptr<Observer>& observer);
-
-        void clearObservers();
-
-        void triggerObserver() const;
+        /**
+         * @brief Register Observer to mObservers
+         * @param observer Observer
+         */
+        void add(const std::shared_ptr<Observer>& observer);
+        /**
+         * @brief Clear all Observers from mObservers
+         */
+        void clear();
+        /**
+         * @brief Trigger registered Observers
+         */
+        void trigger() const;
 };
 } // namespace Observer
 

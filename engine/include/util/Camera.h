@@ -9,18 +9,20 @@
 
 #include <utility>
 
-// TODO - check if correct
-// TODO - observer pattern
-// TODO - struct...
+/**
+ * @brief Namespace holds all Utilities
+ */
 namespace Utils {
-
+/**
+ * @brief Class for Camera
+ */
 class Camera
 {
 private:
-        float mGameLeft;   /**< Leftmost x-coordinate of window */
-        float mGameRight;  /**< Rightmost x-coordinate of window */
-        float mGameTop;    /**< Topmost x-coordinate of window */
-        float mGameBottom; /**< Bottommost x-coordinate of window */
+        float mWorldLeft;   /**< Leftmost x-coordinate of world */
+        float mWorldRight;  /**< Rightmost x-coordinate of world */
+        float mWorldTop;    /**< Topmost x-coordinate of world */
+        float mWorldBottom; /**< Bottommost x-coordinate of world */
 
         float mWindowLeft;   /**< Leftmost x-coordinate of window */
         float mWindowRight;  /**< Rightmost x-coordinate of window */
@@ -32,25 +34,48 @@ private:
 
         float mMaxHeight; /**< Max height Player has jumped */
 
-        // TODO - currently unused
-        float mCenterX; /** Center of Camera */
-        float mCenterY; /** Center of Camera */
-
-        float mCameraWidth;  /**< Width of Game / Camera area */
-        float mCameraHeight; /**< Height of Game / Camera area */
-
+        /**
+         * @brief Private default constructor
+         */
         Camera() = default;
 
 public:
-        //        ~Camera() override = default;
-
+        /**
+         * @brief Default destructor
+         */
         ~Camera() = default;
-
+        /**
+         * @brief Deleted copy constructor
+         */
         Camera(const Camera&) = delete;
-
+        /**
+         * @brief Deleted assignment operator
+         * @return Camera
+         */
         Camera& operator=(const Camera&) = delete;
-
+        /**
+         * @brief Get instance of Camera object
+         * @return Camera
+         */
         static Camera& getInstance();
+        /**
+         * @brief Get world dimensions
+         * @return std::pair<float, float>
+         */
+        [[nodiscard]] std::pair<float, float> getWorldDimensions() const;
+        /**
+         * @brief Set world dimensions
+         * @param right float
+         * @param top float
+         * @param left float
+         * @param bottom float
+         */
+        void setWorldDimensions(float right, float top, float left = 0, float bottom = 0);
+        /**
+         * @brief Get window dimensions
+         * @return
+         */
+        [[nodiscard]] std::pair<float, float> getWindowDimensions() const;
         /**
          * @brief Set viewport / window dimensions
          * @param right float
@@ -59,46 +84,47 @@ public:
          * @param top float
          */
         void setWindowDimensions(float right, float bottom, float left = 0, float top = 0);
+
         /**
-         * @brief Set game dimensions
-         * @param right float
-         * @param top float
-         * @param left float
-         * @param bottom float
+         * @brief Transforms world coordinates to viewport / window coordinates
+         * @param x float
+         * @param y float
+         * @return std::pair<float, float>
          */
-        void setGameDimensions(float right, float top, float left = 0, float bottom = 0);
+        [[nodiscard]] std::pair<float, float> transform(float x, float y) const;
         /**
-         * @brief Transform world coordinates to viewport / window coordinates
-         * @param x float - x coordinate
-         * @param y float - y coordinate
-         * @return std::pair<float, float> - transformed coordinates
+         * @brief Transforms viewport / window coordinates to world coordinates
+         * @param x float
+         * @param y float
+         * @return std::pair<float, float>
          */
-        std::pair<float, float> transform(float x, float y) const;
-
-        std::pair<float, float> inverseTransform(float x, float y) const;
-
-        void move(float x, float y)
-        {
-                mCameraX = x;
-                mCameraY = y;
-        }
-
-        //        /**
-        //         * @brief Get Camera position
-        //         * @return std::pair<float, float> - Camera coordinates
-        //         */
-        //        std::pair<float, float> getPosition() const;
-
-        float getX() const;
-
-        float getY() const;
-
-        std::pair<float, float> getWindowDimensions() const;
-
-        std::pair<float, float> getGameDimensions() const;
-
-        float getMaxHeight() const;
-
+        [[nodiscard]] std::pair<float, float> inverseTransform(float x, float y) const;
+        /**
+         * @brief Move Camera
+         * @param x float
+         * @param y float
+         */
+        void move(float x, float y);
+        /**
+         * @brief Get x coordinate of Camera
+         * @return float
+         */
+        [[nodiscard]] float getX() const;
+        /**
+         * @brief Get y coordinate of Camera
+         * @return float
+         */
+        [[nodiscard]] float getY() const;
+        /**
+         * @brief Get maximum height of Camera
+         * @return float
+         */
+        [[nodiscard]] float getMaxHeight() const;
+        /**
+         * @brief Check if given height is greater or equal to current maximum height
+         * @param height float
+         * @return bool
+         */
         bool isMaxHeight(float height);
 };
 } // namespace Utils

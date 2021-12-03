@@ -25,9 +25,14 @@ public:
                 mSprite->setTexture(*tex);
                 mSprite->scale(.25f, .25f);
 
+                //
+                auto texSize = Utils::Camera::getInstance().inverseTransform(
+                    (float)tex->getSize().x * mSprite->getScale().x, (float)tex->getSize().y * mSprite->getScale().y);
+
                 // TODO - IntRect sprite sheet
-                mEntity->setWidth((float)tex->getSize().x * mSprite->getScale().x);
-                mEntity->setHeight((float)tex->getSize().y * mSprite->getScale().y);
+                mEntity->setWidth(texSize.first);
+                // TODO
+                mEntity->setHeight(Utils::Camera::getInstance().getWorldDimensions().second - texSize.second);
         }
 
         PlatformView() = default;

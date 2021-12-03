@@ -6,22 +6,21 @@
 
 using namespace Utils;
 
-float Random::IRandom(float a, float b) const
-{
-        std::random_device random_device;
-        std::mt19937 random_engine(random_device());
-        std::binomial_distribution();
-        std::uniform_real_distribution<float> uniformRealDistribution(a, b);
-
-        return uniformRealDistribution(random_engine);
-}
-
-Random& Random::Get()
+Random& Random::getInstance()
 {
         static Random instance;
         return instance;
 }
 
-Random& Random::GetInstance() { return Get(); }
+float Random::GetRandom(float a, float b)
+{
+        // Create random number generator
+        std::random_device random_device;
+        // Seed random engine
+        std::mt19937 random_engine(random_device());
+        // Create random distribution
+        std::binomial_distribution();
+        std::uniform_real_distribution<float> uniformRealDistribution(a, b);
 
-float Random::GetRandom(float a, float b) { return Get().IRandom(a, b); }
+        return uniformRealDistribution(random_engine);
+}

@@ -7,27 +7,47 @@
 
 #include <random>
 
+/**
+ * @brief Namespace holds all Utilities
+ */
 namespace Utils {
-// TODO - ik heb hier gewerkt met interface functions --> moet eig getInstance()
+/**
+ * @brief Class for Random
+ */
 class Random
 {
 private:
+        /**
+         * @brief Private default constructor
+         */
         Random() = default;
 
-        float IRandom(float a, float b) const;
-
-        static Random& Get();
-
 public:
+        /**
+         * @brief Default destructor
+         */
         ~Random() = default;
-
+        /**
+         * @brief Deleted copy constructor
+         */
         Random(const Random&) = delete;
-
+        /**
+         * @brief Deleted assignment operator
+         * @return Random
+         */
         Random& operator=(const Random&) = delete;
-
-        static Random& GetInstance();
-
-        static float GetRandom(float a, float b);
+        /**
+         * @brief Get instance of Random
+         * @return Random
+         */
+        static Random& getInstance();
+        /**
+         * @brief Get random float in given interval
+         * @param a float - begin interval
+         * @param b float - end interval
+         * @return float
+         */
+        [[nodiscard]] static float GetRandom(float a, float b);
 };
 } // namespace Utils
 

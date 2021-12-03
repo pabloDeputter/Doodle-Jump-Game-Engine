@@ -9,11 +9,22 @@
 
 #include "util/Camera.h"
 
+/**
+ * @brief Namespace holds all Utilities
+ */
 namespace Utils {
-
+/**
+ * @brief Class for Collisions
+ */
 class Collision
 {
 public:
+        /**
+         * @brief Check if there is a collision between two Entities
+         * @param l first entity
+         * @param r second entity
+         * @return bool
+         */
         static bool checkCollision(const std::shared_ptr<Model::Entity>& l, const std::shared_ptr<Model::Entity>& r);
 };
 } // namespace Utils

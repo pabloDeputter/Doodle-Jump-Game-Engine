@@ -24,9 +24,9 @@ void Platform::move(bool collision)
                 else if (mX <= mBoundX.first)
                         mMovingForward = true;
                 if (mMovingForward) {
-                        Entity::move(.01f * Utils::Stopwatch::GetDelta() * 56.657223796033994f, 0.f);
+                        Entity::move(.01f * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f, 0.f);
                 } else if (!mMovingForward) {
-                        Entity::move(-.01f * Utils::Stopwatch::GetDelta() * 56.657223796033994f, 0.f);
+                        Entity::move(-.01f * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f, 0.f);
                 }
                 break;
         case eVertical:
@@ -35,9 +35,9 @@ void Platform::move(bool collision)
                 else if (mY <= mBoundY.first)
                         mMovingDown = true;
                 if (mMovingDown) {
-                        Entity::move(0.f, .01f * Utils::Stopwatch::GetDelta() * 56.657223796033994f);
+                        Entity::move(0.f, .01f * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
                 } else if (!mMovingDown) {
-                        Entity::move(0.f, -.01f * Utils::Stopwatch::GetDelta() * 56.657223796033994f);
+                        Entity::move(0.f, -.01f * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
                 }
                 break;
         case eTemporary:

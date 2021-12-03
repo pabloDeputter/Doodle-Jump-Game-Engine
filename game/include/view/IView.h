@@ -31,6 +31,7 @@ protected:
         std::shared_ptr<Model::Entity> mEntity;
         std::unique_ptr<sf::Sprite> mSprite;
         std::shared_ptr<sf::RenderWindow> mWindow;
+
 public:
         IView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<sf::RenderWindow>& window);
 
@@ -39,6 +40,8 @@ public:
         virtual ~IView() = default;
 
         virtual void onDraw();
+
+        void drawCollisionBox();
 
         virtual void onTrigger();
 };

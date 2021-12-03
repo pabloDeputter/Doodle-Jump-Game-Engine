@@ -43,49 +43,49 @@ void Player::move(bool collision)
                 mDirection.second = -1.f;
 
                 if (mVelocity.second > -mMaxVelocity) {
-                        mVelocity.second +=
-                            mAcceleration * mDirection.second * Utils::Stopwatch::GetDelta() * 56.657223796033994f;
+                        mVelocity.second += mAcceleration * mDirection.second *
+                                            Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f;
                 }
         }
 
         if (mIsMovingRight) {
                 mDirection.first = 1.f;
-                if (mVelocity.first > -mMaxVelocity) {
-                        mVelocity.first +=
-                            mAcceleration * mDirection.first * Utils::Stopwatch::GetDelta() * 56.657223796033994f;
+                if (mVelocity.first < mMaxVelocity) {
+                        mVelocity.first += mAcceleration * mDirection.first *
+                                           Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f;
                 }
         } else if (mIsMovingLeft) {
                 mDirection.first = -1.f;
-                if (mVelocity.first < mMaxVelocity) {
-                        mVelocity.first +=
-                            mAcceleration * mDirection.first * Utils::Stopwatch::GetDelta() * 56.657223796033994f;
+                if (mVelocity.first > -mMaxVelocity) {
+                        mVelocity.first += mAcceleration * mDirection.first *
+                                           Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f;
                 }
         }
 
         // Apply drag / resistance
         if (mVelocity.first > 0.f) {
 
-                mVelocity.first -= mDrag * Utils::Stopwatch::GetDelta() * 56.657223796033994f;
+                mVelocity.first -= mDrag * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f;
                 if (mVelocity.first < 0.f) {
                         // Velocity can't be negative, just slow down
                         mVelocity.first = 0.0f;
                 }
         } else if (mVelocity.first < 0.f) {
 
-                mVelocity.first += mDrag * Utils::Stopwatch::GetDelta() * 56.657223796033994f;
+                mVelocity.first += mDrag * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f;
                 if (mVelocity.first > 0.f) {
                         // Velocity can't be negative, just slow down
                         mVelocity.first = 0.0f;
                 }
         }
         if (mVelocity.second > 0.f) {
-                mVelocity.second -= mDrag * Utils::Stopwatch::GetDelta() * 56.657223796033994f;
+                mVelocity.second -= mDrag * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f;
                 if (mVelocity.second < 0.f) {
                         // Velocity can't be negative, just slow down
                         mVelocity.second = 0.0f;
                 }
         } else if (mVelocity.second < 0.f) {
-                mVelocity.second += mDrag * Utils::Stopwatch::GetDelta() * 56.657223796033994f;
+                mVelocity.second += mDrag * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f;
                 if (mVelocity.second > 0.f) {
                         // Velocity can't be negative, just slow down
                         mVelocity.second = 0.0f;
@@ -93,8 +93,8 @@ void Player::move(bool collision)
         }
 
         // Finally, move Player
-        Entity::move(mVelocity.first * Utils::Stopwatch::GetDelta() * 56.657223796033994f,
-                     mVelocity.second * Utils::Stopwatch::GetDelta() * 56.657223796033994f);
+        Entity::move(mVelocity.first * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f,
+                     mVelocity.second * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
 }
 
 const std::pair<float, float>& Player::getVelocity() const { return mVelocity; }

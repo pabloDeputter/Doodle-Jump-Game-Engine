@@ -13,10 +13,10 @@ std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IControlle
         std::shared_ptr<Controller::IController> playerController =
             std::make_shared<Controller::PlayerController>(player);
         // Register playerView as Observer to Subject player
-        player->registerObserver(playerView);
+        player->add(playerView);
 
-        player->setX(Utils::Camera::getInstance().getGameDimensions().first / 2.f);
-        player->setY(Utils::Camera::getInstance().getGameDimensions().second / 2.f);
+        player->setX(Utils::Camera::getInstance().getWorldDimensions().first / 2.f);
+        player->setY(Utils::Camera::getInstance().getWorldDimensions().second / 2.f);
 
         //        // TODO - remove
         //        player->setX(.f);
@@ -32,7 +32,7 @@ ConcreteFactory::createStaticPlatform()
         std::shared_ptr<View::IView> platformView = std::make_shared<View::PlatformView>(platform, mWindow);
         std::shared_ptr<Controller::IController> platformController =
             std::make_shared<Controller::PlatformController>(platform);
-        platform->registerObserver(platformView);
+        platform->add(platformView);
 
         return {platform, platformController};
 }
@@ -44,7 +44,7 @@ std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IControlle
         std::shared_ptr<Controller::IController> platformController =
             std::make_shared<Controller::PlatformController>(platform);
         // Register platformView as Observer to Subject platform
-        platform->registerObserver(platformView);
+        platform->add(platformView);
         // TODO - initBounds()
         static int i = 0;
         if (i == 0) {
@@ -63,7 +63,7 @@ std::shared_ptr<Model::Entity> ConcreteFactory::createBackground()
 {
         std::shared_ptr<Model::Entity> background = std::make_shared<Model::Background>();
         std::shared_ptr<View::IView> backgroundView = std::make_shared<View::BackgroundView>(background, mWindow);
-        background->registerObserver(backgroundView);
+        background->add(backgroundView);
 
         background->setX(1.f);
         background->setY(0.f);
