@@ -25,10 +25,22 @@ std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IControlle
         return {player, playerController};
 }
 
+// std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> ConcreteFactory::createPlatform()
+//{
+//         std::shared_ptr<Model::Entity> platform = std::make_shared<Model::Platform>();
+//         std::shared_ptr<View::IView> platformView = std::make_shared<View::PlatformView>(platform, mWindow);
+//         std::shared_ptr<Controller::IController> platformController =
+//             std::make_shared<Controller::PlatformController>(platform);
+//         // Register platformView as Observer to Subject platform
+//         platform->add(platformView);
+//         // TODO - initBounds()
+//         return {platform, platformController};
+// }
+
 std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
 ConcreteFactory::createStaticPlatform()
 {
-        std::shared_ptr<Model::Entity> platform = std::make_shared<Model::Platform>(Model::eStatic);
+        std::shared_ptr<Model::Entity> platform = std::make_shared<Model::StaticPlatform>();
         std::shared_ptr<View::IView> platformView = std::make_shared<View::PlatformView>(platform, mWindow);
         std::shared_ptr<Controller::IController> platformController =
             std::make_shared<Controller::PlatformController>(platform);
@@ -37,28 +49,42 @@ ConcreteFactory::createStaticPlatform()
         return {platform, platformController};
 }
 
-std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> ConcreteFactory::createPlatform()
+std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
+ConcreteFactory::createHorizontalPlatform()
 {
-        std::shared_ptr<Model::Entity> platform = std::make_shared<Model::Platform>();
+        std::shared_ptr<Model::Entity> platform = std::make_shared<Model::HorizontalPlatform>();
         std::shared_ptr<View::IView> platformView = std::make_shared<View::PlatformView>(platform, mWindow);
         std::shared_ptr<Controller::IController> platformController =
             std::make_shared<Controller::PlatformController>(platform);
-        // Register platformView as Observer to Subject platform
         platform->add(platformView);
-        // TODO - initBounds()
-        static int i = 0;
-        if (i == 0) {
-                platform->setX(Utils::Random::GetRandom(0.f, 8.f));
-                platform->setY(Utils::Random::GetRandom(0.f, 14.4f));
-        }
-        //         TODO - remove
-        if (i == 1) {
-                platform->setX(Utils::Random::GetRandom(0.f, 8.f));
-                platform->setY(Utils::Random::GetRandom(0.f, 14.4f));
-        }
-        i++;
+
         return {platform, platformController};
 }
+
+std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
+ConcreteFactory::createVerticalPlatform()
+{
+        std::shared_ptr<Model::Entity> platform = std::make_shared<Model::VerticalPlatform>();
+        std::shared_ptr<View::IView> platformView = std::make_shared<View::PlatformView>(platform, mWindow);
+        std::shared_ptr<Controller::IController> platformController =
+            std::make_shared<Controller::PlatformController>(platform);
+        platform->add(platformView);
+
+        return {platform, platformController};
+}
+
+std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
+ConcreteFactory::createTemporaryPlatform()
+{
+        std::shared_ptr<Model::Entity> platform = std::make_shared<Model::TemporaryPlatform>();
+        std::shared_ptr<View::IView> platformView = std::make_shared<View::PlatformView>(platform, mWindow);
+        std::shared_ptr<Controller::IController> platformController =
+            std::make_shared<Controller::PlatformController>(platform);
+        platform->add(platformView);
+
+        return {platform, platformController};
+}
+
 std::shared_ptr<Model::Entity> ConcreteFactory::createBackground()
 {
         std::shared_ptr<Model::Entity> background = std::make_shared<Model::Background>();

@@ -1,7 +1,6 @@
 SET(SRC
         src/model/Entity.cpp
         src/model/Player.cpp
-        src/model/Platform.cpp
         src/model/Bonus.cpp
         src/model/Background.cpp
         src/util/Collision.cpp
@@ -15,6 +14,11 @@ SET(SRC
         src/Observer.cpp
         src/Subject.cpp
         src/World.cpp
+        src/model/StaticPlatform.cpp
+        src/model/HorizontalPlatform.cpp
+        src/model/VerticalPlatform.cpp
+        src/model/TemporaryPlatform.cpp
+        src/model/Platform.cpp
         )
 
 ADD_LIBRARY(engine SHARED ${SRC})

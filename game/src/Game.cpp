@@ -72,47 +72,10 @@ void Game::run()
 
         Utils::Stopwatch::getInstance().start();
 
-        auto a = mFactory->createPlayer();
-        auto p = a.first;
-        p->setX(4.f);
-        p->setY(1.4f);
-        mWorld->addPlayer(a);
-
-        //        mWorld->addEntity(mFactory->createPlatform());
-        //        mWorld->addEntity(mFactory->createPlatform());
-
         while (mWindow->isOpen()) {
-
                 Utils::Stopwatch::getInstance().lap();
                 processEvents();
                 mWorld->update();
-
-                //                                auto m = sf::Mouse::getPosition(*mWindow);
-                //                                std::cout << "mMouse: " << m.x << " : " << m.y << "\n";
-
-                //                std::cout << "mPlayer: " << p->getX() << " : " << p->getY() << "\n";
-                //                std::cout << "mPlayer: " << Utils::Camera::getInstance().transform(p->getX(),
-                //                p->getY()).first << " : "
-                //                          << Utils::Camera::getInstance().transform(0.f, p->getY()).second << "\n";
-
-                //                auto &mCamera = Utils::Camera::getInstance();
-                //                mCamera.move(p->getX(), p->getY());
-                //                std::cout << "mCamera: " << mCamera.getPosition().first << " : " <<
-                //                mCamera.getPosition().second << "\n";
-
-                //                auto cc =
-                //                Utils::Camera::getInstance().transform(Utils::Camera::getInstance().getPosition().first,
-                //                                                                 Utils::Camera::getInstance().getPosition().second);
-                //
-                //
-                //                std::cout << cc.first << " : " << cc.second << "\n";
-                //
-                //                mView.setCenter(cc.first, cc.second);
-
-                //                mView.reset(sf::FloatRect(0.f, 0.f, (size_t) mWindow->getSize().x,
-                //                                          (size_t) mWindow->getSize().y));
-                //                mWindow->setView(mView);
-
                 render();
         }
 }

@@ -8,8 +8,12 @@
 #include "AbstractFactory.h"
 
 #include "model/Background.h"
+#include "model/HorizontalPlatform.h"
 #include "model/Platform.h"
 #include "model/Player.h"
+#include "model/StaticPlatform.h"
+#include "model/TemporaryPlatform.h"
+#include "model/VerticalPlatform.h"
 
 #include "controller/PlatformController.h"
 #include "controller/PlayerController.h"
@@ -35,10 +39,20 @@ public:
 
         std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createPlayer() override;
 
+        //        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createPlatform()
+        //        override;
+
         std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createStaticPlatform()
             override;
 
-        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createPlatform() override;
+        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createHorizontalPlatform()
+            override;
+
+        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createVerticalPlatform()
+            override;
+
+        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createTemporaryPlatform()
+            override;
 
         std::shared_ptr<Model::Entity> createBackground() override;
 

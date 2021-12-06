@@ -5,7 +5,6 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
 
-#include "AbstractFactory.h"
 #include "ConcreteFactory.h"
 
 #include "controller/PlayerController.h"
@@ -20,6 +19,9 @@
 #include "SFML/Window.hpp"
 #include <iostream>
 
+/**
+ * @brief Class for Game
+ */
 class Game
 {
         std::shared_ptr<sf::RenderWindow> mWindow;
@@ -28,6 +30,8 @@ class Game
 
 public:
         Game();
+
+        ~Game() = default;
 
         void processEvents();
 

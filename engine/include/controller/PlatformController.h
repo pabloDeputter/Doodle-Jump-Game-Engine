@@ -6,7 +6,6 @@
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_PLATFORMCONTROLLER_H
 
 #include "IController.h"
-#include "model/Platform.h"
 
 namespace Controller {
 

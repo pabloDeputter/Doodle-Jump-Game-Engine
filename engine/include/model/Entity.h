@@ -146,9 +146,10 @@ public:
          * @return Model::Type
          */
         virtual Model::Type getType() const = 0;
-
-        // TODO - edit
-        virtual void onInvisible() { clear(); }
+        /**
+         * @brief On destroy event of Entity function will be executed
+         */
+        virtual void onDestroy();
 };
 } // namespace Model
 

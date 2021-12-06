@@ -43,7 +43,7 @@ public:
         /**
          * @brief Default destructor
          */
-        ~Camera() = default;
+        virtual ~Camera() = default;
         /**
          * @brief Deleted copy constructor
          */

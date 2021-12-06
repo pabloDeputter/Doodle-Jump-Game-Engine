@@ -58,7 +58,7 @@ public:
          * @brief Get latest delta
          * @return float
          */
-        [[nodiscard]] float getDelta();
+        [[nodiscard]] float getDelta() const;
 };
 } // namespace Utils
 

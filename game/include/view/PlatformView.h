@@ -7,7 +7,6 @@
 
 #include "IView.h"
 
-#include "model/Platform.h"
 
 namespace View {
 

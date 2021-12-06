@@ -27,3 +27,5 @@ void Entity::move(float x, float y)
         mX += x;
         mY += y;
 }
+
+void Entity::onDestroy() { Subject::clear(); }

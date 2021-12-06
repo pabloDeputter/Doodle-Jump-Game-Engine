@@ -56,9 +56,9 @@ void IView::onTrigger()
         // TODO - delete (weak pointers)
 
         if (mEntity->getY() < Utils::Camera::getInstance().getY()) {
-                std::cout << "lol";
+
                 //                                if (mEntity->getType() == Model::eBackground) std::cout << "lol\n";
-                mEntity->onInvisible();
+                mEntity->onDestroy();
                 return;
         }
 

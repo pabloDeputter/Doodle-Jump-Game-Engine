@@ -23,6 +23,7 @@ void World::events(const std::string& move, bool isPressed)
 void World::update()
 {
         bool flagCollision = false;
+        std::vector<bool> toRemove;
         for (auto& i : mControllers) {
                 if (i->getMEntity()->getType() != Model::ePlayer) {
                         if (std::dynamic_pointer_cast<Model::Player>(mPlayer)->getVelocity().second <= 0 &&
@@ -31,8 +32,21 @@ void World::update()
 
                                 flagCollision = true;
                                 mPlayerController->onUpdate(true);
+
+                                if (i->getMEntity()->getType() == Model::eTemporary) {
+                                        i->onUpdate(true);
+                                        toRemove.emplace_back(true);
+                                        continue;
+                                }
                         }
-                        i->onUpdate(true);
+                }
+                i->onUpdate(false);
+                toRemove.emplace_back(false);
+        }
+
+        for (int i = 0; i < toRemove.size(); i++) {
+                if (toRemove[i]) {
+                        mControllers.erase(std::begin(mControllers) + i);
                 }
         }
 
@@ -51,32 +65,34 @@ void World::update()
 
 void World::render()
 {
-        //         Kan ook random gedaan worden
-        static float heightHarndess = 50.f;
-        static float hardness = 0.05f;
 
-        if (Utils::Camera::getInstance().getMaxHeight() > heightHarndess) {
-                heightHarndess += 50.f;
-                hardness -= 0.007f;
-        }
+        //        //         Kan ook random gedaan worden
+        //        static float heightHarndess = 50.f;
+        //        static float hardness = 0.02f;
+        //
+        //        if (Utils::Camera::getInstance().getMaxHeight() > heightHarndess) {
+        //                heightHarndess += 50.f;
+        //                hardness -= 0.007f;
+        //        }
 
-        //                auto plat = mFactory->createStaticPlatform();
-        //                plat.first->setX(4.f);
-        //                plat.first->setY(mPlayer->getY() + 1.4f);
-        //                World::addEntity(plat);
+        unsigned int maxPlatforms = 15;
 
         auto& cc = Utils::Camera::getInstance();
+        //        std::cout << cc.getMaxHeight() << "\n";
         if (Utils::Camera::getInstance().isMaxHeight(mPlayer->getY())) {
 
-                if (std::dynamic_pointer_cast<Model::Player>(mPlayer)->getVelocity().second <= hardness) {
+                //                if (mEntities.size() < maxPlatforms)
+                //                {
+                //                        World::generate();
+                //                }
+
+                if (mEntities.size() < maxPlatforms) {
+                        //                        std::cout << "lol\n";
                         // Add new? hier?? - enkel als moving up
                         World::generate();
                 }
 
-                // TODO - mCameraX is altijd 7.2 (helft van game world y) onder mMaxHeight
-                cc.move(0.f, Utils::Camera::getInstance().getMaxHeight() - cc.getWorldDimensions().second / 2.f);
-                //                std::cout << "mMaxHeight: " << Utils::Camera::getInstance().getMaxHeight() << "\n";
-                //                std::cout << "mCameraX: " << Utils::Camera::getInstance().getY() << "\n";
+                cc.move(0.f, Utils::Camera::getInstance().getMaxHeight() - (cc.getWorldDimensions().second / 2.f));
         }
 
         auto itBackground = mBackground.begin();
@@ -128,7 +144,6 @@ void World::addEntity(
 {
         mEntities.emplace_back(entity.first);
         mControllers.emplace_back(entity.second);
-        //        std::cout << mEntities.size() << "\n";
 }
 
 void World::addBackground(const std::shared_ptr<Model::Entity>& entity) { mBackground.emplace_back(entity); }
@@ -142,94 +157,74 @@ void World::addPlayer(
 
 void World::initializeWorld()
 {
-        auto plat = mFactory->createStaticPlatform();
-        plat.first->setX(3.f);
-        plat.first->setY(1.5f);
-        World::addEntity(plat);
+        // Create player
+        auto player = mFactory->createPlayer();
+        player.first->setX(Utils::Camera::getInstance().getWorldDimensions().first / 2.f);
+        player.first->setY(2.f);
+        addPlayer(player);
 
-        for (int i = 0; i < (int)Utils::Random::getInstance().GetRandom(3, 15); i++) {
-                auto plat = mFactory->createStaticPlatform();
-                float randX = Utils::Random::GetRandom(0.f, Utils::Camera::getInstance().getWorldDimensions().first);
-                float randY = Utils::Random::GetRandom(0.f, Utils::Camera::getInstance().getWorldDimensions().second);
-                plat.first->setX(randX);
-                plat.first->setY(randY);
-                World::addEntity(plat);
+        // Create ground
+        auto ground = mFactory->createStaticPlatform().first;
+        for (int i = 0; i <= (int)Utils::Camera::getInstance().getWorldDimensions().first;
+             i += (int)ground->getWidth()) {
+                auto newPlatform = mFactory->createStaticPlatform();
+                newPlatform.first->setX((float)i);
+                newPlatform.first->setY(0.3f);
+                addEntity(newPlatform);
+        }
+        ground->onDestroy();
+
+        // Create random number of static starting platforms between 8 and 15
+        for (int i = 0; i < (int)Utils::Random::getInstance().random(8, 15); i++) {
+                auto newPlatform = mFactory->createTemporaryPlatform();
+                float randX =
+                    Utils::Random::getInstance().random(0.f, Utils::Camera::getInstance().getWorldDimensions().first);
+                float randY = Utils::Random::getInstance().random(
+                    mEntities.back()->getY(), mEntities.back()->getY() + (.25f / 0.006f) * (.25f / 2.f));
+
+                if (randY - .50f <= mEntities.back()->getY()) {
+                        randY += .50f;
+                }
+
+                newPlatform.first->setX(randX);
+                newPlatform.first->setY(randY);
+                addEntity(newPlatform);
         }
 
-        ////        for (int i = 0; i < 5000; i++) {
-        ////                auto plat = mFactory->createStaticPlatform();
-        ////                plat.first->setX(4.f);
-        ////                plat.first->setY(-11.f);
-        ////                World::addEntity(plat);
-        ////        }
-        //
-
+        // Create background
         auto bg = mFactory->createBackground();
+        const float inverseWidth = Utils::Camera::getInstance().inverseTransform(bg->getWidth(), bg->getHeight()).first;
+        const float inverseHeight =
+            Utils::Camera::getInstance().getWorldDimensions().second -
+            Utils::Camera::getInstance().inverseTransform(bg->getWidth(), bg->getHeight()).second;
 
-        float width = bg->getWidth();
-        float height = bg->getHeight();
-
-        // TODO - remove
-        bg->onInvisible();
-
-        auto& cc = Utils::Camera::getInstance();
-
-        float width_ = Utils::Camera::getInstance().inverseTransform(width, height).first;
-        float height_ = Utils::Camera::getInstance().inverseTransform(width, height).second;
-        height_ = Utils::Camera::getInstance().getWorldDimensions().second - height_;
-
-        size_t counter = 0;
-        for (float i = 0.f; i < Utils::Camera::getInstance().getWorldDimensions().first; i += width_) {
-                for (float j = Utils::Camera::getInstance().getWorldDimensions().second; j > -14.4f; j -= height_) {
+        for (float i = 0.f; i < Utils::Camera::getInstance().getWorldDimensions().first; i += inverseWidth) {
+                for (float j = Utils::Camera::getInstance().getWorldDimensions().second; j > -2.f; j -= inverseHeight) {
                         auto n = mFactory->createBackground();
                         n->setX(i);
                         n->setY(j);
                         mBackground.emplace_back(n);
-                        counter++;
                 }
         }
-
-        //
-        //                auto platform = mFactory->createPlatform().first;
-        //
-        //                auto dim = Utils::Camera::getInstance().inverseTransform(platform->getWidth(),
-        //                platform->getHeight());
-        //
-        //                for (float i = 0.f; i < Utils::Camera::getInstance().getWorldDimensions().first; i +=
-        //                dim.first) {
-        //                        auto n = mFactory->createStaticPlatform();
-        //                        n.first->setX(i);
-        //                        n.first->setY(Utils::Camera::getInstance().getWorldDimensions().second);
-        //                        World::addEntity(n);
-        //                }
+        bg->onDestroy();
 }
 
 void World::generate()
 {
+        // TODO magnitude???
+        auto newPlatform = mFactory->createTemporaryPlatform();
 
-        // Moet jump halen
-        // Jump height + x waarde van player (vector) naar nieuwe platform moet groot genoeg zijn
-        // elke zoveel y-waarde gaat kans op speciaal platform naar boven + minder platformen
-        // platformen niet zo dicht bij kant zetten
-        // mag een max aantal platforms maar bestaan
+        float jumpPeak = mEntities.back()->getY() + (.25f / 0.006f) * (.25f / 2.f);
 
-        float t = .25f / .006f;
-        float peak = mPlayer->getY() + t * .25f / 2.f;
+        float randX = Utils::Random::getInstance().random(0.f, Utils::Camera::getInstance().getWorldDimensions().first);
+        float randY = Utils::Random::getInstance().random(mEntities.back()->getY(), jumpPeak);
 
-        float randX = Utils::Random::GetRandom(0.f, Utils::Camera::getInstance().getWorldDimensions().first);
-        float randY = Utils::Random::GetRandom(0.f, peak);
+        // Otherwise, new platforms will be placed on top of each other
+        if (randY - .50f <= mEntities.back()->getY()) {
+                randY += .50f;
+        }
 
-        auto platform = mFactory->createPlatform();
-
-        platform.first->setX(randX);
-        platform.first->setY(Utils::Camera::getInstance().getMaxHeight() +
-                             Utils::Camera::getInstance().getWorldDimensions().second / 2.f + randY);
-
-        //        std::cout << platform.first->getY() << "\n";
-
-        float magnitude = sqrt(std::pow((randX - mPlayer->getX()), 2.f) + std::pow((randY - mPlayer->getY()), 2.f));
-
-        //        std::cout << magnitude << "\n";
-
-        addEntity(platform);
+        newPlatform.first->setX(randX);
+        newPlatform.first->setY(randY);
+        addEntity(newPlatform);
 }

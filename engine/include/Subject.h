@@ -21,6 +21,8 @@ namespace Observer {
 class Subject
 {
 private:
+        //        std::vector<std::weak_ptr<Observer>> mObservers; /**< std::vector containing Observers */
+
         std::vector<std::shared_ptr<Observer>> mObservers; /**< std::vector containing Observers */
 public:
         /**
@@ -33,9 +35,14 @@ public:
         virtual ~Subject() = default;
         /**
          * @brief Register Observer to mObservers
-         * @param observer Observer
+         * @param observer Observer to be added
          */
         void add(const std::shared_ptr<Observer>& observer);
+        /**
+         * @brief Remove Observer from mObservers
+         * @param observer Observer to be removed
+         */
+        void remove(const std::shared_ptr<Observer>& observer);
         /**
          * @brief Clear all Observers from mObservers
          */

@@ -12,7 +12,7 @@ Random& Random::getInstance()
         return instance;
 }
 
-float Random::GetRandom(float a, float b)
+float Random::random(float a, float b)
 {
         // Create random number generator
         std::random_device random_device;

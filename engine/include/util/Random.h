@@ -47,7 +47,7 @@ public:
          * @param b float - end interval
          * @return float
          */
-        [[nodiscard]] static float GetRandom(float a, float b);
+        [[nodiscard]] float random(float a, float b);
 };
 } // namespace Utils
 

@@ -6,7 +6,6 @@
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_IVIEW_H
 
 #include "model/Bonus.h"
-#include "model/Platform.h"
 #include "model/Player.h"
 
 #include "Observer.h"

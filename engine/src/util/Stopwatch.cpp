@@ -24,4 +24,4 @@ float Stopwatch::lap()
         return mDeltaTime;
 }
 
-float Stopwatch::getDelta() { return mDeltaTime; }
+float Stopwatch::getDelta() const { return mDeltaTime; }

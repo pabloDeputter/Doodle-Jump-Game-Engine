@@ -6,6 +6,8 @@
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_WORLD_H
 
 #include "controller/IController.h"
+#include "controller/PlayerController.h"
+
 #include "model/Entity.h"
 #include "model/Player.h"
 

@@ -18,7 +18,6 @@ struct Resourceholder
 private:
         std::string mPath;
         std::map<Model::Type, std::shared_ptr<sf::Texture>> mResources;
-
 public:
         explicit Resourceholder(std::string path) : mPath(std::move(path)) {}
 
