@@ -29,9 +29,13 @@ class Game
         std::shared_ptr<Model::AbstractFactory> mFactory;
 
 public:
-        Game();
+        Game() = default;
+
+        explicit Game(unsigned int width = 800, unsigned int height = 1440);
 
         ~Game() = default;
+
+        static void initializeResources();
 
         void processEvents();
 

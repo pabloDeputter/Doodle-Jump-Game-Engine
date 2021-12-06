@@ -25,15 +25,15 @@ void World::update()
         bool flagCollision = false;
         std::vector<bool> toRemove;
         for (auto& i : mControllers) {
-                if (i->getMEntity()->getType() != Model::ePlayer) {
+                if (i->getEntity()->getType() != Model::ePlayer) {
                         if (std::dynamic_pointer_cast<Model::Player>(mPlayer)->getVelocity().second <= 0 &&
-                            Utils::Collision::checkCollision(mPlayer, i->getMEntity()) &&
-                            mPlayer->getY() < i->getMEntity()->getY()) {
+                            Utils::Collision::checkCollision(mPlayer, i->getEntity()) &&
+                            mPlayer->getY() < i->getEntity()->getY()) {
 
                                 flagCollision = true;
                                 mPlayerController->onUpdate(true);
 
-                                if (i->getMEntity()->getType() == Model::eTemporary) {
+                                if (i->getEntity()->getType() == Model::eTemporary) {
                                         std::cout << "collision\n";
                                         i->onUpdate(true);
                                         toRemove.emplace_back(true);
@@ -222,6 +222,8 @@ void World::generate()
 {
         // TODO magnitude???
         auto newPlatform = mFactory->createStaticPlatform();
+        auto newBonus = mFactory->createSpring();
+
         float jumpPeak = mEntities.back()->getY() + (.25f / 0.006f) * (.25f / 2.f);
 
         float randX = Utils::Random::getInstance().random(0.f, Utils::Camera::getInstance().getWorldDimensions().first);
@@ -234,6 +236,10 @@ void World::generate()
 
         newPlatform.first->setX(randX);
         newPlatform.first->setY(randY);
+        newBonus->setX(randX - newPlatform.first->getWidth() / 2.f);
+        newBonus->setY(randY + 0.6f);
 
         addEntity(newPlatform);
+        // TODO - add controller...
+        addBackground(newBonus);
 }

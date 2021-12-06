@@ -28,7 +28,7 @@ public:
 
         virtual void onUpdate(bool collision) = 0;
 
-        const std::shared_ptr<Model::Entity>& getMEntity() const { return mEntity; }
+        const std::shared_ptr<Model::Entity>& getEntity() const { return mEntity; }
 };
 } // namespace Controller
 

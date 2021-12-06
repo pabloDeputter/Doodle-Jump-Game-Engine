@@ -4,17 +4,23 @@
 
 #include "Game.h"
 
-Game::Game()
+Game::Game(unsigned int width, unsigned int height)
 {
-        mWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(800.f, 1440.f), "Doodle Jump");
+        mWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), "Doodle Jump");
         mFactory = std::make_shared<View::ConcreteFactory>(mWindow);
         mWorld = std::make_unique<World>(mFactory);
         mWindow->setFramerateLimit(60);
+        mWindow->setVerticalSyncEnabled(true);
 
         // Set window dimensions
-        Utils::Camera::getInstance().setWindowDimensions(800.f, 1440.f);
+        Utils::Camera::getInstance().setWindowDimensions((float)width, (float)height);
 
-        // TODO - lol
+        // Set path of different textures
+        Game::initializeResources();
+}
+
+void Game::initializeResources()
+{
         Utils::Resourcemanager::getInstance().addTexture(Model::ePlayer, "/Image/player.png");
         Utils::Resourcemanager::getInstance().addTexture(Model::eBackground, "/Image/background.png");
         Utils::Resourcemanager::getInstance().addTexture(Model::eStatic, "/Image/platformStatic.png");
@@ -22,6 +28,7 @@ Game::Game()
         Utils::Resourcemanager::getInstance().addTexture(Model::eVertical, "/Image/platformVertical.png");
         Utils::Resourcemanager::getInstance().addTexture(Model::eTemporary, "/Image/platformTemporary.png");
         Utils::Resourcemanager::getInstance().addTexture(Model::eSpring, "/Image/spring.png");
+        Utils::Resourcemanager::getInstance().addTexture(Model::eSpring, "/Image/jetpack.png");
 }
 
 void Game::processEvents()
