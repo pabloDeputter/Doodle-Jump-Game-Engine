@@ -11,6 +11,7 @@
 #include "model/HorizontalPlatform.h"
 #include "model/Platform.h"
 #include "model/Player.h"
+#include "model/Spring.h"
 #include "model/StaticPlatform.h"
 #include "model/TemporaryPlatform.h"
 #include "model/VerticalPlatform.h"
@@ -19,6 +20,7 @@
 #include "controller/PlayerController.h"
 
 #include "view/BackgroundView.h"
+#include "view/BonusView.h"
 #include "view/IView.h"
 #include "view/PlatformView.h"
 #include "view/PlayerView.h"
@@ -53,6 +55,8 @@ public:
 
         std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createTemporaryPlatform()
             override;
+
+        std::shared_ptr<Model::Entity> createSpring() override;
 
         std::shared_ptr<Model::Entity> createBackground() override;
 

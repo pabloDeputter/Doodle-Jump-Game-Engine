@@ -25,7 +25,9 @@ enum Type
         eHorizontal = 3,
         eVertical = 4,
         eTemporary = 5,
-        eBackground = 6
+        eBackground = 6,
+        eJetpack = 7,
+        eSpring = 8
 };
 
 class CollisionBox

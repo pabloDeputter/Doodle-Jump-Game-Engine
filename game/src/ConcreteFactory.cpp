@@ -15,13 +15,6 @@ std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IControlle
         // Register playerView as Observer to Subject player
         player->add(playerView);
 
-        player->setX(Utils::Camera::getInstance().getWorldDimensions().first / 2.f);
-        player->setY(Utils::Camera::getInstance().getWorldDimensions().second / 2.f);
-
-        //        // TODO - remove
-        //        player->setX(.f);
-        //        player->setY(0.f);
-
         return {player, playerController};
 }
 
@@ -83,6 +76,15 @@ ConcreteFactory::createTemporaryPlatform()
         platform->add(platformView);
 
         return {platform, platformController};
+}
+
+std::shared_ptr<Model::Entity> ConcreteFactory::createSpring()
+{
+        std::shared_ptr<Model::Entity> spring = std::make_shared<Model::Spring>();
+        std::shared_ptr<View::IView> springView = std::make_shared<View::BonusView>(spring, mWindow);
+        spring->add(springView);
+
+        return spring;
 }
 
 std::shared_ptr<Model::Entity> ConcreteFactory::createBackground()
