@@ -62,6 +62,13 @@ void IView::onTrigger()
                 return;
         }
 
+        // TODO - Jetpack
+        if (mEntity->getType() == Model::eJetpack && mEntity->getRemovable()) {
+                std::cout << "removeJetpackView\n";
+                mEntity->onDestroy();
+                return;
+        }
+
         auto& c = Utils::Camera::getInstance();
         // Draw relatively from camera
         auto pos = c.transform(mEntity->getX(), mEntity->getY() - c.getY());

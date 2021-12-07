@@ -51,6 +51,8 @@ public:
          * @brief Trigger registered Observers
          */
         void trigger() const;
+
+        virtual unsigned int getVal() const = 0;
 };
 } // namespace Observer
 

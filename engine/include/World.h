@@ -13,6 +13,7 @@
 
 #include "AbstractFactory.h"
 
+#include "Score.h"
 #include "util/Camera.h"
 #include "util/Collision.h"
 #include "util/Random.h"
@@ -33,6 +34,9 @@ private:
         std::shared_ptr<Model::AbstractFactory> mFactory;
 
         std::vector<std::shared_ptr<Model::Entity>> mBackground;
+
+        std::shared_ptr<Score> mScore;
+
 public:
         World(std::shared_ptr<Model::AbstractFactory>& factory);
 

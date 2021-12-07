@@ -37,7 +37,7 @@ public:
                 player.setVelocity({player.getVelocity().first, newSpeed});
         }
 
-        bool isRemovable() const override { return mRemoveFlag; }
+        unsigned int getVal() const override { return 10; }
 };
 } // namespace Model
 

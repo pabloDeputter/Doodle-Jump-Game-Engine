@@ -27,6 +27,8 @@
 #include "view/PlatformView.h"
 #include "view/PlayerView.h"
 
+#include "Score.h"
+
 #include "SFML/Graphics.hpp"
 
 // TODO - attach View Observers to Entity Subjects

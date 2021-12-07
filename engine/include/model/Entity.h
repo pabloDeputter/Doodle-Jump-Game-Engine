@@ -162,9 +162,14 @@ public:
 
         virtual void accept(const std::shared_ptr<Visitor::IVisitor>& visitor) {}
 
+        // TODO - jetpack
         void setRemoveFlag(bool flag) { mRemoveFlag = flag; }
 
+        virtual bool getRemovable() const { return mRemoveFlag; }
+
         virtual bool isRemovable() const { return mRemoveFlag; }
+
+        virtual unsigned int getVal() const override { return 0; }
 };
 } // namespace Model
 

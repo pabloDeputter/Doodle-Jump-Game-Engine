@@ -5,7 +5,7 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_CAMERA_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_CAMERA_H
 
-#include "Observer.h"
+#include "Subject.h"
 
 #include <utility>
 
@@ -16,7 +16,7 @@ namespace Utils {
 /**
  * @brief Class for Camera
  */
-class Camera
+class Camera : public Observer::Subject
 {
 private:
         float mWorldLeft;   /**< Leftmost x-coordinate of world */
@@ -32,6 +32,7 @@ private:
         float mCameraX; /**< X-coordinate of Camera */
         float mCameraY; /**< Y-coordinate of Camera */
 
+        float mLastMaxHeight;
         float mMaxHeight; /**< Max height Player has jumped */
 
         /**
@@ -126,6 +127,8 @@ public:
          * @return bool
          */
         bool isMaxHeight(float height);
+
+        [[nodiscard]] unsigned int getVal() const override { return (unsigned int)mLastMaxHeight; }
 };
 } // namespace Utils
 

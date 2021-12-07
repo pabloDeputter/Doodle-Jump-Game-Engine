@@ -63,8 +63,9 @@ std::pair<float, float> Camera::inverseTransform(float x, float y) const
 void Camera::move(float x, float y)
 {
         mCameraX = x;
-        if (y < 0)
+        if (y < 0) {
                 return;
+        }
         mCameraY = y;
 }
 
@@ -79,7 +80,9 @@ bool Camera::isMaxHeight(float height)
         if (height < mWorldTop / 2.f)
                 return false;
         if (height >= mMaxHeight) {
+                mMaxHeight - mLastMaxHeight;
                 mMaxHeight = height;
+                Observer::Subject::trigger();
                 return true;
         }
         return false;

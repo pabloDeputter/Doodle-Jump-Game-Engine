@@ -10,6 +10,12 @@ Model::Type Model::Jetpack::getType() const { return Model::eJetpack; }
 
 void Jetpack::move(bool collision)
 {
+        // TODO - jetpack
+        if (mRemoveFlag) {
+
+                return;
+        }
+
         if (!mInit) {
                 initBounds();
         }

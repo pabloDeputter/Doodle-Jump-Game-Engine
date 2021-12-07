@@ -7,6 +7,8 @@
 World::World(std::shared_ptr<Model::AbstractFactory>& factory)
 {
         mFactory = factory;
+        // TODO - EVENTS
+        mScore = std::make_shared<Score>();
 
         Utils::Camera::getInstance().isMaxHeight(0.f);
         Utils::Camera::getInstance().setWorldDimensions(8.f, 14.4f);
@@ -43,8 +45,8 @@ void World::update()
                                         std::cout << "jetpack\n";
                                         mPlayer->accept(i->getEntity());
                                         i->onUpdate(true);
-                                        toRemove.emplace_back(true);
                                         toRemove.emplace_back(false);
+                                        i->getEntity()->setRemoveFlag(true);
                                         continue;
                                 }
                         }
@@ -135,8 +137,20 @@ void World::render()
         for (auto& i : mEntities) {
 
                 if (i->getY() < cc.getY()) {
-                        toRemove.emplace_back(true);
+
+                        if (i->getRemovable() && i->getType() == Model::eJetpack) {
+
+                                if (i->isRemovable()) {
+                                        mPlayer->accept(i);
+                                        toRemove.emplace_back(true);
+                                } else
+                                        toRemove.emplace_back(false);
+                        }
+
+                        else
+                                toRemove.emplace_back(true);
                 } else {
+
                         toRemove.emplace_back(false);
                 }
 
@@ -232,7 +246,7 @@ void World::generate()
 {
         // TODO magnitude???
         auto newPlatform = mFactory->createStaticPlatform();
-        auto newBonus = mFactory->createJetpack();
+        //        auto newBonus = mFactory->createJetpack();
 
         float jumpPeak = mEntities.back()->getY() + (.21f / 0.006f) * (.21f / 2.f);
 
@@ -246,10 +260,9 @@ void World::generate()
 
         newPlatform.first->setX(randX);
         newPlatform.first->setY(randY);
-        newBonus.first->setX(randX - newPlatform.first->getWidth() / 2.f);
-        newBonus.first->setY(randY + 0.6f);
+        //        newBonus.first->setX(randX - newPlatform.first->getWidth() / 2.f);
+        //        newBonus.first->setY(randY + 0.6f);
 
         addEntity(newPlatform);
-        // TODO - add controller...
-        addEntity(newBonus);
+        //        addEntity(newBonus);
 }

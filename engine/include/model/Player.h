@@ -75,9 +75,7 @@ public:
         // TODO - visitor pattern
         void accept(const std::shared_ptr<Visitor::IVisitor>& visitor) override
         {
-                std::cout << "Before: " << mVelocity.first << " : " << mVelocity.second << "\n";
                 visitor->visit(*this);
-                std::cout << "After: " << mVelocity.first << " : " << mVelocity.second << "\n";
         }
 };
 } // namespace Model
