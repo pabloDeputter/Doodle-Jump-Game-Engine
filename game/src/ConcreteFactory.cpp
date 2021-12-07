@@ -78,13 +78,26 @@ ConcreteFactory::createTemporaryPlatform()
         return {platform, platformController};
 }
 
-std::shared_ptr<Model::Entity> ConcreteFactory::createSpring()
+std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> ConcreteFactory::createSpring()
 {
         std::shared_ptr<Model::Entity> spring = std::make_shared<Model::Spring>();
         std::shared_ptr<View::IView> springView = std::make_shared<View::BonusView>(spring, mWindow);
+        std::shared_ptr<Controller::IController> springController =
+            std::make_shared<Controller::BonusController>(spring);
         spring->add(springView);
 
-        return spring;
+        return {spring, springController};
+}
+
+std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> ConcreteFactory::createJetpack()
+{
+        std::shared_ptr<Model::Entity> jetpack = std::make_shared<Model::Jetpack>();
+        std::shared_ptr<View::IView> jetpackView = std::make_shared<View::BonusView>(jetpack, mWindow);
+        std::shared_ptr<Controller::IController> jetpackController =
+            std::make_shared<Controller::BonusController>(jetpack);
+        jetpack->add(jetpackView);
+
+        return {jetpack, jetpackController};
 }
 
 std::shared_ptr<Model::Entity> ConcreteFactory::createBackground()

@@ -6,8 +6,8 @@
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_PLAYER_H
 
 #include "Entity.h"
-
-#include "util/Camera.h"
+#include "IVisitor.h"
+#include <iostream>
 
 /**
  * @brief Namespace holds all model
@@ -22,9 +22,9 @@ private:
         std::pair<float, float> mVelocity;  /**< Current velocity of Player */
         std::pair<float, float> mDirection; /**< Current direction of Player */
 
-        const float mMaxVelocity = 0.27f;   /**< Max velocity Player can achieve */
+        const float mMaxVelocity = 0.25f;   /**< Max velocity Player can achieve */
         const float mAcceleration = 0.015f; /**< Acceleration of Player */
-        const float mDrag = 0.006f;         /**< Resistance applied to Player */
+        float mDrag = 0.006f;               /**< Resistance applied to Player */
 
         bool mIsMovingUp;    /**< Player is moving up */
         bool mIsMovingDown;  /**< Player is moving down */
@@ -54,6 +54,8 @@ public:
 
         const float getDrag() const;
 
+        void setDrag(float drag);
+
         bool isMovingUp() const;
 
         void setIsMovingUp(bool isMovingUp);
@@ -69,6 +71,14 @@ public:
         bool isMovingRight() const;
 
         void setIsMovingRight(bool isMovingRight);
+
+        // TODO - visitor pattern
+        void accept(const std::shared_ptr<Visitor::IVisitor>& visitor) override
+        {
+                std::cout << "Before: " << mVelocity.first << " : " << mVelocity.second << "\n";
+                visitor->visit(*this);
+                std::cout << "After: " << mVelocity.first << " : " << mVelocity.second << "\n";
+        }
 };
 } // namespace Model
 

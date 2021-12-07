@@ -6,8 +6,12 @@
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_ENTITY_H
 
 #include "Subject.h"
+#include "util/Camera.h"
 #include "util/Stopwatch.h"
 
+#include "IVisitor.h"
+
+#include <iostream>
 #include <string>
 
 /**
@@ -60,7 +64,7 @@ public:
 /**
  * @brief Class for Entity object
  */
-class Entity : public Observer::Subject
+class Entity : public Observer::Subject, public Visitor::IVisitor
 {
 protected:
         float mX; /**< X-coordinate of Entity */
@@ -70,8 +74,9 @@ protected:
         //
         float mWidth{};  /**< Width of Entity collision box */
         float mHeight{}; /**< Height of Entity collision box */
+        bool mRemoveFlag;
+
 public:
-        friend Observer::Subject;
         /**
          * @brief Default constructor
          */
@@ -85,7 +90,7 @@ public:
          * @param x float
          * @param y float
          */
-        Entity(float x, float y) : mX(x), mY(y) {}
+        Entity(float x, float y) : mX(x), mY(y), mRemoveFlag(false) {}
         /**
          * @brief Get the x value of Entity object
          * @return float
@@ -152,6 +157,14 @@ public:
          * @brief On destroy event of Entity function will be executed
          */
         virtual void onDestroy();
+
+        void visit(Model::Player& player) override { std::cout << "Entity visit\n"; }
+
+        virtual void accept(const std::shared_ptr<Visitor::IVisitor>& visitor) {}
+
+        void setRemoveFlag(bool flag) { mRemoveFlag = flag; }
+
+        virtual bool isRemovable() const { return mRemoveFlag; }
 };
 } // namespace Model
 

@@ -22,9 +22,6 @@ public:
 
         virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createPlayer() = 0;
 
-        //        virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
-        //        createPlatform() = 0;
-
         virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
         createStaticPlatform() = 0;
 
@@ -37,7 +34,9 @@ public:
         virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
         createTemporaryPlatform() = 0;
 
-        virtual std::shared_ptr<Model::Entity> createSpring() = 0;
+        virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createSpring() = 0;
+
+        virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createJetpack() = 0;
 
         virtual std::shared_ptr<Model::Entity> createBackground() = 0;
 };

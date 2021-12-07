@@ -19,7 +19,7 @@ SET(SRC
         src/model/VerticalPlatform.cpp
         src/model/TemporaryPlatform.cpp
         src/model/Platform.cpp
-        src/model/Jetpack.cpp include/model/Jetpack.h src/model/Spring.cpp include/model/Spring.h src/controller/BonusController.cpp include/controller/BonusController.h)
+        src/model/Jetpack.cpp include/model/Jetpack.h src/model/Spring.cpp include/model/Spring.h src/controller/BonusController.cpp include/controller/BonusController.h src/IVisitor.cpp include/IVisitor.h)
 
 ADD_LIBRARY(engine SHARED ${SRC})
 

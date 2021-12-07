@@ -34,9 +34,17 @@ void World::update()
                                 mPlayerController->onUpdate(true);
 
                                 if (i->getEntity()->getType() == Model::eTemporary) {
-                                        std::cout << "collision\n";
                                         i->onUpdate(true);
                                         toRemove.emplace_back(true);
+                                        continue;
+                                }
+
+                                if (i->getEntity()->getType() == Model::eJetpack) {
+                                        std::cout << "jetpack\n";
+                                        mPlayer->accept(i->getEntity());
+                                        i->onUpdate(true);
+                                        toRemove.emplace_back(true);
+                                        toRemove.emplace_back(false);
                                         continue;
                                 }
                         }
@@ -85,10 +93,12 @@ void World::render()
         //        }
 
         unsigned int maxPlatforms = 15;
-
+        //        std::cout << "maxHeight: " << Utils::Camera::getInstance().getMaxHeight() << "\n";
         auto& cc = Utils::Camera::getInstance();
         //        std::cout << cc.getMaxHeight() << "\n";
         if (Utils::Camera::getInstance().isMaxHeight(mPlayer->getY())) {
+
+                //                std::cout << "new maxHeight: " << Utils::Camera::getInstance().getMaxHeight() << "\n";
 
                 //                if (mEntities.size() < maxPlatforms)
                 //                {
@@ -189,7 +199,7 @@ void World::initializeWorld()
                 float randX =
                     Utils::Random::getInstance().random(0.f, Utils::Camera::getInstance().getWorldDimensions().first);
                 float randY = Utils::Random::getInstance().random(
-                    mEntities.back()->getY(), mEntities.back()->getY() + (.25f / 0.006f) * (.25f / 2.f));
+                    mEntities.back()->getY(), mEntities.back()->getY() + (.21f / 0.006f) * (.21f / 2.f));
 
                 if (randY - .50f <= mEntities.back()->getY()) {
                         randY += .50f;
@@ -222,9 +232,9 @@ void World::generate()
 {
         // TODO magnitude???
         auto newPlatform = mFactory->createStaticPlatform();
-        auto newBonus = mFactory->createSpring();
+        auto newBonus = mFactory->createJetpack();
 
-        float jumpPeak = mEntities.back()->getY() + (.25f / 0.006f) * (.25f / 2.f);
+        float jumpPeak = mEntities.back()->getY() + (.21f / 0.006f) * (.21f / 2.f);
 
         float randX = Utils::Random::getInstance().random(0.f, Utils::Camera::getInstance().getWorldDimensions().first);
         float randY = Utils::Random::getInstance().random(mEntities.back()->getY(), jumpPeak);
@@ -236,10 +246,10 @@ void World::generate()
 
         newPlatform.first->setX(randX);
         newPlatform.first->setY(randY);
-        newBonus->setX(randX - newPlatform.first->getWidth() / 2.f);
-        newBonus->setY(randY + 0.6f);
+        newBonus.first->setX(randX - newPlatform.first->getWidth() / 2.f);
+        newBonus.first->setY(randY + 0.6f);
 
         addEntity(newPlatform);
         // TODO - add controller...
-        addBackground(newBonus);
+        addEntity(newBonus);
 }

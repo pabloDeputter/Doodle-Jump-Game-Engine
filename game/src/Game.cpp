@@ -28,7 +28,7 @@ void Game::initializeResources()
         Utils::Resourcemanager::getInstance().addTexture(Model::eVertical, "/Image/platformVertical.png");
         Utils::Resourcemanager::getInstance().addTexture(Model::eTemporary, "/Image/platformTemporary.png");
         Utils::Resourcemanager::getInstance().addTexture(Model::eSpring, "/Image/spring.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eSpring, "/Image/jetpack.png");
+        Utils::Resourcemanager::getInstance().addTexture(Model::eJetpack, "/Image/jetpack.png");
 }
 
 void Game::processEvents()

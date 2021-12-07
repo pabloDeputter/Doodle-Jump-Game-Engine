@@ -18,6 +18,8 @@ public:
                 Model::Type type = entity->getType();
                 std::shared_ptr<sf::Texture>& tex = Utils::Resourcemanager::getInstance().getTextures()->get(type);
 
+                std::cout << type << "\n";
+
                 mSprite = std::make_unique<sf::Sprite>();
                 mSprite->setTexture(*tex);
                 mSprite->scale(.1, .1f);

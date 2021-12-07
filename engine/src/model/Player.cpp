@@ -111,6 +111,8 @@ const float Player::getMaxAcceleration() const { return mAcceleration; }
 
 const float Player::getDrag() const { return mDrag; }
 
+void Player::setDrag(float drag) { Player::mDrag = drag; }
+
 bool Player::isMovingUp() const { return mIsMovingUp; }
 
 void Player::setIsMovingUp(bool isMovingUp) { Player::mIsMovingUp = isMovingUp; }
