@@ -7,10 +7,6 @@
 
 #include <memory>
 
-namespace Observer {
-class Subject;
-}
-
 /**
  * @brief Namespace holds Observer pattern
  */
@@ -20,9 +16,6 @@ namespace Observer {
  */
 class Observer
 {
-public:
-        std::shared_ptr<Subject> mSubject;
-
 public:
         /**
          * @brief Default constructor

@@ -49,6 +49,15 @@ void World::update()
                                         i->getEntity()->setRemoveFlag(true);
                                         continue;
                                 }
+                                // TODO - Model::eBonus
+                                if (i->getEntity()->getType() == Model::eSpring) {
+                                        std::cout << "spring\n";
+                                        mPlayer->accept(i->getEntity());
+                                        i->onUpdate(true);
+                                        toRemove.emplace_back(true);
+                                        i->getEntity()->setRemoveFlag(true);
+                                        continue;
+                                }
                         }
                 }
                 i->onUpdate(false);
@@ -246,7 +255,7 @@ void World::generate()
 {
         // TODO magnitude???
         auto newPlatform = mFactory->createStaticPlatform();
-        //        auto newBonus = mFactory->createJetpack();
+        auto newBonus = mFactory->createJetpack();
 
         float jumpPeak = mEntities.back()->getY() + (.21f / 0.006f) * (.21f / 2.f);
 
@@ -260,9 +269,9 @@ void World::generate()
 
         newPlatform.first->setX(randX);
         newPlatform.first->setY(randY);
-        //        newBonus.first->setX(randX - newPlatform.first->getWidth() / 2.f);
-        //        newBonus.first->setY(randY + 0.6f);
+        newBonus.first->setX(randX - newPlatform.first->getWidth() / 2.f);
+        newBonus.first->setY(randY + 0.6f);
 
         addEntity(newPlatform);
-        //        addEntity(newBonus);
+        addEntity(newBonus);
 }
