@@ -15,16 +15,14 @@
 
 #include "SFML/Graphics.hpp"
 
+#include "Event.h"
+
 #include <iostream>
 #include <memory>
 
-namespace Observer {
-class Subject;
-}
-
 namespace View {
 
-class IView : public Observer::Observer
+class IView : public Observer::Observer, public IEventHandler
 {
 protected:
         std::shared_ptr<Model::Entity> mEntity;
@@ -38,11 +36,13 @@ public:
 
         virtual ~IView() = default;
 
-        virtual void onDraw();
-
         void drawCollisionBox();
 
-        virtual void onTrigger();
+        void onTrigger(EventType type, const std::shared_ptr<Event>& event) override;
+
+        void handleEvent(const DrawEvent& event) override;
+
+        void handleEvent(const OutOfViewEvent& event) override;
 };
 } // namespace View
 

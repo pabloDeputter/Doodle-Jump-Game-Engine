@@ -20,8 +20,6 @@ public:
         Model::Type getType() const override;
 
         void move(bool collision) override;
-
-        unsigned int getVal() const override { return 7; }
 };
 } // namespace Model
 

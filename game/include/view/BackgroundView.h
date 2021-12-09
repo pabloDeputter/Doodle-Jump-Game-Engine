@@ -30,6 +30,10 @@ public:
         }
 
         ~BackgroundView() override = default;
+
+        void handleEvent(const DrawEvent& event) override;
+
+        void handleEvent(const OutOfViewEvent& event) override;
 };
 } // namespace View
 

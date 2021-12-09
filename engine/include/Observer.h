@@ -5,6 +5,8 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_OBSERVER_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_OBSERVER_H
 
+#include "Event.h"
+
 #include <memory>
 
 /**
@@ -14,6 +16,7 @@ namespace Observer {
 /**
  * @brief Class for Observer of Observer pattern
  */
+// template<class EventType, class DataType>
 class Observer
 {
 public:
@@ -28,7 +31,7 @@ public:
         /**
          * @brief Perform operation on trigger from Subject
          */
-        virtual void onTrigger() = 0;
+        virtual void onTrigger(EventType type, const std::shared_ptr<Event>& event) = 0;
 };
 } // namespace Observer
 

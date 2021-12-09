@@ -82,7 +82,7 @@ bool Camera::isMaxHeight(float height)
         if (height >= mMaxHeight) {
                 mMaxHeight - mLastMaxHeight;
                 mMaxHeight = height;
-                Observer::Subject::trigger();
+                trigger(EventType::NEW_MAX_HEIGHT, std::make_shared<NewMaxHeightEvent>(mLastMaxHeight, mMaxHeight));
                 return true;
         }
         return false;

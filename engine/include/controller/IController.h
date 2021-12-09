@@ -12,7 +12,7 @@
 
 namespace Controller {
 
-class IController
+class IController : public Observer::Observer, public IEventHandler
 {
 protected:
         std::shared_ptr<Model::Entity> mEntity;
@@ -22,13 +22,17 @@ public:
 
         IController(std::shared_ptr<Model::Entity>& entity) : mEntity(entity) {}
 
-        virtual ~IController() = default;
-
-        virtual void onEvent(const std::string& move, bool isPressed) = 0;
-
-        virtual void onUpdate(bool collision) = 0;
+        virtual ~IController() override = default;
 
         const std::shared_ptr<Model::Entity>& getEntity() const { return mEntity; }
+
+        void onTrigger(EventType type, const std::shared_ptr<Event>& event) override { event->send(*this); }
+
+        void handleEvent(const KeyPressedEvent& event) override {}
+
+        void handleEvent(const MoveEvent& event) override;
+
+        void handleEvent(const CollisionEvent& event) override {}
 };
 } // namespace Controller
 

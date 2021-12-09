@@ -7,92 +7,103 @@
 World::World(std::shared_ptr<Model::AbstractFactory>& factory)
 {
         mFactory = factory;
-        // TODO - EVENTS
-        mScore = std::make_shared<Score>();
 
+        // Initialize Camera settings
         Utils::Camera::getInstance().isMaxHeight(0.f);
         Utils::Camera::getInstance().setWorldDimensions(8.f, 14.4f);
+
+        Utils::Stopwatch::getInstance().mPlayer = mPlayer;
 }
 
 void World::events(const std::string& move, bool isPressed)
 {
-        for (auto& i : mControllers) {
-                i->onEvent(move, isPressed);
+        for (const auto& i : mEntities) {
+                i->trigger(EventType::KEY_PRESSED, std::make_shared<KeyPressedEvent>(move, isPressed));
         }
-        mPlayerController->onEvent(move, isPressed);
+        mPlayer->trigger(EventType::KEY_PRESSED, std::make_shared<KeyPressedEvent>(move, isPressed));
 }
 
 void World::update()
 {
-        bool flagCollision = false;
-        std::vector<bool> toRemove;
-        for (auto& i : mControllers) {
-                if (i->getEntity()->getType() != Model::ePlayer) {
-                        if (std::dynamic_pointer_cast<Model::Player>(mPlayer)->getVelocity().second <= 0 &&
-                            Utils::Collision::checkCollision(mPlayer, i->getEntity()) &&
-                            mPlayer->getY() < i->getEntity()->getY()) {
 
-                                flagCollision = true;
-                                mPlayerController->onUpdate(true);
+        // TODO - cleanup lil bit
+        // TODO - remove entities??
+        // TODO - collision playerController
+        bool collided = false;
+        for (auto& i : mEntities) {
+                if (std::dynamic_pointer_cast<Model::Player>(mPlayer)->getVelocity().second <= 0 &&
+                    Utils::Collision::checkCollision(mPlayer, i) && mPlayer->getY() < i->getY()) {
 
-                                if (i->getEntity()->getType() == Model::eTemporary) {
-                                        i->onUpdate(true);
-                                        toRemove.emplace_back(true);
-                                        continue;
-                                }
-
-                                if (i->getEntity()->getType() == Model::eJetpack) {
-                                        std::cout << "jetpack\n";
-                                        mPlayer->accept(i->getEntity());
-                                        i->onUpdate(true);
-                                        toRemove.emplace_back(false);
-                                        i->getEntity()->setRemoveFlag(true);
-                                        continue;
-                                }
-                                // TODO - Model::eBonus
-                                if (i->getEntity()->getType() == Model::eSpring) {
-                                        std::cout << "spring\n";
-                                        mPlayer->accept(i->getEntity());
-                                        i->onUpdate(true);
-                                        toRemove.emplace_back(true);
-                                        i->getEntity()->setRemoveFlag(true);
-                                        continue;
-                                }
+                        if (!i->isBonus()) {
+                                collided = true;
                         }
-                }
-                i->onUpdate(false);
-                toRemove.emplace_back(false);
-        }
-        // REMOVE FLAG????
 
-        auto itController = std::begin(mControllers);
-        auto itEntity = std::begin(mEntities);
+                        mPlayer->trigger(EventType::COLLISION, std::make_shared<CollisionEvent>(i, mPlayer));
 
-        for (int i = 0; i < toRemove.size(); i++) {
-                if (toRemove[i]) {
-                        itController = mControllers.erase(itController);
-                        itEntity = mEntities.erase(itEntity);
+                        i->trigger(EventType::MOVE, std::make_shared<MoveEvent>(collided));
                         continue;
                 }
-                itController++;
-                itEntity++;
+                i->trigger(EventType::MOVE, std::make_shared<MoveEvent>(false));
         }
 
-        if (flagCollision)
-                return;
-        mPlayerController->onUpdate(false);
+        mPlayer->trigger(EventType::MOVE, std::make_shared<MoveEvent>(collided));
 
-        // AND IS MOVING LEFT...
-        if (mPlayer->getX() < 0.f) {
-                mPlayer->setX(8.f);
-        }
-        if (mPlayer->getX() > 8.f) {
-                mPlayer->setX(0.f);
-        }
+        //
+        //
+        //
+        //
+        //        bool flagCollision = false;
+        //        std::vector<bool> toRemove;
+        //        for (auto& i : mControllers) {
+        //                if (i->getEntity()->getType() != Model::ePlayer) {
+        //                        if (std::dynamic_pointer_cast<Model::Player>(mPlayer)->getVelocity().second <= 0 &&
+        //                            Utils::Collision::checkCollision(mPlayer, i->getEntity()) &&
+        //                            mPlayer->getY() < i->getEntity()->getY()) {
+        //
+        //
+        //
+        //
+        //                                flagCollision = true;
+        //                                mPlayerController->onUpdate(true);
+        //
+        //
+        //                                if (i->getEntity()->getType() == Model::eTemporary) {
+        //                                        i->onUpdate(true);
+        //                                        toRemove.emplace_back(true);
+        //                                        continue;
+        //                                }
+        //
+        //                                if (i->getEntity()->getType() == Model::eJetpack) {
+        //                                        std::cout << "jetpack\n";
+        //                                        mPlayer->accept(i->getEntity());
+        //                                        i->onUpdate(true);
+        //                                        toRemove.emplace_back(false);
+        //                                        i->getEntity()->setRemoveFlag(true);
+        //                                        continue;
+        //                                }
+        //                                // TODO - Model::eBonus
+        //                                if (i->getEntity()->getType() == Model::eSpring) {
+        //                                        std::cout << "spring\n";
+        //                                        mPlayer->accept(i->getEntity());
+        //                                        i->onUpdate(true);
+        //                                        toRemove.emplace_back(true);
+        //                                        i->getEntity()->setRemoveFlag(true);
+        //                                        continue;
+        //                                }
+        //                        }
+        //                }
+        //                i->onUpdate(false);
+        //                toRemove.emplace_back(false);
+        //        }
+        //        // REMOVE FLAG????
+        //        if (flagCollision)
+        //                return;
+        //        mPlayerController->onUpdate(false);
 }
 
 void World::render()
 {
+        removeEntities();
 
         //        //         Kan ook random gedaan worden
         //        static float heightHarndess = 50.f;
@@ -117,7 +128,6 @@ void World::render()
                 //                }
 
                 if (mEntities.size() < maxPlatforms) {
-                        //                        std::cout << "lol\n";
                         // Add new? hier?? - enkel als moving up
                         World::generate();
                 }
@@ -125,93 +135,51 @@ void World::render()
                 cc.move(0.f, Utils::Camera::getInstance().getMaxHeight() - (cc.getWorldDimensions().second / 2.f));
         }
 
-        auto itBackground = mBackground.begin();
-        while (itBackground != mBackground.end()) {
-                if ((*itBackground)->getY() < cc.getY()) {
-                        (*itBackground)->setY((*itBackground)->getY() + cc.getWorldDimensions().second + 2.f);
-                        //                        (*itBackground)->trigger();
-                        //                        itBackground = mBackground.erase(itBackground);
-                        //                        continue;
+        // Render background
+        for (const auto& i : mBackground) {
+                if (i->getY() < Utils::Camera::getInstance().getY()) {
+                        i->trigger(EventType::OUT_OF_VIEW, std::make_shared<OutOfViewEvent>());
                 }
-                (*itBackground)->trigger();
-                itBackground++;
+                i->trigger(EventType::DRAW, std::make_shared<DrawEvent>());
         }
 
-        // TODO - check if in view
+        // Render entities
+        for (const auto& i : mEntities) {
+                i->trigger(EventType::DRAW, std::make_shared<DrawEvent>());
+        }
 
         // TODO - animation
-        mPlayer->trigger();
-
-        std::vector<bool> toRemove;
-        for (auto& i : mEntities) {
-
-                if (i->getY() < cc.getY()) {
-
-                        if (i->getRemovable() && i->getType() == Model::eJetpack) {
-
-                                if (i->isRemovable()) {
-                                        mPlayer->accept(i);
-                                        toRemove.emplace_back(true);
-                                } else
-                                        toRemove.emplace_back(false);
-                        }
-
-                        else
-                                toRemove.emplace_back(true);
-                } else {
-
-                        toRemove.emplace_back(false);
-                }
-
-                // All observers are removed from subject
-                i->trigger();
-        }
-
-        auto itController = std::begin(mControllers);
-        auto itEntity = std::begin(mEntities);
-
-        for (int i = 0; i < toRemove.size(); i++) {
-                if (toRemove[i]) {
-                        itController = mControllers.erase(itController);
-                        itEntity = mEntities.erase(itEntity);
-                        continue;
-                }
-                itController++;
-                itEntity++;
-        }
+        // Render player
+        mPlayer->trigger(EventType::DRAW, std::make_shared<DrawEvent>());
 }
 
-void World::addEntity(
-    const std::pair<std::shared_ptr<Model::Entity>, const std::shared_ptr<Controller::IController>>& entity)
-{
-        mEntities.emplace_back(entity.first);
-        mControllers.emplace_back(entity.second);
-}
+void World::addEntity(const std::shared_ptr<Model::Entity>& entity) { mEntities.emplace_back(entity); }
 
 void World::addBackground(const std::shared_ptr<Model::Entity>& entity) { mBackground.emplace_back(entity); }
 
-void World::addPlayer(
-    const std::pair<std::shared_ptr<Model::Entity>, const std::shared_ptr<Controller::IController>>& entity)
-{
-        mPlayer = entity.first;
-        mPlayerController = entity.second;
-}
+void World::addPlayer(const std::shared_ptr<Model::Player>& player) { mPlayer = player; }
 
 void World::initializeWorld()
 {
         // Create player
         auto player = mFactory->createPlayer();
-        player.first->setX(Utils::Camera::getInstance().getWorldDimensions().first / 2.f);
-        player.first->setY(2.f);
+        player->setX(Utils::Camera::getInstance().getWorldDimensions().first / 2.f);
+        player->setY(2.f);
         addPlayer(player);
 
+        // Create score
+        mScore = std::make_shared<Score>();
+        // Add to subjects
+        Utils::Camera::getInstance().add(mScore);
+        mPlayer->add(mScore);
+
         // Create ground
-        auto ground = mFactory->createStaticPlatform().first;
+        auto ground = mFactory->createStaticPlatform();
         for (int i = 0; i <= (int)Utils::Camera::getInstance().getWorldDimensions().first;
              i += (int)ground->getWidth()) {
                 auto newPlatform = mFactory->createStaticPlatform();
-                newPlatform.first->setX((float)i);
-                newPlatform.first->setY(0.3f);
+                newPlatform->setX((float)i);
+                newPlatform->setY(0.3f);
                 addEntity(newPlatform);
         }
         ground->onDestroy();
@@ -228,8 +196,8 @@ void World::initializeWorld()
                         randY += .50f;
                 }
 
-                newPlatform.first->setX(randX);
-                newPlatform.first->setY(randY);
+                newPlatform->setX(randX);
+                newPlatform->setY(randY);
                 addEntity(newPlatform);
         }
 
@@ -255,7 +223,7 @@ void World::generate()
 {
         // TODO magnitude???
         auto newPlatform = mFactory->createStaticPlatform();
-        auto newBonus = mFactory->createJetpack();
+        //        auto newBonus = mFactory->createJetpack();
 
         float jumpPeak = mEntities.back()->getY() + (.21f / 0.006f) * (.21f / 2.f);
 
@@ -267,11 +235,23 @@ void World::generate()
                 randY += .50f;
         }
 
-        newPlatform.first->setX(randX);
-        newPlatform.first->setY(randY);
-        newBonus.first->setX(randX - newPlatform.first->getWidth() / 2.f);
-        newBonus.first->setY(randY + 0.6f);
+        newPlatform->setX(randX);
+        newPlatform->setY(randY);
+        //        newBonus->setX(randX - newPlatform->getWidth() / 2.f);
+        //        newBonus->setY(randY + 0.6f);
 
         addEntity(newPlatform);
-        addEntity(newBonus);
+        //        addEntity(newBonus);
+}
+
+void World::removeEntities()
+{
+        auto it = std::begin(mEntities);
+        while (it != std::end(mEntities)) {
+                if ((*it)->isRemovable()) {
+                        it = mEntities.erase(it);
+                        continue;
+                }
+                it++;
+        }
 }

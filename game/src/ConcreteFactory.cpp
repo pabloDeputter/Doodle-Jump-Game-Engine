@@ -6,98 +6,91 @@
 
 using namespace View;
 
-std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> ConcreteFactory::createPlayer()
+std::shared_ptr<Model::Player> ConcreteFactory::createPlayer()
 {
-        std::shared_ptr<Model::Entity> player = std::make_shared<Model::Player>();
+        std::shared_ptr<Model::Player> player = std::make_shared<Model::Player>();
         std::shared_ptr<View::IView> playerView = std::make_shared<View::PlayerView>(player, mWindow);
-        std::shared_ptr<Controller::IController> playerController =
+        std::shared_ptr<Controller::PlayerController> playerController =
             std::make_shared<Controller::PlayerController>(player);
+        //        std::shared_ptr<Controller::IController> playerController =
+        //            std::make_shared<Controller::PlayerController>(player);
         // Register playerView as Observer to Subject player
         player->add(playerView);
+        player->add(playerController);
 
-        return {player, playerController};
+        return player;
 }
 
-// std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> ConcreteFactory::createPlatform()
-//{
-//         std::shared_ptr<Model::Entity> platform = std::make_shared<Model::Platform>();
-//         std::shared_ptr<View::IView> platformView = std::make_shared<View::PlatformView>(platform, mWindow);
-//         std::shared_ptr<Controller::IController> platformController =
-//             std::make_shared<Controller::PlatformController>(platform);
-//         // Register platformView as Observer to Subject platform
-//         platform->add(platformView);
-//         // TODO - initBounds()
-//         return {platform, platformController};
-// }
-
-std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
-ConcreteFactory::createStaticPlatform()
+std::shared_ptr<Model::Entity> ConcreteFactory::createStaticPlatform()
 {
         std::shared_ptr<Model::Entity> platform = std::make_shared<Model::StaticPlatform>();
         std::shared_ptr<View::IView> platformView = std::make_shared<View::PlatformView>(platform, mWindow);
         std::shared_ptr<Controller::IController> platformController =
             std::make_shared<Controller::PlatformController>(platform);
         platform->add(platformView);
+        platform->add(platformController);
 
-        return {platform, platformController};
+        return platform;
 }
 
-std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
-ConcreteFactory::createHorizontalPlatform()
+std::shared_ptr<Model::Entity> ConcreteFactory::createHorizontalPlatform()
 {
         std::shared_ptr<Model::Entity> platform = std::make_shared<Model::HorizontalPlatform>();
         std::shared_ptr<View::IView> platformView = std::make_shared<View::PlatformView>(platform, mWindow);
         std::shared_ptr<Controller::IController> platformController =
             std::make_shared<Controller::PlatformController>(platform);
         platform->add(platformView);
+        platform->add(platformController);
 
-        return {platform, platformController};
+        return platform;
 }
 
-std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
-ConcreteFactory::createVerticalPlatform()
+std::shared_ptr<Model::Entity> ConcreteFactory::createVerticalPlatform()
 {
         std::shared_ptr<Model::Entity> platform = std::make_shared<Model::VerticalPlatform>();
         std::shared_ptr<View::IView> platformView = std::make_shared<View::PlatformView>(platform, mWindow);
         std::shared_ptr<Controller::IController> platformController =
             std::make_shared<Controller::PlatformController>(platform);
         platform->add(platformView);
+        platform->add(platformController);
 
-        return {platform, platformController};
+        return platform;
 }
 
-std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
-ConcreteFactory::createTemporaryPlatform()
+std::shared_ptr<Model::Entity> ConcreteFactory::createTemporaryPlatform()
 {
         std::shared_ptr<Model::Entity> platform = std::make_shared<Model::TemporaryPlatform>();
         std::shared_ptr<View::IView> platformView = std::make_shared<View::PlatformView>(platform, mWindow);
         std::shared_ptr<Controller::IController> platformController =
             std::make_shared<Controller::PlatformController>(platform);
         platform->add(platformView);
+        platform->add(platformController);
 
-        return {platform, platformController};
+        return platform;
 }
 
-std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> ConcreteFactory::createSpring()
+std::shared_ptr<Model::Entity> ConcreteFactory::createSpring()
 {
         std::shared_ptr<Model::Entity> spring = std::make_shared<Model::Spring>();
         std::shared_ptr<View::IView> springView = std::make_shared<View::BonusView>(spring, mWindow);
         std::shared_ptr<Controller::IController> springController =
             std::make_shared<Controller::BonusController>(spring);
         spring->add(springView);
+        spring->add(springController);
 
-        return {spring, springController};
+        return spring;
 }
 
-std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> ConcreteFactory::createJetpack()
+std::shared_ptr<Model::Entity> ConcreteFactory::createJetpack()
 {
-        std::shared_ptr<Model::Entity> jetpack = std::make_shared<Model::Jetpack>();
+        std::shared_ptr<Model::Entity> jetpack = std::make_shared<Model::Jetpack>(false);
         std::shared_ptr<View::IView> jetpackView = std::make_shared<View::BonusView>(jetpack, mWindow);
         std::shared_ptr<Controller::IController> jetpackController =
             std::make_shared<Controller::BonusController>(jetpack);
         jetpack->add(jetpackView);
+        jetpack->add(jetpackController);
 
-        return {jetpack, jetpackController};
+        return jetpack;
 }
 
 std::shared_ptr<Model::Entity> ConcreteFactory::createBackground()

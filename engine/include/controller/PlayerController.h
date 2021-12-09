@@ -12,17 +12,19 @@ namespace Controller {
 class PlayerController : public IController
 {
 public:
-        PlayerController(std::shared_ptr<Model::Entity>& entity) : IController(entity) {}
+        explicit PlayerController(std::shared_ptr<Model::Entity>& entity) : IController(entity) {}
+
+        explicit PlayerController(std::shared_ptr<Model::Player>& entity) { mEntity = entity; }
 
         PlayerController() = default;
 
         ~PlayerController() override = default;
 
-        void onEvent(const std::string& move, bool isPressed) override;
+        void handleEvent(const KeyPressedEvent& event) override;
 
-        void handlePlayerInput(const std::string& move, bool keyIsPressed);
+        void handleEvent(const MoveEvent& event) override;
 
-        void onUpdate(bool collision) override;
+        void handleEvent(const CollisionEvent& event) override;
 };
 } // namespace Controller
 

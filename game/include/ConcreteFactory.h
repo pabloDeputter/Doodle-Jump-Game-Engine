@@ -43,26 +43,19 @@ public:
 
         ~ConcreteFactory() override = default;
 
-        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createPlayer() override;
+        std::shared_ptr<Model::Player> createPlayer() override;
 
-        //        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createPlatform()
-        //        override;
+        std::shared_ptr<Model::Entity> createStaticPlatform() override;
 
-        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createStaticPlatform()
-            override;
+        std::shared_ptr<Model::Entity> createHorizontalPlatform() override;
 
-        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createHorizontalPlatform()
-            override;
+        std::shared_ptr<Model::Entity> createVerticalPlatform() override;
 
-        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createVerticalPlatform()
-            override;
+        std::shared_ptr<Model::Entity> createTemporaryPlatform() override;
 
-        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createTemporaryPlatform()
-            override;
+        std::shared_ptr<Model::Entity> createSpring() override;
 
-        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createSpring() override;
-
-        std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createJetpack() override;
+        std::shared_ptr<Model::Entity> createJetpack() override;
 
         std::shared_ptr<Model::Entity> createBackground() override;
 

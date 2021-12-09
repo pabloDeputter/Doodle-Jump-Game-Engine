@@ -17,10 +17,6 @@ public:
         BonusController() = default;
 
         ~BonusController() override = default;
-
-        void onEvent(const std::string& move, bool isPressed) override;
-
-        void onUpdate(bool collision) override;
 };
 } // namespace Controller
 

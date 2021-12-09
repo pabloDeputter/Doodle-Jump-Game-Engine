@@ -11,8 +11,10 @@ Model::Type Model::Jetpack::getType() const { return Model::eJetpack; }
 void Jetpack::move(bool collision)
 {
         // TODO - jetpack
-        if (mRemoveFlag) {
-
+        if (mStarted) {
+                if (Utils::Stopwatch::getInstance().checkTimer(Model::eJetpack)) {
+                        std::cout << "jetpackStopped\n";
+                }
                 return;
         }
 

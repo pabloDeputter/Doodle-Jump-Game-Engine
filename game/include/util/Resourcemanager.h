@@ -7,6 +7,7 @@
 
 #include "SFML/Graphics.hpp"
 #include "model/Entity.h"
+#include "util/Exception.h"
 
 #include <map>
 #include <string>
@@ -26,7 +27,11 @@ public:
         void insert(Model::Type type, const std::string& subPath)
         {
                 std::shared_ptr<sf::Texture> tex = std::make_shared<sf::Texture>();
-                tex->loadFromFile(mPath + subPath);
+
+                if (!tex->loadFromFile(mPath + subPath)) {
+                        throw(FileException(mPath + subPath, "texture"));
+                }
+
                 mResources.emplace(type, tex);
         }
 

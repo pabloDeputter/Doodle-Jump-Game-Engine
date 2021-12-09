@@ -12,8 +12,6 @@ IView::IView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr
         mWindow = window;
 }
 
-void IView::onDraw() { mWindow->draw(*mSprite); }
-
 void IView::drawCollisionBox()
 {
         auto& c = Utils::Camera::getInstance();
@@ -51,51 +49,75 @@ void IView::drawCollisionBox()
         mWindow->draw(box);
 }
 
-void IView::onTrigger()
+void IView::onTrigger(EventType type, const std::shared_ptr<Event>& event)
 {
+        event->send(*this);
+
+        //        std::cout << "Event: " << static_cast<int>(data.getMEvent()) << "\n";
+
         // TODO - delete (weak pointers)
 
-        if (mEntity->getY() < Utils::Camera::getInstance().getY()) {
-
-                //                                if (mEntity->getType() == Model::eBackground) std::cout << "lol\n";
-                mEntity->onDestroy();
-                return;
-        }
-
-        // TODO - Jetpack
-        if (mEntity->getType() == Model::eJetpack && mEntity->getRemovable()) {
-                std::cout << "removeJetpackView\n";
-                mEntity->onDestroy();
-                return;
-        }
-
-        auto& c = Utils::Camera::getInstance();
-        // Draw relatively from camera
-        auto pos = c.transform(mEntity->getX(), mEntity->getY() - c.getY());
-        mSprite->setPosition(sf::Vector2f(pos.first, pos.second));
-
-        // TODO - only if collisionable...
-        if (mEntity->getType() == Model::ePlayer || mEntity->getType() == Model::eStatic ||
-            mEntity->getType() == Model::eHorizontal || mEntity->getType() == Model::eVertical) {
-                auto size = c.transform(mEntity->getWidth(), mEntity->getHeight());
-                float left = Utils::Camera::getInstance().transform(mEntity->getX(), 0.f).first;
-                float top = Utils::Camera::getInstance().transform(0.f, mEntity->getY()).second;
-                float width = size.first;
-                float height = Utils::Camera::getInstance().getWindowDimensions().second - size.second;
-
-                mSprite->setPosition(sf::Vector2f(left - (width / 2.f), pos.second));
-
-                IView::drawCollisionBox();
-        }
-
-        // TODO - check sprite pos bij een large nummber
-        IView::onDraw();
-
-        //        if (mEntity->getType() == Model::ePlayer)
-        //        {
-        //                std::cout << "mCamera: " << c.getY() << "\n";
-        //                std::cout << p.first << " : " << p.second << "\n";
+        //        if (mEntity->getY() < Utils::Camera::getInstance().getY()) {
+        //
+        //                //                                if (mEntity->getType() == Model::eBackground) std::cout <<
+        //                "lol\n"; mEntity->onDestroy(); return;
+        //        }
+        //
+        //        // TODO - Jetpack
+        //        if (mEntity->getType() == Model::eJetpack && mEntity->getRemovable()) {
+        //                std::cout << "removeJetpackView\n";
+        //                mEntity->onDestroy();
+        //                return;
+        //        }
+        //
+        //        auto& c = Utils::Camera::getInstance();
+        //        // Draw relatively from camera
+        //        auto pos = c.transform(mEntity->getX(), mEntity->getY() - c.getY());
+        //        mSprite->setPosition(sf::Vector2f(pos.first, pos.second));
+        //
+        //        // TODO - only if collisionable...
+        //        if (mEntity->getType() == Model::ePlayer || mEntity->getType() == Model::eStatic ||
+        //            mEntity->getType() == Model::eHorizontal || mEntity->getType() == Model::eVertical) {
+        //                auto size = c.transform(mEntity->getWidth(), mEntity->getHeight());
+        //                float left = Utils::Camera::getInstance().transform(mEntity->getX(), 0.f).first;
+        //                float top = Utils::Camera::getInstance().transform(0.f, mEntity->getY()).second;
+        //                float width = size.first;
+        //                float height = Utils::Camera::getInstance().getWindowDimensions().second - size.second;
+        //
+        //                mSprite->setPosition(sf::Vector2f(left - (width / 2.f), pos.second));
+        //
+        //                IView::drawCollisionBox();
         //        }
 
-        //        IView::onDraw();
+        ////         TODO - check sprite pos bij een large nummber
+        ////        IView::onDraw();
+        //
+        //                if (mEntity->getType() == Model::ePlayer)
+        //                {
+        //                        std::cout << "mCamera: " << c.getY() << "\n";
+        //                        std::cout << p.first << " : " << p.second << "\n";
+        //                }
+        //
+        //        mWindow->draw(*mSprite);
+}
+
+void IView::handleEvent(const DrawEvent& event)
+{
+        auto const pos = Utils::Camera::getInstance().transform(mEntity->getX(),
+                                                                mEntity->getY() - Utils::Camera::getInstance().getY());
+
+        auto const size = Utils::Camera::getInstance().transform(mEntity->getWidth(), mEntity->getHeight());
+        const float left = Utils::Camera::getInstance().transform(mEntity->getX(), 0.f).first;
+        const float width = size.first;
+        mSprite->setPosition(sf::Vector2f(left - (width / 2.f), pos.second));
+
+        mWindow->draw(*mSprite);
+}
+
+void IView::handleEvent(const OutOfViewEvent& event)
+{
+        // If entity is out view it can be set to be destroyed
+        mEntity->setRemoveFlag(true);
+        // Clear observers
+        mEntity->onDestroy();
 }

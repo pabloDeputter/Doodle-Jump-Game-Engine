@@ -27,8 +27,6 @@ public:
         void move(bool collision) override;
 
         void initBounds();
-
-        unsigned int getVal() const override { return 5; }
 };
 } // namespace Model
 

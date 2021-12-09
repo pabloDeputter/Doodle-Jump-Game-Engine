@@ -15,10 +15,12 @@ private:
         std::pair<float, float> mBounds;
         bool mMovingDown;
         bool mInit;
+
+public:
         bool mStarted;
 
 public:
-        Jetpack() = default;
+        Jetpack(bool started) : mMovingDown(false), mInit(false), mStarted(started) {}
 
         ~Jetpack() override = default;
 
@@ -31,29 +33,32 @@ public:
         // TODO - jetpack
         void visit(Model::Player& player) override
         {
-                if (isRemovable()) {
+                std::cout << "visit\n";
+                if (mStarted) {
+                        std::cout << "return player state\n";
                         player.setDrag(0.006f);
                         return;
                 }
-                Utils::Stopwatch::getInstance().addTimer(Model::eJetpack, 4.5f);
+                Utils::Stopwatch::getInstance().addTimer(Model::eJetpack, 2.5f);
                 player.setDrag(0.f);
                 mStarted = true;
         }
-
-        bool getRemovable() const override { return mStarted; }
-
+        // TODO - observer pattern mss
+        // event met player dus dan kan die accepten als gedaan is
         bool isRemovable() const override
         {
-                if (mRemoveFlag && Utils::Stopwatch::getInstance().checkTimer(Model::eJetpack)) {
-                        std::cout << "removeJetpackEntity\n";
+                // moet removeflag en gestart zijn en de timer moet afgelopen zijn
+                if (mStarted && mStarted && Utils::Stopwatch::getInstance().checkTimer(Model::eJetpack)) {
+                        std::shared_ptr<Model::Entity> jetpack = std::make_shared<Model::Jetpack>(true);
+
+                        trigger(EventType::STOP_BONUS, std::make_shared<StopBonusEvent>(jetpack));
+                        std::cout << "jetpackStopped\n";
                         return true;
                 }
-                if (mRemoveFlag && !Utils::Stopwatch::getInstance().checkTimer(Model::eJetpack)) {
-                        return false;
-                }
+                return false;
         }
 
-        unsigned int getVal() const override { return 15; }
+        bool isBonus() const override { return true; }
 };
 } // namespace Model
 

@@ -21,14 +21,18 @@ Game::Game(unsigned int width, unsigned int height)
 
 void Game::initializeResources()
 {
-        Utils::Resourcemanager::getInstance().addTexture(Model::ePlayer, "/Image/player.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eBackground, "/Image/background.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eStatic, "/Image/platformStatic.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eHorizontal, "/Image/platformHorizontal.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eVertical, "/Image/platformVertical.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eTemporary, "/Image/platformTemporary.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eSpring, "/Image/spring.png");
-        Utils::Resourcemanager::getInstance().addTexture(Model::eJetpack, "/Image/jetpack.png");
+        try {
+                Utils::Resourcemanager::getInstance().addTexture(Model::ePlayer, "/Image/player.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eBackground, "/Image/background.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eStatic, "/Image/platformStatic.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eHorizontal, "/Image/platformHorizontal.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eVertical, "/Image/platformVertical.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eTemporary, "/Image/platformTemporary.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eSpring, "/Image/spring.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eJetpack, "/Image/jetpack.png");
+        } catch (const std::exception& exc) {
+                std::cerr << exc.what();
+        }
 }
 
 void Game::processEvents()

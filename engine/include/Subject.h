@@ -18,11 +18,10 @@ namespace Observer {
 /**
  * @brief Class for Subject / Observable of observer pattern
  */
+// template<class EventType, class Event>
 class Subject
 {
 private:
-        //        std::vector<std::weak_ptr<Observer>> mObservers; /**< std::vector containing Observers */
-
         std::vector<std::shared_ptr<Observer>> mObservers; /**< std::vector containing Observers */
 public:
         /**
@@ -37,22 +36,25 @@ public:
          * @brief Register Observer to mObservers
          * @param observer Observer to be added
          */
-        void add(const std::shared_ptr<Observer>& observer);
+        void add(const std::shared_ptr<Observer>& observer) { mObservers.emplace_back(observer); }
         /**
          * @brief Remove Observer from mObservers
          * @param observer Observer to be removed
          */
-        void remove(const std::shared_ptr<Observer>& observer);
+        void remove(const std::shared_ptr<Observer>& observer) {}
         /**
          * @brief Clear all Observers from mObservers
          */
-        void clear();
+        void clear() { mObservers.clear(); }
         /**
          * @brief Trigger registered Observers
          */
-        void trigger() const;
-
-        virtual unsigned int getVal() const = 0;
+        void trigger(EventType type, const std::shared_ptr<Event>& event) const
+        {
+                for (const auto& i : mObservers) {
+                        i->onTrigger(type, event);
+                }
+        }
 };
 } // namespace Observer
 

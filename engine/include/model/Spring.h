@@ -37,7 +37,9 @@ public:
                 player.setVelocity({player.getVelocity().first, newSpeed});
         }
 
-        unsigned int getVal() const override { return 10; }
+        bool isBonus() const override { return true; }
+
+        bool isRemovable() const override { return mRemoveFlag; }
 };
 } // namespace Model
 

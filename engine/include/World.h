@@ -13,10 +13,14 @@
 
 #include "AbstractFactory.h"
 
+#include "model/Jetpack.h"
+
 #include "Score.h"
 #include "util/Camera.h"
 #include "util/Collision.h"
 #include "util/Random.h"
+
+#include "Event.h"
 
 #include <iostream>
 #include <memory>
@@ -25,11 +29,9 @@
 class World
 {
 private:
-        std::shared_ptr<Controller::IController> mPlayerController;
-        std::shared_ptr<Model::Entity> mPlayer;
+        std::shared_ptr<Model::Player> mPlayer;
 
         std::vector<std::shared_ptr<Model::Entity>> mEntities;
-        std::vector<std::shared_ptr<Controller::IController>> mControllers;
 
         std::shared_ptr<Model::AbstractFactory> mFactory;
 
@@ -56,17 +58,17 @@ public:
          */
         void render();
 
-        void addEntity(
-            const std::pair<std::shared_ptr<Model::Entity>, const std::shared_ptr<Controller::IController>>& entity);
+        void addEntity(const std::shared_ptr<Model::Entity>& entity);
 
         void addBackground(const std::shared_ptr<Model::Entity>& entity);
 
-        void addPlayer(
-            const std::pair<std::shared_ptr<Model::Entity>, const std::shared_ptr<Controller::IController>>& entity);
+        void addPlayer(const std::shared_ptr<Model::Player>& player);
 
         void initializeWorld();
 
         void generate();
+
+        void removeEntities();
 };
 
 #endif // ADVANCED_PROGRAMMING_DOODLEJUMP_WORLD_H

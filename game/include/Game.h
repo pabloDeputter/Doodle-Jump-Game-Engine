@@ -7,9 +7,6 @@
 
 #include "ConcreteFactory.h"
 
-#include "controller/PlayerController.h"
-#include "view/PlayerView.h"
-
 #include "World.h"
 
 #include "util/Resourcemanager.h"
@@ -17,7 +14,6 @@
 
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
-#include <iostream>
 
 /**
  * @brief Class for Game

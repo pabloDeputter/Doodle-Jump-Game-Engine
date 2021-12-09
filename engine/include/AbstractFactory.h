@@ -9,7 +9,7 @@
 #include "model/Entity.h"
 
 namespace Model {
-// Used by world to create new entities without knowing knowing anything sfml-related (VIEW)
+// Used by world to create new entities without knowing anything sfml-related (VIEW)
 
 // The game class provides pointer to concrete factory to world, so it can create
 // entities that have correct view attached
@@ -20,23 +20,19 @@ public:
 
         virtual ~AbstractFactory() = default;
 
-        virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createPlayer() = 0;
+        virtual std::shared_ptr<Model::Player> createPlayer() = 0;
 
-        virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
-        createStaticPlatform() = 0;
+        virtual std::shared_ptr<Model::Entity> createStaticPlatform() = 0;
 
-        virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
-        createHorizontalPlatform() = 0;
+        virtual std::shared_ptr<Model::Entity> createHorizontalPlatform() = 0;
 
-        virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
-        createVerticalPlatform() = 0;
+        virtual std::shared_ptr<Model::Entity> createVerticalPlatform() = 0;
 
-        virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>>
-        createTemporaryPlatform() = 0;
+        virtual std::shared_ptr<Model::Entity> createTemporaryPlatform() = 0;
 
-        virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createSpring() = 0;
+        virtual std::shared_ptr<Model::Entity> createSpring() = 0;
 
-        virtual std::pair<std::shared_ptr<Model::Entity>, std::shared_ptr<Controller::IController>> createJetpack() = 0;
+        virtual std::shared_ptr<Model::Entity> createJetpack() = 0;
 
         virtual std::shared_ptr<Model::Entity> createBackground() = 0;
 };

@@ -16,7 +16,7 @@ namespace Model {
 /**
  * @brief Class for Player object, derives from Entity
  */
-class Player : public Entity
+class Player : public Entity, public Observer::Observer, public IEventHandler
 {
 private:
         std::pair<float, float> mVelocity;  /**< Current velocity of Player */
@@ -73,9 +73,14 @@ public:
         void setIsMovingRight(bool isMovingRight);
 
         // TODO - visitor pattern
-        void accept(const std::shared_ptr<Visitor::IVisitor>& visitor) override
+        void accept(const std::shared_ptr<Visitor::IVisitor>& visitor) override { visitor->visit(*this); }
+
+        void onTrigger(EventType type, const std::shared_ptr<Event>& event) override { event->send(*this); }
+
+        void handleEvent(const StopBonusEvent& event) override
         {
-                visitor->visit(*this);
+                std::cout << "lol\n";
+                accept(event.getBonus());
         }
 };
 } // namespace Model

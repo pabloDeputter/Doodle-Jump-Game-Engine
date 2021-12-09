@@ -39,6 +39,9 @@ private:
         float mDeltaTime{}; /**< Time between two recorded time points in milliseconds */
         std::map<Type, std::pair<float, std::chrono::high_resolution_clock::time_point>> mTimers;
 
+public:
+        std::shared_ptr<Model::Entity> mPlayer;
+
         /**
          * @brief Private default constructor
          */
@@ -83,7 +86,7 @@ public:
         {
                 std::cout << "addTimer\n";
                 if (mTimers.find(Type(key)) != std::end(mTimers)) {
-                        std::cout << "ERROR\n";
+                        //                        std::cout << "ERROR\n";
                 }
                 mTimers[Type(key)] = {amount, std::chrono::high_resolution_clock::now()};
         }
@@ -96,15 +99,14 @@ public:
         bool checkTimer(unsigned int key)
         {
                 if (mTimers.find(Type(key)) == std::end(mTimers)) {
-                        std::cout << "ERROR\n";
+                        //                        std::cout << "ERROR\n";
                         return false;
                 }
                 auto val = mTimers[Type(key)];
                 std::chrono::duration<float> ms_delta = std::chrono::high_resolution_clock::now() - val.second;
                 std::cout << ms_delta.count() << "\n";
                 if (ms_delta.count() > val.first) {
-                        //                        mTimers.erase(Type(key));
-                        return true;
+                        mTimers.erase(Type(key));
                         return true;
                 }
                 return false;

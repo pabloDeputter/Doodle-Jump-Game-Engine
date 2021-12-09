@@ -7,6 +7,7 @@
 
 #include "Subject.h"
 
+#include <memory>
 #include <utility>
 
 /**
@@ -127,8 +128,6 @@ public:
          * @return bool
          */
         bool isMaxHeight(float height);
-
-        [[nodiscard]] unsigned int getVal() const override { return (unsigned int)mLastMaxHeight; }
 };
 } // namespace Utils
 

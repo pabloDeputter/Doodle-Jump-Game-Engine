@@ -3,3 +3,10 @@
 //
 
 #include "Score.h"
+
+void Score::handleEvent(const NewMaxHeightEvent& event)
+{
+        mScore += (unsigned int)(event.getNewHeight() - event.getLastHeight());
+}
+
+void Score::handleEvent(const CollisionEvent& event) { mScore += event.getEntity()->getScore(); }
