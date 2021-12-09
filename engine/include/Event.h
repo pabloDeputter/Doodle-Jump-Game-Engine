@@ -6,6 +6,7 @@
 #define DOODLEJUMP_EVENT_H
 
 #include <iostream>
+#include <memory>
 #include <utility>
 
 namespace Model {
@@ -53,7 +54,7 @@ public:
         virtual void handleEvent(const StopBonusEvent& event) {}
 };
 
-class Event : public std::enable_shared_from_this<Event>
+class Event
 {
 protected:
         EventType mEvent;
