@@ -33,7 +33,7 @@ void VerticalPlatform::move(bool collision)
 
 void VerticalPlatform::initBounds()
 {
-        const float offset = Utils::Random::getInstance().random(.4f, .9f);
+        const float offset = Utils::Random::getInstance().random(.7f, 1.5f);
         mBounds = {mY - offset, mY + offset};
         mInit = true;
 }

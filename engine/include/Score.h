@@ -14,12 +14,10 @@ namespace Model {
 class Score : public Entity, public Observer::Observer, IEventHandler
 {
 private:
-        unsigned int mScore;
+        std::weak_ptr<Model::Entity> mLastCollision;
 
 public:
         Score() = default;
-
-        Score(float x, float y) : Entity(x, y), mScore(0) {}
 
         ~Score() override = default;
 

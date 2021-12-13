@@ -20,18 +20,18 @@ namespace Utils {
 class Camera : public Observer::Subject
 {
 private:
-        float mWorldLeft;   /**< Leftmost x-coordinate of world */
-        float mWorldRight;  /**< Rightmost x-coordinate of world */
-        float mWorldTop;    /**< Topmost x-coordinate of world */
-        float mWorldBottom; /**< Bottommost x-coordinate of world */
+        float mWorldLeft{};   /**< Leftmost x-coordinate of world */
+        float mWorldRight{};  /**< Rightmost x-coordinate of world */
+        float mWorldTop{};    /**< Topmost x-coordinate of world */
+        float mWorldBottom{}; /**< Bottommost x-coordinate of world */
 
-        float mWindowLeft;   /**< Leftmost x-coordinate of window */
-        float mWindowRight;  /**< Rightmost x-coordinate of window */
-        float mWindowTop;    /**< Topmost y-coordinate of window */
-        float mWindowBottom; /**< Bottommost y-coordinate of window */
+        float mWindowLeft{};   /**< Leftmost x-coordinate of window */
+        float mWindowRight{};  /**< Rightmost x-coordinate of window */
+        float mWindowTop{};    /**< Topmost y-coordinate of window */
+        float mWindowBottom{}; /**< Bottommost y-coordinate of window */
 
-        float mCameraX; /**< X-coordinate of Camera */
-        float mCameraY; /**< Y-coordinate of Camera */
+        float mCameraX{}; /**< X-coordinate of Camera */
+        float mCameraY{}; /**< Y-coordinate of Camera */
 
         float mLastMaxHeight;
         float mMaxHeight; /**< Max height Player has jumped */
@@ -39,7 +39,8 @@ private:
         /**
          * @brief Private default constructor
          */
-        Camera() = default;
+        Camera() : mLastMaxHeight(0.f), mMaxHeight(0.f) {}
+
 public:
         /**
          * @brief Default destructor
@@ -59,6 +60,9 @@ public:
          * @return Camera
          */
         static Camera& getInstance();
+
+        void reset();
+
         /**
          * @brief Get world dimensions
          * @return std::pair<float, float>

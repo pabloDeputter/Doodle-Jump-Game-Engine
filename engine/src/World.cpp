@@ -16,6 +16,7 @@ World::World(std::shared_ptr<Model::AbstractFactory>& factory)
         Utils::Camera::getInstance().isMaxHeight(0.f);
         Utils::Camera::getInstance().setWorldDimensions(8.f, 14.4f);
         Utils::Stopwatch::getInstance().mPlayer = mPlayer;
+        mPlaying = true;
 }
 
 void World::initWorld()
@@ -27,8 +28,9 @@ void World::initWorld()
         mPlayer = player;
 
         // Create score
-        mScore = mFactory->createScore(Utils::Camera::getInstance().getWorldDimensions().first / 2.f,
-                                       Utils::Camera::getInstance().getWorldDimensions().second - 0.2f);
+        mScore = mFactory->createScore();
+        mScore->setX(Utils::Camera::getInstance().getWorldDimensions().first / 2.f);
+        mScore->setY(Utils::Camera::getInstance().getWorldDimensions().second - 0.2f);
         // Add to subjects
         Utils::Camera::getInstance().add(mScore);
         mPlayer->add(mScore);
@@ -123,9 +125,18 @@ void World::update()
                                                   Utils::Camera::getInstance().getMaxHeight() -
                                                       Utils::Camera::getInstance().getWorldDimensions().second / 2.f);
         }
+
         // Remove entities that are out of Camera-view or
         // that are not needed anymore
         removeEntities();
+
+        // Player has died
+        if (mPlayer->getY() < Utils::Camera::getInstance().getY()) {
+                mPlaying = false;
+                //                HighScore::getInstance().add(std::make_shared<HighScoreScore>(mScore->getScore(),
+                //                                                                              "Name"));
+                //                destroy();
+        }
 }
 
 void World::render() const
@@ -303,4 +314,22 @@ void World::removeEntities()
                 }
                 it++;
         }
+}
+
+void World::destroy()
+{
+        std::cout << "worldDestroy\n";
+        if (mPlayer == nullptr) {
+                std::cout << "null\n";
+        }
+        mPlayer->onDestroy();
+        for (const auto& i : mEntities) {
+                i->onDestroy();
+        }
+        mEntities.clear();
+        for (const auto& i : mBackground) {
+                i->onDestroy();
+        }
+        mBackground.clear();
+        mScore->onDestroy();
 }

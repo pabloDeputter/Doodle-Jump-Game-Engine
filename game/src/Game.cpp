@@ -81,6 +81,37 @@ void Game::render()
         mWindow->display();
 }
 
+void Game::drawHighScoreTable()
+{
+        // TODO - doen met view????
+        // todo - event
+
+        static std::unique_ptr<sf::Text> high;
+        if (high == nullptr) {
+                std::cout << "lol\n";
+                high = std::make_unique<sf::Text>();
+                high->setLineSpacing(2.f);
+                high->setFillColor(sf::Color::Black);
+                high->setFont(*Utils::Resourcemanager::getInstance().getFonts()->get(Model::eScore));
+                std::string text = "HIGHSCORES\n\n";
+
+                for (const auto& i : HighScore::getInstance().getScores()) {
+                        if (i != HighScore::getInstance().getScores().back()) {
+                                text.append(i->toString() + "\n");
+                        }
+                }
+                text.append(HighScore::getInstance().getScores().back()->toString());
+                high->setString(text);
+                sf::FloatRect bounds = high->getLocalBounds();
+                high->setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);
+                high->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y - 200);
+        }
+
+        View::IView::setRainbowColor<sf::Text>(high);
+
+        mWindow->draw(*high);
+}
+
 void Game::run()
 {
         mWorld->initWorld();
@@ -91,5 +122,23 @@ void Game::run()
                 processEvents();
                 mWorld->update();
                 render();
+                while (!mWorld->isPlaying()) {
+                        // ADD NEW SCORE
+                        // RESET???
+                        // HIGH-SCORE VIEW
+
+                        mWindow->clear(sf::Color::Black);
+
+                        drawHighScoreTable();
+
+                        mWindow->display();
+                        //                        HighScore::getInstance().add(std::make_shared<HighScoreScore>(mWorld->getScore()->getScore(),
+                        //                                                                                      "Pablo"));
+
+                        //                        mWorld = std::make_unique<World>(mFactory);
+                        //                        mWorld->initWorld();
+                        //                        Utils::Stopwatch::getInstance().start();
+                        //                        Utils::Camera::getInstance().reset();
+                }
         }
 }

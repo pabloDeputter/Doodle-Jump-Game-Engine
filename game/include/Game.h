@@ -23,7 +23,6 @@ class Game
         std::shared_ptr<sf::RenderWindow> mWindow;
         std::unique_ptr<World> mWorld;
         std::shared_ptr<Model::AbstractFactory> mFactory;
-
 public:
         Game() = default;
 
@@ -31,7 +30,7 @@ public:
 
         ~Game() = default;
 
-        static void initializeResources();
+        void initializeResources();
 
         void processEvents();
 
@@ -40,6 +39,8 @@ public:
         void render();
 
         void run();
+
+        void drawHighScoreTable();
 };
 
 #endif // ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H

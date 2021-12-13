@@ -83,10 +83,10 @@ public:
         /**
          * @brief Default constructor
          */
-        Entity() = default;
+        Entity() : mX(0.f), mY(0.f), mWidth(0.f), mHeight(0.f), mRemoveFlag(false), mScore(0), mSpawnRate(0.f) {}
 
-        explicit Entity(float spawnRate)
-            : mX(0.f), mY(0.f), mWidth(0.f), mHeight(0.f), mRemoveFlag(false), mScore(0.f), mSpawnRate(spawnRate)
+        Entity(unsigned int score, float spawnRate)
+            : mX(0.f), mY(0.f), mWidth(0.f), mHeight(0.f), mRemoveFlag(false), mScore(score), mSpawnRate(spawnRate)
         {
         }
 
@@ -94,12 +94,6 @@ public:
          * @brief Default constructor
          */
         virtual ~Entity() = default;
-        /**
-         * @brief Custom constructor
-         * @param x float
-         * @param y float
-         */
-        Entity(float x, float y) : mX(x), mY(y), mRemoveFlag(false) {}
         /**
          * @brief Get the x value of Entity object
          * @return float

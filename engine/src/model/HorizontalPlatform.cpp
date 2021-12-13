@@ -29,7 +29,7 @@ void HorizontalPlatform::move(bool collision)
 
 void HorizontalPlatform::initBounds()
 {
-        const float offset = Utils::Random::getInstance().random(.4f, .9f);
+        const float offset = Utils::Random::getInstance().random(.7f, 1.5f);
         mBounds = {mX - offset, mX + offset};
         mInit = true;
 }

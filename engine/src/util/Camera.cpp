@@ -12,6 +12,14 @@ Camera& Camera::getInstance()
         return camera;
 }
 
+void Camera::reset()
+{
+        mCameraX = 0.f;
+        mCameraY = 0.f;
+        mMaxHeight = 0.f;
+        mLastMaxHeight = 0.f;
+}
+
 std::pair<float, float> Camera::getWorldDimensions() const { return {mWorldRight, mWorldTop}; }
 
 void Camera::setWorldDimensions(float right, float top, float left, float bottom)
@@ -80,8 +88,8 @@ bool Camera::isMaxHeight(float height)
 {
         if (height < mWorldTop / 2.f)
                 return false;
-        if (height >= mMaxHeight) {
-                mMaxHeight - mLastMaxHeight;
+        if (height > mMaxHeight) {
+                mLastMaxHeight = mMaxHeight;
                 mMaxHeight = height;
                 trigger(EventType::NEW_MAX_HEIGHT, std::make_shared<NewMaxHeightEvent>(mLastMaxHeight, mMaxHeight));
                 return true;

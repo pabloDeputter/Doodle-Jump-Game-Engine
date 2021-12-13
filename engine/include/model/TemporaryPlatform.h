@@ -13,7 +13,7 @@ class TemporaryPlatform : public Entity
 {
 
 public:
-        TemporaryPlatform() : Entity(0.10f) {}
+        TemporaryPlatform() : Entity(10, 0.10f) {}
 
         ~TemporaryPlatform() override = default;
 

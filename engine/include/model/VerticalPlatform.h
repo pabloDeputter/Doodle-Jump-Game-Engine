@@ -18,7 +18,7 @@ private:
         bool mInit;
 
 public:
-        VerticalPlatform() : Entity(.10f), mBounds({0.f, 0.f}), mMovingDown(true), mInit(false) {}
+        VerticalPlatform() : Entity(7, .10f), mBounds({0.f, 0.f}), mMovingDown(true), mInit(false) {}
 
         ~VerticalPlatform() override = default;
 

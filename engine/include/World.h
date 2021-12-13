@@ -15,6 +15,8 @@
 
 #include "model/Jetpack.h"
 
+#include "HighScore.h"
+
 #include "Score.h"
 #include "util/Camera.h"
 #include "util/Random.h"
@@ -42,10 +44,12 @@ private:
         unsigned int mActivePlatforms;                           /**< Holds the active amount of platforms */
         Settings::Difficulty mDifficulty;
 
+        bool mPlaying;
+
 public:
         explicit World(std::shared_ptr<Model::AbstractFactory>& factory);
 
-        ~World() = default;
+        ~World() { destroy(); }
         /**
          * @brief Initialize starting-world
          */
@@ -97,6 +101,12 @@ public:
          * @brief Remove unused Entities or those that are out of view
          */
         void removeEntities();
+
+        void destroy();
+
+        [[nodiscard]] const std::shared_ptr<Model::Score>& getScore() const { return mScore; }
+
+        [[nodiscard]] bool isPlaying() const { return mPlaying; }
 };
 
 #endif // ADVANCED_PROGRAMMING_DOODLEJUMP_WORLD_H

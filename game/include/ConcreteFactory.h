@@ -60,7 +60,7 @@ public:
 
         std::shared_ptr<Model::Entity> createBackground() override;
 
-        std::shared_ptr<Model::Score> createScore(float x, float y) override;
+        std::shared_ptr<Model::Score> createScore() override;
 
 private:
         std::shared_ptr<sf::RenderWindow> mWindow;

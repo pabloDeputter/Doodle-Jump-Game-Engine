@@ -12,9 +12,6 @@ std::shared_ptr<Model::Player> ConcreteFactory::createPlayer()
         std::shared_ptr<View::IView> playerView = std::make_shared<View::PlayerView>(player, mWindow);
         std::shared_ptr<Controller::PlayerController> playerController =
             std::make_shared<Controller::PlayerController>(player);
-        //        std::shared_ptr<Controller::IController> playerController =
-        //            std::make_shared<Controller::PlayerController>(player);
-        // Register playerView as Observer to Subject player
         player->add(playerView);
         player->add(playerController);
 
@@ -99,15 +96,12 @@ std::shared_ptr<Model::Entity> ConcreteFactory::createBackground()
         std::shared_ptr<View::IView> backgroundView = std::make_shared<View::BackgroundView>(background, mWindow);
         background->add(backgroundView);
 
-        background->setX(1.f);
-        background->setY(0.f);
-
         return background;
 }
 
-std::shared_ptr<Model::Score> ConcreteFactory::createScore(float x, float y)
+std::shared_ptr<Model::Score> ConcreteFactory::createScore()
 {
-        std::shared_ptr<Model::Score> score = std::make_shared<Model::Score>(x, y);
+        std::shared_ptr<Model::Score> score = std::make_shared<Model::Score>();
         std::shared_ptr<View::IView> scoreView = std::make_shared<View::ScoreView>(score, mWindow);
         score->add(scoreView);
 

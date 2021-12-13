@@ -37,7 +37,7 @@ public:
 
         virtual std::shared_ptr<Model::Entity> createBackground() = 0;
 
-        virtual std::shared_ptr<Model::Score> createScore(float x, float y) = 0;
+        virtual std::shared_ptr<Model::Score> createScore() = 0;
 };
 } // namespace Model
 
