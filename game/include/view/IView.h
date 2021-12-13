@@ -22,12 +22,13 @@
 
 namespace View {
 
-class IView : public Observer::Observer, public IEventHandler
+class IView : public Observer::Observer, public IEventHandler, public std::enable_shared_from_this<Observer::Observer>
 {
 protected:
         std::shared_ptr<Model::Entity> mEntity;
         std::unique_ptr<sf::Sprite> mSprite;
         std::shared_ptr<sf::RenderWindow> mWindow;
+        std::unique_ptr<sf::Sound> mSound;
 
 public:
         IView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<sf::RenderWindow>& window);
@@ -43,6 +44,10 @@ public:
         void handleEvent(const DrawEvent& event) override;
 
         void handleEvent(const OutOfViewEvent& event) override;
+
+        virtual void handleEvent(const CollisionEvent& event) override {}
+
+        void handleEvent(const NewDifficultyEvent& event) override {}
 };
 } // namespace View
 

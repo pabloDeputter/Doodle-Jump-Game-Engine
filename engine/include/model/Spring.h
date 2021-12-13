@@ -18,7 +18,7 @@ private:
         bool mInit;
 
 public:
-        Spring() = default;
+        Spring() : Entity(.75f){};
 
         ~Spring() override = default;
 

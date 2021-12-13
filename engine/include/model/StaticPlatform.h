@@ -13,7 +13,7 @@ class StaticPlatform : public Entity
 {
 
 public:
-        StaticPlatform() = default;
+        StaticPlatform() : Entity(.70f) {}
 
         ~StaticPlatform() override = default;
 

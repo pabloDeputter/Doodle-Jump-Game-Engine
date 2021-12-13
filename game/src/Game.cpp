@@ -6,10 +6,10 @@
 
 Game::Game(unsigned int width, unsigned int height)
 {
-        mWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), "Doodle Jump");
+        mWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), "Doodle Jump", sf::Style::Close);
         mFactory = std::make_shared<View::ConcreteFactory>(mWindow);
         mWorld = std::make_unique<World>(mFactory);
-        mWindow->setFramerateLimit(60);
+        //        mWindow->setFramerateLimit(60);
         mWindow->setVerticalSyncEnabled(true);
 
         // Set window dimensions
@@ -22,14 +22,22 @@ Game::Game(unsigned int width, unsigned int height)
 void Game::initializeResources()
 {
         try {
-                Utils::Resourcemanager::getInstance().addTexture(Model::ePlayer, "/Image/player.png");
-                Utils::Resourcemanager::getInstance().addTexture(Model::eBackground, "/Image/background.png");
-                Utils::Resourcemanager::getInstance().addTexture(Model::eStatic, "/Image/platformStatic.png");
-                Utils::Resourcemanager::getInstance().addTexture(Model::eHorizontal, "/Image/platformHorizontal.png");
-                Utils::Resourcemanager::getInstance().addTexture(Model::eVertical, "/Image/platformVertical.png");
-                Utils::Resourcemanager::getInstance().addTexture(Model::eTemporary, "/Image/platformTemporary.png");
-                Utils::Resourcemanager::getInstance().addTexture(Model::eSpring, "/Image/spring.png");
-                Utils::Resourcemanager::getInstance().addTexture(Model::eJetpack, "/Image/jetpack.png");
+                // Textures
+                Utils::Resourcemanager::getInstance().addTexture(Model::ePlayer, "/image/player.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eBackground, "/image/background.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eStatic, "/image/platformStatic.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eHorizontal, "/image/platformHorizontal.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eVertical, "/image/platformVertical.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eTemporary, "/image/platformTemporary.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eSpring, "/image/spring.png");
+                Utils::Resourcemanager::getInstance().addTexture(Model::eJetpack, "/image/jetpack.png");
+
+                // Fonts
+                Utils::Resourcemanager::getInstance().addFont(Model::eScore, "/font/score.ttf");
+
+                // Sounds
+                Utils::Resourcemanager::getInstance().addSound(Model::eStatic, "/audio/cartoon-jump-6462.wav");
+
         } catch (const std::exception& exc) {
                 std::cerr << exc.what();
         }
@@ -45,11 +53,6 @@ void Game::processEvents()
                         break;
                 case sf::Event::KeyReleased:
                         Game::handlePlayerInput(event.key.code, false);
-                        break;
-                // TODO - remove?
-                case sf::Event::Resized:
-                        Utils::Camera::getInstance().setWindowDimensions((float)mWindow->getSize().x,
-                                                                         (float)mWindow->getSize().y);
                         break;
                 case sf::Event::Closed:
                         mWindow->close();
@@ -80,8 +83,7 @@ void Game::render()
 
 void Game::run()
 {
-        mWorld->initializeWorld();
-
+        mWorld->initWorld();
         Utils::Stopwatch::getInstance().start();
 
         while (mWindow->isOpen()) {

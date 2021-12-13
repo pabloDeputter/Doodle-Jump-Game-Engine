@@ -2,10 +2,11 @@
 // Created by Pablo Deputter on 21/11/2021.
 //
 
-#include "util/Collision.h"
+#include "util/Utilities.h"
 
 using namespace Utils;
-bool Collision::checkCollision(const std::shared_ptr<Model::Entity>& l, const std::shared_ptr<Model::Entity>& r)
+
+bool Utilities::checkCollision(const std::shared_ptr<Model::Entity>& l, const std::shared_ptr<Model::Entity>& r)
 {
         // We use basic rectangles to check collisions between entities and create these so that the position of
         // the model is the center of the collision rectangle.
@@ -18,5 +19,14 @@ bool Collision::checkCollision(const std::shared_ptr<Model::Entity>& l, const st
         {
                 return true;
         }
+        return false;
+}
+
+bool Utilities::checkWeight(float& rand, float weight)
+{
+        if (rand <= weight) {
+                return true;
+        }
+        rand -= weight;
         return false;
 }

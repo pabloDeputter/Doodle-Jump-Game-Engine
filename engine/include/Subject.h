@@ -37,11 +37,8 @@ public:
          * @param observer Observer to be added
          */
         void add(const std::shared_ptr<Observer>& observer) { mObservers.emplace_back(observer); }
-        /**
-         * @brief Remove Observer from mObservers
-         * @param observer Observer to be removed
-         */
-        void remove(const std::shared_ptr<Observer>& observer) {}
+
+        [[nodiscard]] const std::vector<std::shared_ptr<Observer>>& getObservers() const { return mObservers; }
         /**
          * @brief Clear all Observers from mObservers
          */

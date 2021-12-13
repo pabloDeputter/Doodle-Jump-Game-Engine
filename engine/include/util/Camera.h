@@ -40,7 +40,6 @@ private:
          * @brief Private default constructor
          */
         Camera() = default;
-
 public:
         /**
          * @brief Default destructor
@@ -72,7 +71,7 @@ public:
          * @param left float
          * @param bottom float
          */
-        void setWorldDimensions(float right, float top, float left = 0, float bottom = 0);
+        void setWorldDimensions(float right, float top, float left = 0.f, float bottom = 0.f);
         /**
          * @brief Get window dimensions
          * @return
@@ -85,15 +84,14 @@ public:
          * @param left float
          * @param top float
          */
-        void setWindowDimensions(float right, float bottom, float left = 0, float top = 0);
-
+        void setWindowDimensions(float right, float bottom, float left = 0.f, float top = 0.f);
         /**
          * @brief Transforms world coordinates to viewport / window coordinates
          * @param x float
          * @param y float
          * @return std::pair<float, float>
          */
-        [[nodiscard]] std::pair<float, float> transform(float x, float y) const;
+        [[nodiscard]] std::pair<float, float> transform(float x, float y, float left = 0.f, float top = 0.f) const;
         /**
          * @brief Transforms viewport / window coordinates to world coordinates
          * @param x float
@@ -111,17 +109,21 @@ public:
          * @brief Get x coordinate of Camera
          * @return float
          */
-        [[nodiscard]] float getX() const;
+        [[nodiscard]] float getX() const { return mCameraX; }
         /**
          * @brief Get y coordinate of Camera
          * @return float
          */
-        [[nodiscard]] float getY() const;
+        [[nodiscard]] float getY() const { return mCameraY; }
         /**
          * @brief Get maximum height of Camera
          * @return float
          */
-        [[nodiscard]] float getMaxHeight() const;
+        [[nodiscard]] float getMaxHeight() const { return mMaxHeight; }
+        /**
+         * @brief Get last maximum height of Camera
+         */
+        [[nodiscard]] float getLastMaxHeight() const { return mLastMaxHeight; }
         /**
          * @brief Check if given height is greater or equal to current maximum height
          * @param height float

@@ -31,7 +31,8 @@ enum Type
         eTemporary = 5,
         eBackground = 6,
         eJetpack = 7,
-        eSpring = 8
+        eSpring = 8,
+        eScore = 9
 };
 
 class CollisionBox
@@ -69,18 +70,26 @@ class Entity : public Observer::Subject, public Visitor::IVisitor
 protected:
         float mX; /**< X-coordinate of Entity */
         float mY; /**< Y-coordinate of Entity */
-        CollisionBox mBox;
         //
         //
         float mWidth{};  /**< Width of Entity collision box */
         float mHeight{}; /**< Height of Entity collision box */
         bool mRemoveFlag;
+        unsigned int mScore;
+
+        float mSpawnRate;
 
 public:
         /**
          * @brief Default constructor
          */
         Entity() = default;
+
+        explicit Entity(float spawnRate)
+            : mX(0.f), mY(0.f), mWidth(0.f), mHeight(0.f), mRemoveFlag(false), mScore(0.f), mSpawnRate(spawnRate)
+        {
+        }
+
         /**
          * @brief Default constructor
          */
@@ -111,16 +120,7 @@ public:
          * @param y float
          */
         void setY(float y);
-        /**
-         * @brief Get width of Entity object
-         * @return float
-         */
-        void setCollisionBox(float width, float height)
-        {
-                mBox = CollisionBox(mX - (width / 2.f), width, mY - (height / 2.f), height);
-        }
 
-        const CollisionBox& getCollisionBox() const { return std::ref(mBox); }
 
         float getWidth() const;
         /**
@@ -175,7 +175,13 @@ public:
 
         virtual bool isBonus() const { return false; }
 
-        virtual unsigned int getScore() const {}
+        void setScore(unsigned int score) { mScore = score; }
+
+        virtual unsigned int getScore() const { return mScore; }
+
+        virtual float getSpawnRate() const { return mSpawnRate; }
+
+        void setSpawnRate(float spawnRate) { mSpawnRate = spawnRate; }
 };
 } // namespace Model
 

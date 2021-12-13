@@ -6,7 +6,9 @@ SET(SRC
         src/ConcreteFactory.cpp
         src/Game.cpp
         src/util/Resourcemanager.cpp
-        src/view/BonusView.cpp include/view/BonusView.h)
+        src/view/BonusView.cpp
+        src/view/ScoreView.cpp
+        )
 
 ADD_LIBRARY(game SHARED ${SRC})
 

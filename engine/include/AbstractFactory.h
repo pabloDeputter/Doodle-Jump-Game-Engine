@@ -5,6 +5,7 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_ABSTRACTFACTORY_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_ABSTRACTFACTORY_H
 
+#include "Score.h"
 #include "controller/IController.h"
 #include "model/Entity.h"
 
@@ -35,6 +36,8 @@ public:
         virtual std::shared_ptr<Model::Entity> createJetpack() = 0;
 
         virtual std::shared_ptr<Model::Entity> createBackground() = 0;
+
+        virtual std::shared_ptr<Model::Score> createScore(float x, float y) = 0;
 };
 } // namespace Model
 

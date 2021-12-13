@@ -22,17 +22,15 @@ private:
         std::pair<float, float> mVelocity;  /**< Current velocity of Player */
         std::pair<float, float> mDirection; /**< Current direction of Player */
 
-        const float mMaxVelocity = 0.25f;   /**< Max velocity Player can achieve */
+        const float mMaxVelocity = 0.20f;   /**< Max velocity Player can achieve */
         const float mAcceleration = 0.015f; /**< Acceleration of Player */
-        float mDrag = 0.006f;               /**< Resistance applied to Player */
+        float mDrag = 0.005f;               /**< Resistance applied to Player */
 
-        bool mIsMovingUp;    /**< Player is moving up */
-        bool mIsMovingDown;  /**< Player is moving down */
         bool mIsMovingLeft;  /**< Player is moving left */
         bool mIsMovingRight; /**< Player is moving right */
 
 public:
-        Player() = default;
+        Player() : mVelocity({0.f, 0.f}), mDirection({0.f, 0.f}), mIsMovingLeft(false), mIsMovingRight(false) {}
 
         ~Player() override = default;
 

@@ -3,7 +3,7 @@ SET(SRC
         src/model/Player.cpp
         src/model/Bonus.cpp
         src/model/Background.cpp
-        src/util/Collision.cpp
+        src/util/Utilities.cpp
         src/util/Random.cpp
         src/util/Stopwatch.cpp
         src/util/Camera.cpp
@@ -19,7 +19,7 @@ SET(SRC
         src/model/VerticalPlatform.cpp
         src/model/TemporaryPlatform.cpp
         src/model/Platform.cpp
-        src/model/Jetpack.cpp include/model/Jetpack.h src/model/Spring.cpp include/model/Spring.h src/controller/BonusController.cpp include/controller/BonusController.h src/IVisitor.cpp include/IVisitor.h src/Score.cpp include/Score.h include/Event.h src/util/Exception.cpp include/util/Exception.h)
+        src/model/Jetpack.cpp include/model/Jetpack.h src/model/Spring.cpp include/model/Spring.h src/controller/BonusController.cpp include/controller/BonusController.h src/IVisitor.cpp include/IVisitor.h src/Score.cpp include/Score.h include/Event.h src/util/Exception.cpp include/util/Exception.h include/Settings.h)
 
 ADD_LIBRARY(engine SHARED ${SRC})
 

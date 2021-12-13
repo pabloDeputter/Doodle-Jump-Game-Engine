@@ -52,6 +52,6 @@ void PlayerController::handleEvent(const CollisionEvent& event)
                 return;
         }
         if (event.getEntity()->getType() == Model::eTemporary) {
-                mEntity->setRemoveFlag(true);
+                event.getEntity()->setRemoveFlag(true);
         }
 }

@@ -32,15 +32,22 @@ void Camera::setWindowDimensions(float right, float bottom, float left, float to
         mWindowBottom = bottom;
 }
 
-std::pair<float, float> Camera::transform(float x, float y) const
+std::pair<float, float> Camera::transform(float x, float y, float left, float top) const
 {
+        if (left != 0.f && top != 0.f) {
+
+        } else {
+                left = mWindowLeft;
+                top = mWindowTop;
+        }
+
         // Transform x coordinate
-        float windowX = ((mWindowRight - mWindowLeft) / (mWorldRight - mWorldLeft)) * x -
-                        ((mWindowRight - mWindowLeft) / (mWorldRight - mWorldLeft) * mWorldLeft - mWindowLeft);
+        float windowX = ((mWindowRight - left) / (mWorldRight - mWorldLeft)) * x -
+                        ((mWindowRight - left) / (mWorldRight - mWorldLeft) * mWorldLeft - left);
 
         // Transform y coordinate
-        float windowY = ((mWindowBottom - mWindowTop) / (mWorldBottom - mWorldTop)) * y -
-                        ((mWindowBottom - mWindowTop) / (mWorldBottom - mWorldTop) * mWorldTop - mWindowTop);
+        float windowY = ((mWindowBottom - top) / (mWorldBottom - mWorldTop)) * y -
+                        ((mWindowBottom - top) / (mWorldBottom - mWorldTop) * mWorldTop - top);
 
         return {windowX, windowY};
 }
@@ -68,12 +75,6 @@ void Camera::move(float x, float y)
         }
         mCameraY = y;
 }
-
-float Camera::getX() const { return mCameraX; }
-
-float Camera::getY() const { return mCameraY; }
-
-float Camera::getMaxHeight() const { return mMaxHeight; }
 
 bool Camera::isMaxHeight(float height)
 {

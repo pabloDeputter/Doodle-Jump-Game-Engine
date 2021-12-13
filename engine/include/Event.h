@@ -5,8 +5,11 @@
 #ifndef DOODLEJUMP_EVENT_H
 #define DOODLEJUMP_EVENT_H
 
+#include "Settings.h"
+
 #include <iostream>
 #include <memory>
+#include <string>
 #include <utility>
 
 namespace Model {
@@ -22,7 +25,8 @@ enum class EventType
         COLLISION,
         KEY_PRESSED,
         MOVE,
-        STOP_BONUS
+        STOP_BONUS,
+        NEW_DIFFICULTY
 };
 
 class Event;
@@ -33,6 +37,7 @@ class CollisionEvent;
 class KeyPressedEvent;
 class MoveEvent;
 class StopBonusEvent;
+class NewDifficultyEvent;
 
 class IEventHandler
 {
@@ -52,6 +57,8 @@ public:
         virtual void handleEvent(const MoveEvent& event) {}
 
         virtual void handleEvent(const StopBonusEvent& event) {}
+
+        virtual void handleEvent(const NewDifficultyEvent& event) {}
 };
 
 class Event
@@ -178,6 +185,21 @@ public:
         void send(IEventHandler& handler) const override { handler.handleEvent(*this); }
 
         const std::shared_ptr<Model::Entity>& getBonus() const { return mBonus; }
+};
+
+class NewDifficultyEvent : public Event
+{
+private:
+        Settings::Difficulty mDifficulty;
+
+public:
+        explicit NewDifficultyEvent(Settings::Difficulty difficulty) : Event(), mDifficulty(difficulty) {}
+
+        ~NewDifficultyEvent() override = default;
+
+        void send(IEventHandler& handler) const override { handler.handleEvent(*this); }
+
+        [[nodiscard]] Settings::Difficulty getDifficulty() const { return mDifficulty; }
 };
 
 #endif // DOODLEJUMP_EVENT_H

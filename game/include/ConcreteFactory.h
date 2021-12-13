@@ -26,6 +26,7 @@
 #include "view/IView.h"
 #include "view/PlatformView.h"
 #include "view/PlayerView.h"
+#include "view/ScoreView.h"
 
 #include "Score.h"
 
@@ -58,6 +59,8 @@ public:
         std::shared_ptr<Model::Entity> createJetpack() override;
 
         std::shared_ptr<Model::Entity> createBackground() override;
+
+        std::shared_ptr<Model::Score> createScore(float x, float y) override;
 
 private:
         std::shared_ptr<sf::RenderWindow> mWindow;

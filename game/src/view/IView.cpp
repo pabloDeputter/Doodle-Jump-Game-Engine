@@ -10,6 +10,8 @@ IView::IView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr
 {
         mEntity = entity;
         mWindow = window;
+        mSprite = std::make_unique<sf::Sprite>();
+        mSound = std::make_unique<sf::Sound>();
 }
 
 void IView::drawCollisionBox()

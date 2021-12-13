@@ -18,7 +18,7 @@ private:
         bool mInit;
 
 public:
-        HorizontalPlatform() : mBounds({0.f, 0.f}), mMovingForward(false), mInit(false) {}
+        HorizontalPlatform() : Entity(.10f), mBounds({0.f, 0.f}), mMovingForward(false), mInit(false) {}
 
         ~HorizontalPlatform() override = default;
 

@@ -9,17 +9,21 @@
 #include "model/Entity.h"
 #include <Subject.h>
 
-class Score : public Observer::Observer, public IEventHandler
+namespace Model {
+
+class Score : public Entity, public Observer::Observer, IEventHandler
 {
 private:
         unsigned int mScore;
 
 public:
-        Score() : mScore(0) {}
+        Score() = default;
+
+        Score(float x, float y) : Entity(x, y), mScore(0) {}
 
         ~Score() override = default;
 
-        [[nodiscard]] unsigned int getScore() const { return mScore; }
+        [[nodiscard]] Model::Type getType() const override { return Model::eScore; }
 
         void setScore(unsigned int score) { Score::mScore += score; }
 
@@ -28,6 +32,11 @@ public:
         void handleEvent(const NewMaxHeightEvent& event) override;
 
         void handleEvent(const CollisionEvent& event) override;
+
+        void move(bool collision) override {}
+
+        unsigned int getScore() const override { return mScore; }
 };
+} // namespace Model
 
 #endif // DOODLEJUMP_SCORE_H

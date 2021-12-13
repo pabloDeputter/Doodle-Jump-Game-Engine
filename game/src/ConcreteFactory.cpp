@@ -104,3 +104,12 @@ std::shared_ptr<Model::Entity> ConcreteFactory::createBackground()
 
         return background;
 }
+
+std::shared_ptr<Model::Score> ConcreteFactory::createScore(float x, float y)
+{
+        std::shared_ptr<Model::Score> score = std::make_shared<Model::Score>(x, y);
+        std::shared_ptr<View::IView> scoreView = std::make_shared<View::ScoreView>(score, mWindow);
+        score->add(scoreView);
+
+        return score;
+}

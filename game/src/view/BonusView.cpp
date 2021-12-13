@@ -3,3 +3,5 @@
 //
 
 #include "view/BonusView.h"
+
+using namespace View;

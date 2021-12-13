@@ -7,16 +7,16 @@
 
 #include "model/Entity.h"
 
-#include "util/Camera.h"
+#include <cmath>
 
 /**
  * @brief Namespace holds all Utilities
  */
 namespace Utils {
 /**
- * @brief Class for Collisions
+ * @brief Class for Utilities
  */
-class Collision
+class Utilities
 {
 public:
         /**
@@ -26,6 +26,13 @@ public:
          * @return bool
          */
         static bool checkCollision(const std::shared_ptr<Model::Entity>& l, const std::shared_ptr<Model::Entity>& r);
+        /**
+         * @brief Check random spawn rate of total chance
+         * @param rand float - random spawn rate
+         * @param weight float - total chance
+         * @return true if rand <= weight
+         */
+        static bool checkWeight(float& rand, float weight);
 };
 } // namespace Utils
 

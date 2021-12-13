@@ -107,9 +107,9 @@ public:
                 std::cout << ms_delta.count() << "\n";
                 if (ms_delta.count() > val.first) {
                         mTimers.erase(Type(key));
-                        return true;
+                        return false;
                 }
-                return false;
+                return true;
         }
 };
 } // namespace Utils

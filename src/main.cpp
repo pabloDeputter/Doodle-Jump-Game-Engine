@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <cmath>
 #include <thread>
 //#include "model/Player.h"
 //#include "model/Spring.h"

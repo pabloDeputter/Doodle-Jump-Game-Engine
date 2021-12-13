@@ -4,6 +4,8 @@
 
 #include "Score.h"
 
+using namespace Model;
+
 void Score::handleEvent(const NewMaxHeightEvent& event)
 {
         mScore += (unsigned int)(event.getNewHeight() - event.getLastHeight());

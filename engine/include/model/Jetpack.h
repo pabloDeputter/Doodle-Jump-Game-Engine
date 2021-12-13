@@ -20,7 +20,7 @@ public:
         bool mStarted;
 
 public:
-        Jetpack(bool started) : mMovingDown(false), mInit(false), mStarted(started) {}
+        Jetpack(bool started) : Entity(.25f), mMovingDown(false), mInit(false), mStarted(started) {}
 
         ~Jetpack() override = default;
 
