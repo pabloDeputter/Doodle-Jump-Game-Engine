@@ -34,7 +34,7 @@ public:
 
                 mDiffText = std::make_unique<sf::Text>();
                 mDiffText->setFont(*font);
-                mDiffText->setFillColor(sf::Color::Red);
+                mDiffText->setFillColor(sf::Color::Black);
         }
 
         ~ScoreView() override = default;

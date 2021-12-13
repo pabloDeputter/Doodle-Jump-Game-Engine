@@ -51,7 +51,6 @@ bool static setDifficulty(Difficulty difficulty)
 {
         switch (difficulty) {
         case eEasy:
-                //                std::cout << "Easy\n";
                 CHANCE_STATIC = .9f;
                 CHANCE_HORIZONTAL = .04f;
                 CHANCE_VERTICAL = .04f;
@@ -65,7 +64,6 @@ bool static setDifficulty(Difficulty difficulty)
                 DIFFICULTY = 0.f;
                 break;
         case eNormal:
-                //                std::cout << "Normal\n";
                 CHANCE_STATIC = .8f;
                 CHANCE_HORIZONTAL = .07f;
                 CHANCE_VERTICAL = .07f;
@@ -79,7 +77,6 @@ bool static setDifficulty(Difficulty difficulty)
                 DIFFICULTY = 0.25f;
                 break;
         case eDifficult:
-                //                std::cout << "Difficult\n";
                 CHANCE_STATIC = .6f;
                 CHANCE_HORIZONTAL = .15f;
                 CHANCE_VERTICAL = .15f;
@@ -93,7 +90,6 @@ bool static setDifficulty(Difficulty difficulty)
                 DIFFICULTY = 0.5f;
                 break;
         case eHard:
-                //                std::cout << "Hard\n";
                 CHANCE_STATIC = .4f;
                 CHANCE_HORIZONTAL = .22f;
                 CHANCE_VERTICAL = .22f;
@@ -107,7 +103,6 @@ bool static setDifficulty(Difficulty difficulty)
                 DIFFICULTY = 0.75f;
                 break;
         case eExtreme:
-                //                std::cout << "Extreme\n";
                 CHANCE_STATIC = .2f;
                 CHANCE_HORIZONTAL = .3f;
                 CHANCE_VERTICAL = .3f;
