@@ -6,8 +6,8 @@ OPTION(BUILD_DOC "Build Documentation" ON)
 find_package(Doxygen)
 if (DOXYGEN_FOUND)
     # Set input and output files
-    set(DOXYYGEN_IN ${PROJECT_SOURCE_DIR}/doc/Doxyfile.in)
-    set(DOXYGEN_OUT ${PROJECT_SOURCE_DIR}/doc/Doxyfile)
+    set(DOXYYGEN_IN ${PROJECT_SOURCE_DIR}/docs/Doxyfile.in)
+    set(DOXYGEN_OUT ${PROJECT_SOURCE_DIR}/docs/Doxyfile)
 
     # request to configure the file
     configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
