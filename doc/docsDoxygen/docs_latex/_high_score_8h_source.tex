@@ -1,0 +1,87 @@
+\hypertarget{_high_score_8h_source}{}\doxysection{High\+Score.\+h}
+\label{_high_score_8h_source}\index{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/engine/include/HighScore.h@{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/engine/include/HighScore.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 13/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_HIGHSCORE\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_HIGHSCORE\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}util/Exception.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_high_score_score}{HighScoreScore}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} mScore;}
+\DoxyCodeLine{20         std::string mName;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \mbox{\hyperlink{struct_high_score_score}{HighScoreScore}}() : mScore(0), mName(std::string()) \{\}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         \mbox{\hyperlink{struct_high_score_score}{HighScoreScore}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} score, std::string name) : mScore(score), mName(std::move(name)) \{\}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         \textcolor{keyword}{virtual} \mbox{\hyperlink{struct_high_score_score}{\string~HighScoreScore}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         [[nodiscard]] std::string toString()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mName + \textcolor{stringliteral}{"{} -\/ "{}} + std::to\_string(mScore); \}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \textcolor{keyword}{friend} std::ostream\& operator<<(std::ostream\& os, \textcolor{keyword}{const} \mbox{\hyperlink{struct_high_score_score}{HighScoreScore}}\& score)}
+\DoxyCodeLine{31         \{}
+\DoxyCodeLine{32                 os << score.mName << \textcolor{stringliteral}{"{} -\/ "{}} << score.mScore << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{33                 \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{34         \}}
+\DoxyCodeLine{35 \};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{keyword}{class }\mbox{\hyperlink{class_high_score}{HighScore}}}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39 \textcolor{keyword}{private}:}
+\DoxyCodeLine{40         std::string mPath;}
+\DoxyCodeLine{41         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} mQuantity;}
+\DoxyCodeLine{42         std::vector<std::shared\_ptr<HighScoreScore>> mScores;}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         \mbox{\hyperlink{class_high_score}{HighScore}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46         \mbox{\hyperlink{class_high_score}{HighScore}}(std::string path, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} quantity) : mPath(path), mQuantity(quantity)}
+\DoxyCodeLine{47         \{}
+\DoxyCodeLine{48                 \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{49                         load();}
+\DoxyCodeLine{50                 \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& exc) \{}
+\DoxyCodeLine{51                         std::cerr << exc.what();}
+\DoxyCodeLine{52                 \}}
+\DoxyCodeLine{53         \}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{keyword}{public}:}
+\DoxyCodeLine{56         \mbox{\hyperlink{class_high_score}{HighScore}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_high_score}{HighScore}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58         \mbox{\hyperlink{class_high_score}{HighScore}}\& operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_high_score}{HighScore}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60         \mbox{\hyperlink{class_high_score}{\string~HighScore}}() \{ save(); \}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62         \textcolor{keyword}{static} \mbox{\hyperlink{class_high_score}{HighScore}}\& getInstance();}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         \textcolor{keywordtype}{void} load();}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66         \textcolor{keywordtype}{void} save();}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68         \textcolor{keywordtype}{void} add(\textcolor{keyword}{const} std::shared\_ptr<HighScoreScore>\& score);}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70         [[nodiscard]] \textcolor{keyword}{const} std::vector<std::shared\_ptr<HighScoreScore>>\& getScores()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mScores; \}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72         [[nodiscard]] \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getHighScore()\textcolor{keyword}{ const}}
+\DoxyCodeLine{73 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{74                 \textcolor{keywordflow}{if} (mScores.empty()) \{}
+\DoxyCodeLine{75                         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{76                 \}}
+\DoxyCodeLine{77                 \textcolor{keywordflow}{return} mScores.front()-\/>mScore;}
+\DoxyCodeLine{78         \}}
+\DoxyCodeLine{79 \};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_HIGHSCORE\_H}}
+
+\end{DoxyCode}

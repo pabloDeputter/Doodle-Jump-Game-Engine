@@ -1,0 +1,16 @@
+var searchData =
+    [
+        ['game_0', ['Game', ['../class_game.html', 1, '']]],
+        ['generateentity_1', ['generateEntity', ['../class_world.html#a1ee30b628a699fd59602cdab6dcdaf37', 1, 'World']]],
+        ['getdelta_2', ['getDelta', ['../class_utils_1_1_stopwatch.html#aa3505e376ec91f705c8a57ec1f605abd', 1, 'Utils::Stopwatch']]],
+        ['getheight_3', ['getHeight', ['../class_model_1_1_entity.html#a1332918563adb284c0fd432d47486d44', 1, 'Model::Entity']]],
+        ['getinstance_4', ['getInstance', ['../class_utils_1_1_camera.html#aa84baebe5d771ddfd82a5b55bd3fde39', 1, 'Utils::Camera::getInstance()'], ['../class_utils_1_1_random.html#a2aa30d2f678fc76f75efc60356c6ea4d', 1, 'Utils::Random::getInstance()'], ['../class_utils_1_1_stopwatch.html#ae8cfd6ad5161541a7dc62fe3b3e1ca6b', 1, 'Utils::Stopwatch::getInstance()']]],
+        ['getlastmaxheight_5', ['getLastMaxHeight', ['../class_utils_1_1_camera.html#ad9b11dc1657ccba0038067016b5c8f1e', 1, 'Utils::Camera']]],
+        ['getmaxheight_6', ['getMaxHeight', ['../class_utils_1_1_camera.html#a0964963bd1a3a09e293693fe1953811e', 1, 'Utils::Camera']]],
+        ['getmsort_7', ['getMSort', ['../class_model_1_1_bonus.html#a59967149e02b0f12ecacb9e64731dbfe', 1, 'Model::Bonus']]],
+        ['gettype_8', ['getType', ['../class_model_1_1_background.html#acb80a3c6c2512b28d43759716956dfce', 1, 'Model::Background::getType()'], ['../class_model_1_1_bonus.html#a7e66297d74eb7474e0142c2634aef49c', 1, 'Model::Bonus::getType()'], ['../class_model_1_1_entity.html#a853ec96fa9fe4f79f5a06a0fb2b5ed2e', 1, 'Model::Entity::getType()'], ['../class_model_1_1_horizontal_platform.html#a8be41c3a8ec454ea4ad437510a548f61', 1, 'Model::HorizontalPlatform::getType()'], ['../class_model_1_1_jetpack.html#aa5b597c536440a0bbb84a6580e676939', 1, 'Model::Jetpack::getType()'], ['../class_model_1_1_platform.html#a76503649369e943be2e386ecec0f43ac', 1, 'Model::Platform::getType()'], ['../class_model_1_1_player.html#a9ec2baf086b01bf94c7658baef81b94e', 1, 'Model::Player::getType()'], ['../class_model_1_1_spring.html#a10a17499b82119d2c6bced3c6fc55ddb', 1, 'Model::Spring::getType()'], ['../class_model_1_1_static_platform.html#abe4a6f9467a98f4d9d1e538bff9256b9', 1, 'Model::StaticPlatform::getType()'], ['../class_model_1_1_temporary_platform.html#a11236446d05fc90c3e7b39aacffa0413', 1, 'Model::TemporaryPlatform::getType()'], ['../class_model_1_1_vertical_platform.html#aa74d1672620cd422a6a90d34840c9580', 1, 'Model::VerticalPlatform::getType()'], ['../class_model_1_1_score.html#a29dedb6cde92df06b2efbd1147211025', 1, 'Model::Score::getType()']]],
+        ['getwindowdimensions_9', ['getWindowDimensions', ['../class_utils_1_1_camera.html#ab2c411cb34edf3b6fae2aa510ea48862', 1, 'Utils::Camera']]],
+        ['getworlddimensions_10', ['getWorldDimensions', ['../class_utils_1_1_camera.html#a7728f337bcbce522281834539843da31', 1, 'Utils::Camera']]],
+        ['getx_11', ['getX', ['../class_model_1_1_entity.html#a43a066e3ab4376eb6afbade526c2d1e2', 1, 'Model::Entity::getX()'], ['../class_utils_1_1_camera.html#ab00d5dba17cc715939732f74b7a6a4f8', 1, 'Utils::Camera::getX()']]],
+        ['gety_12', ['getY', ['../class_model_1_1_entity.html#a1628120ebbd5b236a029eaa4a9547313', 1, 'Model::Entity::getY()'], ['../class_utils_1_1_camera.html#a8dbcb2f67360e39568de4c1cd2a4e136', 1, 'Utils::Camera::getY()']]]
+    ];

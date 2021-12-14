@@ -1,0 +1,83 @@
+\hypertarget{_player_8h_source}{}\doxysection{Player.\+h}
+\label{_player_8h_source}\index{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/engine/include/model/Player.h@{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/engine/include/model/Player.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 14/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_PLAYER\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_PLAYER\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Entity.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}IVisitor.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_player}{Player}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_model_1_1_entity}{Entity}}, \textcolor{keyword}{public} \mbox{\hyperlink{class_observer_1_1_observer}{Observer::Observer}}, \textcolor{keyword}{public} \mbox{\hyperlink{class_i_event_handler}{IEventHandler}}}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21 \textcolor{keyword}{private}:}
+\DoxyCodeLine{22         std::pair<float, float> mVelocity;  }
+\DoxyCodeLine{23         std::pair<float, float> mDirection; }
+\DoxyCodeLine{25         \textcolor{keyword}{const} \textcolor{keywordtype}{float} mMaxVelocity = 0.20f;   }
+\DoxyCodeLine{26         \textcolor{keyword}{const} \textcolor{keywordtype}{float} mAcceleration = 0.015f; }
+\DoxyCodeLine{27         \textcolor{keywordtype}{float} mDrag = 0.005f;               }
+\DoxyCodeLine{29         \textcolor{keywordtype}{bool} mIsMovingLeft;  }
+\DoxyCodeLine{30         \textcolor{keywordtype}{bool} mIsMovingRight; }
+\DoxyCodeLine{32 \textcolor{keyword}{public}:}
+\DoxyCodeLine{33         \mbox{\hyperlink{class_model_1_1_player}{Player}}() : mVelocity(\{0.f, 0.f\}), mDirection(\{0.f, 0.f\}), mIsMovingLeft(\textcolor{keyword}{false}), mIsMovingRight(\textcolor{keyword}{false}) \{\}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \mbox{\hyperlink{class_model_1_1_player}{\string~Player}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} \mbox{\hyperlink{class_model_1_1_player_a9ec2baf086b01bf94c7658baef81b94e}{getType}}()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} Model::Type::ePlayer; \}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_a487d1793bb9057f5f10cd51ebc46826c}{move}}(\textcolor{keywordtype}{bool} collision) \textcolor{keyword}{override};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         \textcolor{keyword}{const} std::pair<float, float>\& getVelocity() \textcolor{keyword}{const};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         \textcolor{keywordtype}{void} setVelocity(\textcolor{keyword}{const} std::pair<float, float>\& velocity);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \textcolor{keyword}{const} std::pair<float, float>\& getDirection() \textcolor{keyword}{const};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         \textcolor{keywordtype}{void} setDirection(\textcolor{keyword}{const} std::pair<float, float>\& direction);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         \textcolor{keyword}{const} \textcolor{keywordtype}{float} getMaxVelocity() \textcolor{keyword}{const};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         \textcolor{keyword}{const} \textcolor{keywordtype}{float} getMaxAcceleration() \textcolor{keyword}{const};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53         \textcolor{keyword}{const} \textcolor{keywordtype}{float} getDrag() \textcolor{keyword}{const};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55         \textcolor{keywordtype}{void} setDrag(\textcolor{keywordtype}{float} drag);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57         \textcolor{keywordtype}{bool} isMovingUp() \textcolor{keyword}{const};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59         \textcolor{keywordtype}{void} setIsMovingUp(\textcolor{keywordtype}{bool} isMovingUp);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61         \textcolor{keywordtype}{bool} isMovingDown() \textcolor{keyword}{const};}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63         \textcolor{keywordtype}{void} setIsMovingDown(\textcolor{keywordtype}{bool} isMovingDown);}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65         \textcolor{keywordtype}{bool} isMovingLeft() \textcolor{keyword}{const};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67         \textcolor{keywordtype}{void} setIsMovingLeft(\textcolor{keywordtype}{bool} isMovingLeft);}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69         \textcolor{keywordtype}{bool} isMovingRight() \textcolor{keyword}{const};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71         \textcolor{keywordtype}{void} setIsMovingRight(\textcolor{keywordtype}{bool} isMovingRight);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73         \textcolor{comment}{// TODO -\/ visitor pattern}}
+\DoxyCodeLine{74         \textcolor{keywordtype}{void} accept(\textcolor{keyword}{const} std::shared\_ptr<Visitor::IVisitor>\& visitor)\textcolor{keyword}{ override }\{ visitor-\/>visit(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_a0019c1e8e9ce5a4e8f20b28147795821}{onTrigger}}(EventType type, \textcolor{keyword}{const} std::shared\_ptr<Event>\& event)\textcolor{keyword}{ override }\{ \textcolor{keyword}{event}-\/>send(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_stop_bonus_event}{StopBonusEvent}}\& event)\textcolor{keyword}{ override}}
+\DoxyCodeLine{79 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{80                 std::cout << \textcolor{stringliteral}{"{}lol\(\backslash\)n"{}};}
+\DoxyCodeLine{81                 accept(event.getBonus());}
+\DoxyCodeLine{82         \}}
+\DoxyCodeLine{83 \};}
+\DoxyCodeLine{84 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_PLAYER\_H}}
+
+\end{DoxyCode}

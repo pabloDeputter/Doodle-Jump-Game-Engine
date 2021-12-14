@@ -1,0 +1,106 @@
+\hypertarget{_settings_8h_source}{}\doxysection{Settings.\+h}
+\label{_settings_8h_source}\index{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/engine/include/Settings.h@{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/engine/include/Settings.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 12/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_SETTINGS\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_SETTINGS\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{11 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_settings}{Settings}} \{}
+\DoxyCodeLine{15 \textcolor{keyword}{static} \textcolor{keywordtype}{float} CHANCE\_STATIC = .9;      }
+\DoxyCodeLine{16 \textcolor{keyword}{static} \textcolor{keywordtype}{float} CHANCE\_HORIZONTAL = .04; }
+\DoxyCodeLine{17 \textcolor{keyword}{static} \textcolor{keywordtype}{float} CHANCE\_VERTICAL = .04;   }
+\DoxyCodeLine{18 \textcolor{keyword}{static} \textcolor{keywordtype}{float} CHANCE\_TEMPORARY = .02f; }
+\DoxyCodeLine{23 \textcolor{keyword}{static} \textcolor{keywordtype}{float} CHANCE\_BONUS = .1f;   }
+\DoxyCodeLine{24 \textcolor{keyword}{static} \textcolor{keywordtype}{float} CHANCE\_SPRING = 1.;   }
+\DoxyCodeLine{25 \textcolor{keyword}{static} \textcolor{keywordtype}{float} CHANCE\_JETPACK = .0f; }
+\DoxyCodeLine{30 \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} MIN\_PLATFORMS = 7;  }
+\DoxyCodeLine{31 \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} MAX\_PLATFORMS = 20; }
+\DoxyCodeLine{33 \textcolor{keyword}{static} \textcolor{keywordtype}{float} DIFFICULTY = 0.f; }
+\DoxyCodeLine{38 \textcolor{keyword}{enum} \mbox{\hyperlink{namespace_settings_ab03c07a7c54964db4b281d86b6a345c2}{Difficulty}}}
+\DoxyCodeLine{39 \{}
+\DoxyCodeLine{40         eEasy = 0,}
+\DoxyCodeLine{41         eNormal,}
+\DoxyCodeLine{42         eDifficult,}
+\DoxyCodeLine{43         eHard,}
+\DoxyCodeLine{44         eExtreme}
+\DoxyCodeLine{45 \};}
+\DoxyCodeLine{50 \textcolor{keywordtype}{bool} \textcolor{keyword}{static} setDifficulty(\mbox{\hyperlink{namespace_settings_ab03c07a7c54964db4b281d86b6a345c2}{Difficulty}} difficulty)}
+\DoxyCodeLine{51 \{}
+\DoxyCodeLine{52         \textcolor{keywordflow}{switch} (difficulty) \{}
+\DoxyCodeLine{53         \textcolor{keywordflow}{case} eEasy:}
+\DoxyCodeLine{54                 CHANCE\_STATIC = .9f;}
+\DoxyCodeLine{55                 CHANCE\_HORIZONTAL = .04f;}
+\DoxyCodeLine{56                 CHANCE\_VERTICAL = .04f;}
+\DoxyCodeLine{57                 CHANCE\_TEMPORARY = .02f;}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59                 CHANCE\_BONUS = .05f;}
+\DoxyCodeLine{60                 CHANCE\_SPRING = .95f;}
+\DoxyCodeLine{61                 CHANCE\_JETPACK = .05f;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63                 MAX\_PLATFORMS = 20;}
+\DoxyCodeLine{64                 DIFFICULTY = 0.f;}
+\DoxyCodeLine{65                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{66         \textcolor{keywordflow}{case} eNormal:}
+\DoxyCodeLine{67                 CHANCE\_STATIC = .8f;}
+\DoxyCodeLine{68                 CHANCE\_HORIZONTAL = .07f;}
+\DoxyCodeLine{69                 CHANCE\_VERTICAL = .07f;}
+\DoxyCodeLine{70                 CHANCE\_TEMPORARY = .06f;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72                 CHANCE\_BONUS = .15f;}
+\DoxyCodeLine{73                 CHANCE\_SPRING = .9f;}
+\DoxyCodeLine{74                 CHANCE\_JETPACK = .1f;}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76                 MAX\_PLATFORMS = 17;}
+\DoxyCodeLine{77                 DIFFICULTY = 0.25f;}
+\DoxyCodeLine{78                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{79         \textcolor{keywordflow}{case} eDifficult:}
+\DoxyCodeLine{80                 CHANCE\_STATIC = .6f;}
+\DoxyCodeLine{81                 CHANCE\_HORIZONTAL = .15f;}
+\DoxyCodeLine{82                 CHANCE\_VERTICAL = .15f;}
+\DoxyCodeLine{83                 CHANCE\_TEMPORARY = .1f;}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85                 CHANCE\_BONUS = .25f;}
+\DoxyCodeLine{86                 CHANCE\_SPRING = .75;}
+\DoxyCodeLine{87                 CHANCE\_JETPACK = .25f;}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89                 MAX\_PLATFORMS = 14;}
+\DoxyCodeLine{90                 DIFFICULTY = 0.5f;}
+\DoxyCodeLine{91                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{92         \textcolor{keywordflow}{case} eHard:}
+\DoxyCodeLine{93                 CHANCE\_STATIC = .4f;}
+\DoxyCodeLine{94                 CHANCE\_HORIZONTAL = .22f;}
+\DoxyCodeLine{95                 CHANCE\_VERTICAL = .22f;}
+\DoxyCodeLine{96                 CHANCE\_TEMPORARY = .16f;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98                 CHANCE\_BONUS = .30f;}
+\DoxyCodeLine{99                 CHANCE\_SPRING = .75f;}
+\DoxyCodeLine{100                 CHANCE\_JETPACK = .25f;}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102                 MAX\_PLATFORMS = 10;}
+\DoxyCodeLine{103                 DIFFICULTY = 0.75f;}
+\DoxyCodeLine{104                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{105         \textcolor{keywordflow}{case} eExtreme:}
+\DoxyCodeLine{106                 CHANCE\_STATIC = .2f;}
+\DoxyCodeLine{107                 CHANCE\_HORIZONTAL = .3f;}
+\DoxyCodeLine{108                 CHANCE\_VERTICAL = .3f;}
+\DoxyCodeLine{109                 CHANCE\_TEMPORARY = .2f;}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111                 CHANCE\_BONUS = .30f;}
+\DoxyCodeLine{112                 CHANCE\_SPRING = .75f;}
+\DoxyCodeLine{113                 CHANCE\_JETPACK = .25f;}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115                 MAX\_PLATFORMS = 7;}
+\DoxyCodeLine{116                 DIFFICULTY = 0.85f;}
+\DoxyCodeLine{117                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{118         \}}
+\DoxyCodeLine{119         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{120 \}}
+\DoxyCodeLine{121 \} \textcolor{comment}{// namespace Settings}}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_SETTINGS\_H}}
+
+\end{DoxyCode}

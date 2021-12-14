@@ -1,0 +1,76 @@
+\hypertarget{_concrete_factory_8h_source}{}\doxysection{Concrete\+Factory.\+h}
+\label{_concrete_factory_8h_source}\index{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/game/include/ConcreteFactory.h@{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/game/include/ConcreteFactory.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 21/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_CONCRETEFACTORY\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_CONCRETEFACTORY\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}AbstractFactory.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}model/Background.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}model/HorizontalPlatform.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}model/Jetpack.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}model/Platform.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}model/Player.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}model/Spring.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}model/StaticPlatform.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}model/TemporaryPlatform.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}model/VerticalPlatform.h"{}}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include "{}controller/BonusController.h"{}}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}controller/PlatformController.h"{}}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include "{}controller/PlayerController.h"{}}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include "{}view/BackgroundView.h"{}}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include "{}view/BonusView.h"{}}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}view/IView.h"{}}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include "{}view/PlatformView.h"{}}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include "{}view/PlayerView.h"{}}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include "{}view/ScoreView.h"{}}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include "{}Score.h"{}}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{// TODO -\/ attach View Observers to Entity Subjects}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{keyword}{namespace }View \{}
+\DoxyCodeLine{38 \textcolor{keyword}{class }\mbox{\hyperlink{class_view_1_1_concrete_factory}{ConcreteFactory}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_model_1_1_abstract_factory}{Model::AbstractFactory}}}
+\DoxyCodeLine{39 \{}
+\DoxyCodeLine{40 \textcolor{keyword}{public}:}
+\DoxyCodeLine{41         \mbox{\hyperlink{class_view_1_1_concrete_factory}{ConcreteFactory}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         \mbox{\hyperlink{class_view_1_1_concrete_factory}{ConcreteFactory}}(\textcolor{keyword}{const} std::shared\_ptr<sf::RenderWindow>\& window) : mWindow(window) \{\}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \mbox{\hyperlink{class_view_1_1_concrete_factory}{\string~ConcreteFactory}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         std::shared\_ptr<Model::Player> createPlayer() \textcolor{keyword}{override};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         std::shared\_ptr<Model::Entity> createStaticPlatform() \textcolor{keyword}{override};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         std::shared\_ptr<Model::Entity> createHorizontalPlatform() \textcolor{keyword}{override};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53         std::shared\_ptr<Model::Entity> createVerticalPlatform() \textcolor{keyword}{override};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55         std::shared\_ptr<Model::Entity> createTemporaryPlatform() \textcolor{keyword}{override};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57         std::shared\_ptr<Model::Entity> createSpring() \textcolor{keyword}{override};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59         std::shared\_ptr<Model::Entity> createJetpack() \textcolor{keyword}{override};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61         std::shared\_ptr<Model::Entity> createBackground() \textcolor{keyword}{override};}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63         std::shared\_ptr<Model::Score> createScore() \textcolor{keyword}{override};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{keyword}{private}:}
+\DoxyCodeLine{66         std::shared\_ptr<sf::RenderWindow> mWindow;}
+\DoxyCodeLine{67 \};}
+\DoxyCodeLine{68 \} \textcolor{comment}{// namespace View}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_CONCRETEFACTORY\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,49 @@
+\hypertarget{_game_8h_source}{}\doxysection{Game.\+h}
+\label{_game_8h_source}\index{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/game/include/Game.h@{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/game/include/Game.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 14/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_GAME\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_GAME\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}ConcreteFactory.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}World.h"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}util/Resourcemanager.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}util/Stopwatch.h"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}SFML/Window.hpp"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{class_game}{Game}}}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23         std::shared\_ptr<sf::RenderWindow> mWindow;}
+\DoxyCodeLine{24         std::unique\_ptr<World> mWorld;}
+\DoxyCodeLine{25         std::shared\_ptr<Model::AbstractFactory> mFactory;}
+\DoxyCodeLine{26 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27         \mbox{\hyperlink{class_game}{Game}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_game}{Game}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} width = 800, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} height = 1440);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \mbox{\hyperlink{class_game}{\string~Game}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{keywordtype}{void} initializeResources();}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \textcolor{keywordtype}{void} processEvents();}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         \textcolor{keywordtype}{void} handlePlayerInput(sf::Keyboard::Key key, \textcolor{keywordtype}{bool} isPressed);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} render();}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         \textcolor{keywordtype}{void} run();}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         \textcolor{keywordtype}{void} drawHighScoreTable();}
+\DoxyCodeLine{44 \};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_GAME\_H}}
+
+\end{DoxyCode}
