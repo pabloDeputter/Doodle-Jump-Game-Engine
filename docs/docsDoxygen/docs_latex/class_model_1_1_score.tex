@@ -1,0 +1,111 @@
+\hypertarget{class_model_1_1_score}{}\doxysection{Model\+::Score Class Reference}
+\label{class_model_1_1_score}\index{Model::Score@{Model::Score}}
+Inheritance diagram for Model\+::Score\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_model_1_1_score}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model\+::\+Type}} \mbox{\hyperlink{class_model_1_1_score_a29dedb6cde92df06b2efbd1147211025}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Get type of \mbox{\hyperlink{class_model_1_1_entity}{Entity}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_model_1_1_score_a9a9ecb931c7ebdb404994f4b8be4b971}\label{class_model_1_1_score_a9a9ecb931c7ebdb404994f4b8be4b971}} 
+void {\bfseries set\+Score} (unsigned int score)
+\item 
+void \mbox{\hyperlink{class_model_1_1_score_ac9f108cc01df93adb7bca2d3dbfe85ef}{on\+Trigger}} (Event\+Type type, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_event}{Event}} $>$ \&event) override
+\begin{DoxyCompactList}\small\item\em Perform operation on trigger from Subject. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_1_1_score_a4a65f533282f73713bcefe55ea167f29}{handle\+Event}} (const \mbox{\hyperlink{class_new_max_height_event}{New\+Max\+Height\+Event}} \&event) override
+\item 
+void \mbox{\hyperlink{class_model_1_1_score_a649e2e6666cbb0b414e2dc75b0ca5bd4}{handle\+Event}} (const \mbox{\hyperlink{class_collision_event}{Collision\+Event}} \&event) override
+\item 
+void \mbox{\hyperlink{class_model_1_1_score_aadfa7831bc766652b519d9d677f822fd}{move}} (bool collision) override
+\begin{DoxyCompactList}\small\item\em move \mbox{\hyperlink{class_model_1_1_entity}{Entity}} object \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_model_1_1_score_a86ef4ea62c02ef79aab96c71b8a5f457}{get\+Score}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_1_1_score_a86ef4ea62c02ef79aab96c71b8a5f457}\label{class_model_1_1_score_a86ef4ea62c02ef79aab96c71b8a5f457}} 
+\index{Model::Score@{Model::Score}!getScore@{getScore}}
+\index{getScore@{getScore}!Model::Score@{Model::Score}}
+\doxysubsubsection{\texorpdfstring{getScore()}{getScore()}}
+{\footnotesize\ttfamily unsigned int Model\+::\+Score\+::get\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_score_a29dedb6cde92df06b2efbd1147211025}\label{class_model_1_1_score_a29dedb6cde92df06b2efbd1147211025}} 
+\index{Model::Score@{Model::Score}!getType@{getType}}
+\index{getType@{getType}!Model::Score@{Model::Score}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model\+::\+Type}} Model\+::\+Score\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get type of \mbox{\hyperlink{class_model_1_1_entity}{Entity}} object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model\+::\+Type}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_model_1_1_entity_a853ec96fa9fe4f79f5a06a0fb2b5ed2e}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_score_a649e2e6666cbb0b414e2dc75b0ca5bd4}\label{class_model_1_1_score_a649e2e6666cbb0b414e2dc75b0ca5bd4}} 
+\index{Model::Score@{Model::Score}!handleEvent@{handleEvent}}
+\index{handleEvent@{handleEvent}!Model::Score@{Model::Score}}
+\doxysubsubsection{\texorpdfstring{handleEvent()}{handleEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Score\+::handle\+Event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_collision_event}{Collision\+Event}} \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_i_event_handler}{IEvent\+Handler}}.
+
+\mbox{\Hypertarget{class_model_1_1_score_a4a65f533282f73713bcefe55ea167f29}\label{class_model_1_1_score_a4a65f533282f73713bcefe55ea167f29}} 
+\index{Model::Score@{Model::Score}!handleEvent@{handleEvent}}
+\index{handleEvent@{handleEvent}!Model::Score@{Model::Score}}
+\doxysubsubsection{\texorpdfstring{handleEvent()}{handleEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Score\+::handle\+Event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_new_max_height_event}{New\+Max\+Height\+Event}} \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_i_event_handler}{IEvent\+Handler}}.
+
+\mbox{\Hypertarget{class_model_1_1_score_aadfa7831bc766652b519d9d677f822fd}\label{class_model_1_1_score_aadfa7831bc766652b519d9d677f822fd}} 
+\index{Model::Score@{Model::Score}!move@{move}}
+\index{move@{move}!Model::Score@{Model::Score}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Model\+::\+Score\+::move (\begin{DoxyParamCaption}\item[{bool}]{collision }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+move \mbox{\hyperlink{class_model_1_1_entity}{Entity}} object 
+
+
+
+Implements \mbox{\hyperlink{class_model_1_1_entity_a0321e5a582d7d374c3a1183532158de2}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_score_ac9f108cc01df93adb7bca2d3dbfe85ef}\label{class_model_1_1_score_ac9f108cc01df93adb7bca2d3dbfe85ef}} 
+\index{Model::Score@{Model::Score}!onTrigger@{onTrigger}}
+\index{onTrigger@{onTrigger}!Model::Score@{Model::Score}}
+\doxysubsubsection{\texorpdfstring{onTrigger()}{onTrigger()}}
+{\footnotesize\ttfamily void Model\+::\+Score\+::on\+Trigger (\begin{DoxyParamCaption}\item[{Event\+Type}]{type,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_event}{Event}} $>$ \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Perform operation on trigger from Subject. 
+
+
+
+Implements \mbox{\hyperlink{class_observer_1_1_observer_a5a720106a3ed4f71a87b7675095c5bf9}{Observer\+::\+Observer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pablodeputter/\+Documents/\+Git\+Hub/\+Advanced-\/\+Programming-\/\+Doodle\+Jump/engine/include/Score.\+h\item 
+/\+Users/pablodeputter/\+Documents/\+Git\+Hub/\+Advanced-\/\+Programming-\/\+Doodle\+Jump/engine/src/Score.\+cpp\end{DoxyCompactItemize}

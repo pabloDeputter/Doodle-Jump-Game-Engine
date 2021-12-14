@@ -1,0 +1,151 @@
+\hypertarget{class_world}{}\doxysection{World Class Reference}
+\label{class_world}\index{World@{World}}
+
+
+Class for \mbox{\hyperlink{class_world}{World}}, holds all the entities and is used for the overall game logic.  
+
+
+
+
+{\ttfamily \#include $<$World.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_world_aabcf9f0a627c8bcde97e95bbaf3b40f7}\label{class_world_aabcf9f0a627c8bcde97e95bbaf3b40f7}} 
+{\bfseries World} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_abstract_factory}{Model\+::\+Abstract\+Factory}} $>$ \&factory)
+\item 
+\mbox{\Hypertarget{class_world_aed4c6c402fd61214f42509cb4f3b00b1}\label{class_world_aed4c6c402fd61214f42509cb4f3b00b1}} 
+void {\bfseries init\+World} ()
+\begin{DoxyCompactList}\small\item\em Initialize starting-\/world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_aa4383998d557af1d365d1eae6037d5b9}{events}} (const std\+::string \&move, bool is\+Pressed) const
+\begin{DoxyCompactList}\small\item\em Process events such as player input. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_aac8c1fde63c06577ffc648aaefdb37f0}\label{class_world_aac8c1fde63c06577ffc648aaefdb37f0}} 
+void {\bfseries update} ()
+\begin{DoxyCompactList}\small\item\em Gets called every tick from \mbox{\hyperlink{class_game}{Game}} loop, updates ever \mbox{\hyperlink{namespace_model}{Model}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_a6452e0fbfe12a1b4f71416bce15be9b2}\label{class_world_a6452e0fbfe12a1b4f71416bce15be9b2}} 
+void {\bfseries render} () const
+\begin{DoxyCompactList}\small\item\em Render all entities on screen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_a1ee30b628a699fd59602cdab6dcdaf37}\label{class_world_a1ee30b628a699fd59602cdab6dcdaf37}} 
+void {\bfseries generate\+Entity} ()
+\begin{DoxyCompactList}\small\item\em Generate new Entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_a7db5c03ba33c338a77da3ee84f64337f}{spawn\+Platform}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Spawn random Platform object into \mbox{\hyperlink{class_world}{World}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_a51ff713eb8718975a7b3b641045d7a34}{spawn\+Bonus}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Spawn random Bonus object AND Platform object into \mbox{\hyperlink{class_world}{World}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_ad466ca4141fe10b46ec2421dab300b48}{spawn\+Entity}} (float x, float y, \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model\+::\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Spawn provided Entity into \mbox{\hyperlink{class_world}{World}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_ae60a29ffb56b52ee7bc4f80f3d618cbf}\label{class_world_ae60a29ffb56b52ee7bc4f80f3d618cbf}} 
+bool {\bfseries check\+Difficulty} ()
+\item 
+void \mbox{\hyperlink{class_world_a8160437f43a677d13f135711e3fb8a92}{add\+Entity}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \&entity)
+\begin{DoxyCompactList}\small\item\em Add entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_a9177ae5e9e2cbc0d25dfb834dc44ddca}\label{class_world_a9177ae5e9e2cbc0d25dfb834dc44ddca}} 
+void {\bfseries remove\+Entities} ()
+\begin{DoxyCompactList}\small\item\em Remove unused Entities or those that are out of view. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_a02d69ed7161ba4b4cb07471eb1bf2ec9}\label{class_world_a02d69ed7161ba4b4cb07471eb1bf2ec9}} 
+void {\bfseries destroy} ()
+\item 
+\mbox{\Hypertarget{class_world_a84e3c636922b0130bc886acd8036f67f}\label{class_world_a84e3c636922b0130bc886acd8036f67f}} 
+const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_score}{Model\+::\+Score}} $>$ \& {\bfseries get\+Score} () const
+\item 
+\mbox{\Hypertarget{class_world_ac42af7a92b7f70724e8ae59da1308704}\label{class_world_ac42af7a92b7f70724e8ae59da1308704}} 
+bool {\bfseries is\+Playing} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for \mbox{\hyperlink{class_world}{World}}, holds all the entities and is used for the overall game logic. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_world_a8160437f43a677d13f135711e3fb8a92}\label{class_world_a8160437f43a677d13f135711e3fb8a92}} 
+\index{World@{World}!addEntity@{addEntity}}
+\index{addEntity@{addEntity}!World@{World}}
+\doxysubsubsection{\texorpdfstring{addEntity()}{addEntity()}}
+{\footnotesize\ttfamily void World\+::add\+Entity (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \&}]{entity }\end{DoxyParamCaption})}
+
+
+
+Add entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Entity to be added to m\+Entities \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_world_aa4383998d557af1d365d1eae6037d5b9}\label{class_world_aa4383998d557af1d365d1eae6037d5b9}} 
+\index{World@{World}!events@{events}}
+\index{events@{events}!World@{World}}
+\doxysubsubsection{\texorpdfstring{events()}{events()}}
+{\footnotesize\ttfamily void World\+::events (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{move,  }\item[{bool}]{is\+Pressed }\end{DoxyParamCaption}) const}
+
+
+
+Process events such as player input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & std\+::string -\/ which key is pressed \\
+\hline
+{\em is\+Pressed} & bool -\/ is key pressed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_world_a51ff713eb8718975a7b3b641045d7a34}\label{class_world_a51ff713eb8718975a7b3b641045d7a34}} 
+\index{World@{World}!spawnBonus@{spawnBonus}}
+\index{spawnBonus@{spawnBonus}!World@{World}}
+\doxysubsubsection{\texorpdfstring{spawnBonus()}{spawnBonus()}}
+{\footnotesize\ttfamily void World\+::spawn\+Bonus (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Spawn random Bonus object AND Platform object into \mbox{\hyperlink{class_world}{World}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & float \\
+\hline
+{\em y} & float \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_world_ad466ca4141fe10b46ec2421dab300b48}\label{class_world_ad466ca4141fe10b46ec2421dab300b48}} 
+\index{World@{World}!spawnEntity@{spawnEntity}}
+\index{spawnEntity@{spawnEntity}!World@{World}}
+\doxysubsubsection{\texorpdfstring{spawnEntity()}{spawnEntity()}}
+{\footnotesize\ttfamily void World\+::spawn\+Entity (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{\mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model\+::\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Spawn provided Entity into \mbox{\hyperlink{class_world}{World}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & float \\
+\hline
+{\em y} & float \\
+\hline
+{\em type} & \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model\+::\+Type}} -\/ Sort of Entity to be spawned \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_world_a7db5c03ba33c338a77da3ee84f64337f}\label{class_world_a7db5c03ba33c338a77da3ee84f64337f}} 
+\index{World@{World}!spawnPlatform@{spawnPlatform}}
+\index{spawnPlatform@{spawnPlatform}!World@{World}}
+\doxysubsubsection{\texorpdfstring{spawnPlatform()}{spawnPlatform()}}
+{\footnotesize\ttfamily void World\+::spawn\+Platform (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Spawn random Platform object into \mbox{\hyperlink{class_world}{World}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & float \\
+\hline
+{\em y} & float \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pablodeputter/\+Documents/\+Git\+Hub/\+Advanced-\/\+Programming-\/\+Doodle\+Jump/engine/include/World.\+h\item 
+/\+Users/pablodeputter/\+Documents/\+Git\+Hub/\+Advanced-\/\+Programming-\/\+Doodle\+Jump/engine/src/World.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,63 @@
+\hypertarget{class_observer_1_1_subject}{}\doxysection{Observer\+::Subject Class Reference}
+\label{class_observer_1_1_subject}\index{Observer::Subject@{Observer::Subject}}
+
+
+Class for \mbox{\hyperlink{class_observer_1_1_subject}{Subject}} / Observable of observer pattern.  
+
+
+
+
+{\ttfamily \#include $<$Subject.\+h$>$}
+
+Inheritance diagram for Observer\+::Subject\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{class_observer_1_1_subject}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_observer_1_1_subject_a5a7bfe1e229eb167379eb8de0854f992}\label{class_observer_1_1_subject_a5a7bfe1e229eb167379eb8de0854f992}} 
+{\bfseries Subject} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_observer_1_1_subject_a4d845eff11d7eaf4896a5a7fe5bc2910}\label{class_observer_1_1_subject_a4d845eff11d7eaf4896a5a7fe5bc2910}} 
+virtual {\bfseries $\sim$\+Subject} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_observer_1_1_subject_ab638a92272921ec5645f5b8c20fb906c}{add}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_observer_1_1_observer}{Observer}} $>$ \&observer)
+\begin{DoxyCompactList}\small\item\em Register \mbox{\hyperlink{class_observer_1_1_observer}{Observer}} to m\+Observers. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_observer_1_1_subject_af6d3e7062fc5aefa6d878ef5d9cc9327}\label{class_observer_1_1_subject_af6d3e7062fc5aefa6d878ef5d9cc9327}} 
+const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_observer_1_1_observer}{Observer}} $>$ $>$ \& {\bfseries get\+Observers} () const
+\item 
+\mbox{\Hypertarget{class_observer_1_1_subject_a7c2fc9a2e17121ba8c73e50fd47374cd}\label{class_observer_1_1_subject_a7c2fc9a2e17121ba8c73e50fd47374cd}} 
+void {\bfseries clear} ()
+\begin{DoxyCompactList}\small\item\em Clear all Observers from m\+Observers. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_observer_1_1_subject_a7588781632ff0fde93ad003b002d28a5}\label{class_observer_1_1_subject_a7588781632ff0fde93ad003b002d28a5}} 
+void {\bfseries trigger} (Event\+Type type, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_event}{Event}} $>$ \&event) const
+\begin{DoxyCompactList}\small\item\em Trigger registered Observers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for \mbox{\hyperlink{class_observer_1_1_subject}{Subject}} / Observable of observer pattern. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_observer_1_1_subject_ab638a92272921ec5645f5b8c20fb906c}\label{class_observer_1_1_subject_ab638a92272921ec5645f5b8c20fb906c}} 
+\index{Observer::Subject@{Observer::Subject}!add@{add}}
+\index{add@{add}!Observer::Subject@{Observer::Subject}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Observer\+::\+Subject\+::add (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_observer_1_1_observer}{Observer}} $>$ \&}]{observer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Register \mbox{\hyperlink{class_observer_1_1_observer}{Observer}} to m\+Observers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & \mbox{\hyperlink{class_observer_1_1_observer}{Observer}} to be added \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pablodeputter/\+Documents/\+Git\+Hub/\+Advanced-\/\+Programming-\/\+Doodle\+Jump/engine/include/Subject.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,46 @@
+\hypertarget{_background_view_8h_source}{}\doxysection{Background\+View.\+h}
+\label{_background_view_8h_source}\index{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/game/include/view/BackgroundView.h@{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/game/include/view/BackgroundView.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 29/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_BACKGROUNDVIEW\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_BACKGROUNDVIEW\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}IView.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <filesystem>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{namespace }View \{}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_view_1_1_background_view}{BackgroundView}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_view_1_1_i_view}{IView}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{17         \mbox{\hyperlink{class_view_1_1_background_view}{BackgroundView}}(\textcolor{keyword}{const} std::shared\_ptr<Model::Entity>\& entity, \textcolor{keyword}{const} std::shared\_ptr<sf::RenderWindow>\& window)}
+\DoxyCodeLine{18             : \mbox{\hyperlink{class_view_1_1_i_view}{IView}}(entity, window)}
+\DoxyCodeLine{19         \{}
+\DoxyCodeLine{20                 std::shared\_ptr<sf::Texture>\& tex =}
+\DoxyCodeLine{21                     Utils::Resourcemanager::getInstance().getTextures()-\/>get(Model::eBackground);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23                 mSprite = std::make\_unique<sf::Sprite>();}
+\DoxyCodeLine{24                 mSprite-\/>setTexture(*tex);}
+\DoxyCodeLine{25                 mSprite-\/>scale(1.f, 1.f);}
+\DoxyCodeLine{26                 mSprite-\/>setColor(sf::Color(255, 255, 255, 255));}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28                 mEntity-\/>setWidth((\textcolor{keywordtype}{float})tex-\/>getSize().x * mSprite-\/>getScale().x);}
+\DoxyCodeLine{29                 mEntity-\/>setHeight((\textcolor{keywordtype}{float})tex-\/>getSize().y * mSprite-\/>getScale().y);}
+\DoxyCodeLine{30         \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \mbox{\hyperlink{class_view_1_1_background_view}{\string~BackgroundView}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_draw_event}{DrawEvent}}\& event) \textcolor{keyword}{override};}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_out_of_view_event}{OutOfViewEvent}}\& event) \textcolor{keyword}{override};}
+\DoxyCodeLine{37 \};}
+\DoxyCodeLine{38 \} \textcolor{comment}{// namespace View}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_BACKGROUNDVIEW\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,53 @@
+\hypertarget{class_observer_1_1_observer}{}\doxysection{Observer\+::Observer Class Reference}
+\label{class_observer_1_1_observer}\index{Observer::Observer@{Observer::Observer}}
+
+
+Class for \mbox{\hyperlink{class_observer_1_1_observer}{Observer}} of \mbox{\hyperlink{class_observer_1_1_observer}{Observer}} pattern.  
+
+
+
+
+{\ttfamily \#include $<$Observer.\+h$>$}
+
+Inheritance diagram for Observer\+::Observer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.260870cm]{class_observer_1_1_observer}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_observer_1_1_observer_ad187228226f4f1e7500c8fc731cdfa33}\label{class_observer_1_1_observer_ad187228226f4f1e7500c8fc731cdfa33}} 
+{\bfseries Observer} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_observer_1_1_observer_ae2d7419ff73a15c029637593239d3f80}\label{class_observer_1_1_observer_ae2d7419ff73a15c029637593239d3f80}} 
+virtual {\bfseries $\sim$\+Observer} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_observer_1_1_observer_a5a720106a3ed4f71a87b7675095c5bf9}{on\+Trigger}} (Event\+Type type, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_event}{Event}} $>$ \&event)=0
+\begin{DoxyCompactList}\small\item\em Perform operation on trigger from \mbox{\hyperlink{class_observer_1_1_subject}{Subject}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for \mbox{\hyperlink{class_observer_1_1_observer}{Observer}} of \mbox{\hyperlink{class_observer_1_1_observer}{Observer}} pattern. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_observer_1_1_observer_a5a720106a3ed4f71a87b7675095c5bf9}\label{class_observer_1_1_observer_a5a720106a3ed4f71a87b7675095c5bf9}} 
+\index{Observer::Observer@{Observer::Observer}!onTrigger@{onTrigger}}
+\index{onTrigger@{onTrigger}!Observer::Observer@{Observer::Observer}}
+\doxysubsubsection{\texorpdfstring{onTrigger()}{onTrigger()}}
+{\footnotesize\ttfamily virtual void Observer\+::\+Observer\+::on\+Trigger (\begin{DoxyParamCaption}\item[{Event\+Type}]{type,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_event}{Event}} $>$ \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Perform operation on trigger from \mbox{\hyperlink{class_observer_1_1_subject}{Subject}}. 
+
+
+
+Implemented in \mbox{\hyperlink{class_controller_1_1_i_controller_a2d37e3c6987890f2095e310cbf8c30a5}{Controller\+::\+IController}}, \mbox{\hyperlink{class_model_1_1_player_a0019c1e8e9ce5a4e8f20b28147795821}{Model\+::\+Player}}, \mbox{\hyperlink{class_model_1_1_score_ac9f108cc01df93adb7bca2d3dbfe85ef}{Model\+::\+Score}}, and \mbox{\hyperlink{class_view_1_1_i_view_ad763a2c6e983885cda4681ad07dc1e92}{View\+::\+IView}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pablodeputter/\+Documents/\+Git\+Hub/\+Advanced-\/\+Programming-\/\+Doodle\+Jump/engine/include/Observer.\+h\end{DoxyCompactItemize}

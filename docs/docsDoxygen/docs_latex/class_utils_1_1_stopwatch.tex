@@ -1,0 +1,113 @@
+\hypertarget{class_utils_1_1_stopwatch}{}\doxysection{Utils\+::Stopwatch Class Reference}
+\label{class_utils_1_1_stopwatch}\index{Utils::Stopwatch@{Utils::Stopwatch}}
+
+
+Class for \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}}.  
+
+
+
+
+{\ttfamily \#include $<$Stopwatch.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_utils_1_1_stopwatch_a728d6bddbc7d2d527918cca24d831905}\label{class_utils_1_1_stopwatch_a728d6bddbc7d2d527918cca24d831905}} 
+{\bfseries Stopwatch} ()=default
+\begin{DoxyCompactList}\small\item\em Private default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utils_1_1_stopwatch_aa35de65d973aeee37c5aca8b43858e1d}\label{class_utils_1_1_stopwatch_aa35de65d973aeee37c5aca8b43858e1d}} 
+{\bfseries $\sim$\+Stopwatch} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utils_1_1_stopwatch_aa5fb996ba9294c3fb3b87d2f320caef2}\label{class_utils_1_1_stopwatch_aa5fb996ba9294c3fb3b87d2f320caef2}} 
+{\bfseries Stopwatch} (const \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}} \& \mbox{\hyperlink{class_utils_1_1_stopwatch_a779f0703719552fbbd7bacf03329c3e2}{operator=}} (const \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted assignment operator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utils_1_1_stopwatch_a6d01ecc80c92f1d5210cd9c3eb72883d}\label{class_utils_1_1_stopwatch_a6d01ecc80c92f1d5210cd9c3eb72883d}} 
+void {\bfseries start} ()
+\begin{DoxyCompactList}\small\item\em Start \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_utils_1_1_stopwatch_ab807e758c2d027cc226fefc8b6da5cfb}{lap}} ()
+\begin{DoxyCompactList}\small\item\em Lap one round and return found delta. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_utils_1_1_stopwatch_aa3505e376ec91f705c8a57ec1f605abd}{get\+Delta}} () const
+\begin{DoxyCompactList}\small\item\em Get latest delta. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utils_1_1_stopwatch_ac2fc94635acd4f4722c8f989e8935b41}\label{class_utils_1_1_stopwatch_ac2fc94635acd4f4722c8f989e8935b41}} 
+void {\bfseries add\+Timer} (unsigned int key, float amount)
+\item 
+\mbox{\Hypertarget{class_utils_1_1_stopwatch_ac80a64d4bca59952e94d3318ef840d50}\label{class_utils_1_1_stopwatch_ac80a64d4bca59952e94d3318ef840d50}} 
+bool {\bfseries check\+Timer} (unsigned int key)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}} \& \mbox{\hyperlink{class_utils_1_1_stopwatch_ae8cfd6ad5161541a7dc62fe3b3e1ca6b}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Get instance of \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_utils_1_1_stopwatch_aceb808f8fc37565b02c8d627ed8e86ec}\label{class_utils_1_1_stopwatch_aceb808f8fc37565b02c8d627ed8e86ec}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ {\bfseries m\+Player}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_utils_1_1_stopwatch_aa3505e376ec91f705c8a57ec1f605abd}\label{class_utils_1_1_stopwatch_aa3505e376ec91f705c8a57ec1f605abd}} 
+\index{Utils::Stopwatch@{Utils::Stopwatch}!getDelta@{getDelta}}
+\index{getDelta@{getDelta}!Utils::Stopwatch@{Utils::Stopwatch}}
+\doxysubsubsection{\texorpdfstring{getDelta()}{getDelta()}}
+{\footnotesize\ttfamily float Stopwatch\+::get\+Delta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get latest delta. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_stopwatch_ae8cfd6ad5161541a7dc62fe3b3e1ca6b}\label{class_utils_1_1_stopwatch_ae8cfd6ad5161541a7dc62fe3b3e1ca6b}} 
+\index{Utils::Stopwatch@{Utils::Stopwatch}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Utils::Stopwatch@{Utils::Stopwatch}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}} \& Stopwatch\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get instance of \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}}. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_stopwatch_ab807e758c2d027cc226fefc8b6da5cfb}\label{class_utils_1_1_stopwatch_ab807e758c2d027cc226fefc8b6da5cfb}} 
+\index{Utils::Stopwatch@{Utils::Stopwatch}!lap@{lap}}
+\index{lap@{lap}!Utils::Stopwatch@{Utils::Stopwatch}}
+\doxysubsubsection{\texorpdfstring{lap()}{lap()}}
+{\footnotesize\ttfamily float Stopwatch\+::lap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Lap one round and return found delta. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_stopwatch_a779f0703719552fbbd7bacf03329c3e2}\label{class_utils_1_1_stopwatch_a779f0703719552fbbd7bacf03329c3e2}} 
+\index{Utils::Stopwatch@{Utils::Stopwatch}!operator=@{operator=}}
+\index{operator=@{operator=}!Utils::Stopwatch@{Utils::Stopwatch}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}} \& Utils\+::\+Stopwatch\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted assignment operator. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pablodeputter/\+Documents/\+Git\+Hub/\+Advanced-\/\+Programming-\/\+Doodle\+Jump/engine/include/util/Stopwatch.\+h\item 
+/\+Users/pablodeputter/\+Documents/\+Git\+Hub/\+Advanced-\/\+Programming-\/\+Doodle\+Jump/engine/src/util/Stopwatch.\+cpp\end{DoxyCompactItemize}

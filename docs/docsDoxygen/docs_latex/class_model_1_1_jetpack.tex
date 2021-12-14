@@ -1,0 +1,104 @@
+\hypertarget{class_model_1_1_jetpack}{}\doxysection{Model\+::Jetpack Class Reference}
+\label{class_model_1_1_jetpack}\index{Model::Jetpack@{Model::Jetpack}}
+Inheritance diagram for Model\+::Jetpack\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_model_1_1_jetpack}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_model_1_1_jetpack_acd94aeacbff4062c06d41bb98008de9f}\label{class_model_1_1_jetpack_acd94aeacbff4062c06d41bb98008de9f}} 
+{\bfseries Jetpack} (bool started)
+\item 
+\mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model\+::\+Type}} \mbox{\hyperlink{class_model_1_1_jetpack_aa5b597c536440a0bbb84a6580e676939}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Get type of \mbox{\hyperlink{class_model_1_1_entity}{Entity}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_1_1_jetpack_a32c14d328c818b4ded47d0f59c743e55}{move}} (bool collision) override
+\begin{DoxyCompactList}\small\item\em move \mbox{\hyperlink{class_model_1_1_entity}{Entity}} object \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_model_1_1_jetpack_aaaac3d8e878fe08d3bfa2dfb97a2419f}\label{class_model_1_1_jetpack_aaaac3d8e878fe08d3bfa2dfb97a2419f}} 
+void {\bfseries init\+Bounds} ()
+\item 
+void \mbox{\hyperlink{class_model_1_1_jetpack_a6f6c18e6732085c6a41d0b96c259e732}{visit}} (\mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} \&player) override
+\item 
+bool \mbox{\hyperlink{class_model_1_1_jetpack_ae3b134c7c1cb88cb730ae7f5b014f66f}{is\+Removable}} () const override
+\item 
+bool \mbox{\hyperlink{class_model_1_1_jetpack_a8ed5fd1d787f17c231d4541a530d5d68}{is\+Bonus}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_model_1_1_jetpack_ab3aa6f2d7fa27fa108d671d7876b0383}\label{class_model_1_1_jetpack_ab3aa6f2d7fa27fa108d671d7876b0383}} 
+bool {\bfseries m\+Started}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_1_1_jetpack_aa5b597c536440a0bbb84a6580e676939}\label{class_model_1_1_jetpack_aa5b597c536440a0bbb84a6580e676939}} 
+\index{Model::Jetpack@{Model::Jetpack}!getType@{getType}}
+\index{getType@{getType}!Model::Jetpack@{Model::Jetpack}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model\+::\+Type}} Model\+::\+Jetpack\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get type of \mbox{\hyperlink{class_model_1_1_entity}{Entity}} object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model\+::\+Type}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_model_1_1_entity_a853ec96fa9fe4f79f5a06a0fb2b5ed2e}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_jetpack_a8ed5fd1d787f17c231d4541a530d5d68}\label{class_model_1_1_jetpack_a8ed5fd1d787f17c231d4541a530d5d68}} 
+\index{Model::Jetpack@{Model::Jetpack}!isBonus@{isBonus}}
+\index{isBonus@{isBonus}!Model::Jetpack@{Model::Jetpack}}
+\doxysubsubsection{\texorpdfstring{isBonus()}{isBonus()}}
+{\footnotesize\ttfamily bool Model\+::\+Jetpack\+::is\+Bonus (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_jetpack_ae3b134c7c1cb88cb730ae7f5b014f66f}\label{class_model_1_1_jetpack_ae3b134c7c1cb88cb730ae7f5b014f66f}} 
+\index{Model::Jetpack@{Model::Jetpack}!isRemovable@{isRemovable}}
+\index{isRemovable@{isRemovable}!Model::Jetpack@{Model::Jetpack}}
+\doxysubsubsection{\texorpdfstring{isRemovable()}{isRemovable()}}
+{\footnotesize\ttfamily bool Model\+::\+Jetpack\+::is\+Removable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_jetpack_a32c14d328c818b4ded47d0f59c743e55}\label{class_model_1_1_jetpack_a32c14d328c818b4ded47d0f59c743e55}} 
+\index{Model::Jetpack@{Model::Jetpack}!move@{move}}
+\index{move@{move}!Model::Jetpack@{Model::Jetpack}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Jetpack\+::move (\begin{DoxyParamCaption}\item[{bool}]{collision }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+move \mbox{\hyperlink{class_model_1_1_entity}{Entity}} object 
+
+
+
+Implements \mbox{\hyperlink{class_model_1_1_entity_a0321e5a582d7d374c3a1183532158de2}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_jetpack_a6f6c18e6732085c6a41d0b96c259e732}\label{class_model_1_1_jetpack_a6f6c18e6732085c6a41d0b96c259e732}} 
+\index{Model::Jetpack@{Model::Jetpack}!visit@{visit}}
+\index{visit@{visit}!Model::Jetpack@{Model::Jetpack}}
+\doxysubsubsection{\texorpdfstring{visit()}{visit()}}
+{\footnotesize\ttfamily void Model\+::\+Jetpack\+::visit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} \&}]{player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pablodeputter/\+Documents/\+Git\+Hub/\+Advanced-\/\+Programming-\/\+Doodle\+Jump/engine/include/model/Jetpack.\+h\item 
+/\+Users/pablodeputter/\+Documents/\+Git\+Hub/\+Advanced-\/\+Programming-\/\+Doodle\+Jump/engine/src/model/Jetpack.\+cpp\end{DoxyCompactItemize}

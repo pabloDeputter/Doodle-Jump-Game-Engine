@@ -1,0 +1,39 @@
+\hypertarget{_vertical_platform_8h_source}{}\doxysection{Vertical\+Platform.\+h}
+\label{_vertical_platform_8h_source}\index{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/engine/include/model/VerticalPlatform.h@{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/engine/include/model/VerticalPlatform.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 05/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_VERTICALPLATFORM\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_VERTICALPLATFORM\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Entity.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}util/Random.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_vertical_platform}{VerticalPlatform}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_model_1_1_entity}{Entity}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 \textcolor{keyword}{private}:}
+\DoxyCodeLine{16         std::pair<float, float> mBounds;}
+\DoxyCodeLine{17         \textcolor{keywordtype}{bool} mMovingDown;}
+\DoxyCodeLine{18         \textcolor{keywordtype}{bool} mInit;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{21         \mbox{\hyperlink{class_model_1_1_vertical_platform}{VerticalPlatform}}() : \mbox{\hyperlink{class_model_1_1_entity_a05c02a53f0df48302551799846b28306}{Entity}}(7, .10f), mBounds(\{0.f, 0.f\}), mMovingDown(\textcolor{keyword}{true}), mInit(\textcolor{keyword}{false}) \{\}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23         \mbox{\hyperlink{class_model_1_1_vertical_platform}{\string~VerticalPlatform}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} \mbox{\hyperlink{class_model_1_1_vertical_platform_aa74d1672620cd422a6a90d34840c9580}{getType}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_vertical_platform_a66637130c14068412171d70d73a4f68c}{move}}(\textcolor{keywordtype}{bool} collision) \textcolor{keyword}{override};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \textcolor{keywordtype}{void} initBounds();}
+\DoxyCodeLine{30 \};}
+\DoxyCodeLine{31 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_VERTICALPLATFORM\_H}}
+
+\end{DoxyCode}

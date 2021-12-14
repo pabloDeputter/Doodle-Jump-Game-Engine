@@ -1,0 +1,50 @@
+\hypertarget{_abstract_factory_8h_source}{}\doxysection{Abstract\+Factory.\+h}
+\label{_abstract_factory_8h_source}\index{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/engine/include/AbstractFactory.h@{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/engine/include/AbstractFactory.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 21/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ABSTRACTFACTORY\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ABSTRACTFACTORY\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Score.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}controller/IController.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}model/Entity.h"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{13 \textcolor{comment}{// Used by world to create new entities without knowing anything sfml-\/related (VIEW)}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// The game class provides pointer to concrete factory to world, so it can create}}
+\DoxyCodeLine{16 \textcolor{comment}{// entities that have correct view attached}}
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_abstract_factory}{AbstractFactory}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20         \mbox{\hyperlink{class_model_1_1_abstract_factory}{AbstractFactory}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_model_1_1_abstract_factory}{\string~AbstractFactory}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Player> createPlayer() = 0;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> createStaticPlatform() = 0;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> createHorizontalPlatform() = 0;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> createVerticalPlatform() = 0;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> createTemporaryPlatform() = 0;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> createSpring() = 0;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> createJetpack() = 0;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> createBackground() = 0;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Score> createScore() = 0;}
+\DoxyCodeLine{41 \};}
+\DoxyCodeLine{42 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ABSTRACTFACTORY\_H}}
+
+\end{DoxyCode}

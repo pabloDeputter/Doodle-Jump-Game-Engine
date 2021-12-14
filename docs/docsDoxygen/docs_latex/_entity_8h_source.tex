@@ -1,0 +1,130 @@
+\hypertarget{_entity_8h_source}{}\doxysection{Entity.\+h}
+\label{_entity_8h_source}\index{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/engine/include/model/Entity.h@{/Users/pablodeputter/Documents/GitHub/Advanced-\/Programming-\/DoodleJump/engine/include/model/Entity.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 13/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ENTITY\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ENTITY\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Subject.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}util/Camera.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}util/Stopwatch.h"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}IVisitor.h"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{20 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{24 \textcolor{keyword}{enum} \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Type}}}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26         ePlayer = 0,}
+\DoxyCodeLine{27         eBonus = 1,}
+\DoxyCodeLine{28         eStatic = 2,}
+\DoxyCodeLine{29         eHorizontal = 3,}
+\DoxyCodeLine{30         eVertical = 4,}
+\DoxyCodeLine{31         eTemporary = 5,}
+\DoxyCodeLine{32         eBackground = 6,}
+\DoxyCodeLine{33         eJetpack = 7,}
+\DoxyCodeLine{34         eSpring = 8,}
+\DoxyCodeLine{35         eScore = 9}
+\DoxyCodeLine{36 \};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_collision_box}{CollisionBox}}}
+\DoxyCodeLine{39 \{}
+\DoxyCodeLine{40 \textcolor{keyword}{private}:}
+\DoxyCodeLine{41         \textcolor{keywordtype}{float} mLeft;}
+\DoxyCodeLine{42         \textcolor{keywordtype}{float} mWidth;}
+\DoxyCodeLine{43         \textcolor{keywordtype}{float} mBottom;}
+\DoxyCodeLine{44         \textcolor{keywordtype}{float} mHeight;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{keyword}{public}:}
+\DoxyCodeLine{47         \mbox{\hyperlink{class_model_1_1_collision_box}{CollisionBox}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         \mbox{\hyperlink{class_model_1_1_collision_box}{CollisionBox}}(\textcolor{keywordtype}{float} left, \textcolor{keywordtype}{float} width, \textcolor{keywordtype}{float} bottom, \textcolor{keywordtype}{float} height)}
+\DoxyCodeLine{50             : mLeft(left), mWidth(width), mBottom(bottom), mHeight(height)}
+\DoxyCodeLine{51         \{}
+\DoxyCodeLine{52         \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54         \mbox{\hyperlink{class_model_1_1_collision_box}{\string~CollisionBox}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56         [[nodiscard]] \textcolor{keywordtype}{float} getLeft()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mLeft; \}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58         [[nodiscard]] \textcolor{keywordtype}{float} getWidth()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mWidth; \}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60         [[nodiscard]] \textcolor{keywordtype}{float} getBottom()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mBottom; \}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62         [[nodiscard]] \textcolor{keywordtype}{float} getHeight()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mHeight; \}}
+\DoxyCodeLine{63 \};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{68 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_entity}{Entity}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_observer_1_1_subject}{Observer::Subject}}, \textcolor{keyword}{public} \mbox{\hyperlink{class_visitor_1_1_i_visitor}{Visitor::IVisitor}}}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{71         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_ab1f97bf2c2df05fd01bcbf9e360626bb}{mX}}; }
+\DoxyCodeLine{72         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a9b7785e8ac627fc2759a2dfa30001726}{mY}}; }
+\DoxyCodeLine{73         \textcolor{comment}{//}}
+\DoxyCodeLine{74         \textcolor{comment}{//}}
+\DoxyCodeLine{75         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a71582b670ef3e1a32d54ad4eb9aa95b9}{mWidth}}\{\};  }
+\DoxyCodeLine{76         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a9643050b6738467a28ce2b35a478bdd1}{mHeight}}\{\}; }
+\DoxyCodeLine{77         \textcolor{keywordtype}{bool} mRemoveFlag;}
+\DoxyCodeLine{78         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} mScore;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80         \textcolor{keywordtype}{float} mSpawnRate;}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 \textcolor{keyword}{public}:}
+\DoxyCodeLine{86         \mbox{\hyperlink{class_model_1_1_entity_a05c02a53f0df48302551799846b28306}{Entity}}() : \mbox{\hyperlink{class_model_1_1_entity_ab1f97bf2c2df05fd01bcbf9e360626bb}{mX}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a9b7785e8ac627fc2759a2dfa30001726}{mY}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a71582b670ef3e1a32d54ad4eb9aa95b9}{mWidth}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a9643050b6738467a28ce2b35a478bdd1}{mHeight}}(0.f), mRemoveFlag(false), mScore(0), mSpawnRate(0.f) \{\}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88         \mbox{\hyperlink{class_model_1_1_entity_a05c02a53f0df48302551799846b28306}{Entity}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} score, \textcolor{keywordtype}{float} spawnRate)}
+\DoxyCodeLine{89             : \mbox{\hyperlink{class_model_1_1_entity_ab1f97bf2c2df05fd01bcbf9e360626bb}{mX}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a9b7785e8ac627fc2759a2dfa30001726}{mY}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a71582b670ef3e1a32d54ad4eb9aa95b9}{mWidth}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a9643050b6738467a28ce2b35a478bdd1}{mHeight}}(0.f), mRemoveFlag(false), mScore(score), mSpawnRate(spawnRate)}
+\DoxyCodeLine{90         \{}
+\DoxyCodeLine{91         \}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{96         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_model_1_1_entity_a77ced13830e4c39ad343074cc768ff99}{\string~Entity}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{101         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a43a066e3ab4376eb6afbade526c2d1e2}{getX}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{106         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a1628120ebbd5b236a029eaa4a9547313}{getY}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{111         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a4f11898d6440a4c86f75f7abf17c91d6}{setX}}(\textcolor{keywordtype}{float} x);}
+\DoxyCodeLine{116         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_abdaad02b63a9449b1f708d7803095dcb}{setY}}(\textcolor{keywordtype}{float} y);}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119         \textcolor{keywordtype}{float} getWidth() \textcolor{keyword}{const};}
+\DoxyCodeLine{124         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a1332918563adb284c0fd432d47486d44}{getHeight}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{129         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a4bd5cb1fabcf19b2d1f707c78aaa76d0}{setWidth}}(\textcolor{keywordtype}{float} width);}
+\DoxyCodeLine{134         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a86c453a0fb90ec31f5ce761edbdb07eb}{setHeight}}(\textcolor{keywordtype}{float} height);}
+\DoxyCodeLine{138         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a0321e5a582d7d374c3a1183532158de2}{move}}(\textcolor{keywordtype}{bool} collision) = 0;}
+\DoxyCodeLine{144         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a0321e5a582d7d374c3a1183532158de2}{move}}(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y);}
+\DoxyCodeLine{149         \textcolor{keyword}{virtual} \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} \mbox{\hyperlink{class_model_1_1_entity_a853ec96fa9fe4f79f5a06a0fb2b5ed2e}{getType}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{153         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a6db576733100dea6173fa5818ff11f10}{onDestroy}}();}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155         \textcolor{keywordtype}{void} visit(\mbox{\hyperlink{class_model_1_1_player}{Model::Player}}\& player)\textcolor{keyword}{ override }\{ std::cout << \textcolor{stringliteral}{"{}Entity visit\(\backslash\)n"{}}; \}}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} accept(\textcolor{keyword}{const} std::shared\_ptr<Visitor::IVisitor>\& visitor) \{\}}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159         \textcolor{comment}{// TODO -\/ jetpack}}
+\DoxyCodeLine{160         \textcolor{keywordtype}{void} setRemoveFlag(\textcolor{keywordtype}{bool} flag)}
+\DoxyCodeLine{161         \{}
+\DoxyCodeLine{162                 mRemoveFlag = flag;}
+\DoxyCodeLine{163                 \mbox{\hyperlink{class_model_1_1_entity_a6db576733100dea6173fa5818ff11f10}{onDestroy}}();}
+\DoxyCodeLine{164         \}}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} getRemovable()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mRemoveFlag; \}}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} isRemovable()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mRemoveFlag; \}}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} isBonus()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \}}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172         \textcolor{keywordtype}{void} setScore(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} score) \{ mScore = score; \}}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174         \textcolor{keyword}{virtual} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getScore()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mScore; \}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176         \textcolor{keyword}{virtual} \textcolor{keywordtype}{float} getSpawnRate()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mSpawnRate; \}}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178         \textcolor{keywordtype}{void} setSpawnRate(\textcolor{keywordtype}{float} spawnRate) \{ mSpawnRate = spawnRate; \}}
+\DoxyCodeLine{179 \};}
+\DoxyCodeLine{180 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ENTITY\_H}}
+
+\end{DoxyCode}

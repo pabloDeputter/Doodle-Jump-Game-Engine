@@ -1,0 +1,156 @@
+\hypertarget{class_model_1_1_player}{}\doxysection{Model\+::Player Class Reference}
+\label{class_model_1_1_player}\index{Model::Player@{Model::Player}}
+
+
+Class for \mbox{\hyperlink{class_model_1_1_player}{Player}} object, derives from \mbox{\hyperlink{class_model_1_1_entity}{Entity}}.  
+
+
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+Inheritance diagram for Model\+::Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_model_1_1_player}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model\+::\+Type}} \mbox{\hyperlink{class_model_1_1_player_a9ec2baf086b01bf94c7658baef81b94e}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Get type of \mbox{\hyperlink{class_model_1_1_entity}{Entity}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_1_1_player_a487d1793bb9057f5f10cd51ebc46826c}{move}} (bool collision) override
+\begin{DoxyCompactList}\small\item\em move \mbox{\hyperlink{class_model_1_1_entity}{Entity}} object \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_model_1_1_player_af9deb6886ca318c5618368a3d8fcfe62}\label{class_model_1_1_player_af9deb6886ca318c5618368a3d8fcfe62}} 
+const std\+::pair$<$ float, float $>$ \& {\bfseries get\+Velocity} () const
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_a775b0ad8311ec1963998352bfd0dd0c6}\label{class_model_1_1_player_a775b0ad8311ec1963998352bfd0dd0c6}} 
+void {\bfseries set\+Velocity} (const std\+::pair$<$ float, float $>$ \&velocity)
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_a206f62b88d6a3b461a82659fbbaa730a}\label{class_model_1_1_player_a206f62b88d6a3b461a82659fbbaa730a}} 
+const std\+::pair$<$ float, float $>$ \& {\bfseries get\+Direction} () const
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_aeb6063dd28fc99ef5671d2915879c0ad}\label{class_model_1_1_player_aeb6063dd28fc99ef5671d2915879c0ad}} 
+void {\bfseries set\+Direction} (const std\+::pair$<$ float, float $>$ \&direction)
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_a697d5cfdb2312c333e3f92b1f8424534}\label{class_model_1_1_player_a697d5cfdb2312c333e3f92b1f8424534}} 
+const float {\bfseries get\+Max\+Velocity} () const
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_a170bae6f6f989df3fede23e64412c1f7}\label{class_model_1_1_player_a170bae6f6f989df3fede23e64412c1f7}} 
+const float {\bfseries get\+Max\+Acceleration} () const
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_a249eb4ef3d5da27f8420442d16188bc3}\label{class_model_1_1_player_a249eb4ef3d5da27f8420442d16188bc3}} 
+const float {\bfseries get\+Drag} () const
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_aff9210af8639092b0ec66aaf585c272d}\label{class_model_1_1_player_aff9210af8639092b0ec66aaf585c272d}} 
+void {\bfseries set\+Drag} (float drag)
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_a15bfac50059d6b9ba26539d31d4f9cdb}\label{class_model_1_1_player_a15bfac50059d6b9ba26539d31d4f9cdb}} 
+bool {\bfseries is\+Moving\+Up} () const
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_aa0d27c68edd0251e602d16a371bf5b84}\label{class_model_1_1_player_aa0d27c68edd0251e602d16a371bf5b84}} 
+void {\bfseries set\+Is\+Moving\+Up} (bool is\+Moving\+Up)
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_a0975725f433dda2394c456fe2d8fd069}\label{class_model_1_1_player_a0975725f433dda2394c456fe2d8fd069}} 
+bool {\bfseries is\+Moving\+Down} () const
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_a8b9084a77409fda43af644410003c655}\label{class_model_1_1_player_a8b9084a77409fda43af644410003c655}} 
+void {\bfseries set\+Is\+Moving\+Down} (bool is\+Moving\+Down)
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_a0d593d531b6c13211af792a87fb1779a}\label{class_model_1_1_player_a0d593d531b6c13211af792a87fb1779a}} 
+bool {\bfseries is\+Moving\+Left} () const
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_ae5e83c3a55272bf41c89d563df81effc}\label{class_model_1_1_player_ae5e83c3a55272bf41c89d563df81effc}} 
+void {\bfseries set\+Is\+Moving\+Left} (bool is\+Moving\+Left)
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_a38d00daeca4002f238a2727fa88fd646}\label{class_model_1_1_player_a38d00daeca4002f238a2727fa88fd646}} 
+bool {\bfseries is\+Moving\+Right} () const
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_aed3c9f244a33d2ae56cdb8a1073801f2}\label{class_model_1_1_player_aed3c9f244a33d2ae56cdb8a1073801f2}} 
+void {\bfseries set\+Is\+Moving\+Right} (bool is\+Moving\+Right)
+\item 
+void \mbox{\hyperlink{class_model_1_1_player_a55a03669d5b33e602d6d39091e3ca493}{accept}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_visitor_1_1_i_visitor}{Visitor\+::\+IVisitor}} $>$ \&visitor) override
+\item 
+void \mbox{\hyperlink{class_model_1_1_player_a0019c1e8e9ce5a4e8f20b28147795821}{on\+Trigger}} (Event\+Type type, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_event}{Event}} $>$ \&event) override
+\begin{DoxyCompactList}\small\item\em Perform operation on trigger from Subject. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_1_1_player_aec15d41379d04b8fdafe8dde038f89ad}{handle\+Event}} (const \mbox{\hyperlink{class_stop_bonus_event}{Stop\+Bonus\+Event}} \&event) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class for \mbox{\hyperlink{class_model_1_1_player}{Player}} object, derives from \mbox{\hyperlink{class_model_1_1_entity}{Entity}}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_1_1_player_a55a03669d5b33e602d6d39091e3ca493}\label{class_model_1_1_player_a55a03669d5b33e602d6d39091e3ca493}} 
+\index{Model::Player@{Model::Player}!accept@{accept}}
+\index{accept@{accept}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Model\+::\+Player\+::accept (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_visitor_1_1_i_visitor}{Visitor\+::\+IVisitor}} $>$ \&}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_player_a9ec2baf086b01bf94c7658baef81b94e}\label{class_model_1_1_player_a9ec2baf086b01bf94c7658baef81b94e}} 
+\index{Model::Player@{Model::Player}!getType@{getType}}
+\index{getType@{getType}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model\+::\+Type}} Model\+::\+Player\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get type of \mbox{\hyperlink{class_model_1_1_entity}{Entity}} object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model\+::\+Type}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_model_1_1_entity_a853ec96fa9fe4f79f5a06a0fb2b5ed2e}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_player_aec15d41379d04b8fdafe8dde038f89ad}\label{class_model_1_1_player_aec15d41379d04b8fdafe8dde038f89ad}} 
+\index{Model::Player@{Model::Player}!handleEvent@{handleEvent}}
+\index{handleEvent@{handleEvent}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{handleEvent()}{handleEvent()}}
+{\footnotesize\ttfamily void Model\+::\+Player\+::handle\+Event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_stop_bonus_event}{Stop\+Bonus\+Event}} \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_i_event_handler}{IEvent\+Handler}}.
+
+\mbox{\Hypertarget{class_model_1_1_player_a487d1793bb9057f5f10cd51ebc46826c}\label{class_model_1_1_player_a487d1793bb9057f5f10cd51ebc46826c}} 
+\index{Model::Player@{Model::Player}!move@{move}}
+\index{move@{move}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Player\+::move (\begin{DoxyParamCaption}\item[{bool}]{collision }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+move \mbox{\hyperlink{class_model_1_1_entity}{Entity}} object 
+
+
+
+Implements \mbox{\hyperlink{class_model_1_1_entity_a0321e5a582d7d374c3a1183532158de2}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_player_a0019c1e8e9ce5a4e8f20b28147795821}\label{class_model_1_1_player_a0019c1e8e9ce5a4e8f20b28147795821}} 
+\index{Model::Player@{Model::Player}!onTrigger@{onTrigger}}
+\index{onTrigger@{onTrigger}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{onTrigger()}{onTrigger()}}
+{\footnotesize\ttfamily void Model\+::\+Player\+::on\+Trigger (\begin{DoxyParamCaption}\item[{Event\+Type}]{type,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_event}{Event}} $>$ \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Perform operation on trigger from Subject. 
+
+
+
+Implements \mbox{\hyperlink{class_observer_1_1_observer_a5a720106a3ed4f71a87b7675095c5bf9}{Observer\+::\+Observer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/pablodeputter/\+Documents/\+Git\+Hub/\+Advanced-\/\+Programming-\/\+Doodle\+Jump/engine/include/model/Player.\+h\item 
+/\+Users/pablodeputter/\+Documents/\+Git\+Hub/\+Advanced-\/\+Programming-\/\+Doodle\+Jump/engine/src/model/Player.\+cpp\end{DoxyCompactItemize}
