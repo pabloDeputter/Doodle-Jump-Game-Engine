@@ -5,7 +5,7 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_CAMERA_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_CAMERA_H
 
-#include "Subject.h"
+#include "observer/Subject.h"
 
 #include <memory>
 #include <utility>

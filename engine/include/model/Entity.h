@@ -5,9 +5,9 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_ENTITY_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_ENTITY_H
 
-#include "Subject.h"
+#include "observer/Subject.h"
 
-#include "IVisitor.h"
+#include "observer/IVisitor.h"
 
 /**
  * @brief Namespace holds all Models

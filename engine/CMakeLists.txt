@@ -15,7 +15,6 @@ SET(SRC
         src/model/Spring.cpp
         src/controller/BonusController.cpp
         src/model/Score.cpp
-        include/Settings.h
         src/HighScore.cpp
         )
 

@@ -5,10 +5,10 @@ SET(SRC
         src/view/BackgroundView.cpp
         src/ConcreteFactory.cpp
         src/Game.cpp
-        src/util/Resourcemanager.cpp
         src/view/BonusView.cpp
         src/view/ScoreView.cpp
-        include/GameState.h include/MenuState.h include/MenuState.cpp include/EnterScoreState.h)
+        src/state/MenuState.cpp
+        src/state/PlayState.cpp src/state/EnterScoreState.cpp)
 
 ADD_LIBRARY(game SHARED ${SRC})
 

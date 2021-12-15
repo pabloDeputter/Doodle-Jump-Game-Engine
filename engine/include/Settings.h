@@ -27,11 +27,10 @@ static float CHANCE_JETPACK = .05f; /**< Spawn rate of Jetpack */
 /**
  * @brief Max. amount and min amount of platforms that can be on the screen at the same time
  */
-static unsigned int MIN_PLATFORMS = 7;  /**< Min. amount of Platforms */
-static unsigned int MAX_PLATFORMS = 20; /**< Max. amount of Platforms */
+[[maybe_unused]] static unsigned int MIN_PLATFORMS = 7; /**< Min. amount of Platforms */
+static unsigned int MAX_PLATFORMS = 40;                 /**< Max. amount of Platforms */
 
 static float DIFFICULTY = 0.f; /** Difficulty */
-
 /**
  * @brief Enum holding different difficulties
  */
@@ -48,7 +47,7 @@ enum Difficulty
  * @brief Update difficulty of current game
  * @param difficulty Settings::Difficulty - mode
  */
-bool static setDifficulty(Difficulty difficulty)
+[[maybe_unused]] bool static setDifficulty(Difficulty difficulty)
 {
         switch (difficulty) {
         case eEasy:

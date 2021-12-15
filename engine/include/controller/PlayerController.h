@@ -46,7 +46,7 @@ public:
         /**
          * @brief Default destructor for PlayerController object
          */
-        ~PlayerController() override { std::cout << "lol\n"; }
+        ~PlayerController() override = default;
 };
 } // namespace Controller
 

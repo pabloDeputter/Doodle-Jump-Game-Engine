@@ -5,21 +5,22 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H
 
-#include "ConcreteFactory.h"
-
 #include "World.h"
-
-#include "util/Resourcemanager.h"
 #include "util/Stopwatch.h"
+
+#include "ConcreteFactory.h"
+#include "state/State.h"
+#include "util/ResourceManager.h"
 
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
-#include "State.h"
-
-enum States
+/**
+ * @brief Game states
+ */
+enum GameStates
 {
-        eGame = 0,
+        ePlay = 0,
         eEnterScore,
         eMenu
 };
@@ -30,24 +31,35 @@ enum States
 class Game
 {
 public:
-        std::shared_ptr<sf::RenderWindow> mWindow;
-        std::unique_ptr<World> mWorld;
-        std::shared_ptr<Factory::AbstractFactory> mFactory;
-
-public:
-        std::shared_ptr<State> mState;
-        States mStateType;
+        std::shared_ptr<sf::RenderWindow> mWindow;          /**< Pointer to window */
+        std::shared_ptr<Factory::AbstractFactory> mFactory; /**< Pointer to Factory */
+        std::shared_ptr<State> mState;                      /**< Pointer to current State */
+        GameStates mStateType;                              /**< Type of current State */
 
 private:
+        /**
+         * @brief Initialize resources
+         */
         static void initializeResources();
+        /**
+         * @brief Check if Game is still in correct State
+         */
+        void checkState();
 
 public:
-        Game() = default;
-
+        /**
+         * @brief Constructor for Game object
+         * @param width unsigned int - width of screen, standard = 800
+         * @param height unsigned int - height of screen, standard = 1440
+         */
         explicit Game(unsigned int width = 800, unsigned int height = 1440);
-
+        /**
+         * @brief Destructor for Game object
+         */
         ~Game() = default;
-
+        /**
+         * @brief Run main Game loop
+         */
         void run();
 };
 

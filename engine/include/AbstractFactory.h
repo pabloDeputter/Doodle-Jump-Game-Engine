@@ -34,42 +34,42 @@ public:
          */
         virtual std::shared_ptr<Model::Player> createPlayer() = 0;
         /**
-         * @brief Create StaticPlatform object
+         * @brief Create StaticPlatform object - PURE VIRTUAL
          * @return Model::Entity - pointer to Entity
          */
         virtual std::shared_ptr<Model::Entity> createStaticPlatform() = 0;
         /**
-         * @brief Create HorizontalPlatform object
+         * @brief Create HorizontalPlatform object - PURE VIRTUAL
          * @return Model::Entity - pointer to Entity
          */
         virtual std::shared_ptr<Model::Entity> createHorizontalPlatform() = 0;
         /**
-         * @brief Create VerticalPlatform object
+         * @brief Create VerticalPlatform object - PURE VIRTUAL
          * @return Model::Entity - pointer to Entity
          */
         virtual std::shared_ptr<Model::Entity> createVerticalPlatform() = 0;
         /**
-         * @brief Create TemporaryPlatform object
+         * @brief Create TemporaryPlatform object - PURE VIRTUAL
          * @return Model::Entity - pointer to Entity
          */
         virtual std::shared_ptr<Model::Entity> createTemporaryPlatform() = 0;
         /**
-         * @brief Create Spring object
+         * @brief Create Spring object - PURE VIRTUAL
          * @return Model::Entity - pointer to Entity
          */
         virtual std::shared_ptr<Model::Entity> createSpring() = 0;
         /**
-         * @brief Create Jetpack object
+         * @brief Create Jetpack object - PURE VIRTUAL
          * @return Model::Entity - pointer to Entity
          */
         virtual std::shared_ptr<Model::Entity> createJetpack() = 0;
         /**
-         * @brief Create Background object
+         * @brief Create Background object - PURE VIRTUAL
          * @return Model::Entity - pointer to Entity
          */
         virtual std::shared_ptr<Model::Entity> createBackground() = 0;
         /**
-         * @brief Create Score object
+         * @brief Create Score object - PURE VIRTUAL
          * @return Model::Entity - pointer to Entity
          */
         virtual std::shared_ptr<Model::Score> createScore() = 0;

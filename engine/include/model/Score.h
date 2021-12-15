@@ -9,7 +9,7 @@
 
 #include "Event.h"
 
-#include "Subject.h"
+#include "observer/Subject.h"
 
 /**
  * @brief Namespace holds Models

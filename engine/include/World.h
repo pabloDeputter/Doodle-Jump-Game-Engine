@@ -14,9 +14,9 @@
 #include "util/Random.h"
 #include "util/Utilities.h"
 
-#include "Event.h"
 #include "Settings.h"
 #include "model/Score.h"
+#include "observer/Event.h"
 
 #include <memory>
 #include <vector>

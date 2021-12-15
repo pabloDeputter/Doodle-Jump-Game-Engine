@@ -6,7 +6,7 @@
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_PLAYER_H
 
 #include "Entity.h"
-#include "IVisitor.h"
+#include "observer/IVisitor.h"
 
 /**
  * @brief Namespace holds all Models
@@ -19,7 +19,7 @@ class Player : public Entity, public Observer::Observer, public IEventHandler
 {
 public:
         /**
-         * @brief Player states
+         * @brief Player state
          */
         enum PlayerState
         {

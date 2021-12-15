@@ -7,33 +7,38 @@
 
 #include "IView.h"
 
-#include <filesystem>
-
+/**
+ * @brief Namespace holds all Views
+ */
 namespace View {
-
+/**
+ * @brief Class for View of Background Entity
+ */
 class BackgroundView : public IView
 {
-public:
-        BackgroundView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<sf::RenderWindow>& window)
-            : IView(entity, window)
-        {
-                std::shared_ptr<sf::Texture>& tex =
-                    Utils::Resourcemanager::getInstance().getTextures()->get(Model::eBackground);
-
-                mSprite = std::make_unique<sf::Sprite>();
-                mSprite->setTexture(*tex);
-                mSprite->scale(1.f, 1.f);
-                mSprite->setColor(sf::Color(255, 255, 255, 255));
-
-                mEntity->setWidth((float)tex->getSize().x * mSprite->getScale().x);
-                mEntity->setHeight((float)tex->getSize().y * mSprite->getScale().y);
-        }
-
-        ~BackgroundView() override = default;
-
+private:
+        /**
+         * @brief Handle DrawEvent event
+         * @param event DrawEvent - event to be handled
+         */
         void handleEvent(const DrawEvent& event) override;
-
+        /**
+         * @brief Handle OutOfView event
+         * @param event OutOfView - event to be handled
+         */
         void handleEvent(const OutOfViewEvent& event) override;
+
+public:
+        /**
+         * @brief Constructor of BackgroundView
+         * @param entity Model::Entity - pointer to entity to be represented
+         * @param window sf::RenderWindow - pointer to renderWindow where Sprite will be drawn on
+         */
+        BackgroundView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<sf::RenderWindow>& window);
+        /**
+         * @brief Destructor of BackgroundView
+         */
+        ~BackgroundView() override = default;
 };
 } // namespace View
 

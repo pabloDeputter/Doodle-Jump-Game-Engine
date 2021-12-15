@@ -11,6 +11,7 @@
 #include "model/HorizontalPlatform.h"
 #include "model/Jetpack.h"
 #include "model/Player.h"
+#include "model/Score.h"
 #include "model/Spring.h"
 #include "model/StaticPlatform.h"
 #include "model/TemporaryPlatform.h"
@@ -27,40 +28,78 @@
 #include "view/PlayerView.h"
 #include "view/ScoreView.h"
 
-#include "model/Score.h"
-
 #include "SFML/Graphics.hpp"
 
+/**
+ * @brief Namespace holds Factory design pattern
+ */
 namespace Factory {
+/**
+ * @brief Class for Concrete Factory, implements AbstractFactory's methods
+ */
 class ConcreteFactory : public Factory::AbstractFactory
 {
-public:
-        ConcreteFactory() = default;
-
-        ConcreteFactory(const std::shared_ptr<sf::RenderWindow>& window) : mWindow(window) {}
-
-        ~ConcreteFactory() override = default;
-
-        std::shared_ptr<Model::Player> createPlayer() override;
-
-        std::shared_ptr<Model::Entity> createStaticPlatform() override;
-
-        std::shared_ptr<Model::Entity> createHorizontalPlatform() override;
-
-        std::shared_ptr<Model::Entity> createVerticalPlatform() override;
-
-        std::shared_ptr<Model::Entity> createTemporaryPlatform() override;
-
-        std::shared_ptr<Model::Entity> createSpring() override;
-
-        std::shared_ptr<Model::Entity> createJetpack() override;
-
-        std::shared_ptr<Model::Entity> createBackground() override;
-
-        std::shared_ptr<Model::Score> createScore() override;
-
 private:
-        std::shared_ptr<sf::RenderWindow> mWindow;
+        std::shared_ptr<sf::RenderWindow> mWindow; /**< Pointer to renderWindow */
+public:
+        /**
+         * @brief Default constructor for ConcreteFactory object
+         */
+        ConcreteFactory() = default;
+        /**
+         * @brief Constructor for ConcreteFactory object
+         * @param window sf::RenderWindow - pointer to window
+         */
+        explicit ConcreteFactory(const std::shared_ptr<sf::RenderWindow>& window) : mWindow(window) {}
+        /**
+         * @brief Default destructor for ConcreteFactory object
+         */
+        ~ConcreteFactory() override = default;
+        /**
+         * @brief Create Player object
+         * @return Model::Player - pointer to Player
+         */
+        std::shared_ptr<Model::Player> createPlayer() override;
+        /**
+         * @brief Create StaticPlatform object
+         * @return Model::Entity - pointer to Entity
+         */
+        std::shared_ptr<Model::Entity> createStaticPlatform() override;
+        /**
+         * @brief Create HorizontalPlatform object
+         * @return Model::Entity - pointer to Entity
+         */
+        std::shared_ptr<Model::Entity> createHorizontalPlatform() override;
+        /**
+         * @brief Create VerticalPlatform object
+         * @return Model::Entity - pointer to Entity
+         */
+        std::shared_ptr<Model::Entity> createVerticalPlatform() override;
+        /**
+         * @brief Create TemporaryPlatform object
+         * @return Model::Entity - pointer to Entity
+         */
+        std::shared_ptr<Model::Entity> createTemporaryPlatform() override;
+        /**
+         * @brief Create Spring object
+         * @return Model::Entity - pointer to Entity
+         */
+        std::shared_ptr<Model::Entity> createSpring() override;
+        /**
+         * @brief Create Jetpack object
+         * @return Model::Entity - pointer to Entity
+         */
+        std::shared_ptr<Model::Entity> createJetpack() override;
+        /**
+         * @brief Create Background object
+         * @return Model::Entity - pointer to Entity
+         */
+        std::shared_ptr<Model::Entity> createBackground() override;
+        /**
+         * @brief Create Score object
+         * @return Model::Entity - pointer to Entity
+         */
+        std::shared_ptr<Model::Score> createScore() override;
 };
 } // namespace View
 

@@ -257,6 +257,15 @@ void World::spawnEntity(float x, float y, Model::Type type)
         case Model::eSpring:
                 entity = mFactory->createSpring();
                 break;
+        // Otherwise error
+        case Model::ePlayer:
+                break;
+        case Model::eBonus:
+                break;
+        case Model::eBackground:
+                break;
+        case Model::eScore:
+                break;
         }
         // Entity needs to be initialized
         if (entity == nullptr) {

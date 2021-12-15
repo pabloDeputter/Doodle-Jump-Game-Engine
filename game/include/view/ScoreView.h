@@ -5,50 +5,46 @@
 #ifndef DOODLEJUMP_SCOREVIEW_H
 #define DOODLEJUMP_SCOREVIEW_H
 
-#include "IView.h"
-
 #include "model/Score.h"
 
-namespace View {
+#include "IView.h"
 
+/**
+ * @brief Namespace holds all Views
+ */
+namespace View {
+/**
+ * @brief Class for View of Score Entity
+ */
 class ScoreView : public IView
 {
 private:
-        std::unique_ptr<sf::Text> mText;
-        std::unique_ptr<sf::Text> mLevelText;
-        std::unique_ptr<sf::Text> mDiffText;
+        std::unique_ptr<sf::Text> mScoreText; /**< sf::Text for Score */
+        std::unique_ptr<sf::Text> mLevelText; /**< sf::Text for Level */
+        std::unique_ptr<sf::Text> mDiffText;  /**< sf::Text for Difficulty */
 
+private:
+        /**
+         * @brief Handle DrawEvent event
+         * @param event DrawEvent - event to be handled
+         */
         void handleEvent(const DrawEvent& event) override;
-
+        /**
+         * @brief Handle NewDifficultyEvent
+         * @param event NewDifficultyEvent - event to be handled
+         */
         void handleEvent(const NewDifficultyEvent& event) override;
 
 public:
-        ScoreView(std::shared_ptr<Model::Score>& entity, const std::shared_ptr<sf::RenderWindow>& window)
-            : IView(entity, window)
-        {
-                std::shared_ptr<sf::Font>& font = Utils::Resourcemanager::getInstance().getFonts()->get(Model::eScore);
-
-                mSprite = std::make_unique<sf::Sprite>();
-                mText = std::make_unique<sf::Text>();
-                mText->setFont(*font);
-                mText->setFillColor(sf::Color::Black);
-
-                mDiffText = std::make_unique<sf::Text>();
-                mDiffText->setFont(*font);
-                mDiffText->setCharacterSize(60);
-                mDiffText->setFillColor(sf::Color::Black);
-
-                mLevelText = std::make_unique<sf::Text>();
-                mLevelText->setFont(*font);
-                mLevelText->setCharacterSize(30);
-                mLevelText->setFillColor(sf::Color::Black);
-                mLevelText->setString("-NEW LEVEL REACHED-");
-                sf::FloatRect bounds = mLevelText->getLocalBounds();
-                mLevelText->setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);
-                const std::pair<float, float> windowDim = Utils::Camera::getInstance().getWindowDimensions();
-                mLevelText->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y - 375);
-        }
-
+        /**
+         * @brief Constructor of ScoreView object
+         * @param entity Model::Entity - pointer to entity to be represented
+         * @param window sf::RenderWindow - pointer to renderWindow where Sprite will be drawn on
+         */
+        ScoreView(std::shared_ptr<Model::Score>& entity, const std::shared_ptr<sf::RenderWindow>& window);
+        /**
+         * @brief Destructor of ScoreView object
+         */
         ~ScoreView() override = default;
 };
 } // namespace View

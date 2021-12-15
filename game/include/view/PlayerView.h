@@ -7,31 +7,25 @@
 
 #include "IView.h"
 
+/**
+ * Namespace holds all Views
+ */
 namespace View {
-
+/**
+ * Class for view of Player Entity
+ */
 class PlayerView : public IView
 {
 public:
-        PlayerView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<sf::RenderWindow>& window)
-            : IView(entity, window)
-        {
-
-                std::shared_ptr<sf::Texture>& tex =
-                    Utils::Resourcemanager::getInstance().getTextures()->get(Model::ePlayer);
-
-                mSprite = std::make_unique<sf::Sprite>();
-                mSprite->setTexture(*tex);
-                mSprite->scale(2.f, 2.f);
-
-                auto texSize = Utils::Camera::getInstance().inverseTransform(
-                    (float)tex->getSize().x * mSprite->getScale().x, (float)tex->getSize().y * mSprite->getScale().y);
-
-                mEntity->setWidth(texSize.first);
-                mEntity->setHeight(Utils::Camera::getInstance().getWorldDimensions().second - texSize.second);
-        }
-
-        PlayerView() = default;
-
+        /**
+         * @brief Constructor of PlayerView object
+         * @param entity Model::Entity - pointer to entity to be represented
+         * @param window sf::RenderWindow - pointer to renderWindow where Sprite will be drawn on
+         */
+        PlayerView(const std::shared_ptr<Model::Entity>& entity, const std::shared_ptr<sf::RenderWindow>& window);
+        /**
+         * @brief Destructor of PlayerView object
+         */
         ~PlayerView() override = default;
 };
 } // namespace View

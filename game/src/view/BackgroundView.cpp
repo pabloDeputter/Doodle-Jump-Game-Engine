@@ -6,8 +6,28 @@
 
 using namespace View;
 
+BackgroundView::BackgroundView(const std::shared_ptr<Model::Entity>& entity,
+                               const std::shared_ptr<sf::RenderWindow>& window)
+    : IView(entity, window)
+{
+        // Get texture associated with BackgroundView from ResourceManager
+        std::shared_ptr<sf::Texture>& tex =
+            Utils::ResourceManager::getInstance().getTextures()->get(Model::eBackground);
+
+        // Setup Sprite
+        mSprite = std::make_unique<sf::Sprite>();
+        mSprite->setTexture(*tex);
+        mSprite->scale(1.f, 1.f);
+        mSprite->setColor(sf::Color(255, 255, 255, 255));
+
+        // Set width and height of Entity based on Sprite dimensions
+        mEntity->setWidth((float)tex->getSize().x * mSprite->getScale().x);
+        mEntity->setHeight((float)tex->getSize().y * mSprite->getScale().y);
+}
+
 void BackgroundView::handleEvent(const DrawEvent& event)
 {
+        // Transform position of Entity based on pos. of Camera
         auto const pos = Utils::Camera::getInstance().transform(mEntity->getX(),
                                                                 mEntity->getY() - Utils::Camera::getInstance().getY());
         mSprite->setPosition(sf::Vector2f(pos.first, pos.second));

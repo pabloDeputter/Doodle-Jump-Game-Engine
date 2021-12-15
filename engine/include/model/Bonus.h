@@ -69,7 +69,7 @@ public:
          * @brief Check if Bonus is removable
          * @return bool
          */
-        [[nodiscard]] bool isRemovable() const override {}
+        [[nodiscard]] bool isRemovable() const override { return mRemoveFlag; }
         /**
          * @brief Check if Entity is Bonus
          * @return bool - true
