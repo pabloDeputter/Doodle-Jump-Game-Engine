@@ -9,15 +9,12 @@
 
 #include "IVisitor.h"
 
-#include <iostream>
-#include <string>
-
 /**
  * @brief Namespace holds all Models
  */
 namespace Model {
 /**
- * @Brief Enum containing enumerated Entities
+ * @Brief Enum containing all type of Entities
  */
 enum Type
 {
@@ -32,106 +29,152 @@ enum Type
         eSpring,
         eScore
 };
-
 /**
  * @brief Class for Entity object
  */
 class Entity : public Observer::Subject, public Visitor::IVisitor
 {
 protected:
-        float mX; /**< X-coordinate of Entity */
-        float mY; /**< Y-coordinate of Entity */
-        //
-        //
-        float mWidth{};  /**< Width of Entity collision box */
-        float mHeight{}; /**< Height of Entity collision box */
-        bool mRemoveFlag;
-        int mScore;
+        float mX;         /**< X-coordinate of Entity */
+        float mY;         /**< Y-coordinate of Entity */
+        float mWidth;     /**< Width of Entity collision box */
+        float mHeight;    /**< Height of Entity collision box */
+        bool mRemoveFlag; /**< Is Entity removable */
+        int mScore;       /**< Score of Entity */
 
 public:
         /**
-         * @brief Default constructor
+         * @brief Default constructor for Entity object
+         *
          */
         Entity() : mX(0.f), mY(0.f), mWidth(0.f), mHeight(0.f), mRemoveFlag(false), mScore(0) {}
-
-        Entity(unsigned int score) : mX(0.f), mY(0.f), mWidth(0.f), mHeight(0.f), mRemoveFlag(false), mScore(score) {}
-
         /**
-         * @brief Default constructor
+         * @brief Constructor for Entity object
+         * @param score int - score of Entity
          */
-        virtual ~Entity() = default;
+        explicit Entity(int score) : mX(0.f), mY(0.f), mWidth(0.f), mHeight(0.f), mRemoveFlag(false), mScore(score) {}
         /**
-         * @brief Get the x value of Entity object
-         * @return float
+         * @brief Destructor of Entity object
          */
-        float getX() const;
+        ~Entity() override { onDestroy(); }
         /**
-         * @brief Get the y value of Entity object
-         * @return float
+         * @brief Get x coordinate of Entity
+         * @return float - x coordinate
          */
-        float getY() const;
+        [[nodiscard]] float getX() const { return mX; }
         /**
-         * @brief Set the x value of Entity object
-         * @param x float
+         * @brief Set the x value of Entity
+         * @param x float - new x coordinate
          */
-        void setX(float x);
+        void setX(float x) { mX = x; }
         /**
-         * @brief Set the y value of Entity object
-         * @param y float
+         * @brief Get y coordinate of Entity
+         * @return float - y coordinate
          */
-        void setY(float y);
-
-        float getWidth() const;
+        [[nodiscard]] float getY() const { return mY; }
         /**
-         * @brief Get height of Entity object
-         * @return float
+         * @brief Set the y value of Entity
+         * @param y float - new y coordinate
          */
-        float getHeight() const;
+        void setY(float y) { mY = y; }
         /**
-         * @brief Set width of Entity object
-         * @param width float
+         * @brief Get width of Entity
+         * @return float - width
          */
-        void setWidth(float width);
+        [[nodiscard]] float getWidth() const { return mWidth; }
         /**
-         * @brief Set height of Entity object
-         * @param height float
+         * @brief Set width of Entity
+         * @param width float - new width
          */
-        void setHeight(float height);
+        void setWidth(float width) { mWidth = width; }
         /**
-         * @brief move Entity object
+         * @brief Get height of Entity
+         * @return float - height
+         */
+        [[nodiscard]] float getHeight() const { return mHeight; }
+        /**
+         * @brief Set height of Entity
+         * @param height float - new height
+         */
+        void setHeight(float height) { mHeight = height; }
+        /**
+         * @brief Get removable
+         * @return flag bool
+         */
+        [[maybe_unused]] [[nodiscard]] bool getRemovable() const { return mRemoveFlag; }
+        /**
+         * @brief Set if Entity is removable
+         * @param flag bool
+         */
+        // TODO - idk - soms view beneden te zien maar collision detection is er niet of werkt niet ook met power-up
+        void setRemoveFlag(bool flag)
+        {
+                mRemoveFlag = flag;
+                onDestroy();
+        }
+        /**
+         * @brief Check if Entity is removable
+         * @return flag bool - true if removable
+         */
+        [[nodiscard]] virtual bool isRemovable() const { return mRemoveFlag; }
+        /**
+         * @brief Get score of Entity
+         * @return int - score
+         */
+        [[nodiscard]] virtual int getScore() const { return mScore; }
+        /**
+         * @brief Set score of Entity
+         * @param score int - new score
+         */
+        virtual void setScore(int score) { mScore = score; }
+        /**
+         * @brief Get type of Entity
+         * @return Model::Type - type of Entity
+         */
+        [[nodiscard]] virtual Model::Type getType() const = 0;
+        /**
+         * @brief move Entity
          */
         virtual void move(bool collision) = 0;
         /**
          * @brief Move Entity object in x and y direction
-         * @param x float, added to mX
-         * @param y float, added to mY
+         * @param x float - x value to be added to mX
+         * @param y float, y value to be added to mY
          */
-        void move(float x, float y);
+        void move(float x, float y)
+        {
+                mX += x;
+                mY += y;
+        }
         /**
-         * @brief Get type of Entity object
-         * @return Model::Type
+         * @brief Set moving left
+         * @param flag bool
          */
-        [[nodiscard]] virtual Model::Type getType() const = 0;
+        virtual void setIsMovingLeft(bool flag) {}
+        /**
+         * @brief Set moving right
+         * @param flag bool
+         */
+        virtual void setIsMovingRight(bool flag) {}
         /**
          * @brief On destroy event of Entity function will be executed
          */
-        virtual void onDestroy();
-
+        virtual void onDestroy() { Observer::Subject::clear(); }
+        /**
+         * @brief Check if Entity is of Type Bonus
+         * @return bool - true if Bonus
+         */
+        [[nodiscard]] virtual bool isBonus() const { return false; }
+        /**
+         * @brief Visit Player object to apply Bonus
+         * @param player Player - Pointer to Player
+         */
         void visit(Model::Player& player) override {}
-
+        /**
+         * @brief Allow visitor to visit Entity to change state / code
+         * @param visitor IVisitor - pointer to visitor who wants to visit Entity
+         */
         virtual void accept(const std::shared_ptr<Visitor::IVisitor>& visitor) {}
-
-        void setRemoveFlag(bool flag);
-
-        [[nodiscard]] bool getRemovable() const { return mRemoveFlag; }
-
-        virtual bool isRemovable() const { return mRemoveFlag; }
-
-        virtual bool isBonus() const { return false; }
-
-        void setScore(unsigned int score) { mScore = score; }
-
-        virtual unsigned int getScore() const { return mScore; }
 };
 } // namespace Model
 

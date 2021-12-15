@@ -7,25 +7,46 @@
 
 #include "Bonus.h"
 #include "Player.h"
+
 #include <cmath>
 
+/**
+ * @brief Namespace holds all Models
+ */
 namespace Model {
-
+/**
+ * @brief Class for Spring object
+ */
 class Spring : public Bonus
 {
 private:
+        /**
+         * @brief Visit Player object to apply Spring Bonus
+         * @param player Player - Pointer to Player
+         */
         void visit(Model::Player& player) override;
 
 public:
-        Spring(unsigned int score, float spawnRate, bool started) : Bonus(score, spawnRate, started){};
-
-        Spring() : Bonus(15, .75){};
-
+        /**
+         * @brief Constructor for Spring object
+         * @param score int - score
+         * @param started bool - is Spring started
+         */
+        Spring(int score, bool started) : Bonus(score, started){};
+        /**
+         * @brief Constructor for Spring object
+         * Standard score of Spring is 15
+         */
+        Spring() : Bonus(15, false){};
+        /**
+         * @brief Destructor for Jetpack object
+         */
         ~Spring() override = default;
-
+        /**
+         * @brief Get Type of Jetpack
+         * @return Model::Type - type of Jetpack
+         */
         [[nodiscard]] Model::Type getType() const override { return Model::eSpring; }
-
-        [[nodiscard]] bool isRemovable() const override { return mRemoveFlag; }
 };
 } // namespace Model
 

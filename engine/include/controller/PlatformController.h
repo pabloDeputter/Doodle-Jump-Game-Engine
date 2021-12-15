@@ -7,15 +7,28 @@
 
 #include "IController.h"
 
+/**
+ * @brief Namespace holds all Controllers
+ */
 namespace Controller {
-
+/**
+ * @brief Class for Platform Controller
+ */
 class PlatformController : public IController
 {
 public:
-        PlatformController(std::shared_ptr<Model::Entity>& entity) : IController(entity) {}
-
+        /**
+         * @brief Constructor for PlatformController object
+         * @param entity Model::Entity - pointer to Entity to be controlled
+         */
+        explicit PlatformController(std::shared_ptr<Model::Entity>& entity) : IController(entity) {}
+        /**
+         * @brief Default constructor for PlatformController object
+         */
         PlatformController() = default;
-
+        /**
+         * @brief Default destructor for PlatformController object
+         */
         ~PlatformController() override = default;
 };
 } // namespace Controller

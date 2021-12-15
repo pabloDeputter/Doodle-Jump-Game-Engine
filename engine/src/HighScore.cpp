@@ -6,13 +6,15 @@
 
 HighScore& HighScore::getInstance()
 {
+        // TODO - path
         static HighScore instance(
-            "/Users/pablodeputter/Documents/GitHub/Advanced-Programming-DoodleJump/resource/highscore.txt", 10);
+            "/Users/pablodeputter/Documents/GitHarub/Advanced-Programming-DoodleJump/resource/highscore.txt", 10);
         return instance;
 }
 
 void HighScore::load()
 {
+        // Open file as input
         std::ifstream file(mPath);
         // If file can't be opened, throw exception and return
         if (!file.is_open()) {
@@ -27,7 +29,7 @@ void HighScore::load()
                 line.erase(0, line.find(" -") + 2);
                 std::string score = line.substr(1, line.find('-'));
                 // Create new score
-                std::shared_ptr<HighScoreScore> newScore = std::make_shared<HighScoreScore>(std::stoi(score), name);
+                std::shared_ptr<HighScoreData> newScore = std::make_shared<HighScoreData>(std::stoi(score), name);
                 add(newScore);
         }
         file.close();
@@ -35,20 +37,21 @@ void HighScore::load()
 
 void HighScore::save()
 {
+        // Open file as output
         std::ofstream file(mPath);
         // If file can't be opened, throw exception and return
         if (!file.is_open()) {
                 throw(Utils::FileException(std::move(mPath), "HighScore"));
                 return;
         }
-        // Write to file
+        // Write every high score to file
         for (const auto& i : mScores) {
                 file << *i;
         }
         file.close();
 }
 
-void HighScore::add(const std::shared_ptr<HighScoreScore>& score)
+void HighScore::add(const std::shared_ptr<HighScoreData>& score)
 {
         // If new Score is less or equal to last score, return
         if (mScores.size() == mQuantity && mScores.back()->mScore >= score->mScore) {
@@ -58,7 +61,7 @@ void HighScore::add(const std::shared_ptr<HighScoreScore>& score)
         // Find index to insert new score
         auto index = std::lower_bound(
             std::begin(mScores), std::end(mScores), score,
-            [](const std::shared_ptr<HighScoreScore>& lhs, const std::shared_ptr<HighScoreScore>& rhs) -> bool {
+            [](const std::shared_ptr<HighScoreData>& lhs, const std::shared_ptr<HighScoreData>& rhs) -> bool {
                     // Return true if lhs's score is greater than rhs's
                     return lhs->mScore > rhs->mScore;
             });
@@ -69,4 +72,23 @@ void HighScore::add(const std::shared_ptr<HighScoreScore>& score)
         if (mScores.size() > mQuantity) {
                 mScores.erase(std::end(mScores) - 1);
         }
+}
+
+[[maybe_unused]] int HighScore::getHighScore() const
+{
+        // If no scores are stored high score is equal to 0
+        if (mScores.empty()) {
+                return 0;
+        }
+        return mScores.front()->mScore;
+}
+
+bool HighScore::isHighScore(int score) const
+{
+        // If stored high scores does not exceed capacity new score is automatically a new high score
+        // Else check if it is higher than the lowest high score
+        if (mScores.size() < mQuantity || score > mScores.back()->mScore) {
+                return true;
+        }
+        return false;
 }

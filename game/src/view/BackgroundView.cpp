@@ -16,6 +16,7 @@ void BackgroundView::handleEvent(const DrawEvent& event)
 
 void BackgroundView::handleEvent(const OutOfViewEvent& event)
 {
-        mEntity->setY(mEntity->getY() +
-                      Utils::Camera::getInstance().getWorldDimensions().second + 2.f);
+        // Move Background tile up, so that every tile gets recycled as the
+        // Player moves up in the World
+        mEntity->setY(mEntity->getY() + Utils::Camera::getInstance().getWorldDimensions().second + 2.f);
 }

@@ -16,20 +16,19 @@ namespace Observer {
 /**
  * @brief Class for Observer of Observer pattern
  */
-// template<class EventType, class DataType>
 class Observer
 {
 public:
         /**
-         * @brief Default constructor
+         * @brief Default constructor for Observer object
          */
         Observer() = default;
         /**
-         * @brief Default destructor
+         * @brief Default destructor for Observer object
          */
         virtual ~Observer() = default;
         /**
-         * @brief Perform operation on trigger from Subject
+         * @brief On trigger from Subject registered to
          */
         virtual void onTrigger(EventType type, const std::shared_ptr<Event>& event) = 0;
 };

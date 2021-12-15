@@ -27,14 +27,12 @@
 #include "view/PlayerView.h"
 #include "view/ScoreView.h"
 
-#include "Score.h"
+#include "model/Score.h"
 
 #include "SFML/Graphics.hpp"
 
-// TODO - attach View Observers to Entity Subjects
-
-namespace View {
-class ConcreteFactory : public Model::AbstractFactory
+namespace Factory {
+class ConcreteFactory : public Factory::AbstractFactory
 {
 public:
         ConcreteFactory() = default;

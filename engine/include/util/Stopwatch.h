@@ -12,44 +12,29 @@
 #include <iostream>
 #include <map>
 
-enum Type
-{
-        ePlayer = 0,
-        eBonus = 1,
-        eStatic = 2,
-        eHorizontal = 3,
-        eVertical = 4,
-        eTemporary = 5,
-        eBackground = 6,
-        eJetpack = 7,
-        eSpring = 8
-};
-
 /**
  * @brief Namespace holds all Utilities
  */
 namespace Utils {
 /**
- * @brief Class for Stopwatch
+ * @brief Class for Stopwatch implemented using singleton pattern
  */
 class Stopwatch
 {
 private:
         std::chrono::high_resolution_clock::time_point mTime; /**< Last recorded time point */
-        float mDeltaTime{}; /**< Time between two recorded time points in milliseconds */
-        std::map<Type, std::pair<float, std::chrono::high_resolution_clock::time_point>> mTimers;
-
+        float mDeltaTime; /**< Time between two recorded time points in milliseconds */
+        std::map<Model::Type, std::pair<float, std::chrono::high_resolution_clock::time_point>>
+            mTimers; /**< Active timers */
 public:
-        std::shared_ptr<Model::Entity> mPlayer;
-
         /**
-         * @brief Private default constructor
+         * @brief Constructor for Stopwatch object
          */
-        Stopwatch() = default;
+        Stopwatch() : mDeltaTime(0.f) {}
 
 public:
         /**
-         * @brief Default destructor
+         * @brief Default destructor for Stopwatch object
          */
         ~Stopwatch() = default;
         /**
@@ -69,50 +54,33 @@ public:
         /**
          * @brief Start Stopwatch
          */
-        void start();
+        void start() { mTime = std::chrono::high_resolution_clock::now(); }
         /**
          * @brief Lap one round and return found delta
-         * @return float
+         * @return float - delta
          */
         [[nodiscard]] float lap();
         /**
          * @brief Get latest delta
          * @return float
          */
-        [[nodiscard]] float getDelta() const;
-
+        [[nodiscard]] float getDelta() const { return mDeltaTime; }
+        /**
+         * @brief Reset Stopwatch
+         */
         void reset() { mTimers.clear(); }
-
-        // TODO - jetpack
-        void addTimer(unsigned int key, float amount)
-        {
-                std::cout << "addTimer\n";
-                if (mTimers.find(Type(key)) != std::end(mTimers)) {
-                        //                        std::cout << "ERROR\n";
-                }
-                mTimers[Type(key)] = {amount, std::chrono::high_resolution_clock::now()};
-        }
-        //        std::chrono::duration<float> ms_delta = std::chrono::high_resolution_clock::now() - mTime;
-        //        // Reset / lap stopwatch
-        //        mTime = std::chrono::high_resolution_clock::now();
-        //        mDeltaTime = ms_delta.count();
-        //        // Return milliseconds as float
-        //        return mDeltaTime;
-        bool checkTimer(unsigned int key)
-        {
-                if (mTimers.find(Type(key)) == std::end(mTimers)) {
-                        //                        std::cout << "ERROR\n";
-                        return false;
-                }
-                auto val = mTimers[Type(key)];
-                std::chrono::duration<float> ms_delta = std::chrono::high_resolution_clock::now() - val.second;
-                //                std::cout << ms_delta.count() << "\n";
-                if (ms_delta.count() > val.first) {
-                        mTimers.erase(Type(key));
-                        return false;
-                }
-                return true;
-        }
+        /**
+         * @brief Add timer to Stopwatch
+         * @param key int - used to create Model::Type instance
+         * @param amount float - duration of timer
+         */
+        void addTimer(unsigned int key, float amount);
+        /**
+         * @brief Check if timer had expired
+         * @param key int - used to create Model::Type instance
+         * @return true - if timer has expired
+         */
+        bool checkTimer(unsigned int key);
 };
 } // namespace Utils
 

@@ -24,9 +24,11 @@ bool Utilities::checkCollision(const std::shared_ptr<Model::Entity>& l, const st
 
 bool Utilities::checkWeight(float& rand, float weight)
 {
+        // If rand <= weight, return true
         if (rand <= weight) {
                 return true;
         }
+        // If not subtract weight from rand and function will get called again
         rand -= weight;
         return false;
 }

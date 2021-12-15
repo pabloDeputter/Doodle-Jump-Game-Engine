@@ -7,7 +7,7 @@
 
 using namespace Settings;
 
-World::World(std::shared_ptr<Model::AbstractFactory>& factory, bool playing)
+World::World(std::shared_ptr<Factory::AbstractFactory>& factory, bool playing)
 {
         // Initialize factory
         mFactory = factory;
@@ -16,7 +16,6 @@ World::World(std::shared_ptr<Model::AbstractFactory>& factory, bool playing)
         // Initialize Camera settings
         Utils::Camera::getInstance().isMaxHeight(0.f);
         Utils::Camera::getInstance().setWorldDimensions(8.f, 14.4f);
-        Utils::Stopwatch::getInstance().mPlayer = mPlayer;
         mPlaying = playing;
 }
 
@@ -63,6 +62,7 @@ void World::initWorld()
             Utils::Camera::getInstance().getWorldDimensions().second -
             Utils::Camera::getInstance().inverseTransform(bg->getWidth(), bg->getHeight()).second;
 
+        // Fill World with Background tiles
         for (float i = 0.f; i < Utils::Camera::getInstance().getWorldDimensions().first; i += inverseWidth) {
                 for (float j = Utils::Camera::getInstance().getWorldDimensions().second; j > -2.f; j -= inverseHeight) {
                         auto tile = mFactory->createBackground();
@@ -76,18 +76,15 @@ void World::initWorld()
 
 void World::events(const std::string& move, bool isPressed) const
 {
+        // Traverse entities and trigger KEY_PRESSED event
         for (const auto& i : mEntities) {
                 i->trigger(EventType::KEY_PRESSED, std::make_shared<KeyPressedEvent>(move, isPressed));
         }
         mPlayer->trigger(EventType::KEY_PRESSED, std::make_shared<KeyPressedEvent>(move, isPressed));
 }
-
+// TODO - update, documentation
 void World::update()
 {
-
-        // TODO - cleanup lil bit
-        // TODO - remove entities??
-        // TODO - collision playerController
         bool collided = false;
         for (auto& i : mEntities) {
                 if (std::dynamic_pointer_cast<Model::Player>(mPlayer)->getVelocity().second <= 0 &&
@@ -144,6 +141,8 @@ void World::render() const
 {
         // Render background
         for (const auto& i : mBackground) {
+                // If Background tile is out of view it will be moved up and will be moved the screensize (
+                // in world coordinates) up, so it gets automatically recycled as the Player moves up
                 if (i->getY() < Utils::Camera::getInstance().getY()) {
                         i->trigger(EventType::OUT_OF_VIEW, std::make_shared<OutOfViewEvent>());
                 }
@@ -161,21 +160,22 @@ void World::render() const
 
         // Render score
         mScore->trigger(EventType::DRAW, std::make_shared<DrawEvent>());
-        //        std::cout << "mPlayer: " << mPlayer->getX() << " : " << mPlayer->getY() << "\n";
 }
 
 void World::generateEntity()
 {
         // Get height of last added platform
         float lastHeight = mEntities.back()->getY();
-        // Max vertical distance between platforms in world
+        // Max vertical distance between two platforms, so it can fill up the whole screen
         float verticalRatio = Utils::Camera::getInstance().getWorldDimensions().second / (float)Settings::MAX_PLATFORMS;
         // Calculate max vertical distance when jumped relatively from height of last added entity
         float jumpPeak = lastHeight + (0.195f / 0.005f) * (.195f / 2.f);
 
         // Get random x-value
         float randX = Utils::Random::getInstance().random(0.f, Utils::Camera::getInstance().getWorldDimensions().first);
-        // Get random y-value depending on verticalRatio and height of latest added entity
+        // Get random y-value between height of last added entity and jumpPeak. We multiply
+        // lastHeight with verticalRatio and the DIFFICULTY factor so platforms will be placed
+        // harder as Player moves up in the World.
         float randY = Utils::Random::getInstance().random(lastHeight + (verticalRatio * DIFFICULTY), jumpPeak);
 
         // Add vertical spacing otherwise, new entities will be placed on top of each other
@@ -183,7 +183,9 @@ void World::generateEntity()
                 randY += .50f;
         }
 
+        // Do we need to spawn a Bonus Entity?
         if (CHANCE_BONUS >= Utils::Random::getInstance().random(0.f, 1.f)) {
+                // Bonus will always be spawned on Static Platform
                 spawnBonus(randX, randY);
         } else {
                 spawnPlatform(randX, randY);
@@ -193,7 +195,6 @@ void World::generateEntity()
 void World::spawnPlatform(float x, float y)
 {
         float sum = CHANCE_STATIC + CHANCE_HORIZONTAL + CHANCE_VERTICAL + CHANCE_TEMPORARY;
-
         // Get random value between [0, 1]
         float rand = Utils::Random::getInstance().random(0.f, sum);
 
@@ -207,7 +208,7 @@ void World::spawnPlatform(float x, float y)
         } else if (Utils::Utilities::checkWeight(rand, CHANCE_TEMPORARY)) {
                 spawnEntity(x, y, Model::eTemporary);
         }
-        // Dead weight, can sometimes happen
+        // Dead weight, can normally not happen --> Create Static Platform
         else {
                 spawnEntity(x, y, Model::eStatic);
         }
@@ -216,7 +217,6 @@ void World::spawnPlatform(float x, float y)
 void World::spawnBonus(float x, float y)
 {
         float sum = CHANCE_SPRING + CHANCE_JETPACK;
-
         // Get random value between [0, 1]
         float rand = Utils::Random::getInstance().random(0.f, sum);
 
@@ -226,11 +226,10 @@ void World::spawnBonus(float x, float y)
         } else if (Utils::Utilities::checkWeight(rand, CHANCE_JETPACK)) {
                 spawnEntity(x, y, Model::eJetpack);
         }
-        // Dead weight, can sometimes happen
+        // Dead weight, can normally not happen --> Create Spring
         else {
                 spawnEntity(x, y, Model::eSpring);
         }
-
         // Bonus can only spawn on top of Static Platform, so create new Static Platform
         spawnEntity(x, y - mEntities.back()->getHeight() * 1.5f, Model::eStatic);
 }
@@ -258,15 +257,15 @@ void World::spawnEntity(float x, float y, Model::Type type)
         case Model::eSpring:
                 entity = mFactory->createSpring();
                 break;
-        case Model::eBackground:
-                entity = mFactory->createBackground();
-                break;
         }
-
+        // Entity needs to be initialized
+        if (entity == nullptr) {
+                return;
+        }
+        // If entity to be spawned is not a Bonus we can increase tha ActivePlatforms counter
         if (!entity->isBonus()) {
                 mActivePlatforms++;
         }
-
         entity->setX(x);
         entity->setY(y);
         addEntity(entity);
@@ -274,42 +273,47 @@ void World::spawnEntity(float x, float y, Model::Type type)
 
 bool World::checkDifficulty()
 {
+        // If current Difficulty is
         if (mDifficulty == Settings::Difficulty::eExtreme) {
                 return false;
         }
 
+        // Lambda function to check if new Difficulty can be set
+        auto setDifficulty = [this](const float min, const float max, const float height,
+                                    Settings::Difficulty diff) -> bool {
+                if (height > min && height <= max && mDifficulty != diff) {
+                        mDifficulty = diff;
+                        return Settings::setDifficulty(diff);
+                }
+                return false;
+        };
+
+        // Change Difficulty according to current height
         const float height = Utils::Camera::getInstance().getMaxHeight();
-        if (height <= 50.f && mDifficulty != Settings::Difficulty::eEasy) {
-                mDifficulty = Settings::Difficulty::eEasy;
-                return Settings::setDifficulty(Settings::Difficulty::eEasy);
-        } else if (height > 50.f && height <= 150.f && mDifficulty != Settings::Difficulty::eNormal) {
-                mDifficulty = Settings::Difficulty::eNormal;
-                return Settings::setDifficulty(Settings::Difficulty::eNormal);
-        } else if (height > 150.f && height <= 250.f && mDifficulty != Settings::Difficulty::eDifficult) {
-                mDifficulty = Settings::Difficulty::eDifficult;
-                return Settings::setDifficulty(Settings::Difficulty::eDifficult);
-        } else if (height > 250.f && height <= 350.f && mDifficulty != Settings::Difficulty::eHard) {
-                mDifficulty = Settings::Difficulty::eHard;
-                return Settings::setDifficulty(Settings::Difficulty::eHard);
-        } else if (height > 350.f && height <= 450.f && mDifficulty != Settings::Difficulty::eInsane) {
-                mDifficulty = Settings::Difficulty::eInsane;
-                return Settings::setDifficulty(Settings::Difficulty::eInsane);
-        } else if (height > 450.f && height <= 525.f && mDifficulty != Settings::Difficulty::eExtreme) {
-                mDifficulty = Settings::Difficulty::eExtreme;
-                return Settings::setDifficulty(Settings::Difficulty::eExtreme);
+        if (setDifficulty(0, 50.f, height, Settings::Difficulty::eEasy)) {
+                return true;
+        } else if (setDifficulty(50, 150.f, height, Settings::Difficulty::eNormal)) {
+                return true;
+        } else if (setDifficulty(150, 250.f, height, Settings::Difficulty::eDifficult)) {
+                return true;
+        } else if (setDifficulty(250, 350.f, height, Settings::Difficulty::eHard)) {
+                return true;
+        } else if (setDifficulty(350, 450.f, height, Settings::Difficulty::eInsane)) {
+                return true;
+        } else if (setDifficulty(450, 550.f, height, Settings::Difficulty::eExtreme)) {
+                return true;
         }
         return false;
 }
 
-void World::addEntity(const std::shared_ptr<Model::Entity>& entity) { mEntities.emplace_back(entity); }
-
 void World::removeEntities()
 {
+        // Traverse entities with iterator, otherwise we get a segmentation fault
         auto it = std::begin(mEntities);
         while (it != std::end(mEntities)) {
-                // TODO - jetpack doesn't get destroyed when not used and out of view
-                //                if ((*it)->getType() == Model::eJetpack) std::cout << "JETPACK STILL IN PLAY\n";
+                // Check if Entity is removable
                 if ((*it)->isRemovable()) {
+                        // Decrease ActivePlatforms counter if we remove active Platform
                         if (!(*it)->isBonus()) {
                                 mActivePlatforms--;
                         }
@@ -322,20 +326,24 @@ void World::removeEntities()
 
 void World::destroy()
 {
-        std::cout << "worldDestroy\n";
-        if (mPlayer == nullptr) {
-                std::cout << "null\n";
-        }
+        // Destroy Player
         mPlayer->onDestroy();
+        // Destroy Entities
         for (const auto& i : mEntities) {
                 i->onDestroy();
         }
+        // Free Entities
         mEntities.clear();
+        // Destroy Background tiles
         for (const auto& i : mBackground) {
                 i->onDestroy();
         }
+        // Free Background tiles
         mBackground.clear();
+        // Destroy Score
         mScore->onDestroy();
+        // Reset Camera
         Utils::Camera::getInstance().reset();
+        // Reset Stopwatch
         Utils::Stopwatch::getInstance().reset();
 }

@@ -7,7 +7,7 @@
 
 #include "IView.h"
 
-#include "Score.h"
+#include "model/Score.h"
 
 namespace View {
 

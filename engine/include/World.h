@@ -5,28 +5,19 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_WORLD_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_WORLD_H
 
-#include "controller/IController.h"
-#include "controller/PlayerController.h"
-
 #include "model/Entity.h"
 #include "model/Player.h"
 
 #include "AbstractFactory.h"
 
-#include "model/Jetpack.h"
-
-#include "HighScore.h"
-
-#include "Score.h"
 #include "util/Camera.h"
 #include "util/Random.h"
 #include "util/Utilities.h"
 
-#include "Settings.h"
-
 #include "Event.h"
+#include "Settings.h"
+#include "model/Score.h"
 
-#include <iostream>
 #include <memory>
 #include <vector>
 
@@ -38,20 +29,66 @@ class World
 private:
         std::shared_ptr<Model::Player> mPlayer;                /**< Pointer to Player */
         std::vector<std::shared_ptr<Model::Entity>> mEntities; /**< std::vector containing Entities */
-        std::shared_ptr<Model::AbstractFactory> mFactory; /**< Pointer to AbstractFactory, is used to create Entities */
+        std::shared_ptr<Factory::AbstractFactory>
+            mFactory; /**< Pointer to AbstractFactory, is used to create Entities */
         std::vector<std::shared_ptr<Model::Entity>> mBackground; /**< std::vector containing Background-tiles */
         std::shared_ptr<Model::Score> mScore;                    /**< Pointer to Score */
         unsigned int mActivePlatforms;                           /**< Holds the active amount of platforms */
-        Settings::Difficulty mDifficulty;
+        Settings::Difficulty mDifficulty;                        /**< Current Difficulty of game */
+        bool mPlaying;                                           /**< True if Player is not dead */
 
-        bool mPlaying;
+private:
+        /**
+         * @brief Generate new Entity
+         */
+        void generateEntity();
+        /**
+         * @brief Spawn random Platform object into World
+         * @param x float - X coordinate of Platform
+         * @param y float - Y coordinate of Platform
+         */
+        void spawnPlatform(float x, float y);
+        /**
+         * @brief Spawn random Bonus object AND Platform object into World
+         * @param x float - X coordinate of Bonus
+         * @param y float - Y coordinate of Bonus
+         */
+        void spawnBonus(float x, float y);
+        /**
+         * @brief Spawn provided Entity into World
+         * @param x float
+         * @param y float
+         * @param type Model::Type - Sort of Entity to be spawned
+         */
+        void spawnEntity(float x, float y, Model::Type type);
+        /**
+         * @brief Check if Difficulty of game can be changed
+         * @return bool - true if Difficulty has changed
+         */
+        bool checkDifficulty();
+        /**
+         * @brief Add entity
+         * @param entity Entity to be added to mEntities
+         */
+        void addEntity(const std::shared_ptr<Model::Entity>& entity) { mEntities.emplace_back(entity); }
+        /**
+         * @brief Remove unused Entities or those that are out of view
+         */
+        void removeEntities();
 
 public:
-        explicit World(std::shared_ptr<Model::AbstractFactory>& factory, bool playing);
-
+        /**
+         * @brief Constructor for World object
+         * @param factory Pointer to Model::AbstractFactory
+         * @param playing bool - Player is not dead
+         */
+        explicit World(std::shared_ptr<Factory::AbstractFactory>& factory, bool playing);
+        /**
+         * @brief Destructor for World object
+         */
         ~World() { destroy(); }
         /**
-         * @brief Initialize starting-world
+         * @brief Initialize starting-world, such as starting platforms, background, ...
          */
         void initWorld();
         /**
@@ -69,43 +106,18 @@ public:
          */
         void render() const;
         /**
-         * @brief Generate new Entity
+         * @brief Destroy World
          */
-        void generateEntity();
-        /**
-         * @brief Spawn random Platform object into World
-         * @param x float
-         * @param y float
-         */
-        void spawnPlatform(float x, float y);
-        /**
-         * @brief Spawn random Bonus object AND Platform object into World
-         * @param x float
-         * @param y float
-         */
-        void spawnBonus(float x, float y);
-        /**
-         * @brief Spawn provided Entity into World
-         * @param x float
-         * @param y float
-         * @param type Model::Type - Sort of Entity to be spawned
-         */
-        void spawnEntity(float x, float y, Model::Type type);
-        bool checkDifficulty();
-        /**
-         * @brief Add entity
-         * @param entity Entity to be added to mEntities
-         */
-        void addEntity(const std::shared_ptr<Model::Entity>& entity);
-        /**
-         * @brief Remove unused Entities or those that are out of view
-         */
-        void removeEntities();
-
         void destroy();
-
+        /**
+         * @brief Get current score of game
+         * @return Pointer to Model::Score object
+         */
         [[nodiscard]] const std::shared_ptr<Model::Score>& getScore() const { return mScore; }
-
+        /**
+         * @brief Check if Player is not dead
+         * @return bool - true if Player is not dead
+         */
         [[nodiscard]] bool isPlaying() const { return mPlaying; }
 };
 

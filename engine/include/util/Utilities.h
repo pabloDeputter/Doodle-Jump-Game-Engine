@@ -21,9 +21,9 @@ class Utilities
 public:
         /**
          * @brief Check if there is a collision between two Entities
-         * @param l first entity
-         * @param r second entity
-         * @return bool
+         * @param l Entity - pointer to first entity
+         * @param r Entity - pointer to second entity
+         * @return bool - true if collided
          */
         static bool checkCollision(const std::shared_ptr<Model::Entity>& l, const std::shared_ptr<Model::Entity>& r);
         /**
@@ -33,7 +33,12 @@ public:
          * @return true if rand <= weight
          */
         static bool checkWeight(float& rand, float weight);
-
+        /**
+         * @brief Traverse rainbow colors everytime member gets called
+         * @tparam Type Object class
+         * @tparam Color Color class - to change color of object
+         * @param object Type - change color of this object
+         */
         template <class Type, class Color>
         static void setRainbowColor(Type& object)
         {

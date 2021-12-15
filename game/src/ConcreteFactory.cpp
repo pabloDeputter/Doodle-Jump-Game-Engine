@@ -4,7 +4,7 @@
 
 #include "ConcreteFactory.h"
 
-using namespace View;
+using namespace Factory;
 
 std::shared_ptr<Model::Player> ConcreteFactory::createPlayer()
 {

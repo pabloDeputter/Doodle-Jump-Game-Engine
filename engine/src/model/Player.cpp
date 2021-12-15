@@ -3,6 +3,7 @@
 //
 
 #include "model/Player.h"
+
 #include "util/Stopwatch.h"
 
 using namespace Model;
@@ -78,35 +79,3 @@ void Player::move(bool collision)
         Entity::move(mVelocity.first * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f,
                      mVelocity.second * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
 }
-
-const std::pair<float, float>& Player::getVelocity() const { return mVelocity; }
-
-void Player::setVelocity(const std::pair<float, float>& velocity) { Player::mVelocity = velocity; }
-
-const std::pair<float, float>& Player::getDirection() const { return mDirection; }
-
-void Player::setDirection(const std::pair<float, float>& direction) { Player::mDirection = direction; }
-
-const float Player::getMaxVelocity() const { return mMaxVelocity; }
-
-const float Player::getMaxAcceleration() const { return mAcceleration; }
-
-const float Player::getDrag() const { return mDrag; }
-
-void Player::setDrag(float drag) { Player::mDrag = drag; }
-
-// bool Player::isMovingUp() const { return mIsMovingUp; }
-
-// void Player::setIsMovingUp(bool isMovingUp) { Player::mIsMovingUp = isMovingUp; }
-
-// bool Player::isMovingDown() const { return mIsMovingDown; }
-
-// void Player::setIsMovingDown(bool isMovingDown) { Player::mIsMovingDown = isMovingDown; }
-
-bool Player::isMovingLeft() const { return mIsMovingLeft; }
-
-void Player::setIsMovingLeft(bool isMovingLeft) { Player::mIsMovingLeft = isMovingLeft; }
-
-bool Player::isMovingRight() const { return mIsMovingRight; }
-
-void Player::setIsMovingRight(bool isMovingRight) { Player::mIsMovingRight = isMovingRight; }

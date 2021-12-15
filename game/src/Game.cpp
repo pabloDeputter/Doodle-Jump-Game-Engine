@@ -10,7 +10,7 @@
 Game::Game(unsigned int width, unsigned int height)
 {
         mWindow = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), "Doodle Jump", sf::Style::Close);
-        mFactory = std::make_shared<View::ConcreteFactory>(mWindow);
+        mFactory = std::make_shared<Factory::ConcreteFactory>(mWindow);
         //        mWindow->setFramerateLimit(60);
         mWindow->setVerticalSyncEnabled(true);
 

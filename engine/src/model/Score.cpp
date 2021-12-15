@@ -2,7 +2,7 @@
 // Created by Pablo Deputter on 07/12/2021.
 //
 
-#include "Score.h"
+#include "model/Score.h"
 
 using namespace Model;
 
@@ -14,7 +14,7 @@ void Score::handleEvent(const NewMaxHeightEvent& event)
                 diff = 1.f;
         }
         // Increase score
-        mScore += (unsigned int)diff;
+        mScore += (int)diff;
 }
 
 void Score::handleEvent(const CollisionEvent& event)
@@ -31,7 +31,6 @@ void Score::handleEvent(const CollisionEvent& event)
         else {
                 mScore += event.getEntity()->getScore();
         }
-
         // Assign Entity to be last seen collision
         mLastCollision = event.getEntity();
 }

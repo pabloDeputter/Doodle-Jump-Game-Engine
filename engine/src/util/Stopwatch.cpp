@@ -3,7 +3,7 @@
 //
 
 #include "util/Stopwatch.h"
-#include <iostream>
+
 using namespace Utils;
 
 Stopwatch& Stopwatch::getInstance()
@@ -11,8 +11,6 @@ Stopwatch& Stopwatch::getInstance()
         static Stopwatch instance;
         return instance;
 }
-
-void Stopwatch::start() { mTime = std::chrono::high_resolution_clock::now(); }
 
 float Stopwatch::lap()
 {
@@ -24,4 +22,26 @@ float Stopwatch::lap()
         return mDeltaTime;
 }
 
-float Stopwatch::getDelta() const { return mDeltaTime; }
+void Stopwatch::addTimer(unsigned int key, float amount)
+{
+        //        if (mTimers.find(Model::Type(key)) != std::end(mTimers)) {
+        //        }
+        // Add timer
+        mTimers[Model::Type(key)] = {amount, std::chrono::high_resolution_clock::now()};
+}
+
+bool Stopwatch::checkTimer(unsigned int key)
+{
+        // If there isn't a active timer for given key, return false
+        if (mTimers.find(Model::Type(key)) == std::end(mTimers)) {
+                return false;
+        }
+        auto val = mTimers[Model::Type(key)];
+        std::chrono::duration<float> ms_delta = std::chrono::high_resolution_clock::now() - val.second;
+        // If timer is not yet expired, return false
+        if (ms_delta.count() > val.first) {
+                mTimers.erase(Model::Type(key));
+                return false;
+        }
+        return true;
+}

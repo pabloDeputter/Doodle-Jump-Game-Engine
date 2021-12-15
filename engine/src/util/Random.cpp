@@ -21,6 +21,6 @@ float Random::random(float a, float b)
         // Create random distribution
         std::binomial_distribution();
         std::uniform_real_distribution<float> uniformRealDistribution(a, b);
-
+        // Return random generated value
         return uniformRealDistribution(random_engine);
 }

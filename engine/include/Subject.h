@@ -18,26 +18,28 @@ namespace Observer {
 /**
  * @brief Class for Subject / Observable of observer pattern
  */
-// template<class EventType, class Event>
 class Subject
 {
 private:
         std::vector<std::shared_ptr<Observer>> mObservers; /**< std::vector containing Observers */
 public:
         /**
-         * @brief Default constructor
+         * @brief Default constructor for Subject object
          */
         Subject() = default;
         /**
-         * @brief Default destructor
+         * @brief Destructor for Subject object
          */
         virtual ~Subject() { mObservers.clear(); }
         /**
-         * @brief Register Observer to mObservers
-         * @param observer Observer to be added
+         * @brief Register Observer to list
+         * @param observer Observer - observer to be added to list
          */
         void add(const std::shared_ptr<Observer>& observer) { mObservers.emplace_back(observer); }
-
+        /**
+         * @brief Get registered Observers
+         * @return std::vector - list of registered observers
+         */
         [[nodiscard]] const std::vector<std::shared_ptr<Observer>>& getObservers() const { return mObservers; }
         /**
          * @brief Clear all Observers from mObservers

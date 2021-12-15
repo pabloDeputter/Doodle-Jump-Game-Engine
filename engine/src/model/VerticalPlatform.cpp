@@ -3,17 +3,23 @@
 //
 
 #include "model/VerticalPlatform.h"
+
 #include "util/Stopwatch.h"
 
 using namespace Model;
 
+void VerticalPlatform::initBounds()
+{
+        // Move from between fixed vertical height
+        const float offset = Utils::Random::getInstance().random(.7f, 1.5f);
+        mBounds = {mY - offset, mY + offset};
+        mInit = true;
+}
+
 void VerticalPlatform::move(bool collision)
 {
+        // If bounds are not yet initialized --> initialize bounds
         if (!mInit) {
-                initBounds();
-        }
-
-        if (mBounds.first == 0.f && mBounds.second == 0.f) {
                 initBounds();
         }
 
@@ -28,11 +34,4 @@ void VerticalPlatform::move(bool collision)
         } else {
                 Entity::move(0.f, -mSpeed * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
         }
-}
-
-void VerticalPlatform::initBounds()
-{
-        const float offset = Utils::Random::getInstance().random(.7f, 1.5f);
-        mBounds = {mY - offset, mY + offset};
-        mInit = true;
 }

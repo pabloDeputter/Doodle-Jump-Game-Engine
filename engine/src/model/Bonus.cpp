@@ -3,40 +3,35 @@
 //
 
 #include "model/Bonus.h"
+
 #include "util/Stopwatch.h"
 
 using namespace Model;
 
+void Bonus::initBounds()
+{
+        // Initialize bounds
+        mBounds = {mY - 0.03f, mY + 0.03f};
+        mInit = true;
+}
+
 void Bonus::move(bool collision)
 {
-        // TODO - jetpack
-        if (mStarted) {
-                return;
-        }
-
+        // If bounds are not ready initialized, initialize them
         if (!mInit) {
                 initBounds();
         }
-
-        if (mBounds.first == 0.f && mBounds.second == 0.f) {
-                initBounds();
-        }
-
+        // If Y-coordinate of Bonus is equal to or exceeds the highest bound --> move down
         if (mY >= mBounds.second) {
                 mMovingDown = false;
-        } else if (mY <= mBounds.first) {
+        }
+        // If Y-coordinate of Bonus is equal to or exceeds the lowest bound --> move up
+        else if (mY <= mBounds.first) {
                 mMovingDown = true;
         }
-
         if (mMovingDown) {
                 Entity::move(0.f, .002f * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
         } else {
                 Entity::move(0.f, -.002f * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
         }
-}
-
-void Bonus::initBounds()
-{
-        mBounds = {mY - 0.03f, mY + 0.03f};
-        mInit = true;
 }

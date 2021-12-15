@@ -8,9 +8,10 @@ using namespace Model;
 
 void Spring::visit(Player& player)
 {
-        // Original jump with default speed
+        // Original jump Player can achieve with default velocity
         float jumpPeak = (player.getMaxVelocity() / player.getDrag()) * (player.getMaxVelocity() / 2.f);
         // Calculate speed needed for a jump with a vertical distance x5
         float newSpeed = sqrt((jumpPeak * 5) * (player.getDrag() * 2.f));
+        // Set new velocity of Player
         player.setVelocity({player.getVelocity().first, newSpeed});
 }

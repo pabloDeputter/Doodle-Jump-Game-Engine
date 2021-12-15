@@ -21,8 +21,6 @@ void Camera::reset()
         Observer::Subject::clear();
 }
 
-std::pair<float, float> Camera::getWorldDimensions() const { return {mWorldRight, mWorldTop}; }
-
 void Camera::setWorldDimensions(float right, float top, float left, float bottom)
 {
         mWorldLeft = left;
@@ -30,8 +28,6 @@ void Camera::setWorldDimensions(float right, float top, float left, float bottom
         mWorldTop = top;
         mWorldBottom = bottom;
 }
-
-std::pair<float, float> Camera::getWindowDimensions() const { return {mWindowRight, mWindowBottom}; }
 
 void Camera::setWindowDimensions(float right, float bottom, float left, float top)
 {
@@ -87,11 +83,13 @@ void Camera::move(float x, float y)
 
 bool Camera::isMaxHeight(float height)
 {
+        // Cross middle of screen first to move Camera first time up
         if (height < mWorldTop / 2.f)
                 return false;
         if (height > mMaxHeight) {
                 mLastMaxHeight = mMaxHeight;
                 mMaxHeight = height;
+                // Trigger NewMaxHeightEvent
                 trigger(EventType::NEW_MAX_HEIGHT, std::make_shared<NewMaxHeightEvent>(mLastMaxHeight, mMaxHeight));
                 return true;
         }

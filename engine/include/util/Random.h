@@ -12,19 +12,19 @@
  */
 namespace Utils {
 /**
- * @brief Class for Random
+ * @brief Class for Random implemented using singleton pattern
  */
 class Random
 {
 private:
         /**
-         * @brief Private default constructor
+         * @brief Private default constructor for Random object
          */
         Random() = default;
 
 public:
         /**
-         * @brief Default destructor
+         * @brief Default destructor for Random object
          */
         ~Random() = default;
         /**
@@ -47,7 +47,7 @@ public:
          * @param b float - end interval
          * @return float
          */
-        [[nodiscard]] float random(float a, float b);
+        [[nodiscard]] static float random(float a, float b);
 };
 } // namespace Utils
 

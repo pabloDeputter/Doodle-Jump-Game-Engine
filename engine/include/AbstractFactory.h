@@ -5,38 +5,73 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_ABSTRACTFACTORY_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_ABSTRACTFACTORY_H
 
-#include "Score.h"
-#include "controller/IController.h"
 #include "model/Entity.h"
+#include "model/Score.h"
 
-namespace Model {
-// Used by world to create new entities without knowing anything sfml-related (VIEW)
-
-// The game class provides pointer to concrete factory to world, so it can create
-// entities that have correct view attached
+/**
+ * @brief Namespace holds Factory design pattern
+ */
+namespace Factory {
+/**
+ * @brief Class for Abstract Factory, used by World to create new entities without knowing anything SFML-related. The
+ * Game class shall provide a ConcreteFactory pointer to world, such it can create entities that have already
+ * the correct view attached.
+ */
 class AbstractFactory
 {
 public:
+        /**
+         * @brief Default constructor for AbstractFactory object
+         */
         AbstractFactory() = default;
-
+        /**
+         * @brief Default destructor for AbstractFactory object
+         */
         virtual ~AbstractFactory() = default;
-
+        /**
+         * @brief Create Player object
+         * @return Model::Player - pointer to Player
+         */
         virtual std::shared_ptr<Model::Player> createPlayer() = 0;
-
+        /**
+         * @brief Create StaticPlatform object
+         * @return Model::Entity - pointer to Entity
+         */
         virtual std::shared_ptr<Model::Entity> createStaticPlatform() = 0;
-
+        /**
+         * @brief Create HorizontalPlatform object
+         * @return Model::Entity - pointer to Entity
+         */
         virtual std::shared_ptr<Model::Entity> createHorizontalPlatform() = 0;
-
+        /**
+         * @brief Create VerticalPlatform object
+         * @return Model::Entity - pointer to Entity
+         */
         virtual std::shared_ptr<Model::Entity> createVerticalPlatform() = 0;
-
+        /**
+         * @brief Create TemporaryPlatform object
+         * @return Model::Entity - pointer to Entity
+         */
         virtual std::shared_ptr<Model::Entity> createTemporaryPlatform() = 0;
-
+        /**
+         * @brief Create Spring object
+         * @return Model::Entity - pointer to Entity
+         */
         virtual std::shared_ptr<Model::Entity> createSpring() = 0;
-
+        /**
+         * @brief Create Jetpack object
+         * @return Model::Entity - pointer to Entity
+         */
         virtual std::shared_ptr<Model::Entity> createJetpack() = 0;
-
+        /**
+         * @brief Create Background object
+         * @return Model::Entity - pointer to Entity
+         */
         virtual std::shared_ptr<Model::Entity> createBackground() = 0;
-
+        /**
+         * @brief Create Score object
+         * @return Model::Entity - pointer to Entity
+         */
         virtual std::shared_ptr<Model::Score> createScore() = 0;
 };
 } // namespace Model

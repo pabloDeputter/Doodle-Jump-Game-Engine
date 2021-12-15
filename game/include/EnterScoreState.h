@@ -6,6 +6,7 @@
 #define DOODLEJUMP_ENTERSCORESTATE_H
 
 #include "Game.h"
+#include "Highscore.h"
 #include "State.h"
 
 #include <utility>
@@ -54,7 +55,7 @@ private:
                                         mStringName = mStringName.substr(0, mStringName.size());
                                 }
                                 if (event.key.code == sf::Keyboard::Enter) {
-                                        HighScore::getInstance().add(std::make_shared<HighScoreScore>(
+                                        HighScore::getInstance().add(std::make_shared<HighScoreData>(
                                             HighScore::getInstance().getToAdd(), mStringName));
                                         mGame.mStateType = eMenu;
                                         return;
