@@ -6,8 +6,6 @@
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_ENTITY_H
 
 #include "Subject.h"
-#include "util/Camera.h"
-#include "util/Stopwatch.h"
 
 #include "IVisitor.h"
 
@@ -24,42 +22,15 @@ namespace Model {
 enum Type
 {
         ePlayer = 0,
-        eBonus = 1,
-        eStatic = 2,
-        eHorizontal = 3,
-        eVertical = 4,
-        eTemporary = 5,
-        eBackground = 6,
-        eJetpack = 7,
-        eSpring = 8,
-        eScore = 9
-};
-
-class CollisionBox
-{
-private:
-        float mLeft;
-        float mWidth;
-        float mBottom;
-        float mHeight;
-
-public:
-        CollisionBox() = default;
-
-        CollisionBox(float left, float width, float bottom, float height)
-            : mLeft(left), mWidth(width), mBottom(bottom), mHeight(height)
-        {
-        }
-
-        ~CollisionBox() = default;
-
-        [[nodiscard]] float getLeft() const { return mLeft; }
-
-        [[nodiscard]] float getWidth() const { return mWidth; }
-
-        [[nodiscard]] float getBottom() const { return mBottom; }
-
-        [[nodiscard]] float getHeight() const { return mHeight; }
+        eBonus,
+        eStatic,
+        eHorizontal,
+        eVertical,
+        eTemporary,
+        eBackground,
+        eJetpack,
+        eSpring,
+        eScore
 };
 
 /**
@@ -75,20 +46,15 @@ protected:
         float mWidth{};  /**< Width of Entity collision box */
         float mHeight{}; /**< Height of Entity collision box */
         bool mRemoveFlag;
-        unsigned int mScore;
-
-        float mSpawnRate;
+        int mScore;
 
 public:
         /**
          * @brief Default constructor
          */
-        Entity() : mX(0.f), mY(0.f), mWidth(0.f), mHeight(0.f), mRemoveFlag(false), mScore(0), mSpawnRate(0.f) {}
+        Entity() : mX(0.f), mY(0.f), mWidth(0.f), mHeight(0.f), mRemoveFlag(false), mScore(0) {}
 
-        Entity(unsigned int score, float spawnRate)
-            : mX(0.f), mY(0.f), mWidth(0.f), mHeight(0.f), mRemoveFlag(false), mScore(score), mSpawnRate(spawnRate)
-        {
-        }
+        Entity(unsigned int score) : mX(0.f), mY(0.f), mWidth(0.f), mHeight(0.f), mRemoveFlag(false), mScore(score) {}
 
         /**
          * @brief Default constructor
@@ -114,7 +80,6 @@ public:
          * @param y float
          */
         void setY(float y);
-
 
         float getWidth() const;
         /**
@@ -146,24 +111,19 @@ public:
          * @brief Get type of Entity object
          * @return Model::Type
          */
-        virtual Model::Type getType() const = 0;
+        [[nodiscard]] virtual Model::Type getType() const = 0;
         /**
          * @brief On destroy event of Entity function will be executed
          */
         virtual void onDestroy();
 
-        void visit(Model::Player& player) override { std::cout << "Entity visit\n"; }
+        void visit(Model::Player& player) override {}
 
         virtual void accept(const std::shared_ptr<Visitor::IVisitor>& visitor) {}
 
-        // TODO - jetpack
-        void setRemoveFlag(bool flag)
-        {
-                mRemoveFlag = flag;
-                onDestroy();
-        }
+        void setRemoveFlag(bool flag);
 
-        virtual bool getRemovable() const { return mRemoveFlag; }
+        [[nodiscard]] bool getRemovable() const { return mRemoveFlag; }
 
         virtual bool isRemovable() const { return mRemoveFlag; }
 
@@ -172,10 +132,6 @@ public:
         void setScore(unsigned int score) { mScore = score; }
 
         virtual unsigned int getScore() const { return mScore; }
-
-        virtual float getSpawnRate() const { return mSpawnRate; }
-
-        void setSpawnRate(float spawnRate) { mSpawnRate = spawnRate; }
 };
 } // namespace Model
 

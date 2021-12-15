@@ -11,35 +11,45 @@ namespace Model {
 
 class Bonus : public Entity
 {
-public:
-        /**
-         * @brief Enum containing enumerated Bonuses
-         */
-        enum Sort
-        {
-                eJetpack = 0,
-                eSpring = 1,
-        };
+protected:
+        std::pair<float, float> mBounds;
+        bool mMovingDown;
+        bool mInit;
+        bool mStarted;
 
 private:
-        Bonus::Sort mSort;
+        virtual void initBounds();
+
+        void visit(Model::Player& player) override {}
 
 public:
+        Bonus(unsigned int score, float spawnRate, bool started)
+            : Entity(score), mBounds({0.f, 0.f}), mMovingDown(false), mInit(false), mStarted(started)
+        {
+        }
+
+        Bonus(unsigned int score, float spawnRate)
+            : Entity(score), mBounds({0.f, 0.f}), mMovingDown(false), mInit(false), mStarted(false)
+        {
+        }
+
+        explicit Bonus(bool started)
+            : Entity(), mBounds({0.f, 0.f}), mMovingDown(false), mInit(false), mStarted(started)
+        {
+        }
+
+        ~Bonus() override = default;
         /**
          * @brief Get type of Entity object
          * @return Model::Type
          */
-        Model::Type getType() const override { return Model::Type::eBonus; }
-        /**
-         * @brief Get sort of Bonus object
-         * @return
-         */
-        Sort getMSort() const;
-        /**
-         * @brief Set sort of Bonus object
-         * @param sort Bonus::Sort
-         */
-        void setMSort(Sort sort);
+        [[nodiscard]] Model::Type getType() const override { return Model::Type::eBonus; }
+
+        [[nodiscard]] bool isRemovable() const override {}
+
+        void move(bool collision) override;
+
+        [[nodiscard]] bool isBonus() const override { return true; }
 };
 } // namespace Model
 

@@ -41,6 +41,8 @@ public:
         }
 
         std::shared_ptr<Type>& get(Model::Type type) { return mResources[type]; }
+
+        void clear() { mResources.clear(); }
 };
 
 class Resourcemanager
@@ -58,7 +60,7 @@ private:
         }
 
 public:
-        ~Resourcemanager() = default;
+        ~Resourcemanager() { clear(); }
 
         Resourcemanager(const Resourcemanager&) = delete;
 
@@ -82,6 +84,13 @@ public:
         [[nodiscard]] const std::shared_ptr<Resourceholder<sf::Font>>& getFonts() const { return mFonts; }
 
         [[nodiscard]] const std::shared_ptr<Resourceholder<sf::SoundBuffer>>& getSounds() const { return mSounds; }
+
+        void clear() const
+        {
+                mTextures->clear();
+                mFonts->clear();
+                mSounds->clear();
+        }
 };
 } // namespace Utils
 

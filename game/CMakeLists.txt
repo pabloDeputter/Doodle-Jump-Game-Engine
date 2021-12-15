@@ -8,7 +8,7 @@ SET(SRC
         src/util/Resourcemanager.cpp
         src/view/BonusView.cpp
         src/view/ScoreView.cpp
-        )
+        include/GameState.h include/MenuState.h include/MenuState.cpp include/EnterScoreState.h)
 
 ADD_LIBRARY(game SHARED ${SRC})
 

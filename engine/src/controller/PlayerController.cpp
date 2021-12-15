@@ -3,6 +3,7 @@
 //
 
 #include "controller/PlayerController.h"
+#include "util/Camera.h"
 
 using namespace Controller;
 

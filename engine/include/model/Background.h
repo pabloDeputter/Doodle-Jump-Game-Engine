@@ -11,7 +11,6 @@ namespace Model {
 
 class Background : public Entity
 {
-private:
 public:
         Background() = default;
 

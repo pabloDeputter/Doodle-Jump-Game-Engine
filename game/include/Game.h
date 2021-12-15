@@ -15,14 +15,32 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
+#include "State.h"
+
+enum States
+{
+        eGame = 0,
+        eEnterScore,
+        eMenu
+};
+
 /**
  * @brief Class for Game
  */
 class Game
 {
+public:
         std::shared_ptr<sf::RenderWindow> mWindow;
         std::unique_ptr<World> mWorld;
         std::shared_ptr<Model::AbstractFactory> mFactory;
+
+public:
+        std::shared_ptr<State> mState;
+        States mStateType;
+
+private:
+        static void initializeResources();
+
 public:
         Game() = default;
 
@@ -30,17 +48,7 @@ public:
 
         ~Game() = default;
 
-        void initializeResources();
-
-        void processEvents();
-
-        void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
-
-        void render();
-
         void run();
-
-        void drawHighScoreTable();
 };
 
 #endif // ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H

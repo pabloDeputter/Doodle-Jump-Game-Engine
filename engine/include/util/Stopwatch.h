@@ -81,6 +81,8 @@ public:
          */
         [[nodiscard]] float getDelta() const;
 
+        void reset() { mTimers.clear(); }
+
         // TODO - jetpack
         void addTimer(unsigned int key, float amount)
         {
@@ -104,7 +106,7 @@ public:
                 }
                 auto val = mTimers[Type(key)];
                 std::chrono::duration<float> ms_delta = std::chrono::high_resolution_clock::now() - val.second;
-                std::cout << ms_delta.count() << "\n";
+                //                std::cout << ms_delta.count() << "\n";
                 if (ms_delta.count() > val.first) {
                         mTimers.erase(Type(key));
                         return false;

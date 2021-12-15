@@ -15,14 +15,24 @@ class VerticalPlatform : public Entity
 private:
         std::pair<float, float> mBounds;
         bool mMovingDown;
+        float mSpeed;
         bool mInit;
 
 public:
-        VerticalPlatform() : Entity(7, .10f), mBounds({0.f, 0.f}), mMovingDown(true), mInit(false) {}
+        VerticalPlatform() : Entity(7), mBounds({0.f, 0.f}), mInit(false)
+        {
+                if (Utils::Random::getInstance().random(0.f, 1.f) >= 0.5f) {
+                        mMovingDown = false;
+                } else {
+                        mMovingDown = true;
+                }
+
+                mSpeed = Utils::Random::getInstance().random(.01f, .025f);
+        }
 
         ~VerticalPlatform() override = default;
 
-        Model::Type getType() const override;
+        [[nodiscard]] Model::Type getType() const override { return Model::eVertical; }
 
         void move(bool collision) override;
 

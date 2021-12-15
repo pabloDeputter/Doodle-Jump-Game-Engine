@@ -12,17 +12,17 @@ namespace Settings {
 /**
  * @brief Spawn rates - Platform
  */
-static float CHANCE_STATIC = .9;      /**< Spawn rate of Static Platform */
-static float CHANCE_HORIZONTAL = .04; /**< Spawn rate of Horizontal Platform */
-static float CHANCE_VERTICAL = .04;   /**< Spawn rate of Vertical Platform */
-static float CHANCE_TEMPORARY = .02f; /**< Spawn rate of Temporary Platform */
+static float CHANCE_STATIC = .85f;     /**< Spawn rate of Static Platform */
+static float CHANCE_HORIZONTAL = .05f; /**< Spawn rate of Horizontal Platform */
+static float CHANCE_VERTICAL = .05f;   /**< Spawn rate of Vertical Platform */
+static float CHANCE_TEMPORARY = .05f;  /**< Spawn rate of Temporary Platform */
 
 /**
  * @brief Spawn rates - Bonus
  */
-static float CHANCE_BONUS = .1f;   /**< Spawn rate of Bonus object */
-static float CHANCE_SPRING = 1.;   /**< Spawn rate of Spring */
-static float CHANCE_JETPACK = .0f; /**< Spawn rate of Jetpack */
+static float CHANCE_BONUS = 0.05f;  /**< Spawn rate of Bonus object */
+static float CHANCE_SPRING = .95;   /**< Spawn rate of Spring */
+static float CHANCE_JETPACK = .05f; /**< Spawn rate of Jetpack */
 
 /**
  * @brief Max. amount and min amount of platforms that can be on the screen at the same time
@@ -41,6 +41,7 @@ enum Difficulty
         eNormal,
         eDifficult,
         eHard,
+        eInsane,
         eExtreme
 };
 /**
@@ -102,18 +103,31 @@ bool static setDifficulty(Difficulty difficulty)
                 MAX_PLATFORMS = 10;
                 DIFFICULTY = 0.75f;
                 break;
-        case eExtreme:
-                CHANCE_STATIC = .2f;
-                CHANCE_HORIZONTAL = .3f;
-                CHANCE_VERTICAL = .3f;
+        case eInsane:
+                CHANCE_STATIC = .3f;
+                CHANCE_HORIZONTAL = .25f;
+                CHANCE_VERTICAL = .25f;
                 CHANCE_TEMPORARY = .2f;
 
                 CHANCE_BONUS = .30f;
                 CHANCE_SPRING = .75f;
                 CHANCE_JETPACK = .25f;
 
-                MAX_PLATFORMS = 7;
+                MAX_PLATFORMS = 10;
                 DIFFICULTY = 0.85f;
+                break;
+        case eExtreme:
+                CHANCE_STATIC = .2f;
+                CHANCE_HORIZONTAL = .3f;
+                CHANCE_VERTICAL = .3f;
+                CHANCE_TEMPORARY = .2f;
+
+                CHANCE_BONUS = .20f;
+                CHANCE_SPRING = .75f;
+                CHANCE_JETPACK = .25f;
+
+                MAX_PLATFORMS = 7;
+                DIFFICULTY = 0.90f;
                 break;
         }
         return true;

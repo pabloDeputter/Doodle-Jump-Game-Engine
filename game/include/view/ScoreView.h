@@ -15,6 +15,7 @@ class ScoreView : public IView
 {
 private:
         std::unique_ptr<sf::Text> mText;
+        std::unique_ptr<sf::Text> mLevelText;
         std::unique_ptr<sf::Text> mDiffText;
 
         void handleEvent(const DrawEvent& event) override;
@@ -34,7 +35,18 @@ public:
 
                 mDiffText = std::make_unique<sf::Text>();
                 mDiffText->setFont(*font);
+                mDiffText->setCharacterSize(60);
                 mDiffText->setFillColor(sf::Color::Black);
+
+                mLevelText = std::make_unique<sf::Text>();
+                mLevelText->setFont(*font);
+                mLevelText->setCharacterSize(30);
+                mLevelText->setFillColor(sf::Color::Black);
+                mLevelText->setString("-NEW LEVEL REACHED-");
+                sf::FloatRect bounds = mLevelText->getLocalBounds();
+                mLevelText->setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);
+                const std::pair<float, float> windowDim = Utils::Camera::getInstance().getWindowDimensions();
+                mLevelText->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y - 375);
         }
 
         ~ScoreView() override = default;

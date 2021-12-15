@@ -29,3 +29,8 @@ void Entity::move(float x, float y)
 }
 
 void Entity::onDestroy() { Subject::clear(); }
+void Entity::setRemoveFlag(bool flag)
+{
+        mRemoveFlag = true;
+        onDestroy();
+}

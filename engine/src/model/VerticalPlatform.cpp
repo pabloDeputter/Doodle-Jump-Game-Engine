@@ -3,10 +3,9 @@
 //
 
 #include "model/VerticalPlatform.h"
+#include "util/Stopwatch.h"
 
 using namespace Model;
-
-Model::Type VerticalPlatform::getType() const { return Model::eVertical; }
 
 void VerticalPlatform::move(bool collision)
 {
@@ -25,9 +24,9 @@ void VerticalPlatform::move(bool collision)
         }
 
         if (mMovingDown) {
-                Entity::move(0.f, .01f * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
+                Entity::move(0.f, mSpeed * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
         } else {
-                Entity::move(0.f, -.01f * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
+                Entity::move(0.f, -mSpeed * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
         }
 }
 

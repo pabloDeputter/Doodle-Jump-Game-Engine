@@ -18,6 +18,7 @@ void Camera::reset()
         mCameraY = 0.f;
         mMaxHeight = 0.f;
         mLastMaxHeight = 0.f;
+        Observer::Subject::clear();
 }
 
 std::pair<float, float> Camera::getWorldDimensions() const { return {mWorldRight, mWorldTop}; }

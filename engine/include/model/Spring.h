@@ -5,41 +5,27 @@
 #ifndef DOODLEJUMP_SPRING_H
 #define DOODLEJUMP_SPRING_H
 
+#include "Bonus.h"
 #include "Player.h"
 #include <cmath>
 
 namespace Model {
 
-class Spring : public Entity
+class Spring : public Bonus
 {
 private:
-        std::pair<float, float> mBounds;
-        bool mMovingDown;
-        bool mInit;
+        void visit(Model::Player& player) override;
 
 public:
-        Spring() : Entity(15, .75f){};
+        Spring(unsigned int score, float spawnRate, bool started) : Bonus(score, spawnRate, started){};
+
+        Spring() : Bonus(15, .75){};
 
         ~Spring() override = default;
 
-        [[nodiscard]] Model::Type getType() const override;
+        [[nodiscard]] Model::Type getType() const override { return Model::eSpring; }
 
-        void move(bool collision) override;
-
-        void initBounds();
-
-        void visit(Model::Player& player) override
-        {
-                // Original jump with default speed
-                float jumpPeak = (player.getMaxVelocity() / player.getDrag()) * (player.getMaxVelocity() / 2.f);
-                // Calculate speed needed for a jump with a vertical distance x5
-                float newSpeed = sqrt((jumpPeak * 5) * (player.getDrag() * 2.f));
-                player.setVelocity({player.getVelocity().first, newSpeed});
-        }
-
-        bool isBonus() const override { return true; }
-
-        bool isRemovable() const override { return mRemoveFlag; }
+        [[nodiscard]] bool isRemovable() const override { return mRemoveFlag; }
 };
 } // namespace Model
 

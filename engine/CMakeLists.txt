@@ -18,7 +18,6 @@ SET(SRC
         src/model/HorizontalPlatform.cpp
         src/model/VerticalPlatform.cpp
         src/model/TemporaryPlatform.cpp
-        src/model/Platform.cpp
         src/model/Jetpack.cpp
         src/model/Spring.cpp
         src/controller/BonusController.cpp
@@ -27,7 +26,7 @@ SET(SRC
         src/util/Exception.cpp
         include/Settings.h
         src/HighScore.cpp
-        )
+        ../game/include/State.h)
 
 ADD_LIBRARY(engine SHARED ${SRC})
 

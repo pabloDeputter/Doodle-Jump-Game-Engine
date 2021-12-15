@@ -18,6 +18,13 @@ namespace Model {
  */
 class Player : public Entity, public Observer::Observer, public IEventHandler
 {
+public:
+        enum State
+        {
+                eNormal = 0,
+                eFlying
+        };
+
 private:
         std::pair<float, float> mVelocity;  /**< Current velocity of Player */
         std::pair<float, float> mDirection; /**< Current direction of Player */
@@ -28,9 +35,15 @@ private:
 
         bool mIsMovingLeft;  /**< Player is moving left */
         bool mIsMovingRight; /**< Player is moving right */
+public:
+        bool mState;
 
 public:
-        Player() : mVelocity({0.f, 0.f}), mDirection({0.f, 0.f}), mIsMovingLeft(false), mIsMovingRight(false) {}
+        Player()
+            : mVelocity({0.f, 0.f}), mDirection({0.f, 0.f}), mIsMovingLeft(false), mIsMovingRight(false),
+              mState(eNormal)
+        {
+        }
 
         ~Player() override = default;
 
@@ -75,11 +88,9 @@ public:
 
         void onTrigger(EventType type, const std::shared_ptr<Event>& event) override { event->send(*this); }
 
-        void handleEvent(const StopBonusEvent& event) override
-        {
-                std::cout << "lol\n";
-                accept(event.getBonus());
-        }
+        void handleEvent(const StopBonusEvent& event) override { accept(event.getBonus()); }
+
+        void setState(State state) { mState = state; }
 };
 } // namespace Model
 

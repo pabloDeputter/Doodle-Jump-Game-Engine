@@ -47,7 +47,7 @@ private:
         bool mPlaying;
 
 public:
-        explicit World(std::shared_ptr<Model::AbstractFactory>& factory);
+        explicit World(std::shared_ptr<Model::AbstractFactory>& factory, bool playing);
 
         ~World() { destroy(); }
         /**

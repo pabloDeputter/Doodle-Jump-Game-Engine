@@ -3,10 +3,11 @@
 //
 
 #include "World.h"
+#include "util/Stopwatch.h"
 
 using namespace Settings;
 
-World::World(std::shared_ptr<Model::AbstractFactory>& factory)
+World::World(std::shared_ptr<Model::AbstractFactory>& factory, bool playing)
 {
         // Initialize factory
         mFactory = factory;
@@ -16,7 +17,7 @@ World::World(std::shared_ptr<Model::AbstractFactory>& factory)
         Utils::Camera::getInstance().isMaxHeight(0.f);
         Utils::Camera::getInstance().setWorldDimensions(8.f, 14.4f);
         Utils::Stopwatch::getInstance().mPlayer = mPlayer;
-        mPlaying = true;
+        mPlaying = playing;
 }
 
 void World::initWorld()
@@ -281,16 +282,19 @@ bool World::checkDifficulty()
         if (height <= 50.f && mDifficulty != Settings::Difficulty::eEasy) {
                 mDifficulty = Settings::Difficulty::eEasy;
                 return Settings::setDifficulty(Settings::Difficulty::eEasy);
-        } else if (height > 50.f && height <= 100.f && mDifficulty != Settings::Difficulty::eNormal) {
+        } else if (height > 50.f && height <= 150.f && mDifficulty != Settings::Difficulty::eNormal) {
                 mDifficulty = Settings::Difficulty::eNormal;
                 return Settings::setDifficulty(Settings::Difficulty::eNormal);
-        } else if (height > 100.f && height <= 150.f && mDifficulty != Settings::Difficulty::eDifficult) {
+        } else if (height > 150.f && height <= 250.f && mDifficulty != Settings::Difficulty::eDifficult) {
                 mDifficulty = Settings::Difficulty::eDifficult;
                 return Settings::setDifficulty(Settings::Difficulty::eDifficult);
-        } else if (height > 150.f && height <= 200.f && mDifficulty != Settings::Difficulty::eHard) {
+        } else if (height > 250.f && height <= 350.f && mDifficulty != Settings::Difficulty::eHard) {
                 mDifficulty = Settings::Difficulty::eHard;
                 return Settings::setDifficulty(Settings::Difficulty::eHard);
-        } else if (height > 200.f && height <= 275.f && mDifficulty != Settings::Difficulty::eExtreme) {
+        } else if (height > 350.f && height <= 450.f && mDifficulty != Settings::Difficulty::eInsane) {
+                mDifficulty = Settings::Difficulty::eInsane;
+                return Settings::setDifficulty(Settings::Difficulty::eInsane);
+        } else if (height > 450.f && height <= 525.f && mDifficulty != Settings::Difficulty::eExtreme) {
                 mDifficulty = Settings::Difficulty::eExtreme;
                 return Settings::setDifficulty(Settings::Difficulty::eExtreme);
         }
@@ -332,4 +336,6 @@ void World::destroy()
         }
         mBackground.clear();
         mScore->onDestroy();
+        Utils::Camera::getInstance().reset();
+        Utils::Stopwatch::getInstance().reset();
 }

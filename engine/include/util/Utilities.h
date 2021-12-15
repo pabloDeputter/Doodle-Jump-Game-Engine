@@ -33,6 +33,33 @@ public:
          * @return true if rand <= weight
          */
         static bool checkWeight(float& rand, float weight);
+
+        template <class Type, class Color>
+        static void setRainbowColor(Type& object)
+        {
+                if (object.getFillColor().r + 5 <= 255 && object.getFillColor().g == 0 &&
+                    object.getFillColor().b == 0) {
+                        object.setFillColor(Color(object.getFillColor().r + 5, 0, 0));
+                } else if (object.getFillColor().r == 255 && object.getFillColor().g + 5 <= 255 &&
+                           object.getFillColor().b == 0) {
+                        object.setFillColor(Color(255, object.getFillColor().g + 5, 0));
+                } else if (object.getFillColor().r - 5 >= 0 && object.getFillColor().g == 255 &&
+                           object.getFillColor().b == 0) {
+                        object.setFillColor(Color(object.getFillColor().r - 5, 255, 0));
+                } else if (object.getFillColor().r == 0 && object.getFillColor().g == 255 &&
+                           object.getFillColor().b + 5 <= 255) {
+                        object.setFillColor(Color(0, 255, object.getFillColor().b + 5));
+                } else if (object.getFillColor().r == 0 && object.getFillColor().g - 5 >= 0 &&
+                           object.getFillColor().b == 255) {
+                        object.setFillColor(Color(0, object.getFillColor().g - 5, 255));
+                } else if (object.getFillColor().r + 5 <= 255 && object.getFillColor().g == 0 &&
+                           object.getFillColor().b == 255) {
+                        object.setFillColor(Color(object.getFillColor().r + 5, 0, 255));
+                } else if (object.getFillColor().r == 255 && object.getFillColor().g == 0 &&
+                           object.getFillColor().b - 5 >= 0) {
+                        object.setFillColor(Color(255, 0, object.getFillColor().b - 5));
+                }
+        }
 };
 } // namespace Utils
 

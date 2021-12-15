@@ -48,33 +48,6 @@ public:
         virtual void handleEvent(const CollisionEvent& event) override {}
 
         void handleEvent(const NewDifficultyEvent& event) override {}
-
-        template <class Type>
-        static void setRainbowColor(const std::unique_ptr<sf::Text>& object)
-        {
-                if (object->getFillColor().r + 5 <= 255 && object->getFillColor().g == 0 &&
-                    object->getFillColor().b == 0) {
-                        object->setFillColor(sf::Color(object->getFillColor().r + 5, 0, 0));
-                } else if (object->getFillColor().r == 255 && object->getFillColor().g + 5 <= 255 &&
-                           object->getFillColor().b == 0) {
-                        object->setFillColor(sf::Color(255, object->getFillColor().g + 5, 0));
-                } else if (object->getFillColor().r - 5 >= 0 && object->getFillColor().g == 255 &&
-                           object->getFillColor().b == 0) {
-                        object->setFillColor(sf::Color(object->getFillColor().r - 5, 255, 0));
-                } else if (object->getFillColor().r == 0 && object->getFillColor().g == 255 &&
-                           object->getFillColor().b + 5 <= 255) {
-                        object->setFillColor(sf::Color(0, 255, object->getFillColor().b + 5));
-                } else if (object->getFillColor().r == 0 && object->getFillColor().g - 5 >= 0 &&
-                           object->getFillColor().b == 255) {
-                        object->setFillColor(sf::Color(0, object->getFillColor().g - 5, 255));
-                } else if (object->getFillColor().r + 5 <= 255 && object->getFillColor().g == 0 &&
-                           object->getFillColor().b == 255) {
-                        object->setFillColor(sf::Color(object->getFillColor().r + 5, 0, 255));
-                } else if (object->getFillColor().r == 255 && object->getFillColor().g == 0 &&
-                           object->getFillColor().b - 5 >= 0) {
-                        object->setFillColor(sf::Color(255, 0, object->getFillColor().b - 5));
-                }
-        }
 };
 } // namespace View
 

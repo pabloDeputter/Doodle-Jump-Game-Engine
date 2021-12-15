@@ -3,44 +3,33 @@
 //
 
 #include "model/Jetpack.h"
+#include "util/Stopwatch.h"
 
 using namespace Model;
 
-Model::Type Model::Jetpack::getType() const { return Model::eJetpack; }
-
-void Jetpack::move(bool collision)
+void Jetpack::visit(Model::Player& player)
 {
-        // TODO - jetpack
         if (mStarted) {
-                if (Utils::Stopwatch::getInstance().checkTimer(Model::eJetpack)) {
-                        std::cout << "jetpackStopped\n";
-                }
+                player.setState(Player::eNormal);
+                player.setDrag(0.005f);
                 return;
         }
-
-        if (!mInit) {
-                initBounds();
-        }
-
-        if (mBounds.first == 0.f && mBounds.second == 0.f) {
-                initBounds();
-        }
-
-        if (mY >= mBounds.second) {
-                mMovingDown = false;
-        } else if (mY <= mBounds.first) {
-                mMovingDown = true;
-        }
-
-        if (mMovingDown) {
-                Entity::move(0.f, .002f * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
-        } else {
-                Entity::move(0.f, -.002f * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
-        }
+        // Add timer for Jetpack Bonus
+        Utils::Stopwatch::getInstance().addTimer(Model::eJetpack, 4.f);
+        player.setState(Player::eFlying);
+        player.setDrag(0.003f);
+        mStarted = true;
 }
 
-void Jetpack::initBounds()
+bool Jetpack::isRemovable() const
 {
-        mBounds = {mY - 0.03f, mY + 0.03f};
-        mInit = true;
+        // Bonus has started and timer has expired
+        if (mStarted && !Utils::Stopwatch::getInstance().checkTimer(Model::eJetpack)) {
+                std::shared_ptr<Model::Entity> jetpack = std::make_shared<Model::Jetpack>(true);
+                trigger(EventType::STOP_BONUS, std::make_shared<StopBonusEvent>(jetpack));
+                return true;
+        } else if (mStarted && Utils::Stopwatch::getInstance().checkTimer(Model::eJetpack)) {
+                return false;
+        }
+        return mRemoveFlag;
 }

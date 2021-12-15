@@ -40,6 +40,7 @@ private:
         std::string mPath;
         unsigned int mQuantity;
         std::vector<std::shared_ptr<HighScoreScore>> mScores;
+        int toAdd;
 
         HighScore() = default;
 
@@ -57,13 +58,19 @@ public:
 
         HighScore& operator=(const HighScore&) = delete;
 
-        ~HighScore() { save(); }
+        ~HighScore()
+        {
+                save();
+                clear();
+        }
 
         static HighScore& getInstance();
 
         void load();
 
         void save();
+
+        void clear() { mScores.clear(); }
 
         void add(const std::shared_ptr<HighScoreScore>& score);
 
@@ -76,6 +83,20 @@ public:
                 }
                 return mScores.front()->mScore;
         }
+
+        [[nodiscard]] bool isHighScore(int score) const
+        {
+                if (mScores.size() < mQuantity) {
+                        return true;
+                } else if (score > mScores.back()->mScore) {
+                        return true;
+                }
+                return false;
+        }
+
+        void add(int score) { toAdd = score; }
+
+        [[nodiscard]] int getToAdd() const { return toAdd; }
 };
 
 #endif // DOODLEJUMP_HIGHSCORE_H

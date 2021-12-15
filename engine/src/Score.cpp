@@ -23,6 +23,9 @@ void Score::handleEvent(const CollisionEvent& event)
         if (mLastCollision.lock() && mLastCollision.lock() != nullptr && mLastCollision.lock() == event.getEntity()) {
                 // Subtract points of object
                 mScore -= event.getEntity()->getScore();
+                if (mScore < 0) {
+                        mScore = 0;
+                }
         }
         // Add points of object to total score
         else {

@@ -10,7 +10,6 @@
 #include "model/Background.h"
 #include "model/HorizontalPlatform.h"
 #include "model/Jetpack.h"
-#include "model/Platform.h"
 #include "model/Player.h"
 #include "model/Spring.h"
 #include "model/StaticPlatform.h"

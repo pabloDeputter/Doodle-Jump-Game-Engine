@@ -3,6 +3,7 @@
 //
 
 #include "model/Player.h"
+#include "util/Stopwatch.h"
 
 using namespace Model;
 
@@ -19,10 +20,16 @@ void Player::move(bool collision)
         }
 
         // Make Player fall
-        if (mVelocity.second <= 0) {
+        if (mState == eNormal && mVelocity.second <= 0) {
                 mDirection.second = -1.f;
                 if (mVelocity.second > -mMaxVelocity) {
                         mVelocity.second -=
+                            mAcceleration * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f;
+                }
+        } else if (mState == eFlying) {
+                mDirection.second = 1.f;
+                if (mVelocity.second < mMaxVelocity) {
+                        mVelocity.second +=
                             mAcceleration * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f;
                 }
         }

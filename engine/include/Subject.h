@@ -31,7 +31,7 @@ public:
         /**
          * @brief Default destructor
          */
-        virtual ~Subject() = default;
+        virtual ~Subject() { mObservers.clear(); }
         /**
          * @brief Register Observer to mObservers
          * @param observer Observer to be added
