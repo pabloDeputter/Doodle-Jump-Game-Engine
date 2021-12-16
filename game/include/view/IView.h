@@ -11,7 +11,7 @@
 #include "util/Camera.h"
 #include "util/ResourceManager.h"
 
-#include "Event.h"
+#include "observer/Events.h"
 #include "observer/Observer.h"
 
 #include "SFML/Graphics.hpp"

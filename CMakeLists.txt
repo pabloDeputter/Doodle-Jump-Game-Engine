@@ -47,11 +47,10 @@ TARGET_LINK_LIBRARIES(DoodleJump PUBLIC engine)
 TARGET_LINK_LIBRARIES(DoodleJump PUBLIC game)
 
 INSTALL(TARGETS DoodleJump DESTINATION ${PROJECT_SOURCE_DIR}/bin)
-
-
-#cmake -E copy_directory <path to shaders source> <path to shaders copy>
+INSTALL(DIRECTORY ${PROJECT_SOURCE_DIR}/resource DESTINATION ${PROJECT_SOURCE_DIR}/bin/resource)
 
 ADD_CUSTOM_COMMAND(TARGET DoodleJump POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${PROJECT_SOURCE_DIR}/resource
         $<TARGET_FILE_DIR:DoodleJump>/resource)
+

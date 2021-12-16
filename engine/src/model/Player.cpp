@@ -83,4 +83,3 @@ void Player::move(bool collision)
         Entity::move(mVelocity.first * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f,
                      mVelocity.second * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
 }
-#pragma clang diagnostic pop
