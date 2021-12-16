@@ -95,12 +95,14 @@ public:
          * @brief Get direction
          * @return std::pair<float, float> - current direction of Player
          */
-        [[maybe_unused]] [[nodiscard]] const std::pair<float, float>& getDirection() const { return mDirection; }
+        //        [[maybe_unused]] [[nodiscard]] const std::pair<float, float>& getDirection() const { return
+        //        mDirection; }
         /**
          * @brief Set direction
          * @param direction std::pair<float,float> - new direction of Player
          */
-        [[maybe_unused]] void setDirection(const std::pair<float, float>& direction) { mDirection = direction; }
+        //        [[maybe_unused]] void setDirection(const std::pair<float, float>& direction) { mDirection = direction;
+        //        }
         /**
          * @brief Get max velocity
          * @return float
@@ -110,7 +112,7 @@ public:
          * @brief Get acceleration
          * @return float
          */
-        [[maybe_unused]] [[nodiscard]] float getAcceleration() const { return mAcceleration; }
+        //        [[maybe_unused]] [[nodiscard]] float getAcceleration() const { return mAcceleration; }
         /**
          * @brief Get drag
          * @return float

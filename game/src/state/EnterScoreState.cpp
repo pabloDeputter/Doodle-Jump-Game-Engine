@@ -20,7 +20,7 @@ EnterScoreState::EnterScoreState(std::shared_ptr<sf::RenderWindow> window, Game&
         mInfo.setFillColor(sf::Color::White);
         mInfo.setString("You achieved a new high score, type your\n name and press 'enter' if you are ready!");
         mInfo.setCharacterSize(19);
-        mInfo.setLineSpacing(2.f);
+        //        mInfo.setLineSpacing(2.f);
         bounds = mInfo.getLocalBounds();
         mInfo.setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);
         mInfo.setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y - 500);
@@ -68,7 +68,7 @@ void EnterScoreState::processEvents()
                                 }
                                 mStringName = mStringName.substr(0, mStringName.size());
                         }
-                        if (event.key.code == sf::Keyboard::Enter) {
+                        if (event.key.code == sf::Keyboard::Return) {
                                 HighScore::getInstance().add(
                                     std::make_shared<HighScoreData>(HighScore::getInstance().getToAdd(), mStringName));
                                 mGame.mStateType = eMenu;

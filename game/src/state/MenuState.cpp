@@ -18,7 +18,7 @@ MenuState::MenuState(std::shared_ptr<sf::RenderWindow> window, Game& game) : Sta
 
         mScores.setFont(*mTitle.getFont());
         mScores.setFillColor(sf::Color::White);
-        mScores.setLineSpacing(2.f);
+        //        mScores.setLineSpacing(2.f);
         mScores.setCharacterSize(25);
 
         std::string text;

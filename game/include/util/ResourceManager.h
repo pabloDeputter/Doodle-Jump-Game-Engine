@@ -148,10 +148,11 @@ public:
          * @brief Get fonts
          * @return ResourceHolder - fonts
          */
-        [[maybe_unused]] [[nodiscard]] const std::shared_ptr<ResourceHolder<sf::SoundBuffer>>& getSounds() const
-        {
-                return mSounds;
-        }
+        //        [[maybe_unused]] [[nodiscard]] const std::shared_ptr<ResourceHolder<sf::SoundBuffer>>& getSounds()
+        //        const
+        //        {
+        //                return mSounds;
+        //        }
         /**
          * @brief Clear all resources
          */

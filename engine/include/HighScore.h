@@ -133,7 +133,7 @@ public:
          * @brief Get highest high score
          * @return int - score
          */
-        [[maybe_unused]] [[nodiscard]] int getHighScore() const;
+        //        [[maybe_unused]] [[nodiscard]] int getHighScore() const;
         /**
          * @brief Check if given score is high score
          * @param score int - score to be checked

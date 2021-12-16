@@ -32,7 +32,7 @@ protected:
         std::shared_ptr<Model::Entity> mEntity;             /**< Entity to be represented */
         std::unique_ptr<sf::Sprite> mSprite;                /**< Pointer to Sprite */
         std::shared_ptr<sf::RenderWindow> mWindow;          /**< Pointer to renderWindow */
-        [[maybe_unused]] std::unique_ptr<sf::Sound> mSound; /**< Pointer to Sound */
+        //        [[maybe_unused]] std::unique_ptr<sf::Sound> mSound; /**< Pointer to Sound */
 
 private:
         /**
@@ -73,7 +73,7 @@ public:
                 mEntity = entity;
                 mWindow = window;
                 mSprite = std::make_unique<sf::Sprite>();
-                mSound = std::make_unique<sf::Sound>();
+                //                mSound = std::make_unique<sf::Sound>();
         }
         /**
          * @brief Destructor for IView object

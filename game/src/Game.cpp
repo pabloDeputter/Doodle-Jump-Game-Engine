@@ -16,7 +16,7 @@ Game::Game(unsigned int width, unsigned int height)
         // Initialize AbstractFactory with ConcreteFactory
         mFactory = std::make_shared<Factory::ConcreteFactory>(mWindow);
         //        mWindow->setFramerateLimit(60);
-        mWindow->setVerticalSyncEnabled(true);
+        //        mWindow->setVerticalSyncEnabled(true);
         // Initialize resources
         Game::initializeResources();
         // Enter game State
@@ -75,7 +75,7 @@ void Game::run()
         // Main game loop
         while (mWindow->isOpen()) {
                 checkState();
-                [[maybe_unused]] float lap = Utils::Stopwatch::getInstance().lap();
+                Utils::Stopwatch::getInstance().lap();
                 // Process events
                 mState->processEvents();
                 checkState();

@@ -125,7 +125,7 @@ public:
          * @brief Get type of event
          * @return EventType - type of event
          */
-        [[maybe_unused]] [[nodiscard]] EventType getEvent() const { return mEvent; }
+        //        [[maybe_unused]] [[nodiscard]] EventType getEvent() const { return mEvent; }
 };
 
 /**

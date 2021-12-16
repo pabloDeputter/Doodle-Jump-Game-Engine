@@ -19,7 +19,7 @@ float Random::random(float a, float b)
         // Seed random engine
         std::mt19937 random_engine(random_device());
         // Create random distribution
-        std::binomial_distribution();
+        //        std::binomial_distribution();
         std::uniform_real_distribution<float> uniformRealDistribution(a, b);
         // Return random generated value
         return uniformRealDistribution(random_engine);

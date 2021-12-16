@@ -118,7 +118,7 @@ public:
          * @brief Get x coordinate of Camera
          * @return float - x coordinate
          */
-        [[maybe_unused]] [[nodiscard]] float getX() const { return mCameraX; }
+        //        [[maybe_unused]] [[nodiscard]] float getX() const { return mCameraX; }
         /**
          * @brief Get y coordinate of Camera
          * @return float - y coordinate
@@ -133,7 +133,7 @@ public:
          * @brief Get last maximum height of Camera
          * @return float - last max. height
          */
-        [[maybe_unused]] [[nodiscard]] float getLastMaxHeight() const { return mLastMaxHeight; }
+        //        [[maybe_unused]] [[nodiscard]] float getLastMaxHeight() const { return mLastMaxHeight; }
         /**
          * @brief Check if given height is greater or equal to current maximum height
          * @param height float

@@ -4,6 +4,8 @@
 
 #include "HighScore.h"
 
+#include <algorithm>
+
 HighScore& HighScore::getInstance()
 {
         // TODO - path
@@ -76,14 +78,14 @@ void HighScore::add(const std::shared_ptr<HighScoreData>& score)
         }
 }
 
-[[maybe_unused]] int HighScore::getHighScore() const
-{
-        // If no scores are stored high score is equal to 0
-        if (mScores.empty()) {
-                return 0;
-        }
-        return mScores.front()->mScore;
-}
+//[[maybe_unused]] int HighScore::getHighScore() const
+//{
+//        // If no scores are stored high score is equal to 0
+//        if (mScores.empty()) {
+//                return 0;
+//        }
+//        return mScores.front()->mScore;
+//}
 
 bool HighScore::isHighScore(int score) const
 {
