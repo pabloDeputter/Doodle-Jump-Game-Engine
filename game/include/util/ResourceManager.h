@@ -111,8 +111,9 @@ public:
          */
         static ResourceManager& getInstance()
         {
-                static ResourceManager instance(
-                    "/Users/pablodeputter/Documents/GitHub/Advanced-Programming-DoodleJump/resource");
+                static ResourceManager instance("resource");
+                //                static ResourceManager instance(
+                //                    "/Users/pablodeputter/Documents/GitHub/Advanced-Programming-DoodleJump/resource");
                 return instance;
         }
         /**

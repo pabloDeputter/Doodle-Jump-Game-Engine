@@ -52,6 +52,8 @@ void PlayState::handleInput(sf::Keyboard::Key key, bool isPressed) const
                 mWorld->events("Q", isPressed);
         } else if (key == sf::Keyboard::D) {
                 mWorld->events("D", isPressed);
+        } else if (key == sf::Keyboard::Space) {
+                mWorld->events("SPACE", isPressed);
         }
 }
 

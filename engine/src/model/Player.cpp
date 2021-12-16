@@ -33,6 +33,10 @@ void Player::move(bool collision)
                         mVelocity.second +=
                             mAcceleration * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f;
                 }
+        } else if (mState == eJump) { // TODO
+                // Direction will be inverted and Player will get max vertical velocity
+                mDirection.second = 1.f;
+                mVelocity.second = mMaxVelocity;
         }
 
         // Increase horizontal velocity
@@ -79,3 +83,4 @@ void Player::move(bool collision)
         Entity::move(mVelocity.first * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f,
                      mVelocity.second * Utils::Stopwatch::getInstance().getDelta() * 56.657223796033994f);
 }
+#pragma clang diagnostic pop

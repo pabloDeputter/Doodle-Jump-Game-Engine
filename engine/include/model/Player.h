@@ -7,6 +7,7 @@
 
 #include "Entity.h"
 #include "observer/IVisitor.h"
+#include "util/Stopwatch.h"
 
 /**
  * @brief Namespace holds all Models
@@ -24,7 +25,8 @@ public:
         enum PlayerState
         {
                 eNormal = 0,
-                eFlying
+                eFlying,
+                eJump
         };
 
 private:
@@ -36,7 +38,7 @@ private:
 
         bool mIsMovingLeft;  /**< Player is moving left */
         bool mIsMovingRight; /**< Player is moving right */
-        bool mState;         /**< State Player is currently in */
+        PlayerState mState;  /**< State Player is currently in */
 
 private:
         /**
@@ -129,6 +131,16 @@ public:
          * @param flag bool
          */
         void setIsMovingRight(bool flag) override { mIsMovingRight = flag; }
+        // TODO
+        void setIsMovingUp(bool flag) override
+        {
+                if (flag) {
+                        mState = eJump;
+                        //                        Utils::Stopwatch::getInstance().addTimer(Type::ePlayer, 1.f);
+                } else {
+                        mState = eNormal;
+                }
+        }
         /**
          * @brief Set state of Player
          * @param state PlayerState - new state of Player

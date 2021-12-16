@@ -17,6 +17,8 @@ void PlayerController::handleEvent(const KeyPressedEvent& event)
                 mEntity->setIsMovingLeft(isPressed);
         else if (key == "D")
                 mEntity->setIsMovingRight(isPressed);
+        else if (key == "SPACE")
+                mEntity->setIsMovingUp(isPressed);
 }
 
 void PlayerController::handleEvent(const MoveEvent& event)

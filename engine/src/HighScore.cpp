@@ -7,8 +7,10 @@
 HighScore& HighScore::getInstance()
 {
         // TODO - path
-        static HighScore instance(
-            "/Users/pablodeputter/Documents/Github/Advanced-Programming-DoodleJump/resource/highscore.txt", 10);
+        static HighScore instance("/resource/highscore.txt", 10);
+        //        static HighScore instance(
+        //            "/Users/pablodeputter/Documents/Github/Advanced-Programming-DoodleJump/resource/highscore.txt",
+        //            10);
         return instance;
 }
 

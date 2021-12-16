@@ -157,6 +157,10 @@ public:
          */
         virtual void setIsMovingRight(bool flag) {}
         /**
+         * @brief Set moving up
+         */
+        virtual void setIsMovingUp(bool flag) {} // TODO
+        /**
          * @brief On destroy event of Entity function will be executed
          */
         virtual void onDestroy() { Observer::Subject::clear(); }
