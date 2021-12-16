@@ -7,7 +7,7 @@
 
 #include "model/Entity.h"
 
-#include "Event.h"
+#include "observer/Events.h"
 
 #include "observer/Subject.h"
 
