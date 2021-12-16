@@ -5,7 +5,7 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_OBSERVER_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_OBSERVER_H
 
-#include "Event.h"
+#include "Events.h"
 
 #include <memory>
 

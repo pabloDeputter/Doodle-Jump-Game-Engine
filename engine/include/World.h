@@ -16,7 +16,7 @@
 
 #include "Settings.h"
 #include "model/Score.h"
-#include "observer/Event.h"
+#include "observer/Events.h"
 
 #include <memory>
 #include <vector>

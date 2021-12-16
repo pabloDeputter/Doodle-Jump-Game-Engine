@@ -2,8 +2,8 @@
 // Created by Pablo Deputter on 08/12/2021.
 //
 
-#ifndef DOODLEJUMP_EVENT_H
-#define DOODLEJUMP_EVENT_H
+#ifndef DOODLEJUMP_EVENTS_H
+#define DOODLEJUMP_EVENTS_H
 
 #include "Settings.h"
 
@@ -33,7 +33,7 @@ enum class EventType
         NEW_DIFFICULTY
 };
 
-// Forward declaration of different Events
+// Forward declaration of different Event
 class Event;
 class DrawEvent;
 class OutOfViewEvent;
@@ -341,4 +341,4 @@ public:
         [[nodiscard]] Settings::Difficulty getDifficulty() const { return mDifficulty; }
 };
 
-#endif // DOODLEJUMP_EVENT_H
+#endif // DOODLEJUMP_EVENTS_H
