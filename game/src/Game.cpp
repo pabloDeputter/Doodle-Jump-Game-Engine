@@ -52,6 +52,8 @@ void Game::initializeResources()
                                                               "/font/super_mario_bros.ttf");
                 Utils::ResourceManager::getInstance().addFont(Utils::Type::eMenuInfo, "/font/alagard.ttf");
                 Utils::ResourceManager::getInstance().addFont(Utils::Type::eMenuSettings, "/font/alagard.ttf");
+                // Sound - menu
+                Utils::ResourceManager::getInstance().addSound(Utils::Type::eMenuInfo, "/audio/theme.wav");
 
         } catch (const std::exception& exc) {
                 std::cerr << exc.what();

@@ -37,6 +37,9 @@ private:
         std::string mName;   /**< std::string - entered name of new high score that was achieved */
 
         unsigned int mDiff; /**< unsigned int - selected difficulty */
+
+        sf::Sound mSound;
+
 private:
         /**
          * @brief Render state

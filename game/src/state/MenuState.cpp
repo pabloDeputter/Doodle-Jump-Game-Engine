@@ -34,12 +34,16 @@ MenuState::MenuState(std::shared_ptr<sf::RenderWindow> window, Game& game)
         Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
                             35, infoClear, "CLEAR SCORES");
         // Create text for settings "button"
+        sf::Text infoSave;
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
+                            35, infoSave, "SAVE");
+        // Create text for settings "button"
         sf::Text infoSettings;
         Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
                             35, infoSettings, "SETTINGS");
 
         // Insert into std::vector
-        mInfo = {infoPlay, infoClear, infoSettings};
+        mInfo = {infoPlay, infoClear, infoSave, infoSettings};
 
         // Spacing between each info displayed
         float factor_info = 1.f;
@@ -48,6 +52,9 @@ MenuState::MenuState(std::shared_ptr<sf::RenderWindow> window, Game& game)
                 i.setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 1.1f * factor_info);
                 factor_info += .075f;
         }
+
+        mSound.setBuffer(*Utils::ResourceManager::getInstance().getSounds()->get(Type::eMenuInfo));
+        mSound.play();
 }
 
 void MenuState::render() const
@@ -200,6 +207,9 @@ void MenuState::onSelect()
                 // Update scores
                 createScores();
         } else if (mSelected == 2) {
+                // Save high scores - get saved anyways when closing app
+                HighScore::getInstance().save();
+        } else if (mSelected == 3) {
                 // Push SettingState on stack
                 mGame.pushState(std::make_shared<SettingState>(mWindow, mGame, Settings::Difficulty(mDiff)));
         }
