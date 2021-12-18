@@ -14,4 +14,8 @@ void Spring::visit(Player& player)
         float newSpeed = sqrt((jumpPeak * 5) * (player.getDrag() * 2.f));
         // Set new velocity of Player
         player.setVelocity({player.getVelocity().first, newSpeed});
+        // Move out of world to avoid further collisions
+        setX(Utils::Camera::getInstance().getWorldDimensions().first * 2.f);
+        // Spring can be removed next time active Entities are cleared
+        setRemoveFlag(true);
 }

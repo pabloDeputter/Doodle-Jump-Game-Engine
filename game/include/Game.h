@@ -15,14 +15,16 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
+#include <stack>
+
 /**
  * @brief Game states
  */
 enum GameStates
 {
         ePlay = 0,
-        eEnterScore,
-        eMenu
+        eMenu,
+        eSettings
 };
 
 /**
@@ -30,21 +32,18 @@ enum GameStates
  */
 class Game
 {
-public:
+private:
         std::shared_ptr<sf::RenderWindow> mWindow;          /**< Pointer to window */
         std::shared_ptr<Factory::AbstractFactory> mFactory; /**< Pointer to Factory */
         std::shared_ptr<State> mState;                      /**< Pointer to current State */
         GameStates mStateType;                              /**< Type of current State */
+        std::stack<std::shared_ptr<State>> mStates;         /**< Stack of states */
 
 private:
         /**
          * @brief Initialize resources
          */
         static void initializeResources();
-        /**
-         * @brief Check if Game is still in correct State
-         */
-        void checkState();
 
 public:
         /**
@@ -61,6 +60,25 @@ public:
          * @brief Run main Game loop
          */
         void run();
+        /**
+         * @brief Get factory
+         * @return Factory::AbstractFactory - factory
+         */
+        std::shared_ptr<Factory::AbstractFactory>& getFactory() { return mFactory; }
+        /**
+         * @brief Push state onto GameStates stack
+         * @param state State - state to be pushed
+         */
+        void pushState(const std::shared_ptr<State>& state) { mStates.push(state); }
+        /**
+         * @brief Pop State from GameStates stack
+         */
+        void popState() { mStates.pop(); }
+        /**
+         * @brief Get top of GameStates stack
+         * @return State - top of stack
+         */
+        std::shared_ptr<State>& peekState() { return mStates.top(); }
 };
 
 #endif // ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H

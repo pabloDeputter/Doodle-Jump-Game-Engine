@@ -29,6 +29,16 @@ private:
          * @brief Initialize bounds
          */
         void initBounds();
+        /**
+         * @brief Get type of Vertical Platform
+         * @return Model::Type - type of Vertical Platform
+         */
+        [[nodiscard]] Model::Type getType() const override { return Model::eVertical; }
+        /**
+         * @brief Move Vertical Platform
+         * @param collision bool - collided
+         */
+        void move(bool collision) override;
 
 public:
         /**
@@ -50,16 +60,6 @@ public:
          * @brief Default destructor for Vertical Platform object
          */
         ~VerticalPlatform() override = default;
-        /**
-         * @brief Get type of Vertical Platform
-         * @return Model::Type - type of Vertical Platform
-         */
-        [[nodiscard]] Model::Type getType() const override { return Model::eVertical; }
-        /**
-         * @brief Move Vertical Platform
-         * @param collision bool - collided
-         */
-        void move(bool collision) override;
 };
 } // namespace Model
 

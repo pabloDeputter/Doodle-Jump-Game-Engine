@@ -12,10 +12,11 @@ namespace Settings {
 /**
  * @brief Spawn rates - Platform
  */
-static float CHANCE_STATIC = .85f;     /**< Spawn rate of Static Platform */
-static float CHANCE_HORIZONTAL = .05f; /**< Spawn rate of Horizontal Platform */
-static float CHANCE_VERTICAL = .05f;   /**< Spawn rate of Vertical Platform */
-static float CHANCE_TEMPORARY = .05f;  /**< Spawn rate of Temporary Platform */
+static float CHANCE_STATIC = .9f;
+;                                      /**< Spawn rate of Static Platform */
+static float CHANCE_HORIZONTAL = .04f; /**< Spawn rate of Horizontal Platform */
+static float CHANCE_VERTICAL = .04f;   /**< Spawn rate of Vertical Platform */
+static float CHANCE_TEMPORARY = .02f;  /**< Spawn rate of Temporary Platform */
 
 /**
  * @brief Spawn rates - Bonus
@@ -28,7 +29,7 @@ static float CHANCE_JETPACK = .05f; /**< Spawn rate of Jetpack */
  * @brief Max. amount and min amount of platforms that can be on the screen at the same time
  */
 //[[maybe_unused]] static unsigned int MIN_PLATFORMS = 7; /**< Min. amount of Platforms */
-static unsigned int MAX_PLATFORMS = 40;                 /**< Max. amount of Platforms */
+static unsigned int MAX_PLATFORMS = 20; /**< Max. amount of Platforms */
 
 static float DIFFICULTY = 0.f; /** Difficulty */
 /**
@@ -56,9 +57,9 @@ enum Difficulty
                 CHANCE_VERTICAL = .04f;
                 CHANCE_TEMPORARY = .02f;
 
-                CHANCE_BONUS = .05f;
-                CHANCE_SPRING = .95f;
-                CHANCE_JETPACK = .05f;
+                CHANCE_BONUS = .1f;
+                CHANCE_SPRING = .05f;
+                CHANCE_JETPACK = 0.005f;
 
                 MAX_PLATFORMS = 20;
                 DIFFICULTY = 0.f;

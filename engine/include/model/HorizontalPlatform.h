@@ -29,6 +29,16 @@ private:
          * @brief Initialize bounds
          */
         void initBounds();
+        /**
+         * @brief Get type of Horizontal Platform
+         * @return Model::Type - type of Horizontal Platform
+         */
+        [[nodiscard]] Model::Type getType() const override { return Model::eHorizontal; }
+        /**
+         * @brief Move Horizontal Platform
+         * @param collision bool - collided
+         */
+        void move(bool collision) override;
 
 public:
         /**
@@ -50,16 +60,6 @@ public:
          * @brief Default destructor for Horizontal Platform object
          */
         ~HorizontalPlatform() override = default;
-        /**
-         * @brief Get type of Horizontal Platform
-         * @return Model::Type - type of Horizontal Platform
-         */
-        [[nodiscard]] Model::Type getType() const override { return Model::eHorizontal; }
-        /**
-         * @brief Move Horizontal Platform
-         * @param collision bool - collided
-         */
-        void move(bool collision) override;
 };
 } // namespace Model
 

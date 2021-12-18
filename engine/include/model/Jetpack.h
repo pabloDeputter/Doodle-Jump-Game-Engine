@@ -23,6 +23,16 @@ private:
          * @param player Player - Pointer to Player
          */
         void visit(Model::Player& player) override;
+        /**
+         * @brief Get Type of Jetpack
+         * @return Model::Type - type of Jetpack
+         */
+        [[nodiscard]] Model::Type getType() const override { return Model::eJetpack; }
+        /**
+         * @brief Check if removable
+         * @return bool - true if removable
+         */
+        [[nodiscard]] bool isRemovable() const override;
 
 public:
         /**
@@ -45,16 +55,6 @@ public:
          * @brief Destructor for Jetpack object
          */
         ~Jetpack() override = default;
-        /**
-         * @brief Get Type of Jetpack
-         * @return Model::Type - type of Jetpack
-         */
-        [[nodiscard]] Model::Type getType() const override { return Model::eJetpack; }
-        /**
-         * @brief Check if removable
-         * @return bool - true if removable
-         */
-        [[nodiscard]] bool isRemovable() const override;
 };
 } // namespace Model
 

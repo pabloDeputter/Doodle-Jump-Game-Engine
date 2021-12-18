@@ -26,6 +26,8 @@ public:
          * @brief Default destructor for Temporary Platform object
          */
         ~TemporaryPlatform() override = default;
+
+private:
         /**
          * @brief Get type of Temporary Platform
          * @return Model::Type - type of Temporary Platform
@@ -40,6 +42,7 @@ public:
                 // If collided, Temporary Platform can be destroyed
                 if (collision) {
                         Entity::setRemoveFlag(true);
+                        Observer::Subject::clear();
                 }
         }
 };

@@ -4,6 +4,7 @@
 
 #include "model/Jetpack.h"
 
+#include "util/Camera.h"
 #include "util/Stopwatch.h"
 
 using namespace Model;
@@ -15,14 +16,21 @@ void Jetpack::visit(Model::Player& player)
                 // Set state of Player back to normal
                 player.setState(Player::eNormal);
                 player.setDrag(0.005f);
+                // Clear registered observers from Jetpack
+                clear();
                 return;
         }
         // Add countdown timer for Jetpack Bonus
-        Utils::Stopwatch::getInstance().addTimer(Model::eJetpack, 4.f);
+        Utils::Stopwatch::getInstance().addTimer(Model::eJetpack, 1.f);
         // Set state of Player to flying and decrease drag
         player.setState(Player::eFlying);
         player.setDrag(0.003f);
         mStarted = true;
+        // Move out of world to avoid further collisions
+        setX(Utils::Camera::getInstance().getWorldDimensions().first * 2.f);
+        // Jetpack can be removed next time active Entities are cleared, but beware that the
+        // countdown also needs to be expired.
+        setRemoveFlag(true);
 }
 
 bool Jetpack::isRemovable() const

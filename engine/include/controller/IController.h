@@ -42,12 +42,16 @@ private:
          */
         void handleEvent(const MoveEvent& event) override
         {
-                // Move Entity
+                // Move registered Entity
                 mEntity->move(event.isCollided());
-                // If Entity is out of view --> trigger OutOfView event
-                if (mEntity->getY() < Utils::Camera::getInstance().getY()) {
-                        mEntity->trigger(EventType::OUT_OF_VIEW, std::make_shared<OutOfViewEvent>());
-                        return;
+                // If Entity is out of view --> Entity can be removed
+                if (mEntity->isOutOfView()) {
+                        mEntity->setRemoveFlag(true);
+                        // Clear registered observers if Entity is removable (some Entities are still used,
+                        // also if they are out of view of the Camera)
+                        if (mEntity->isRemovable()) {
+                                mEntity->clear();
+                        }
                 }
         }
         /**
@@ -55,7 +59,6 @@ private:
          * @param event CollisionEvent
          */
         void handleEvent(const CollisionEvent& event) override {}
-
 public:
         /**
          * @brief Default constructor for IController object

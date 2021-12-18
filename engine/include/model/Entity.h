@@ -5,9 +5,10 @@
 #ifndef ADVANCED_PROGRAMMING_DOODLEJUMP_ENTITY_H
 #define ADVANCED_PROGRAMMING_DOODLEJUMP_ENTITY_H
 
-#include "observer/Subject.h"
+#include "util/Camera.h"
 
 #include "observer/IVisitor.h"
+#include "observer/Subject.h"
 
 /**
  * @brief Namespace holds all Models
@@ -106,12 +107,7 @@ public:
          * @brief Set if Entity is removable
          * @param flag bool
          */
-        // TODO - idk - soms view beneden te zien maar collision detection is er niet of werkt niet ook met power-up
-        void setRemoveFlag(bool flag)
-        {
-                mRemoveFlag = flag;
-                onDestroy();
-        }
+        void setRemoveFlag(bool flag) { mRemoveFlag = flag; }
         /**
          * @brief Check if Entity is removable
          * @return flag bool - true if removable
@@ -169,6 +165,11 @@ public:
          * @return bool - true if Bonus
          */
         [[nodiscard]] virtual bool isBonus() const { return false; }
+        /**
+         * @brief Check if Entity is out of view of Camera
+         * @return bool - true if out of view
+         */
+        [[nodiscard]] bool isOutOfView() const { return mY < Utils::Camera::getInstance().getY(); }
         /**
          * @brief Visit Player object to apply Bonus
          * @param player Player - Pointer to Player

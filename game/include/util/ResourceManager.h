@@ -16,12 +16,34 @@
 #include <typeinfo>
 #include <utility>
 
-// TODO - path
-
 /**
  * @brief Namespace holds all utilities
  */
 namespace Utils {
+
+/**
+ * @brief Enum holds all resources that can be loaded
+ */
+enum Type
+{
+        // Entities
+        ePlayer = 0,
+        eBonus,
+        eStatic,
+        eHorizontal,
+        eVertical,
+        eTemporary,
+        eBackground,
+        eJetpack,
+        eSpring,
+        eScore,
+        eMenuLogo,
+        eMenuCursor,
+        eMenuHighScores,
+        eMenuInfo,
+        eMenuSettings
+};
+
 /**
  * @brief Class for ResourceHolder
  * @tparam Type class - type of resource to store
@@ -31,7 +53,7 @@ class ResourceHolder
 {
 private:
         std::string mPath;                                       /**< Path to resources */
-        std::map<Model::Type, std::shared_ptr<Type>> mResources; /**< std::map containing all stored resources */
+        std::map<Utils::Type, std::shared_ptr<Type>> mResources; /**< std::map containing all stored resources */
 public:
         /**
          * @brief Constructor for ResourceHolder object
@@ -47,7 +69,7 @@ public:
          * @param type Model::Type - key to identify resource in future
          * @param subPath std::string - sub path to specific resource
          */
-        void insert(Model::Type type, const std::string& subPath)
+        void insert(Utils::Type type, const std::string& subPath)
         {
                 std::shared_ptr<Type> file = std::make_shared<Type>();
                 std::string path = mPath + std::string(subPath);
@@ -62,7 +84,7 @@ public:
          * @param type Model::Type - key to be used
          * @return Type - found resource
          */
-        std::shared_ptr<Type>& get(Model::Type type) { return mResources[type]; }
+        std::shared_ptr<Type>& get(Utils::Type type) { return mResources[type]; }
         /**
          * @brief Clear stored resources
          */
@@ -112,8 +134,6 @@ public:
         static ResourceManager& getInstance()
         {
                 static ResourceManager instance("resource");
-                //                static ResourceManager instance(
-                //                    "/Users/pablodeputter/Documents/GitHub/Advanced-Programming-DoodleJump/resource");
                 return instance;
         }
         /**
@@ -121,19 +141,19 @@ public:
          * @param type Model::Type - key to store resource
          * @param subPath std::string - sub path to specific resource
          */
-        void addTexture(Model::Type type, const std::string& subPath) { mTextures->insert(type, subPath); }
+        void addTexture(Utils::Type type, const std::string& subPath) { mTextures->insert(type, subPath); }
         /**
          * @brief Add font
          * @param type Model::Type - key to store resource
          * @param subPath std::string - sub path to specific resource
          */
-        void addFont(Model::Type type, const std::string& subPath) { mFonts->insert(type, subPath); }
+        void addFont(Utils::Type type, const std::string& subPath) { mFonts->insert(type, subPath); }
         /**
          * @brief Add sound
          * @param type Model::Type - key to store resource
          * @param subPath std::string - sub path to specific resource
          */
-        void addSound(Model::Type type, const std::string& subPath) { mSounds->insert(type, subPath); }
+        void addSound(Utils::Type type, const std::string& subPath) { mSounds->insert(type, subPath); }
         /**
          * @brief Get textures
          * @return ResourceHolder - textures

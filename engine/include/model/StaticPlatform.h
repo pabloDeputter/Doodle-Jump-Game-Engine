@@ -26,6 +26,8 @@ public:
          * @brief Default destructor for Static Platform object
          */
         ~StaticPlatform() override = default;
+
+private:
         /**
          * @brief Get type of Static Platform
          * @return Model::Type - type of Static Platform

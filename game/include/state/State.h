@@ -48,6 +48,15 @@ public:
          * @return GameState - type of State
          */
         [[nodiscard]] virtual unsigned int getType() const = 0;
+        /**
+         * @brief Gets called when a new high score is achieved
+         */
+        virtual void newHighScore() {}
+        /**
+         * @brief Set new difficulty
+         * @param diff unsigned int - new difficulty
+         */
+        virtual void setNewDiff(unsigned int diff) {}
 };
 
 #endif // DOODLEJUMP_STATE_H

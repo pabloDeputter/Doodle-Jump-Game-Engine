@@ -22,7 +22,6 @@ class Score : public Entity, public Observer::Observer, public IEventHandler
 {
 private:
         std::weak_ptr<Model::Entity> mLastCollision; /**< Pointer to last Entity Player has collided with */
-
 private:
         /**
          * @brief On trigger of Subject
@@ -40,16 +39,6 @@ private:
          * @param event CollisionEvent
          */
         void handleEvent(const CollisionEvent& event) override;
-
-public:
-        /**
-         * @brief Default constructor for Score object
-         */
-        Score() = default;
-        /**
-         * @brief Default destructor for Score object
-         */
-        ~Score() override = default;
         /**
          * @brief Get type of Score
          * @return Model::Type - type of Score
@@ -60,6 +49,16 @@ public:
          * @param collision bool - collided ot not
          */
         void move(bool collision) override {}
+
+public:
+        /**
+         * @brief Default constructor for Score object
+         */
+        Score() = default;
+        /**
+         * @brief Default destructor for Score object
+         */
+        ~Score() override = default;
         /**
          * @brief Get score
          * @return int - score

@@ -23,8 +23,8 @@ void IView::handleEvent(const DrawEvent& event)
 
 void IView::handleEvent(const OutOfViewEvent& event)
 {
-        // If entity is out view it can be set to be destroyed
-        mEntity->setRemoveFlag(true);
-        // Clear observers
-        mEntity->onDestroy();
+        //        // If entity is out view it can be set to be destroyed
+        //        mEntity->setRemoveFlag(true);
+        //        // Clear observers
+        //        mEntity->onDestroy();
 }

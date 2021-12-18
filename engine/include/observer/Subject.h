@@ -20,7 +20,7 @@ namespace Observer {
  */
 class Subject
 {
-private:
+protected:
         std::vector<std::shared_ptr<Observer>> mObservers; /**< std::vector containing Observers */
 public:
         /**
@@ -50,7 +50,9 @@ public:
          */
         void trigger(EventType type, const std::shared_ptr<Event>& event) const
         {
+                // Traverse registered observers
                 for (const auto& i : mObservers) {
+                        // Trigger event
                         i->onTrigger(type, event);
                 }
         }

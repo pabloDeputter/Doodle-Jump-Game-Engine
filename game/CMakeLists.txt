@@ -9,8 +9,7 @@ SET(SRC
         src/view/ScoreView.cpp
         src/state/MenuState.cpp
         src/state/PlayState.cpp
-        src/state/EnterScoreState.cpp
-        )
+        src/state/SettingState.cpp include/state/SettingState.h)
 
 ADD_LIBRARY(game SHARED ${SRC})
 

@@ -82,7 +82,8 @@ public:
          * @param factory Pointer to Model::AbstractFactory
          * @param playing bool - Player is not dead
          */
-        explicit World(std::shared_ptr<Factory::AbstractFactory>& factory, bool playing);
+        explicit World(std::shared_ptr<Factory::AbstractFactory>& factory, bool playing,
+                       Settings::Difficulty diff = Settings::eEasy);
         /**
          * @brief Destructor for World object
          */

@@ -32,6 +32,26 @@ private:
          * @param player Player - Pointer to Player
          */
         void visit(Model::Player& player) override = 0;
+        /**
+         * @brief Get type of Bonus
+         * @return Model::Type - type of Bonus
+         */
+        [[nodiscard]] Model::Type getType() const override { return Model::eBonus; }
+        /**
+         * @brief Move Bonus
+         * @param collision bool - collided or not
+         */
+        void move(bool collision) override;
+        /**
+         * @brief Check if Bonus is removable
+         * @return bool
+         */
+        [[nodiscard]] bool isRemovable() const override { return mRemoveFlag; }
+        /**
+         * @brief Check if Entity is Bonus
+         * @return bool - true
+         */
+        [[nodiscard]] bool isBonus() const override { return true; }
 
 public:
         /**
@@ -55,26 +75,6 @@ public:
          * @brief Default destructor for Bonus object
          */
         ~Bonus() override = default;
-        /**
-         * @brief Get type of Bonus
-         * @return Model::Type - type of Bonus
-         */
-        [[nodiscard]] Model::Type getType() const override { return Model::eBonus; }
-        /**
-         * @brief Move Bonus
-         * @param collision bool - collided or not
-         */
-        void move(bool collision) override;
-        /**
-         * @brief Check if Bonus is removable
-         * @return bool
-         */
-        [[nodiscard]] bool isRemovable() const override { return mRemoveFlag; }
-        /**
-         * @brief Check if Entity is Bonus
-         * @return bool - true
-         */
-        [[nodiscard]] bool isBonus() const override { return true; }
 };
 } // namespace Model
 

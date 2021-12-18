@@ -12,7 +12,7 @@ PlayerView::PlayerView(const std::shared_ptr<Model::Entity>& entity,
 {
         // Get texture associated with PlayerView from ResourceManager
         std::shared_ptr<sf::Texture>& tex =
-            Utils::ResourceManager::getInstance().getTextures()->get(Model::ePlayer);
+            Utils::ResourceManager::getInstance().getTextures()->get(Utils::Type(Model::ePlayer));
         // Setup Sprite
         mSprite = std::make_unique<sf::Sprite>();
         mSprite->setTexture(*tex);

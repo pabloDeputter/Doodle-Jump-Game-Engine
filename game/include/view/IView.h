@@ -62,6 +62,8 @@ private:
          */
         void handleEvent(const NewDifficultyEvent& event) override {}
 
+        //        void handleEvent(const MoveEvent &event) override {}
+
 public:
         /**
          * @brief Constructor for IView object

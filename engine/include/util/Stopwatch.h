@@ -59,7 +59,7 @@ public:
          * @brief Lap one round and return found delta
          * @return float - delta
          */
-        [[nodiscard]] float lap();
+        float lap();
         /**
          * @brief Get latest delta
          * @return float

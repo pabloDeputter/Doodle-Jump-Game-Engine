@@ -29,15 +29,15 @@ void PlayState::update()
         mWorld->update();
         // If Player is dead
         if (!mWorld->isPlaying()) {
-                // Add score to HighScore buffer if it is a new high score and switch game state
-                // to eEnterScore state. If no new high score was achieved we switch directly to
-                // the eMenu state.
                 const int score = mWorld->getScore()->getScore();
+                // Push ePlayState off gameState stack
+                mGame.popState();
+                // Add score to HighScore buffer if it is a new high score and switch game state
+                // to eMenuState state. If no new high score was achieved we switch directly to
+                // the eMenu state.
                 if (HighScore::getInstance().isHighScore(score)) {
                         HighScore::getInstance().add(score);
-                        mGame.mStateType = eEnterScore;
-                } else {
-                        mGame.mStateType = eMenu;
+                        mGame.peekState()->newHighScore();
                 }
         }
 }

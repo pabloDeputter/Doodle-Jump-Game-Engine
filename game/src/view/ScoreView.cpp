@@ -13,7 +13,8 @@ ScoreView::ScoreView(std::shared_ptr<Model::Score>& entity, const std::shared_pt
     : IView(entity, window)
 {
         // Get font associated with ScoreView associated from ResourceManager
-        std::shared_ptr<sf::Font>& font = Utils::ResourceManager::getInstance().getFonts()->get(Model::eScore);
+        std::shared_ptr<sf::Font>& font =
+            Utils::ResourceManager::getInstance().getFonts()->get(Utils::Type(Model::eScore));
         mSprite = std::make_unique<sf::Sprite>();
         // Setup text
         mScoreText = std::make_unique<sf::Text>();
@@ -34,7 +35,7 @@ ScoreView::ScoreView(std::shared_ptr<Model::Score>& entity, const std::shared_pt
         // we don't need to dynamically update the position.
         sf::FloatRect bounds = mLevelText->getLocalBounds();
         mLevelText->setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);
-        mLevelText->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y - 375);
+        mLevelText->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 0.25f);
 }
 
 void ScoreView::handleEvent(const DrawEvent& event)
@@ -86,7 +87,7 @@ void ScoreView::handleEvent(const NewDifficultyEvent& event)
         mDiffText->setString(text);
         sf::FloatRect bounds = mDiffText->getLocalBounds();
         mDiffText->setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);
-        mDiffText->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y - 300);
+        mDiffText->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 0.4f);
         // Start timer
         Utils::Stopwatch::getInstance().addTimer(Model::eScore, 4.5f);
 }

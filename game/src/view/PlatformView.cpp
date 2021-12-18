@@ -11,8 +11,8 @@ PlatformView::PlatformView(const std::shared_ptr<Model::Entity>& entity,
     : IView(entity, window)
 {
         // Get texture associated with PlatformView from ResourceManager
-        Model::Type type = entity->getType();
-        std::shared_ptr<sf::Texture>& tex = Utils::ResourceManager::getInstance().getTextures()->get(type);
+        int type = (int)entity->getType();
+        std::shared_ptr<sf::Texture>& tex = Utils::ResourceManager::getInstance().getTextures()->get(Utils::Type(type));
         // Setup Sprite
         mSprite->setTexture(*tex);
         mSprite->scale(.22f, .22f);

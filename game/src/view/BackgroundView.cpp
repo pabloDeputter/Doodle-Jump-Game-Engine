@@ -12,7 +12,7 @@ BackgroundView::BackgroundView(const std::shared_ptr<Model::Entity>& entity,
 {
         // Get texture associated with BackgroundView from ResourceManager
         std::shared_ptr<sf::Texture>& tex =
-            Utils::ResourceManager::getInstance().getTextures()->get(Model::eBackground);
+            Utils::ResourceManager::getInstance().getTextures()->get(Utils::Type(Model::eBackground));
 
         // Setup Sprite
         mSprite = std::make_unique<sf::Sprite>();
@@ -21,8 +21,11 @@ BackgroundView::BackgroundView(const std::shared_ptr<Model::Entity>& entity,
         mSprite->setColor(sf::Color(255, 255, 255, 255));
 
         // Set width and height of Entity based on Sprite dimensions
-        mEntity->setWidth((float)tex->getSize().x * mSprite->getScale().x);
-        mEntity->setHeight((float)tex->getSize().y * mSprite->getScale().y);
+        auto texSize = Utils::Camera::getInstance().inverseTransform((float)tex->getSize().x * mSprite->getScale().x,
+                                                                     (float)tex->getSize().y * mSprite->getScale().y);
+
+        mEntity->setWidth(texSize.first);
+        mEntity->setHeight(Utils::Camera::getInstance().getWorldDimensions().second - texSize.second);
 }
 
 void BackgroundView::handleEvent(const DrawEvent& event)

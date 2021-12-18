@@ -57,6 +57,16 @@ private:
          * @param event StopBonusEvent
          */
         void handleEvent(const StopBonusEvent& event) override { accept(event.getBonus()); }
+        /**
+         * @brief Get type of Player
+         * @return Model::Type - type of Player
+         */
+        [[nodiscard]] Model::Type getType() const override { return Model::ePlayer; }
+        /**
+         * @brief Move
+         * @param collision bool - collided or not
+         */
+        void move(bool collision) override;
 
 public:
         /**
@@ -71,16 +81,8 @@ public:
          * @brief Default destructor for Player object
          */
         ~Player() override = default;
-        /**
-         * @brief Get type of Player
-         * @return Model::Type - type of Player
-         */
-        [[nodiscard]] Model::Type getType() const override { return Model::ePlayer; }
-        /**
-         * @brief Move
-         * @param collision bool - collided or not
-         */
-        void move(bool collision) override;
+
+public:
         /**
          * @brief Get velocity
          * @return std::pair<float,float> - current velocity of Player

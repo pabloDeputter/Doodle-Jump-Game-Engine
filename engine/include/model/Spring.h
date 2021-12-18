@@ -25,6 +25,11 @@ private:
          * @param player Player - Pointer to Player
          */
         void visit(Model::Player& player) override;
+        /**
+         * @brief Get Type of Jetpack
+         * @return Model::Type - type of Jetpack
+         */
+        [[nodiscard]] Model::Type getType() const override { return Model::eSpring; }
 
 public:
         /**
@@ -42,11 +47,6 @@ public:
          * @brief Destructor for Jetpack object
          */
         ~Spring() override = default;
-        /**
-         * @brief Get Type of Jetpack
-         * @return Model::Type - type of Jetpack
-         */
-        [[nodiscard]] Model::Type getType() const override { return Model::eSpring; }
 };
 } // namespace Model
 

@@ -7,15 +7,20 @@
 
 using namespace Settings;
 
-World::World(std::shared_ptr<Factory::AbstractFactory>& factory, bool playing)
+World::World(std::shared_ptr<Factory::AbstractFactory>& factory, bool playing, Settings::Difficulty diff)
 {
         // Initialize factory
         mFactory = factory;
         mActivePlatforms = 0;
-        mDifficulty = Settings::eEasy;
+        // Initialize starter settings
+        mDifficulty = diff;
+        setDifficulty(diff);
         // Initialize Camera settings
         Utils::Camera::getInstance().isMaxHeight(0.f);
-        Utils::Camera::getInstance().setWorldDimensions(8.f, 14.4f);
+        // Default World dimensions
+        Utils::Camera::getInstance().setWorldDimensions(
+            Utils::Camera::getInstance().getWindowDimensions().first / 100.f,
+            Utils::Camera::getInstance().getWindowDimensions().second / 100.f);
         mPlaying = playing;
 }
 
@@ -37,34 +42,27 @@ void World::initWorld()
 
         // Create ground for start
         auto ground = mFactory->createStaticPlatform();
-        for (int i = 0; i <= (int)Utils::Camera::getInstance().getWorldDimensions().first;
-             i += (int)ground->getWidth()) {
+        for (float i = 0; i <= (float)Utils::Camera::getInstance().getWorldDimensions().first;
+             i += (float)ground->getWidth() / 2.f) {
                 auto newPlatform = mFactory->createStaticPlatform();
                 newPlatform->setX((float)i);
-                newPlatform->setY(0.3f);
+                newPlatform->setY(0.2f);
                 newPlatform->setScore(0);
                 addEntity(newPlatform);
         }
         ground->onDestroy();
 
         // Create starting platforms
-        const auto temp = CHANCE_BONUS;
-        CHANCE_BONUS = 0.f;
         while (mActivePlatforms < MAX_PLATFORMS) {
                 generateEntity();
         }
-        CHANCE_BONUS = temp;
 
         // Create Background tiles
         auto bg = mFactory->createBackground();
-        const float inverseWidth = Utils::Camera::getInstance().inverseTransform(bg->getWidth(), bg->getHeight()).first;
-        const float inverseHeight =
-            Utils::Camera::getInstance().getWorldDimensions().second -
-            Utils::Camera::getInstance().inverseTransform(bg->getWidth(), bg->getHeight()).second;
-
         // Fill World with Background tiles
-        for (float i = 0.f; i < Utils::Camera::getInstance().getWorldDimensions().first; i += inverseWidth) {
-                for (float j = Utils::Camera::getInstance().getWorldDimensions().second; j > -2.f; j -= inverseHeight) {
+        for (float i = 0.f; i < Utils::Camera::getInstance().getWorldDimensions().first; i += bg->getWidth()) {
+                for (float j = Utils::Camera::getInstance().getWorldDimensions().second; j > -2.f;
+                     j -= bg->getHeight()) {
                         auto tile = mFactory->createBackground();
                         tile->setX(i);
                         tile->setY(j);
@@ -76,64 +74,64 @@ void World::initWorld()
 
 void World::events(const std::string& move, bool isPressed) const
 {
-        // Traverse entities and trigger KEY_PRESSED event
+        // Traverse entities and trigger KEY_PRESSED event towards registered observers
         for (const auto& i : mEntities) {
                 i->trigger(EventType::KEY_PRESSED, std::make_shared<KeyPressedEvent>(move, isPressed));
         }
         mPlayer->trigger(EventType::KEY_PRESSED, std::make_shared<KeyPressedEvent>(move, isPressed));
 }
-// TODO - update, documentation
+
 void World::update()
 {
+        // Remove entities that are out of Camera-view or that are not needed anymore
+        removeEntities();
         bool collided = false;
-        for (auto& i : mEntities) {
-                if (std::dynamic_pointer_cast<Model::Player>(mPlayer)->getVelocity().second <= 0 &&
-                    Utils::Utilities::checkCollision(mPlayer, i) && mPlayer->getY() < i->getY()) {
+        // Travers active entities
+        for (const auto& i : mEntities) {
+                // If player vertical velocity is less than or equal to 0 AND there is collision between
+                // the given Entity and the Player --> Player has valid collision
+                if (mPlayer->getVelocity().second <= 0 && Utils::Utilities::checkCollision(mPlayer, i)) {
 
                         if (!i->isBonus()) {
                                 collided = true;
                         }
-
                         mPlayer->trigger(EventType::COLLISION, std::make_shared<CollisionEvent>(i, mPlayer));
 
+                        // Move Entity with event payload that there was a collision between Entity and Player
                         i->trigger(EventType::MOVE, std::make_shared<MoveEvent>(collided));
-                        // TODO - leaks
-                        //                        i->trigger(EventType::COLLISION, std::make_shared<CollisionEvent>(i,
-                        //                        mPlayer));
-                        continue;
                 }
-                i->trigger(EventType::MOVE, std::make_shared<MoveEvent>(false));
+                // If there is no collision between Entity and Player we just move the Entity
+                else {
+                        i->trigger(EventType::MOVE, std::make_shared<MoveEvent>(false));
+                }
         }
-
+        // Trigger MoveEvent towards Players observers (Controller,View)
         mPlayer->trigger(EventType::MOVE, std::make_shared<MoveEvent>(collided));
 
-        // If Player reached new max. height, Camera can be moved up
+        // If Player reached new max. height, Camera can be moved up.
         if (Utils::Camera::getInstance().isMaxHeight(mPlayer->getY())) {
+                // Check if we reached a new level / difficulty
                 const bool newDifficulty = checkDifficulty();
+                // If we reached a new difficulty we trigger a NewDifficultyEvent towards Score's observers (View)
                 if (newDifficulty) {
                         mScore->trigger(EventType::NEW_DIFFICULTY, std::make_shared<NewDifficultyEvent>(mDifficulty));
-                }
-                // Generate new Entities while active platforms is less than max.
-                // platforms required on screen
-                while (mActivePlatforms < MAX_PLATFORMS) {
-                        generateEntity();
                 }
                 // Move Camera up
                 Utils::Camera::getInstance().move(0.f,
                                                   Utils::Camera::getInstance().getMaxHeight() -
                                                       Utils::Camera::getInstance().getWorldDimensions().second / 2.f);
+
+                // Keep on generating new Bonuses or Platforms while there are less active platforms in the world
+                // that are required for the current difficulty
+                while (mActivePlatforms < MAX_PLATFORMS) {
+                        generateEntity();
+                }
         }
-
-        // Remove entities that are out of Camera-view or
-        // that are not needed anymore
+        // Remove entities that are out of Camera-view or that are not needed anymore
         removeEntities();
-
-        // Player has died
-        if (mPlayer->getY() < Utils::Camera::getInstance().getY()) {
+        // If Player is out of view from the Camera it has died, so the game is over.
+        if (mPlayer->isOutOfView()) {
                 mPlaying = false;
-                //                HighScore::getInstance().add(std::make_shared<HighScoreScore>(mScore->getScore(),
-                //                                                                              "Name"));
-                //                destroy();
         }
 }
 
@@ -143,7 +141,7 @@ void World::render() const
         for (const auto& i : mBackground) {
                 // If Background tile is out of view it will be moved up and will be moved the screensize (
                 // in world coordinates) up, so it gets automatically recycled as the Player moves up
-                if (i->getY() < Utils::Camera::getInstance().getY()) {
+                if (i->isOutOfView()) {
                         i->trigger(EventType::OUT_OF_VIEW, std::make_shared<OutOfViewEvent>());
                 }
                 i->trigger(EventType::DRAW, std::make_shared<DrawEvent>());
@@ -323,7 +321,9 @@ void World::removeEntities()
                 // Check if Entity is removable
                 if ((*it)->isRemovable()) {
                         // Decrease ActivePlatforms counter if we remove active Platform
-                        if (!(*it)->isBonus()) {
+                        // Clear still registered observers from subject (to make sure there aren't any mem leaks)
+                        (*it)->onDestroy();
+                        if (!(*it)->isBonus() && (*it)->getScore() != 0) {
                                 mActivePlatforms--;
                         }
                         it = mEntities.erase(it);

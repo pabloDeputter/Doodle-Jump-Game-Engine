@@ -65,6 +65,25 @@ public:
                         object.setFillColor(Color(255, 0, object.getFillColor().b - 5));
                 }
         }
+        /**
+         * @brief Initialize sf::Text to avoid code duplication
+         * @param font sf::Font - font to be used
+         * @param color sf::Color - color of text
+         * @param size unsigned int - character size of text
+         * @param text sf::Text - text to be initialized
+         * @param setString std::string - string to be set on text
+         */
+        template <class Font, class Color, class Text>
+        static void initText(const Font& font, const Color& color, unsigned int size, Text& text,
+                             const std::string& setString = "")
+        {
+                text.setFont(font);
+                text.setFillColor(color);
+                text.setCharacterSize(size);
+                text.setString(setString);
+                const auto bounds = text.getLocalBounds();
+                text.setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);
+        }
 };
 } // namespace Utils
 

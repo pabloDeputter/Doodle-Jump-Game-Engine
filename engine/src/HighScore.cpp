@@ -8,11 +8,7 @@
 
 HighScore& HighScore::getInstance()
 {
-        // TODO - path
         static HighScore instance("resource/highscore.txt", 10);
-        //        static HighScore instance(
-        //            "/Users/pablodeputter/Documents/Github/Advanced-Programming-DoodleJump/resource/highscore.txt",
-        //            10);
         return instance;
 }
 
@@ -55,11 +51,11 @@ void HighScore::save()
         file.close();
 }
 
-void HighScore::add(const std::shared_ptr<HighScoreData>& score)
+unsigned int HighScore::add(const std::shared_ptr<HighScoreData>& score)
 {
         // If new Score is less or equal to last score, return
         if (mScores.size() == mQuantity && mScores.back()->mScore >= score->mScore) {
-                return;
+                return 11;
         }
 
         // Find index to insert new score
@@ -76,6 +72,7 @@ void HighScore::add(const std::shared_ptr<HighScoreData>& score)
         if (mScores.size() > mQuantity) {
                 mScores.erase(std::end(mScores) - 1);
         }
+        return std::distance(std::begin(mScores), index);
 }
 
 //[[maybe_unused]] int HighScore::getHighScore() const
@@ -95,4 +92,12 @@ bool HighScore::isHighScore(int score) const
                 return true;
         }
         return false;
+}
+
+void HighScore::changeName(const std::string& newName, unsigned int index)
+{
+        if (index < 0 || index > mScores.size()) {
+                return;
+        }
+        mScores[index]->mName = newName;
 }

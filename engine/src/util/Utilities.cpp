@@ -14,7 +14,7 @@ bool Utilities::checkCollision(const std::shared_ptr<Model::Entity>& l, const st
                 r->getX() - (r->getWidth() / 2.f) && // l right edge is past r left edge
             l->getX() - (l->getWidth() / 2.f) <=
                 r->getX() - (r->getWidth() / 2.f) + r->getWidth() && // l left edge is past r right edge
-            l->getY() + l->getHeight() >= r->getY() &&               // l top edge is past r bottom edge
+            l->getY() + l->getHeight() >= r->getY() &&  // l top edge is past r bottom edge
             l->getY() <= r->getY() + r->getHeight())                 // l bottom edge is past r top edge
         {
                 return true;

@@ -26,7 +26,7 @@ void PlayerController::handleEvent(const MoveEvent& event)
         // Move Player
         mEntity->move(event.isCollided());
         // If Player is out of view, trigger OutOfViewEvent
-        if (mEntity->getY() < Utils::Camera::getInstance().getY()) {
+        if (mEntity->isOutOfView()) {
                 mEntity->trigger(EventType::OUT_OF_VIEW, std::make_shared<OutOfViewEvent>());
                 return;
         }
@@ -42,16 +42,11 @@ void PlayerController::handleEvent(const MoveEvent& event)
 
 void PlayerController::handleEvent(const CollisionEvent& event)
 {
-        // TODO - idk
+        // If there has been a collision between Player and Bonus we want it to change the state of Player
         if (event.getEntity()->isBonus()) {
-                // Allows Bonus Entity to change state of Player
+                // Allows Bonus Entity to enter Player and change state
                 mEntity->accept(event.getEntity());
-                // Move out of world to avoid second collision
-                event.getEntity()->setX(Utils::Camera::getInstance().getWorldDimensions().first * 2.f);
-                // Bonus can be removed next time world entities are cleared
-                event.getEntity()->setRemoveFlag(true);
-
+                // Register Player as observer to Entity, so when Bonus countdown ends the state can be altered again
                 event.getEntity()->add(event.getPlayer());
-                return;
         }
 }

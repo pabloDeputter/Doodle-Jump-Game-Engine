@@ -25,6 +25,8 @@ public:
          * @brief Default destructor for Background object
          */
         ~Background() override = default;
+
+private:
         /**
          * @brief Get type of Background
          * @return Model::Type - type of Background

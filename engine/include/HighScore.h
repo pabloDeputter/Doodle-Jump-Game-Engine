@@ -122,8 +122,9 @@ public:
         /**
          * @brief Add new high score
          * @param score HighScoreData - score to be added
+         * @return unsigned int - index of newly inserted score
          */
-        void add(const std::shared_ptr<HighScoreData>& score);
+        [[nodiscard]] unsigned int add(const std::shared_ptr<HighScoreData>& score);
         /**
          * @brief Get stored scores
          * @return std::vector<HighScoreData> - std::vector containing pointers to stored scores
@@ -150,6 +151,12 @@ public:
          * @return int - score stored in buffer
          */
         [[nodiscard]] int getToAdd() const { return mToAdd; }
+        /**
+         * @brief Change name of score
+         * @param newName std::string - new name to be added
+         * @param index unsigned int - index of score to be edited
+         */
+        void changeName(const std::string& newName, unsigned int index);
 };
 
 #endif // DOODLEJUMP_HIGHSCORE_H

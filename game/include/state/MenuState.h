@@ -5,6 +5,7 @@
 #ifndef DOODLEJUMP_MENUSTATE_H
 #define DOODLEJUMP_MENUSTATE_H
 
+#include "Settings.h"
 #include "util/ResourceManager.h"
 #include "util/Utilities.h"
 
@@ -13,8 +14,8 @@
 #include "State.h"
 
 #include <utility>
+#include <vector>
 
-// TODO
 /**
  * @brief Namespace holds all States
  */
@@ -25,11 +26,17 @@ namespace States {
 class MenuState : public State
 {
 private:
-        sf::Text mTitle;
-        sf::Text mScores;
-        sf::Text mHighScore;
-        sf::Text mInfo;
+        sf::Sprite mTitle;             /**< sf::Sprite - Title logo */
+        std::vector<sf::Text> mScores; /**< std::vector<sf::Text> - std::vector containing high scores */
 
+        std::vector<sf::Text> mInfo; /**< std::vector<sf::Text> - std::vector containing info */
+        unsigned int mSelected;      /**< unsigned int - index of selected info */
+
+        unsigned int mIndex; /**< unsigned int - index of new high score that was achieved */
+        bool mEnterName;     /**< bool - true if we are entering a name */
+        std::string mName;   /**< std::string - entered name of new high score that was achieved */
+
+        unsigned int mDiff; /**< unsigned int - selected difficulty */
 private:
         /**
          * @brief Render state
@@ -44,7 +51,7 @@ private:
          * @param key sf::Keyboard::Key - pressed / released key
          * @param isPressed bool - is key pressed
          */
-        void handleInput(sf::Keyboard::Key key, bool isPressed) const;
+        void handleInput(sf::Keyboard::Key key, bool isPressed);
         /**
          * @brief Process events
          */
@@ -54,6 +61,31 @@ private:
          * @return GameStates - eMenu
          */
         [[nodiscard]] unsigned int getType() const override { return eMenu; }
+        /**
+         * @brief Create / initialize scores text
+         */
+        void createScores();
+        /**
+         * @brief Update score name when entering std::string for new high score
+         */
+        void updateScoreName();
+        /**
+         * @brief Update info, highlight selected info
+         */
+        void updateInfo();
+        /**
+         * @brief Gets triggered when user presses enter after selecting one of the info actions
+         */
+        void onSelect();
+        /**
+         * @brief Gets called when a new high score is achieved
+         */
+        void newHighScore() override;
+        /**
+         * @brief Set new difficulty
+         * @param diff unsigned int - new difficulty
+         */
+        void setNewDiff(unsigned int diff) override { mDiff = diff; }
 
 public:
         /**
@@ -65,7 +97,11 @@ public:
         /**
          * @brief Destructor for MenuState object
          */
-        ~MenuState() override = default;
+        ~MenuState() override
+        {
+                mScores.clear();
+                mInfo.clear();
+        }
 };
 } // namespace States
 
