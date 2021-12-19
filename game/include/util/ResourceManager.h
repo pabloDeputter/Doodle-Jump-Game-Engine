@@ -26,6 +26,7 @@ namespace Utils {
  */
 enum Type
 {
+        // TODO
         // Entities
         ePlayer = 0,
         eBonus,
@@ -37,11 +38,19 @@ enum Type
         eJetpack,
         eSpring,
         eScore,
+        eCoin,
         eMenuLogo,
         eMenuCursor,
         eMenuHighScores,
         eMenuInfo,
-        eMenuSettings
+        eMenuSettings,
+        eMenuItemBack,
+        eShopCh1,
+        eShopCh2,
+        eShopCh3,
+        eShopBg1,
+        eShopBg2,
+        eShopBg3
 };
 
 /**
@@ -66,7 +75,7 @@ public:
         ~ResourceHolder() { clear(); }
         /**
          * @brief Add new resource to ResourceHolder
-         * @param type Model::Type - key to identify resource in future
+         * @param type Utils::Type - key to identify resource in future
          * @param subPath std::string - sub path to specific resource
          */
         void insert(Utils::Type type, const std::string& subPath)
@@ -81,10 +90,15 @@ public:
         }
         /**
          * @brief Get specific resource depending on given key
-         * @param type Model::Type - key to be used
+         * @param type Utils::Type - key to be used
          * @return Type - found resource
          */
         std::shared_ptr<Type>& get(Utils::Type type) { return mResources[type]; }
+        /**
+         * @brief Get resources
+         * @return std::map<Utils::Type, Type> - resources
+         */
+        [[nodiscard]] std::map<Utils::Type, std::shared_ptr<Type>>& getResources() { return mResources; }
         /**
          * @brief Clear stored resources
          */
@@ -100,7 +114,6 @@ private:
         std::shared_ptr<ResourceHolder<sf::Texture>> mTextures;   /**< Stored textures */
         std::shared_ptr<ResourceHolder<sf::Font>> mFonts;         /**< Stored fonts */
         std::shared_ptr<ResourceHolder<sf::SoundBuffer>> mSounds; /**< Stored sounds */
-
 private:
         /**
          * @brief Constructor for ResourceManager object
@@ -138,19 +151,19 @@ public:
         }
         /**
          * @brief Add texture
-         * @param type Model::Type - key to store resource
+         * @param type Utils::Type - key to store resource
          * @param subPath std::string - sub path to specific resource
          */
         void addTexture(Utils::Type type, const std::string& subPath) { mTextures->insert(type, subPath); }
         /**
          * @brief Add font
-         * @param type Model::Type - key to store resource
+         * @param type Utils::Type - key to store resource
          * @param subPath std::string - sub path to specific resource
          */
         void addFont(Utils::Type type, const std::string& subPath) { mFonts->insert(type, subPath); }
         /**
          * @brief Add sound
-         * @param type Model::Type - key to store resource
+         * @param type Utils::Type - key to store resource
          * @param subPath std::string - sub path to specific resource
          */
         void addSound(Utils::Type type, const std::string& subPath) { mSounds->insert(type, subPath); }
@@ -169,6 +182,16 @@ public:
          * @return ResourceHolder - fonts
          */
         [[nodiscard]] const std::shared_ptr<ResourceHolder<sf::SoundBuffer>>& getSounds() const { return mSounds; }
+        /**
+         * @briefn Assign one texture to another
+         * @param type Utils::Type - type of texture to change
+         * @param toSet Utils::Type - type of texture to change will get this one's texture assigned
+         */
+        void setTexture(Utils::Type type, Utils::Type toSet) const
+        {
+                auto& textures = mTextures->getResources();
+                textures[toSet] = mTextures->get(type);
+        }
         /**
          * @brief Clear all resources
          */

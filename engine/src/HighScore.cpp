@@ -72,7 +72,7 @@ unsigned int HighScore::add(const std::shared_ptr<HighScoreData>& score)
         if (mScores.size() > mQuantity) {
                 mScores.erase(std::end(mScores) - 1);
         }
-        return std::distance(std::begin(mScores), index);
+        return index - std::begin(mScores);
 }
 
 //[[maybe_unused]] int HighScore::getHighScore() const

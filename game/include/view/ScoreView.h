@@ -22,7 +22,7 @@ private:
         std::unique_ptr<sf::Text> mScoreText; /**< sf::Text for Score */
         std::unique_ptr<sf::Text> mLevelText; /**< sf::Text for Level */
         std::unique_ptr<sf::Text> mDiffText;  /**< sf::Text for Difficulty */
-
+        std::unique_ptr<sf::Text> mCoinsText; /**< sf::Text for coins collected */
 private:
         /**
          * @brief Handle DrawEvent event

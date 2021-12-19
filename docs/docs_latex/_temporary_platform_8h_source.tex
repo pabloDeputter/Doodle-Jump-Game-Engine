@@ -1,0 +1,36 @@
+\hypertarget{_temporary_platform_8h_source}{}\doxysection{Temporary\+Platform.\+h}
+\label{_temporary_platform_8h_source}\index{engine/include/model/TemporaryPlatform.h@{engine/include/model/TemporaryPlatform.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 05/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_TEMPORARYPLATFORM\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_TEMPORARYPLATFORM\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Entity.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_temporary_platform}{TemporaryPlatform}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_model_1_1_entity}{Entity}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24         \mbox{\hyperlink{class_model_1_1_temporary_platform_a4377d9fb1bf47086015c409e2b42a0eb}{TemporaryPlatform}}() : \mbox{\hyperlink{class_model_1_1_entity}{Entity}}(10) \{\}}
+\DoxyCodeLine{28         \mbox{\hyperlink{class_model_1_1_temporary_platform_a3e6d729313cad08670c1455a17c4d9a4}{\string~TemporaryPlatform}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{keyword}{private}:}
+\DoxyCodeLine{35         [[nodiscard]] \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} Model::eTemporary; \}}
+\DoxyCodeLine{40         \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{bool} collision)\textcolor{keyword}{ override}}
+\DoxyCodeLine{41 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{42                 \textcolor{comment}{// If collided, Temporary Platform can be destroyed}}
+\DoxyCodeLine{43                 \textcolor{keywordflow}{if} (collision) \{}
+\DoxyCodeLine{44                         \mbox{\hyperlink{class_model_1_1_entity_a33279e9959e845cc7307610de0af78d4}{Entity::setRemoveFlag}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{45                         \mbox{\hyperlink{class_observer_1_1_subject_a7c2fc9a2e17121ba8c73e50fd47374cd}{Observer::Subject::clear}}();}
+\DoxyCodeLine{46                 \}}
+\DoxyCodeLine{47         \}}
+\DoxyCodeLine{48 \};}
+\DoxyCodeLine{49 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_TEMPORARYPLATFORM\_H}}
+
+\end{DoxyCode}

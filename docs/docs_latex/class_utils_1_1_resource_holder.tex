@@ -1,0 +1,118 @@
+\hypertarget{class_utils_1_1_resource_holder}{}\doxysection{Utils\+::Resource\+Holder\texorpdfstring{$<$}{<} Type \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_utils_1_1_resource_holder}\index{Utils::ResourceHolder$<$ Type $>$@{Utils::ResourceHolder$<$ Type $>$}}
+
+
+Class for \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}}.  
+
+
+
+
+{\ttfamily \#include $<$Resource\+Manager.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_utils_1_1_resource_holder_aabb15a19e4adfcbc4773df0c8a35f1c5}{Resource\+Holder}} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utils_1_1_resource_holder_abc99354c40569d3d71d6c9dc2a95f719}\label{class_utils_1_1_resource_holder_abc99354c40569d3d71d6c9dc2a95f719}} 
+{\bfseries $\sim$\+Resource\+Holder} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utils_1_1_resource_holder_ac0f82ed5a6139844fdd74bead29ad6de}{insert}} (\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} type, const std\+::string \&sub\+Path)
+\begin{DoxyCompactList}\small\item\em Add new resource to \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}}. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} $>$ \& \mbox{\hyperlink{class_utils_1_1_resource_holder_a75051ffdb83d839d17c9b285982d1287}{get}} (\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Get specific resource depending on given key. \end{DoxyCompactList}\item 
+std\+::map$<$ \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} $>$ $>$ \& \mbox{\hyperlink{class_utils_1_1_resource_holder_af8b291990290eae9ed47c677281c284f}{get\+Resources}} ()
+\begin{DoxyCompactList}\small\item\em Get resources. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utils_1_1_resource_holder_a8a3c0b08390861eb49cc70017ac04dd5}\label{class_utils_1_1_resource_holder_a8a3c0b08390861eb49cc70017ac04dd5}} 
+void {\bfseries clear} ()
+\begin{DoxyCompactList}\small\item\em Clear stored resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}}$>$\newline
+class Utils\+::\+Resource\+Holder$<$ Type $>$}
+Class for \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}}. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & class -\/ type of resource to store \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_utils_1_1_resource_holder_aabb15a19e4adfcbc4773df0c8a35f1c5}\label{class_utils_1_1_resource_holder_aabb15a19e4adfcbc4773df0c8a35f1c5}} 
+\index{Utils::ResourceHolder$<$ Type $>$@{Utils::ResourceHolder$<$ Type $>$}!ResourceHolder@{ResourceHolder}}
+\index{ResourceHolder@{ResourceHolder}!Utils::ResourceHolder$<$ Type $>$@{Utils::ResourceHolder$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{ResourceHolder()}{ResourceHolder()}}
+{\footnotesize\ttfamily template$<$class \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} $>$ \\
+\mbox{\hyperlink{class_utils_1_1_resource_holder}{Utils\+::\+Resource\+Holder}}$<$ \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} $>$\+::\mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}} (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor for \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & std\+::string -\/ path to resources \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_utils_1_1_resource_holder_a75051ffdb83d839d17c9b285982d1287}\label{class_utils_1_1_resource_holder_a75051ffdb83d839d17c9b285982d1287}} 
+\index{Utils::ResourceHolder$<$ Type $>$@{Utils::ResourceHolder$<$ Type $>$}!get@{get}}
+\index{get@{get}!Utils::ResourceHolder$<$ Type $>$@{Utils::ResourceHolder$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$class \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} $>$ \\
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} $>$ \& \mbox{\hyperlink{class_utils_1_1_resource_holder}{Utils\+::\+Resource\+Holder}}$<$ \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} $>$\+::get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get specific resource depending on given key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} -\/ key to be used \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Type -\/ found resource 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_resource_holder_af8b291990290eae9ed47c677281c284f}\label{class_utils_1_1_resource_holder_af8b291990290eae9ed47c677281c284f}} 
+\index{Utils::ResourceHolder$<$ Type $>$@{Utils::ResourceHolder$<$ Type $>$}!getResources@{getResources}}
+\index{getResources@{getResources}!Utils::ResourceHolder$<$ Type $>$@{Utils::ResourceHolder$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{getResources()}{getResources()}}
+{\footnotesize\ttfamily template$<$class \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} $>$ \\
+std\+::map$<$ \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} $>$ $>$ \& \mbox{\hyperlink{class_utils_1_1_resource_holder}{Utils\+::\+Resource\+Holder}}$<$ \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} $>$\+::get\+Resources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get resources. 
+
+\begin{DoxyReturn}{Returns}
+std\+::map$<$\+Utils\+::\+Type, Type$>$ -\/ resources 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_resource_holder_ac0f82ed5a6139844fdd74bead29ad6de}\label{class_utils_1_1_resource_holder_ac0f82ed5a6139844fdd74bead29ad6de}} 
+\index{Utils::ResourceHolder$<$ Type $>$@{Utils::ResourceHolder$<$ Type $>$}!insert@{insert}}
+\index{insert@{insert}!Utils::ResourceHolder$<$ Type $>$@{Utils::ResourceHolder$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$class \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} $>$ \\
+void \mbox{\hyperlink{class_utils_1_1_resource_holder}{Utils\+::\+Resource\+Holder}}$<$ \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} $>$\+::insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}}}]{type,  }\item[{const std\+::string \&}]{sub\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add new resource to \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} -\/ key to identify resource in future \\
+\hline
+{\em sub\+Path} & std\+::string -\/ sub path to specific resource \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/include/util/Resource\+Manager.\+h\end{DoxyCompactItemize}

@@ -73,6 +73,11 @@ public:
          * @return Model::Entity - pointer to Entity
          */
         virtual std::shared_ptr<Model::Score> createScore() = 0;
+        /**
+         * @brief Create Coin object - PURE VIRTUAL
+         * @return Model::Entity - pointer to Entity
+         */
+        virtual std::shared_ptr<Model::Entity> createCoin() = 0;
 };
 } // namespace Model
 

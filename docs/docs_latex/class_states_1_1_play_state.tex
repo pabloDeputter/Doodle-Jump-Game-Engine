@@ -1,0 +1,57 @@
+\hypertarget{class_states_1_1_play_state}{}\doxysection{States\+::Play\+State Class Reference}
+\label{class_states_1_1_play_state}\index{States::PlayState@{States::PlayState}}
+
+
+Class for when \mbox{\hyperlink{class_game}{Game}} is playing.  
+
+
+
+
+{\ttfamily \#include $<$Play\+State.\+h$>$}
+
+Inheritance diagram for States\+::Play\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_states_1_1_play_state}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_states_1_1_play_state_a425928903c123a4689abe1a9431d1dec}{Play\+State}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_world}{World}} $>$ world, std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ window, \mbox{\hyperlink{class_game}{Game}} \&game)
+\begin{DoxyCompactList}\small\item\em Constructor for Game\+State object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_states_1_1_play_state_a70557fcf0509285115eee213c428e69f}\label{class_states_1_1_play_state_a70557fcf0509285115eee213c428e69f}} 
+{\bfseries $\sim$\+Play\+State} () override
+\begin{DoxyCompactList}\small\item\em Destructor for Game\+State object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class for when \mbox{\hyperlink{class_game}{Game}} is playing. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_states_1_1_play_state_a425928903c123a4689abe1a9431d1dec}\label{class_states_1_1_play_state_a425928903c123a4689abe1a9431d1dec}} 
+\index{States::PlayState@{States::PlayState}!PlayState@{PlayState}}
+\index{PlayState@{PlayState}!States::PlayState@{States::PlayState}}
+\doxysubsubsection{\texorpdfstring{PlayState()}{PlayState()}}
+{\footnotesize\ttfamily Play\+State\+::\+Play\+State (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_world}{World}} $>$}]{world,  }\item[{std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$}]{window,  }\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{game }\end{DoxyParamCaption})}
+
+
+
+Constructor for Game\+State object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em world} & \mbox{\hyperlink{class_world}{World}} -\/ Pointer to game \mbox{\hyperlink{class_world}{World}} \\
+\hline
+{\em window} & sf\+::\+Render\+Window -\/ pointer to window where state will on draw \\
+\hline
+{\em game} & \mbox{\hyperlink{class_game}{Game}} -\/ current game \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+game/include/state/Play\+State.\+h\item 
+game/src/state/Play\+State.\+cpp\end{DoxyCompactItemize}

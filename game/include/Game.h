@@ -24,7 +24,8 @@ enum GameStates
 {
         ePlay = 0,
         eMenu,
-        eSettings
+        eSettings,
+        eShop
 };
 
 /**

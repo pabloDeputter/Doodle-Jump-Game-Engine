@@ -1,0 +1,47 @@
+\hypertarget{_vertical_platform_8h_source}{}\doxysection{Vertical\+Platform.\+h}
+\label{_vertical_platform_8h_source}\index{engine/include/model/VerticalPlatform.h@{engine/include/model/VerticalPlatform.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 05/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_VERTICALPLATFORM\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_VERTICALPLATFORM\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Entity.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}util/Random.h"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_vertical_platform}{VerticalPlatform}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_model_1_1_entity}{Entity}}}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21 \textcolor{keyword}{private}:}
+\DoxyCodeLine{22         std::pair<float, float> mBounds; }
+\DoxyCodeLine{23         \textcolor{keywordtype}{bool} mMovingDown;                }
+\DoxyCodeLine{24         \textcolor{keywordtype}{float} mSpeed;                    }
+\DoxyCodeLine{25         \textcolor{keywordtype}{bool} mInit;                      }
+\DoxyCodeLine{27 \textcolor{keyword}{private}:}
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} initBounds();}
+\DoxyCodeLine{36         [[nodiscard]] \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} Model::eVertical; \}}
+\DoxyCodeLine{41         \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{bool} collision) \textcolor{keyword}{override};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{public}:}
+\DoxyCodeLine{48         \mbox{\hyperlink{class_model_1_1_vertical_platform_af7fe0e75743218e76ed99e2deabefbfb}{VerticalPlatform}}() : \mbox{\hyperlink{class_model_1_1_entity}{Entity}}(7), mBounds(\{0.f, 0.f\}), mInit(\textcolor{keyword}{false})}
+\DoxyCodeLine{49         \{}
+\DoxyCodeLine{50                 \textcolor{comment}{// Generate random float between [0,1] to decide if Platform starts moving down or not}}
+\DoxyCodeLine{51                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_utils_1_1_random_a2aa30d2f678fc76f75efc60356c6ea4d}{Utils::Random::getInstance}}().\mbox{\hyperlink{class_utils_1_1_random_ae2398e09da5b92e0abe0cfc54cff61eb}{random}}(0.f, 1.f) >= 0.5f) \{}
+\DoxyCodeLine{52                         mMovingDown = \textcolor{keyword}{false};}
+\DoxyCodeLine{53                 \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{54                         mMovingDown = \textcolor{keyword}{true};}
+\DoxyCodeLine{55                 \}}
+\DoxyCodeLine{56                 \textcolor{comment}{// Generate random velocity}}
+\DoxyCodeLine{57                 mSpeed = \mbox{\hyperlink{class_utils_1_1_random_a2aa30d2f678fc76f75efc60356c6ea4d}{Utils::Random::getInstance}}().\mbox{\hyperlink{class_utils_1_1_random_ae2398e09da5b92e0abe0cfc54cff61eb}{random}}(.01f, .025f);}
+\DoxyCodeLine{58         \}}
+\DoxyCodeLine{62         \mbox{\hyperlink{class_model_1_1_vertical_platform_ab89c15002e8805fb7dcdd20b62bfcb6b}{\string~VerticalPlatform}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{63 \};}
+\DoxyCodeLine{64 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_VERTICALPLATFORM\_H}}
+
+\end{DoxyCode}

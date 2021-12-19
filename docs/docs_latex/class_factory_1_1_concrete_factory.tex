@@ -1,0 +1,248 @@
+\hypertarget{class_factory_1_1_concrete_factory}{}\doxysection{Factory\+::Concrete\+Factory Class Reference}
+\label{class_factory_1_1_concrete_factory}\index{Factory::ConcreteFactory@{Factory::ConcreteFactory}}
+
+
+Class for Concrete \mbox{\hyperlink{namespace_factory}{Factory}}, implements \mbox{\hyperlink{class_factory_1_1_abstract_factory}{Abstract\+Factory}}\textquotesingle{}s methods.  
+
+
+
+
+{\ttfamily \#include $<$Concrete\+Factory.\+h$>$}
+
+Inheritance diagram for Factory\+::Concrete\+Factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_factory_1_1_concrete_factory}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_abfa4792dd8f2e0412d744adc20964601}\label{class_factory_1_1_concrete_factory_abfa4792dd8f2e0412d744adc20964601}} 
+{\bfseries Concrete\+Factory} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{class_factory_1_1_concrete_factory}{Concrete\+Factory}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_factory_1_1_concrete_factory_af52d2b57ae2cd2350820997f9676c73d}{Concrete\+Factory}} (const std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ \&window)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_factory_1_1_concrete_factory}{Concrete\+Factory}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_ac6d97686180d4371c7fb5275e1e7b252}\label{class_factory_1_1_concrete_factory_ac6d97686180d4371c7fb5275e1e7b252}} 
+{\bfseries $\sim$\+Concrete\+Factory} () override=default
+\begin{DoxyCompactList}\small\item\em Default destructor for \mbox{\hyperlink{class_factory_1_1_concrete_factory}{Concrete\+Factory}} object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} $>$ \mbox{\hyperlink{class_factory_1_1_concrete_factory_a299b1c16908fccbe332fb66d775fd90a}{create\+Player}} () override
+\begin{DoxyCompactList}\small\item\em Create Player object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_concrete_factory_a12e4ce3e73459240cb8199a531b528ef}{create\+Static\+Platform}} () override
+\begin{DoxyCompactList}\small\item\em Create Static\+Platform object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_concrete_factory_ae8fff536172b42028fe57165661a46d0}{create\+Horizontal\+Platform}} () override
+\begin{DoxyCompactList}\small\item\em Create Horizontal\+Platform object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_concrete_factory_a8035cca478499efb4a9836c47b654f48}{create\+Vertical\+Platform}} () override
+\begin{DoxyCompactList}\small\item\em Create Vertical\+Platform object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_concrete_factory_ae4874cb96174e69a7f5a2d42a181f10d}{create\+Temporary\+Platform}} () override
+\begin{DoxyCompactList}\small\item\em Create Temporary\+Platform object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_concrete_factory_a04cc4f3bc7c8201bf9f0316b370b4db3}{create\+Spring}} () override
+\begin{DoxyCompactList}\small\item\em Create Spring object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_concrete_factory_a7cfb732fb75e5b5e811fefc03ed295a1}{create\+Jetpack}} () override
+\begin{DoxyCompactList}\small\item\em Create Jetpack object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_concrete_factory_a04be6304f20e50e7af657c19bfda1576}{create\+Background}} () override
+\begin{DoxyCompactList}\small\item\em Create Background object. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_score}{Model\+::\+Score}} $>$ \mbox{\hyperlink{class_factory_1_1_concrete_factory_acbbd7ca51f4d3e35fce7abf27b4b5976}{create\+Score}} () override
+\begin{DoxyCompactList}\small\item\em Create Score object. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_concrete_factory_aa827828a16aa1e960ddf8a5bafc1a551}{create\+Coin}} () override
+\begin{DoxyCompactList}\small\item\em Create Coin object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for Concrete \mbox{\hyperlink{namespace_factory}{Factory}}, implements \mbox{\hyperlink{class_factory_1_1_abstract_factory}{Abstract\+Factory}}\textquotesingle{}s methods. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_af52d2b57ae2cd2350820997f9676c73d}\label{class_factory_1_1_concrete_factory_af52d2b57ae2cd2350820997f9676c73d}} 
+\index{Factory::ConcreteFactory@{Factory::ConcreteFactory}!ConcreteFactory@{ConcreteFactory}}
+\index{ConcreteFactory@{ConcreteFactory}!Factory::ConcreteFactory@{Factory::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{ConcreteFactory()}{ConcreteFactory()}}
+{\footnotesize\ttfamily Factory\+::\+Concrete\+Factory\+::\+Concrete\+Factory (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor for \mbox{\hyperlink{class_factory_1_1_concrete_factory}{Concrete\+Factory}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & sf\+::\+Render\+Window -\/ pointer to window \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_a04be6304f20e50e7af657c19bfda1576}\label{class_factory_1_1_concrete_factory_a04be6304f20e50e7af657c19bfda1576}} 
+\index{Factory::ConcreteFactory@{Factory::ConcreteFactory}!createBackground@{createBackground}}
+\index{createBackground@{createBackground}!Factory::ConcreteFactory@{Factory::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{createBackground()}{createBackground()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Concrete\+Factory\+::create\+Background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Create Background object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_factory_1_1_abstract_factory_aa8940ed29d3910aa9c07efb6be759658}{Factory\+::\+Abstract\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_aa827828a16aa1e960ddf8a5bafc1a551}\label{class_factory_1_1_concrete_factory_aa827828a16aa1e960ddf8a5bafc1a551}} 
+\index{Factory::ConcreteFactory@{Factory::ConcreteFactory}!createCoin@{createCoin}}
+\index{createCoin@{createCoin}!Factory::ConcreteFactory@{Factory::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{createCoin()}{createCoin()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Concrete\+Factory\+::create\+Coin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Create Coin object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_factory_1_1_abstract_factory_ab2b9a38e72d567414478c266b46a3531}{Factory\+::\+Abstract\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_ae8fff536172b42028fe57165661a46d0}\label{class_factory_1_1_concrete_factory_ae8fff536172b42028fe57165661a46d0}} 
+\index{Factory::ConcreteFactory@{Factory::ConcreteFactory}!createHorizontalPlatform@{createHorizontalPlatform}}
+\index{createHorizontalPlatform@{createHorizontalPlatform}!Factory::ConcreteFactory@{Factory::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{createHorizontalPlatform()}{createHorizontalPlatform()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Concrete\+Factory\+::create\+Horizontal\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Create Horizontal\+Platform object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_factory_1_1_abstract_factory_a014bb238155317a2bd5046f80609683b}{Factory\+::\+Abstract\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_a7cfb732fb75e5b5e811fefc03ed295a1}\label{class_factory_1_1_concrete_factory_a7cfb732fb75e5b5e811fefc03ed295a1}} 
+\index{Factory::ConcreteFactory@{Factory::ConcreteFactory}!createJetpack@{createJetpack}}
+\index{createJetpack@{createJetpack}!Factory::ConcreteFactory@{Factory::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{createJetpack()}{createJetpack()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Concrete\+Factory\+::create\+Jetpack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Create Jetpack object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_factory_1_1_abstract_factory_a9cf8862b7930084c743f453b5bfcbceb}{Factory\+::\+Abstract\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_a299b1c16908fccbe332fb66d775fd90a}\label{class_factory_1_1_concrete_factory_a299b1c16908fccbe332fb66d775fd90a}} 
+\index{Factory::ConcreteFactory@{Factory::ConcreteFactory}!createPlayer@{createPlayer}}
+\index{createPlayer@{createPlayer}!Factory::ConcreteFactory@{Factory::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{createPlayer()}{createPlayer()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} $>$ Concrete\+Factory\+::create\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Create Player object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} -\/ pointer to Player 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_factory_1_1_abstract_factory_a5513098e1e90de969320fc519da508ea}{Factory\+::\+Abstract\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_acbbd7ca51f4d3e35fce7abf27b4b5976}\label{class_factory_1_1_concrete_factory_acbbd7ca51f4d3e35fce7abf27b4b5976}} 
+\index{Factory::ConcreteFactory@{Factory::ConcreteFactory}!createScore@{createScore}}
+\index{createScore@{createScore}!Factory::ConcreteFactory@{Factory::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{createScore()}{createScore()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_score}{Model\+::\+Score}} $>$ Concrete\+Factory\+::create\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Create Score object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_factory_1_1_abstract_factory_a7e5248cd74752677510aa6318acaa277}{Factory\+::\+Abstract\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_a04cc4f3bc7c8201bf9f0316b370b4db3}\label{class_factory_1_1_concrete_factory_a04cc4f3bc7c8201bf9f0316b370b4db3}} 
+\index{Factory::ConcreteFactory@{Factory::ConcreteFactory}!createSpring@{createSpring}}
+\index{createSpring@{createSpring}!Factory::ConcreteFactory@{Factory::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{createSpring()}{createSpring()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Concrete\+Factory\+::create\+Spring (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Create Spring object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_factory_1_1_abstract_factory_a4b325bd01971712b3884e717f064e49f}{Factory\+::\+Abstract\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_a12e4ce3e73459240cb8199a531b528ef}\label{class_factory_1_1_concrete_factory_a12e4ce3e73459240cb8199a531b528ef}} 
+\index{Factory::ConcreteFactory@{Factory::ConcreteFactory}!createStaticPlatform@{createStaticPlatform}}
+\index{createStaticPlatform@{createStaticPlatform}!Factory::ConcreteFactory@{Factory::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{createStaticPlatform()}{createStaticPlatform()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Concrete\+Factory\+::create\+Static\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Create Static\+Platform object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_factory_1_1_abstract_factory_ac54cbacd76f1cb041537afb1808b7742}{Factory\+::\+Abstract\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_ae4874cb96174e69a7f5a2d42a181f10d}\label{class_factory_1_1_concrete_factory_ae4874cb96174e69a7f5a2d42a181f10d}} 
+\index{Factory::ConcreteFactory@{Factory::ConcreteFactory}!createTemporaryPlatform@{createTemporaryPlatform}}
+\index{createTemporaryPlatform@{createTemporaryPlatform}!Factory::ConcreteFactory@{Factory::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{createTemporaryPlatform()}{createTemporaryPlatform()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Concrete\+Factory\+::create\+Temporary\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Create Temporary\+Platform object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_factory_1_1_abstract_factory_a4ac5d94d07a55a04358e3b5aa965e07d}{Factory\+::\+Abstract\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_concrete_factory_a8035cca478499efb4a9836c47b654f48}\label{class_factory_1_1_concrete_factory_a8035cca478499efb4a9836c47b654f48}} 
+\index{Factory::ConcreteFactory@{Factory::ConcreteFactory}!createVerticalPlatform@{createVerticalPlatform}}
+\index{createVerticalPlatform@{createVerticalPlatform}!Factory::ConcreteFactory@{Factory::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{createVerticalPlatform()}{createVerticalPlatform()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Concrete\+Factory\+::create\+Vertical\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Create Vertical\+Platform object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_factory_1_1_abstract_factory_a157b99ee09d1183985503b4cec8d9c6b}{Factory\+::\+Abstract\+Factory}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+game/include/Concrete\+Factory.\+h\item 
+game/src/Concrete\+Factory.\+cpp\end{DoxyCompactItemize}

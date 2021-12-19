@@ -44,7 +44,7 @@ public:
          */
         Spring() : Bonus(15, false){};
         /**
-         * @brief Destructor for Jetpack object
+         * @brief Destructor for Spring object
          */
         ~Spring() override = default;
 };

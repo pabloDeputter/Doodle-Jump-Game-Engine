@@ -1,0 +1,121 @@
+\hypertarget{class_utils_1_1_utilities}{}\doxysection{Utils\+::Utilities Class Reference}
+\label{class_utils_1_1_utilities}\index{Utils::Utilities@{Utils::Utilities}}
+
+
+Class for \mbox{\hyperlink{class_utils_1_1_utilities}{Utilities}}.  
+
+
+
+
+{\ttfamily \#include $<$Utilities.\+h$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_utils_1_1_utilities_aa28e0e4930262a67df94f0b007c0648b}{check\+Collision}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \&l, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \&r)
+\begin{DoxyCompactList}\small\item\em Check if there is a collision between two Entities. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_utils_1_1_utilities_aee616f767238455a6be283b988868c72}{check\+Weight}} (float \&rand, float weight)
+\begin{DoxyCompactList}\small\item\em Check random spawn rate of total chance. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} , class Color $>$ }\\static void \mbox{\hyperlink{class_utils_1_1_utilities_aaae68243556ec1bd44ccb509b5fef65f}{set\+Rainbow\+Color}} (\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} \&object)
+\begin{DoxyCompactList}\small\item\em Traverse rainbow colors everytime member gets called. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Font , class Color , class Text $>$ }\\static void \mbox{\hyperlink{class_utils_1_1_utilities_a61ec8149a8740d8f70f1913e34b68dde}{init\+Text}} (const Font \&font, const Color \&color, unsigned int size, Text \&text, const std\+::string \&set\+String=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Initialize sf\+::\+Text to avoid code duplication. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for \mbox{\hyperlink{class_utils_1_1_utilities}{Utilities}}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_utils_1_1_utilities_aa28e0e4930262a67df94f0b007c0648b}\label{class_utils_1_1_utilities_aa28e0e4930262a67df94f0b007c0648b}} 
+\index{Utils::Utilities@{Utils::Utilities}!checkCollision@{checkCollision}}
+\index{checkCollision@{checkCollision}!Utils::Utilities@{Utils::Utilities}}
+\doxysubsubsection{\texorpdfstring{checkCollision()}{checkCollision()}}
+{\footnotesize\ttfamily bool Utilities\+::check\+Collision (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \&}]{l,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \&}]{r }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check if there is a collision between two Entities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Entity -\/ pointer to first entity \\
+\hline
+{\em r} & Entity -\/ pointer to second entity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/ true if collided 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_utilities_aee616f767238455a6be283b988868c72}\label{class_utils_1_1_utilities_aee616f767238455a6be283b988868c72}} 
+\index{Utils::Utilities@{Utils::Utilities}!checkWeight@{checkWeight}}
+\index{checkWeight@{checkWeight}!Utils::Utilities@{Utils::Utilities}}
+\doxysubsubsection{\texorpdfstring{checkWeight()}{checkWeight()}}
+{\footnotesize\ttfamily bool Utilities\+::check\+Weight (\begin{DoxyParamCaption}\item[{float \&}]{rand,  }\item[{float}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check random spawn rate of total chance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rand} & float -\/ random spawn rate \\
+\hline
+{\em weight} & float -\/ total chance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if rand \texorpdfstring{$<$}{<}= weight 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_utilities_a61ec8149a8740d8f70f1913e34b68dde}\label{class_utils_1_1_utilities_a61ec8149a8740d8f70f1913e34b68dde}} 
+\index{Utils::Utilities@{Utils::Utilities}!initText@{initText}}
+\index{initText@{initText}!Utils::Utilities@{Utils::Utilities}}
+\doxysubsubsection{\texorpdfstring{initText()}{initText()}}
+{\footnotesize\ttfamily template$<$class Font , class Color , class Text $>$ \\
+static void Utils\+::\+Utilities\+::init\+Text (\begin{DoxyParamCaption}\item[{const Font \&}]{font,  }\item[{const Color \&}]{color,  }\item[{unsigned int}]{size,  }\item[{Text \&}]{text,  }\item[{const std\+::string \&}]{set\+String = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Initialize sf\+::\+Text to avoid code duplication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & sf\+::\+Font -\/ font to be used \\
+\hline
+{\em color} & sf\+::\+Color -\/ color of text \\
+\hline
+{\em size} & unsigned int -\/ character size of text \\
+\hline
+{\em text} & sf\+::\+Text -\/ text to be initialized \\
+\hline
+{\em set\+String} & std\+::string -\/ string to be set on text \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_utils_1_1_utilities_aaae68243556ec1bd44ccb509b5fef65f}\label{class_utils_1_1_utilities_aaae68243556ec1bd44ccb509b5fef65f}} 
+\index{Utils::Utilities@{Utils::Utilities}!setRainbowColor@{setRainbowColor}}
+\index{setRainbowColor@{setRainbowColor}!Utils::Utilities@{Utils::Utilities}}
+\doxysubsubsection{\texorpdfstring{setRainbowColor()}{setRainbowColor()}}
+{\footnotesize\ttfamily template$<$class \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} , class Color $>$ \\
+static void Utils\+::\+Utilities\+::set\+Rainbow\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}} \&}]{object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Traverse rainbow colors everytime member gets called. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Object class \\
+\hline
+{\em Color} & Color class -\/ to change color of object \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em object} & Type -\/ change color of this object \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/util/Utilities.\+h\item 
+engine/src/util/Utilities.\+cpp\end{DoxyCompactItemize}

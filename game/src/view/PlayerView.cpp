@@ -16,10 +16,11 @@ PlayerView::PlayerView(const std::shared_ptr<Model::Entity>& entity,
         // Setup Sprite
         mSprite = std::make_unique<sf::Sprite>();
         mSprite->setTexture(*tex);
-        mSprite->scale(2.f, 2.f);
+        mSprite->scale(95.f / (float)tex->getSize().x, 95.f / (float)tex->getSize().y);
+
         // Set width and height of Entity
-        auto texSize = Utils::Camera::getInstance().inverseTransform(
-            (float)tex->getSize().x * mSprite->getScale().x, (float)tex->getSize().y * mSprite->getScale().y);
+        auto texSize = Utils::Camera::getInstance().inverseTransform((float)tex->getSize().x * mSprite->getScale().x,
+                                                                     (float)tex->getSize().y * mSprite->getScale().y);
 
         mEntity->setWidth(texSize.first);
         mEntity->setHeight(Utils::Camera::getInstance().getWorldDimensions().second - texSize.second);

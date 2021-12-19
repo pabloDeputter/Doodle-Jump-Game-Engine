@@ -1,0 +1,86 @@
+\hypertarget{class_event}{}\doxysection{Event Class Reference}
+\label{class_event}\index{Event@{Event}}
+
+
+Abstract \mbox{\hyperlink{class_event}{Event}} class.  
+
+
+
+
+{\ttfamily \#include $<$Events.\+h$>$}
+
+Inheritance diagram for Event\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=9.000000cm]{class_event}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_a1779d31d27dd71bff8eaee90fede037d}{Event}} (Event\+Type \mbox{\hyperlink{class_event_a20b5f3a472f5bca344f4fbae3c735217}{m\+Event}})
+\item 
+virtual \mbox{\hyperlink{class_event_a105223995bbf1a1e4714d0c77f91cf0b}{$\sim$\+Event}} ()=default
+\item 
+virtual void \mbox{\hyperlink{class_event_a04a3e1df8940aac80356667450cbd2ba}{send}} (\mbox{\hyperlink{class_i_event_handler}{IEvent\+Handler}} \&handler) const
+\begin{DoxyCompactList}\small\item\em Send event to IEvent handler to correctly handle event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Event\+Type \mbox{\hyperlink{class_event_a20b5f3a472f5bca344f4fbae3c735217}{m\+Event}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract \mbox{\hyperlink{class_event}{Event}} class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_event_a1779d31d27dd71bff8eaee90fede037d}\label{class_event_a1779d31d27dd71bff8eaee90fede037d}} 
+\index{Event@{Event}!Event@{Event}}
+\index{Event@{Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{Event()}{Event()}}
+{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}\item[{Event\+Type}]{m\+Event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+Constructor for \mbox{\hyperlink{class_event}{Event}} object 
+\begin{DoxyParams}{Parameters}
+{\em m\+Event} & Event\+Type -\/ type of event \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_event_a105223995bbf1a1e4714d0c77f91cf0b}\label{class_event_a105223995bbf1a1e4714d0c77f91cf0b}} 
+\index{Event@{Event}!````~Event@{$\sim$Event}}
+\index{````~Event@{$\sim$Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{$\sim$Event()}{~Event()}}
+{\footnotesize\ttfamily virtual Event\+::$\sim$\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+Default destructor for \mbox{\hyperlink{class_event}{Event}} object 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_event_a04a3e1df8940aac80356667450cbd2ba}\label{class_event_a04a3e1df8940aac80356667450cbd2ba}} 
+\index{Event@{Event}!send@{send}}
+\index{send@{send}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily virtual void Event\+::send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_i_event_handler}{IEvent\+Handler}} \&}]{handler }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Send event to IEvent handler to correctly handle event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handler} & \mbox{\hyperlink{class_i_event_handler}{IEvent\+Handler}} -\/ abstract event handler \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_event_a20b5f3a472f5bca344f4fbae3c735217}\label{class_event_a20b5f3a472f5bca344f4fbae3c735217}} 
+\index{Event@{Event}!mEvent@{mEvent}}
+\index{mEvent@{mEvent}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{mEvent}{mEvent}}
+{\footnotesize\ttfamily Event\+Type Event\+::m\+Event\hspace{0.3cm}{\ttfamily [protected]}}
+
+Type of event 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/observer/Events.\+h\end{DoxyCompactItemize}

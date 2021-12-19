@@ -1,0 +1,139 @@
+\hypertarget{class_state}{}\doxysection{State Class Reference}
+\label{class_state}\index{State@{State}}
+
+
+Abstract class for \mbox{\hyperlink{class_game}{Game}} \mbox{\hyperlink{class_state}{State}}.  
+
+
+
+
+{\ttfamily \#include $<$State.\+h$>$}
+
+Inheritance diagram for State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_state}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_state_a730e7beb4103e2c15a66aa450bbf0447}{State}} (std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ window, \mbox{\hyperlink{class_game}{Game}} \&game)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_state}{State}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_state_a783d52422b544bb226e13de8ecfd6ad6}\label{class_state_a783d52422b544bb226e13de8ecfd6ad6}} 
+virtual {\bfseries $\sim$\+State} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{class_state}{State}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_state_a83754426c60832f48f24ded27ee74312}\label{class_state_a83754426c60832f48f24ded27ee74312}} 
+virtual void {\bfseries render} () const =0
+\begin{DoxyCompactList}\small\item\em Render \mbox{\hyperlink{class_state}{State}} -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_state_a06315e7e44aadfa576cbf7e6c1c7d87f}\label{class_state_a06315e7e44aadfa576cbf7e6c1c7d87f}} 
+virtual void {\bfseries update} ()=0
+\begin{DoxyCompactList}\small\item\em Update \mbox{\hyperlink{class_state}{State}} -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_state_aca4323ee20660cd00e1cf4d9799de782}\label{class_state_aca4323ee20660cd00e1cf4d9799de782}} 
+virtual void {\bfseries process\+Events} ()=0
+\begin{DoxyCompactList}\small\item\em Process events -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
+virtual unsigned int \mbox{\hyperlink{class_state_a6dcf889e804095b6d84ff2b4d0b61812}{get\+Type}} () const =0
+\begin{DoxyCompactList}\small\item\em Get type of \mbox{\hyperlink{class_state}{State}} -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_state_a57bb1cfac5b00443addec26e79200383}\label{class_state_a57bb1cfac5b00443addec26e79200383}} 
+virtual void {\bfseries new\+High\+Score} ()
+\begin{DoxyCompactList}\small\item\em Gets called when a new high score is achieved. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_ac1a7b3ce8c7c6f3a6ed4aa93069e2423}{set\+New\+Diff}} (unsigned int diff)
+\begin{DoxyCompactList}\small\item\em Set new difficulty. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_state_a82e41dd626c1e63488cd7cb4012a7f34}{add\+Coins}} (int coins)
+\begin{DoxyCompactList}\small\item\em Add coins to inventory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game}{Game}} \& \mbox{\hyperlink{class_state_a0bb6d2b26463c0ec46e3bbf5193bee6e}{m\+Game}}
+\item 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ \mbox{\hyperlink{class_state_a7a4cf52432eba5ee1e6971f22fe09db5}{m\+Window}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class for \mbox{\hyperlink{class_game}{Game}} \mbox{\hyperlink{class_state}{State}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_state_a730e7beb4103e2c15a66aa450bbf0447}\label{class_state_a730e7beb4103e2c15a66aa450bbf0447}} 
+\index{State@{State}!State@{State}}
+\index{State@{State}!State@{State}}
+\doxysubsubsection{\texorpdfstring{State()}{State()}}
+{\footnotesize\ttfamily State\+::\+State (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$}]{window,  }\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for \mbox{\hyperlink{class_state}{State}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & sf\+::\+Render\+Window -\/ window to draw on \\
+\hline
+{\em game} & \mbox{\hyperlink{class_game}{Game}} -\/ current game \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_state_a82e41dd626c1e63488cd7cb4012a7f34}\label{class_state_a82e41dd626c1e63488cd7cb4012a7f34}} 
+\index{State@{State}!addCoins@{addCoins}}
+\index{addCoins@{addCoins}!State@{State}}
+\doxysubsubsection{\texorpdfstring{addCoins()}{addCoins()}}
+{\footnotesize\ttfamily virtual void State\+::add\+Coins (\begin{DoxyParamCaption}\item[{int}]{coins }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Add coins to inventory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coins} & int -\/ coins to be added \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_state_a6dcf889e804095b6d84ff2b4d0b61812}\label{class_state_a6dcf889e804095b6d84ff2b4d0b61812}} 
+\index{State@{State}!getType@{getType}}
+\index{getType@{getType}!State@{State}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual unsigned int State\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get type of \mbox{\hyperlink{class_state}{State}} -\/ PURE VIRTUAL. 
+
+\begin{DoxyReturn}{Returns}
+Game\+State -\/ type of \mbox{\hyperlink{class_state}{State}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_state_ac1a7b3ce8c7c6f3a6ed4aa93069e2423}\label{class_state_ac1a7b3ce8c7c6f3a6ed4aa93069e2423}} 
+\index{State@{State}!setNewDiff@{setNewDiff}}
+\index{setNewDiff@{setNewDiff}!State@{State}}
+\doxysubsubsection{\texorpdfstring{setNewDiff()}{setNewDiff()}}
+{\footnotesize\ttfamily virtual void State\+::set\+New\+Diff (\begin{DoxyParamCaption}\item[{unsigned int}]{diff }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set new difficulty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em diff} & unsigned int -\/ new difficulty \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_state_a0bb6d2b26463c0ec46e3bbf5193bee6e}\label{class_state_a0bb6d2b26463c0ec46e3bbf5193bee6e}} 
+\index{State@{State}!mGame@{mGame}}
+\index{mGame@{mGame}!State@{State}}
+\doxysubsubsection{\texorpdfstring{mGame}{mGame}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game}{Game}}\& State\+::m\+Game\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\hyperlink{class_game}{Game}} \mbox{\Hypertarget{class_state_a7a4cf52432eba5ee1e6971f22fe09db5}\label{class_state_a7a4cf52432eba5ee1e6971f22fe09db5}} 
+\index{State@{State}!mWindow@{mWindow}}
+\index{mWindow@{mWindow}!State@{State}}
+\doxysubsubsection{\texorpdfstring{mWindow}{mWindow}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$sf\+::\+Render\+Window$>$ State\+::m\+Window\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pointer to render\+Window 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/include/state/State.\+h\end{DoxyCompactItemize}

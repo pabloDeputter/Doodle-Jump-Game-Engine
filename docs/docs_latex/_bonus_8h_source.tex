@@ -1,0 +1,45 @@
+\hypertarget{_bonus_8h_source}{}\doxysection{Bonus.\+h}
+\label{_bonus_8h_source}\index{engine/include/model/Bonus.h@{engine/include/model/Bonus.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 16/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_BONUS\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_BONUS\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Entity.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_bonus}{Bonus}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_model_1_1_entity}{Entity}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{20         std::pair<float, float> \mbox{\hyperlink{class_model_1_1_bonus_ad02981abcbf10d1afa4b8c8bd496bb67}{mBounds}}; }
+\DoxyCodeLine{21         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_model_1_1_bonus_af76f66ce415f8d71e8ecf981b2db0149}{mMovingDown}};                }
+\DoxyCodeLine{22         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_model_1_1_bonus_ae26b70867468b1bce17bfc7de2e564e4}{mInit}};                      }
+\DoxyCodeLine{23         \textcolor{keywordtype}{bool} mStarted;                   }
+\DoxyCodeLine{25 \textcolor{keyword}{private}:}
+\DoxyCodeLine{29         \textcolor{keywordtype}{void} initBounds();}
+\DoxyCodeLine{34         \textcolor{keywordtype}{void} visit(\mbox{\hyperlink{class_model_1_1_player}{Model::Player}}\& player) \textcolor{keyword}{override} = 0;}
+\DoxyCodeLine{39         [[nodiscard]] \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} Model::eBonus; \}}
+\DoxyCodeLine{44         \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{bool} collision) \textcolor{keyword}{override};}
+\DoxyCodeLine{49         [[nodiscard]] \textcolor{keywordtype}{bool} isRemovable()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_model_1_1_entity_a6eb59a9bb70f5e1c5d77e9e54c84c73a}{mRemoveFlag}}; \}}
+\DoxyCodeLine{54         [[nodiscard]] \textcolor{keywordtype}{bool} isBonus()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \textcolor{keyword}{true}; \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{keyword}{public}:}
+\DoxyCodeLine{62         \mbox{\hyperlink{class_model_1_1_bonus_a8b246b57d553b2172660983b3e0f0f22}{Bonus}}(\textcolor{keywordtype}{int} score, \textcolor{keywordtype}{bool} started)}
+\DoxyCodeLine{63             : \mbox{\hyperlink{class_model_1_1_entity}{Entity}}(score), \mbox{\hyperlink{class_model_1_1_bonus_ad02981abcbf10d1afa4b8c8bd496bb67}{mBounds}}(\{0.f, 0.f\}), \mbox{\hyperlink{class_model_1_1_bonus_af76f66ce415f8d71e8ecf981b2db0149}{mMovingDown}}(\textcolor{keyword}{false}), \mbox{\hyperlink{class_model_1_1_bonus_ae26b70867468b1bce17bfc7de2e564e4}{mInit}}(\textcolor{keyword}{false}), mStarted(started)}
+\DoxyCodeLine{64         \{}
+\DoxyCodeLine{65         \}}
+\DoxyCodeLine{70         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_model_1_1_bonus_ad30d2a355839e42f9474cde7ab79ed76}{Bonus}}(\textcolor{keywordtype}{bool} started)}
+\DoxyCodeLine{71             : \mbox{\hyperlink{class_model_1_1_entity}{Entity}}(), \mbox{\hyperlink{class_model_1_1_bonus_ad02981abcbf10d1afa4b8c8bd496bb67}{mBounds}}(\{0.f, 0.f\}), \mbox{\hyperlink{class_model_1_1_bonus_af76f66ce415f8d71e8ecf981b2db0149}{mMovingDown}}(\textcolor{keyword}{false}), \mbox{\hyperlink{class_model_1_1_bonus_ae26b70867468b1bce17bfc7de2e564e4}{mInit}}(\textcolor{keyword}{false}), mStarted(started)}
+\DoxyCodeLine{72         \{}
+\DoxyCodeLine{73         \}}
+\DoxyCodeLine{77         \mbox{\hyperlink{class_model_1_1_bonus_a53cd47fe76820380889721d40cd9e8bb}{\string~Bonus}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{78 \};}
+\DoxyCodeLine{79 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_BONUS\_H}}
+
+\end{DoxyCode}

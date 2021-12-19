@@ -1,0 +1,213 @@
+\hypertarget{class_model_1_1_player}{}\doxysection{Model\+::Player Class Reference}
+\label{class_model_1_1_player}\index{Model::Player@{Model::Player}}
+
+
+Class for \mbox{\hyperlink{class_model_1_1_player}{Player}} object.  
+
+
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+Inheritance diagram for Model\+::Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_model_1_1_player}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_a02f2a249107ac9de5ba115d783df29c9}\label{class_model_1_1_player_a02f2a249107ac9de5ba115d783df29c9}} 
+enum \mbox{\hyperlink{class_model_1_1_player_a02f2a249107ac9de5ba115d783df29c9}{Player\+State}} \{ {\bfseries e\+Normal} = 0
+, {\bfseries e\+Flying}
+, {\bfseries e\+Jump}
+ \}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_model_1_1_player}{Player}} state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_model_1_1_player_adcb903c9886e296959c677d1f172f1e3}\label{class_model_1_1_player_adcb903c9886e296959c677d1f172f1e3}} 
+{\bfseries Player} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_model_1_1_player}{Player}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_model_1_1_player_a83a2b0fd0935288e0ef7ca5dbab1578b}\label{class_model_1_1_player_a83a2b0fd0935288e0ef7ca5dbab1578b}} 
+{\bfseries $\sim$\+Player} () override=default
+\begin{DoxyCompactList}\small\item\em Default destructor for \mbox{\hyperlink{class_model_1_1_player}{Player}} object. \end{DoxyCompactList}\item 
+const std\+::pair$<$ float, float $>$ \& \mbox{\hyperlink{class_model_1_1_player_ac46003606603463b5186658ac85953b5}{get\+Velocity}} () const
+\begin{DoxyCompactList}\small\item\em Get velocity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_1_1_player_ab9df0088ac8d23b5537984f23d1d01d7}{set\+Velocity}} (const std\+::pair$<$ float, float $>$ \&velocity)
+\begin{DoxyCompactList}\small\item\em Set velocity. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_model_1_1_player_ae2c87c73033d728512a555d707e32163}{get\+Max\+Velocity}} () const
+\begin{DoxyCompactList}\small\item\em Get direction. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_model_1_1_player_a85b6ad23f853fb2493ae36d81f37311d}{get\+Drag}} () const
+\begin{DoxyCompactList}\small\item\em Get acceleration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_1_1_player_a70859a376c63291fa57bf8828c23c9ca}{set\+Drag}} (float drag)
+\begin{DoxyCompactList}\small\item\em Set drag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_1_1_player_a82fe1daa8fecfeebdac235c6fe3bbc2b}{set\+Is\+Moving\+Left}} (bool flag) override
+\begin{DoxyCompactList}\small\item\em Set moving left. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_1_1_player_a5a779643684b806741aaa5f4d25aa769}{set\+Is\+Moving\+Right}} (bool flag) override
+\begin{DoxyCompactList}\small\item\em Set moving right. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_1_1_player_a38d155e7f1b96aead426aada835f324d}{set\+Is\+Moving\+Up}} (bool flag) override
+\begin{DoxyCompactList}\small\item\em Set moving up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_1_1_player_a5cc56292375ea7b486cc4b1d396d3db6}{set\+State}} (\mbox{\hyperlink{class_model_1_1_player_a02f2a249107ac9de5ba115d783df29c9}{Player\+State}} state)
+\begin{DoxyCompactList}\small\item\em Set state of \mbox{\hyperlink{class_model_1_1_player}{Player}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class for \mbox{\hyperlink{class_model_1_1_player}{Player}} object. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_1_1_player_a85b6ad23f853fb2493ae36d81f37311d}\label{class_model_1_1_player_a85b6ad23f853fb2493ae36d81f37311d}} 
+\index{Model::Player@{Model::Player}!getDrag@{getDrag}}
+\index{getDrag@{getDrag}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{getDrag()}{getDrag()}}
+{\footnotesize\ttfamily float Model\+::\+Player\+::get\+Drag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get acceleration. 
+
+\begin{DoxyReturn}{Returns}
+float
+\end{DoxyReturn}
+Get drag \begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_1_1_player_ae2c87c73033d728512a555d707e32163}\label{class_model_1_1_player_ae2c87c73033d728512a555d707e32163}} 
+\index{Model::Player@{Model::Player}!getMaxVelocity@{getMaxVelocity}}
+\index{getMaxVelocity@{getMaxVelocity}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{getMaxVelocity()}{getMaxVelocity()}}
+{\footnotesize\ttfamily float Model\+::\+Player\+::get\+Max\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get direction. 
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$float, float$>$ -\/ current direction of \mbox{\hyperlink{class_model_1_1_player}{Player}}
+\end{DoxyReturn}
+Set direction 
+\begin{DoxyParams}{Parameters}
+{\em direction} & std\+::pair$<$float,float$>$ -\/ new direction of \mbox{\hyperlink{class_model_1_1_player}{Player}}\\
+\hline
+\end{DoxyParams}
+Get max velocity \begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_1_1_player_ac46003606603463b5186658ac85953b5}\label{class_model_1_1_player_ac46003606603463b5186658ac85953b5}} 
+\index{Model::Player@{Model::Player}!getVelocity@{getVelocity}}
+\index{getVelocity@{getVelocity}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{getVelocity()}{getVelocity()}}
+{\footnotesize\ttfamily const std\+::pair$<$ float, float $>$ \& Model\+::\+Player\+::get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get velocity. 
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$float,float$>$ -\/ current velocity of \mbox{\hyperlink{class_model_1_1_player}{Player}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_1_1_player_a70859a376c63291fa57bf8828c23c9ca}\label{class_model_1_1_player_a70859a376c63291fa57bf8828c23c9ca}} 
+\index{Model::Player@{Model::Player}!setDrag@{setDrag}}
+\index{setDrag@{setDrag}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{setDrag()}{setDrag()}}
+{\footnotesize\ttfamily void Model\+::\+Player\+::set\+Drag (\begin{DoxyParamCaption}\item[{float}]{drag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set drag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drag} & float -\/ new drag of \mbox{\hyperlink{class_model_1_1_player}{Player}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_model_1_1_player_a82fe1daa8fecfeebdac235c6fe3bbc2b}\label{class_model_1_1_player_a82fe1daa8fecfeebdac235c6fe3bbc2b}} 
+\index{Model::Player@{Model::Player}!setIsMovingLeft@{setIsMovingLeft}}
+\index{setIsMovingLeft@{setIsMovingLeft}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{setIsMovingLeft()}{setIsMovingLeft()}}
+{\footnotesize\ttfamily void Model\+::\+Player\+::set\+Is\+Moving\+Left (\begin{DoxyParamCaption}\item[{bool}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set moving left. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & bool \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_model_1_1_entity_ad6ba1ebe70f8750c3174b1324dc31cf4}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_player_a5a779643684b806741aaa5f4d25aa769}\label{class_model_1_1_player_a5a779643684b806741aaa5f4d25aa769}} 
+\index{Model::Player@{Model::Player}!setIsMovingRight@{setIsMovingRight}}
+\index{setIsMovingRight@{setIsMovingRight}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{setIsMovingRight()}{setIsMovingRight()}}
+{\footnotesize\ttfamily void Model\+::\+Player\+::set\+Is\+Moving\+Right (\begin{DoxyParamCaption}\item[{bool}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set moving right. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & bool \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_model_1_1_entity_ac173e1a50d3eabfd8df442e103be1b3f}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_player_a38d155e7f1b96aead426aada835f324d}\label{class_model_1_1_player_a38d155e7f1b96aead426aada835f324d}} 
+\index{Model::Player@{Model::Player}!setIsMovingUp@{setIsMovingUp}}
+\index{setIsMovingUp@{setIsMovingUp}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{setIsMovingUp()}{setIsMovingUp()}}
+{\footnotesize\ttfamily void Model\+::\+Player\+::set\+Is\+Moving\+Up (\begin{DoxyParamCaption}\item[{bool}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set moving up. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_model_1_1_entity_afee1a2d7ab6d897c6e586d0598c26acd}{Model\+::\+Entity}}.
+
+\mbox{\Hypertarget{class_model_1_1_player_a5cc56292375ea7b486cc4b1d396d3db6}\label{class_model_1_1_player_a5cc56292375ea7b486cc4b1d396d3db6}} 
+\index{Model::Player@{Model::Player}!setState@{setState}}
+\index{setState@{setState}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}}
+{\footnotesize\ttfamily void Model\+::\+Player\+::set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_player_a02f2a249107ac9de5ba115d783df29c9}{Player\+State}}}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set state of \mbox{\hyperlink{class_model_1_1_player}{Player}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Player\+State -\/ new state of \mbox{\hyperlink{class_model_1_1_player}{Player}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_model_1_1_player_ab9df0088ac8d23b5537984f23d1d01d7}\label{class_model_1_1_player_ab9df0088ac8d23b5537984f23d1d01d7}} 
+\index{Model::Player@{Model::Player}!setVelocity@{setVelocity}}
+\index{setVelocity@{setVelocity}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{setVelocity()}{setVelocity()}}
+{\footnotesize\ttfamily void Model\+::\+Player\+::set\+Velocity (\begin{DoxyParamCaption}\item[{const std\+::pair$<$ float, float $>$ \&}]{velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set velocity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em velocity} & std\+::pair$<$float,float$>$ -\/ new velocity of \mbox{\hyperlink{class_model_1_1_player}{Player}} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/model/Player.\+h\item 
+engine/src/model/Player.\+cpp\end{DoxyCompactItemize}

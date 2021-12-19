@@ -1,0 +1,64 @@
+\hypertarget{_utilities_8h_source}{}\doxysection{Utilities.\+h}
+\label{_utilities_8h_source}\index{engine/include/util/Utilities.h@{engine/include/util/Utilities.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 21/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_COLLISION\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_COLLISION\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}model/Entity.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_utils}{Utils}} \{}
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{class_utils_1_1_utilities}{Utilities}}}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{28         \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_utils_1_1_utilities_aa28e0e4930262a67df94f0b007c0648b}{checkCollision}}(\textcolor{keyword}{const} std::shared\_ptr<Model::Entity>\& l, \textcolor{keyword}{const} std::shared\_ptr<Model::Entity>\& r);}
+\DoxyCodeLine{35         \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_utils_1_1_utilities_aee616f767238455a6be283b988868c72}{checkWeight}}(\textcolor{keywordtype}{float}\& rand, \textcolor{keywordtype}{float} weight);}
+\DoxyCodeLine{42         \textcolor{keyword}{template} <\textcolor{keyword}{class} Type, \textcolor{keyword}{class} Color>}
+\DoxyCodeLine{43         \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_utils_1_1_utilities_aaae68243556ec1bd44ccb509b5fef65f}{setRainbowColor}}(\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Type}}\& \textcolor{keywordtype}{object})}
+\DoxyCodeLine{44         \{}
+\DoxyCodeLine{45                 \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object}.getFillColor().r + 5 <= 255 \&\& \textcolor{keywordtype}{object}.getFillColor().g == 0 \&\&}
+\DoxyCodeLine{46                     \textcolor{keywordtype}{object}.getFillColor().b == 0) \{}
+\DoxyCodeLine{47                         \textcolor{keywordtype}{object}.setFillColor(Color(\textcolor{keywordtype}{object}.getFillColor().r + 5, 0, 0));}
+\DoxyCodeLine{48                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object}.getFillColor().r == 255 \&\& \textcolor{keywordtype}{object}.getFillColor().g + 5 <= 255 \&\&}
+\DoxyCodeLine{49                            \textcolor{keywordtype}{object}.getFillColor().b == 0) \{}
+\DoxyCodeLine{50                         \textcolor{keywordtype}{object}.setFillColor(Color(255, \textcolor{keywordtype}{object}.getFillColor().g + 5, 0));}
+\DoxyCodeLine{51                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object}.getFillColor().r -\/ 5 >= 0 \&\& \textcolor{keywordtype}{object}.getFillColor().g == 255 \&\&}
+\DoxyCodeLine{52                            \textcolor{keywordtype}{object}.getFillColor().b == 0) \{}
+\DoxyCodeLine{53                         \textcolor{keywordtype}{object}.setFillColor(Color(\textcolor{keywordtype}{object}.getFillColor().r -\/ 5, 255, 0));}
+\DoxyCodeLine{54                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object}.getFillColor().r == 0 \&\& \textcolor{keywordtype}{object}.getFillColor().g == 255 \&\&}
+\DoxyCodeLine{55                            \textcolor{keywordtype}{object}.getFillColor().b + 5 <= 255) \{}
+\DoxyCodeLine{56                         \textcolor{keywordtype}{object}.setFillColor(Color(0, 255, \textcolor{keywordtype}{object}.getFillColor().b + 5));}
+\DoxyCodeLine{57                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object}.getFillColor().r == 0 \&\& \textcolor{keywordtype}{object}.getFillColor().g -\/ 5 >= 0 \&\&}
+\DoxyCodeLine{58                            \textcolor{keywordtype}{object}.getFillColor().b == 255) \{}
+\DoxyCodeLine{59                         \textcolor{keywordtype}{object}.setFillColor(Color(0, \textcolor{keywordtype}{object}.getFillColor().g -\/ 5, 255));}
+\DoxyCodeLine{60                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object}.getFillColor().r + 5 <= 255 \&\& \textcolor{keywordtype}{object}.getFillColor().g == 0 \&\&}
+\DoxyCodeLine{61                            \textcolor{keywordtype}{object}.getFillColor().b == 255) \{}
+\DoxyCodeLine{62                         \textcolor{keywordtype}{object}.setFillColor(Color(\textcolor{keywordtype}{object}.getFillColor().r + 5, 0, 255));}
+\DoxyCodeLine{63                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object}.getFillColor().r == 255 \&\& \textcolor{keywordtype}{object}.getFillColor().g == 0 \&\&}
+\DoxyCodeLine{64                            \textcolor{keywordtype}{object}.getFillColor().b -\/ 5 >= 0) \{}
+\DoxyCodeLine{65                         \textcolor{keywordtype}{object}.setFillColor(Color(255, 0, \textcolor{keywordtype}{object}.getFillColor().b -\/ 5));}
+\DoxyCodeLine{66                 \}}
+\DoxyCodeLine{67         \}}
+\DoxyCodeLine{76         \textcolor{keyword}{template} <\textcolor{keyword}{class} Font, \textcolor{keyword}{class} Color, \textcolor{keyword}{class} Text>}
+\DoxyCodeLine{77         \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_utils_1_1_utilities_a61ec8149a8740d8f70f1913e34b68dde}{initText}}(\textcolor{keyword}{const} Font\& font, \textcolor{keyword}{const} Color\& color, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} size, Text\& text,}
+\DoxyCodeLine{78                              \textcolor{keyword}{const} std::string\& setString = \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{79         \{}
+\DoxyCodeLine{80                 text.setFont(font);}
+\DoxyCodeLine{81                 text.setFillColor(color);}
+\DoxyCodeLine{82                 text.setCharacterSize(size);}
+\DoxyCodeLine{83                 text.setString(setString);}
+\DoxyCodeLine{84                 \textcolor{keyword}{const} \textcolor{keyword}{auto} bounds = text.getLocalBounds();}
+\DoxyCodeLine{85                 text.setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);}
+\DoxyCodeLine{86         \}}
+\DoxyCodeLine{87 \};}
+\DoxyCodeLine{88 \} \textcolor{comment}{// namespace Utils}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_COLLISION\_H}}
+
+\end{DoxyCode}

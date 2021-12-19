@@ -16,47 +16,58 @@ SettingState::SettingState(std::shared_ptr<sf::RenderWindow> window, Game& game,
 {
         // Create text
         sf::Text easy;
-        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuSettings),
-                            sf::Color::White, 40, easy, "EASY");
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
+                            40, easy, "EASY");
         sf::Text normal;
-        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuSettings),
-                            sf::Color::White, 40, normal, "NORMAL");
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
+                            40, normal, "NORMAL");
         sf::Text difficult;
-        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuSettings),
-                            sf::Color::White, 40, difficult, "DIFFICULT");
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
+                            40, difficult, "DIFFICULT");
         sf::Text hard;
-        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuSettings),
-                            sf::Color::White, 40, hard, "HARD");
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
+                            40, hard, "HARD");
         sf::Text insane;
-        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuSettings),
-                            sf::Color::White, 40, insane, "INSANE");
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
+                            40, insane, "INSANE");
         sf::Text extreme;
-        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuSettings),
-                            sf::Color::White, 40, extreme, "EXTREME");
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
+                            40, extreme, "EXTREME");
         // Initialize std::vector containing settings
-        mSettings = {easy, normal, difficult, hard, insane, extreme};
+        mSettings = {std::make_unique<sf::Text>(easy),      std::make_unique<sf::Text>(normal),
+                     std::make_unique<sf::Text>(difficult), std::make_unique<sf::Text>(hard),
+                     std::make_unique<sf::Text>(insane),    std::make_unique<sf::Text>(extreme)};
 
         // Highlight selected setting
-        mSettings[diff].setFillColor(sf::Color(204, 46, 30));
+        mSettings[diff]->setFillColor(sf::Color(204, 46, 30));
 
         // Spacing between each setting displayed
         float factor_setting = 1.f;
         // Positioning of setting
         for (auto& i : mSettings) {
-                i.setPosition(mWindow->getView().getCenter().x,
-                              mWindow->getView().getCenter().y * 0.8f * factor_setting);
-                factor_setting += .090f;
+                i->setPosition(mWindow->getView().getCenter().x,
+                               mWindow->getView().getCenter().y * 0.85f * factor_setting);
+                factor_setting += .095f;
         }
+}
+
+void SettingState::render() const
+{
+        mWindow->clear(sf::Color::Black);
+        for (const auto& i : mSettings) {
+                mWindow->draw(*i);
+        }
+        mWindow->display();
 }
 
 void SettingState::update()
 {
         // Set color of every sf::Text setting to white
         for (auto& i : mSettings) {
-                i.setFillColor(sf::Color::White);
+                i->setFillColor(sf::Color::White);
         }
         // Highlight selected setting to RED
-        mSettings[mSelected].setFillColor(sf::Color(204, 46, 30));
+        mSettings[mSelected]->setFillColor(sf::Color(204, 46, 30));
 }
 
 void SettingState::handleInput(sf::Keyboard::Key key, bool isPressed)

@@ -22,21 +22,13 @@ namespace States {
 class SettingState : public State
 {
 private:
-        std::vector<sf::Text> mSettings;
-        unsigned int mSelected;
-
+        std::vector<std::shared_ptr<sf::Text>> mSettings; /**< std::vector containing all different difficulties */
+        unsigned int mSelected;                           /**< unsigned int - selected setting */
 private:
         /**
          * @brief Render state
          */
-        void render() const override
-        {
-                mWindow->clear(sf::Color::Black);
-                for (const auto& i : mSettings) {
-                        mWindow->draw(i);
-                }
-                mWindow->display();
-        }
+        void render() const override;
         /**
          * @brief Update state
          */

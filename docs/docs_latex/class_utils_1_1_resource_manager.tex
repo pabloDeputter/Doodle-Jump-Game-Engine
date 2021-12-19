@@ -1,0 +1,184 @@
+\hypertarget{class_utils_1_1_resource_manager}{}\doxysection{Utils\+::Resource\+Manager Class Reference}
+\label{class_utils_1_1_resource_manager}\index{Utils::ResourceManager@{Utils::ResourceManager}}
+
+
+Class for \mbox{\hyperlink{class_utils_1_1_resource_manager}{Resource\+Manager}} implemented using singleton pattern.  
+
+
+
+
+{\ttfamily \#include $<$Resource\+Manager.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_utils_1_1_resource_manager_a8bccc5aa9917ee0bbd1028f3b5a6ed91}\label{class_utils_1_1_resource_manager_a8bccc5aa9917ee0bbd1028f3b5a6ed91}} 
+{\bfseries $\sim$\+Resource\+Manager} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{class_utils_1_1_resource_manager}{Resource\+Manager}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utils_1_1_resource_manager_a9b626185798cff2e64b47dffe9297c30}\label{class_utils_1_1_resource_manager_a9b626185798cff2e64b47dffe9297c30}} 
+{\bfseries Resource\+Manager} (const \mbox{\hyperlink{class_utils_1_1_resource_manager}{Resource\+Manager}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted copy constructor operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_utils_1_1_resource_manager}{Resource\+Manager}} \& \mbox{\hyperlink{class_utils_1_1_resource_manager_a97aba066a1ffceddd064ae8ef985d6fb}{operator=}} (const \mbox{\hyperlink{class_utils_1_1_resource_manager}{Resource\+Manager}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utils_1_1_resource_manager_a3f8c9175d1da48d89709f20e1d415ce7}{add\+Texture}} (\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} type, const std\+::string \&sub\+Path)
+\begin{DoxyCompactList}\small\item\em Add texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utils_1_1_resource_manager_ad54ad7da02b0702557b650892cc981a1}{add\+Font}} (\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} type, const std\+::string \&sub\+Path)
+\begin{DoxyCompactList}\small\item\em Add font. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utils_1_1_resource_manager_a68a14be7448795c292933cd707bf0930}{add\+Sound}} (\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} type, const std\+::string \&sub\+Path)
+\begin{DoxyCompactList}\small\item\em Add sound. \end{DoxyCompactList}\item 
+const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}}$<$ sf\+::\+Texture $>$ $>$ \& \mbox{\hyperlink{class_utils_1_1_resource_manager_a3f513bbae6872338cf7b9628ee246ea2}{get\+Textures}} () const
+\begin{DoxyCompactList}\small\item\em Get textures. \end{DoxyCompactList}\item 
+const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}}$<$ sf\+::\+Font $>$ $>$ \& \mbox{\hyperlink{class_utils_1_1_resource_manager_aeb55a5b1c3837f4cd829ef4a11b7e4af}{get\+Fonts}} () const
+\begin{DoxyCompactList}\small\item\em Get fonts. \end{DoxyCompactList}\item 
+const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}}$<$ sf\+::\+Sound\+Buffer $>$ $>$ \& \mbox{\hyperlink{class_utils_1_1_resource_manager_af6f9a2ec6391102422b99822e9ceb45c}{get\+Sounds}} () const
+\begin{DoxyCompactList}\small\item\em Get fonts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utils_1_1_resource_manager_a96ee3cfd9ad0dc4db6d582d4672ad784}{set\+Texture}} (\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} type, \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} to\+Set) const
+\item 
+\mbox{\Hypertarget{class_utils_1_1_resource_manager_a8150d8f979e5b4bd6c9f07fe09d1f535}\label{class_utils_1_1_resource_manager_a8150d8f979e5b4bd6c9f07fe09d1f535}} 
+void {\bfseries clear} () const
+\begin{DoxyCompactList}\small\item\em Clear all resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_utils_1_1_resource_manager}{Resource\+Manager}} \& \mbox{\hyperlink{class_utils_1_1_resource_manager_a7a8809ec27403ca1c58944d2d33042cb}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Get instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for \mbox{\hyperlink{class_utils_1_1_resource_manager}{Resource\+Manager}} implemented using singleton pattern. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_utils_1_1_resource_manager_ad54ad7da02b0702557b650892cc981a1}\label{class_utils_1_1_resource_manager_ad54ad7da02b0702557b650892cc981a1}} 
+\index{Utils::ResourceManager@{Utils::ResourceManager}!addFont@{addFont}}
+\index{addFont@{addFont}!Utils::ResourceManager@{Utils::ResourceManager}}
+\doxysubsubsection{\texorpdfstring{addFont()}{addFont()}}
+{\footnotesize\ttfamily void Utils\+::\+Resource\+Manager\+::add\+Font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}}}]{type,  }\item[{const std\+::string \&}]{sub\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add font. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} -\/ key to store resource \\
+\hline
+{\em sub\+Path} & std\+::string -\/ sub path to specific resource \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_utils_1_1_resource_manager_a68a14be7448795c292933cd707bf0930}\label{class_utils_1_1_resource_manager_a68a14be7448795c292933cd707bf0930}} 
+\index{Utils::ResourceManager@{Utils::ResourceManager}!addSound@{addSound}}
+\index{addSound@{addSound}!Utils::ResourceManager@{Utils::ResourceManager}}
+\doxysubsubsection{\texorpdfstring{addSound()}{addSound()}}
+{\footnotesize\ttfamily void Utils\+::\+Resource\+Manager\+::add\+Sound (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}}}]{type,  }\item[{const std\+::string \&}]{sub\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add sound. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} -\/ key to store resource \\
+\hline
+{\em sub\+Path} & std\+::string -\/ sub path to specific resource \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_utils_1_1_resource_manager_a3f8c9175d1da48d89709f20e1d415ce7}\label{class_utils_1_1_resource_manager_a3f8c9175d1da48d89709f20e1d415ce7}} 
+\index{Utils::ResourceManager@{Utils::ResourceManager}!addTexture@{addTexture}}
+\index{addTexture@{addTexture}!Utils::ResourceManager@{Utils::ResourceManager}}
+\doxysubsubsection{\texorpdfstring{addTexture()}{addTexture()}}
+{\footnotesize\ttfamily void Utils\+::\+Resource\+Manager\+::add\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}}}]{type,  }\item[{const std\+::string \&}]{sub\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} -\/ key to store resource \\
+\hline
+{\em sub\+Path} & std\+::string -\/ sub path to specific resource \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_utils_1_1_resource_manager_aeb55a5b1c3837f4cd829ef4a11b7e4af}\label{class_utils_1_1_resource_manager_aeb55a5b1c3837f4cd829ef4a11b7e4af}} 
+\index{Utils::ResourceManager@{Utils::ResourceManager}!getFonts@{getFonts}}
+\index{getFonts@{getFonts}!Utils::ResourceManager@{Utils::ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getFonts()}{getFonts()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}}$<$ sf\+::\+Font $>$ $>$ \& Utils\+::\+Resource\+Manager\+::get\+Fonts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get fonts. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}} -\/ fonts 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_resource_manager_a7a8809ec27403ca1c58944d2d33042cb}\label{class_utils_1_1_resource_manager_a7a8809ec27403ca1c58944d2d33042cb}} 
+\index{Utils::ResourceManager@{Utils::ResourceManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Utils::ResourceManager@{Utils::ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_utils_1_1_resource_manager}{Resource\+Manager}} \& Utils\+::\+Resource\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get instance. 
+
+\begin{DoxyReturn}{Returns}
+Resourcemanager 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_resource_manager_af6f9a2ec6391102422b99822e9ceb45c}\label{class_utils_1_1_resource_manager_af6f9a2ec6391102422b99822e9ceb45c}} 
+\index{Utils::ResourceManager@{Utils::ResourceManager}!getSounds@{getSounds}}
+\index{getSounds@{getSounds}!Utils::ResourceManager@{Utils::ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getSounds()}{getSounds()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}}$<$ sf\+::\+Sound\+Buffer $>$ $>$ \& Utils\+::\+Resource\+Manager\+::get\+Sounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get fonts. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}} -\/ fonts 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_resource_manager_a3f513bbae6872338cf7b9628ee246ea2}\label{class_utils_1_1_resource_manager_a3f513bbae6872338cf7b9628ee246ea2}} 
+\index{Utils::ResourceManager@{Utils::ResourceManager}!getTextures@{getTextures}}
+\index{getTextures@{getTextures}!Utils::ResourceManager@{Utils::ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getTextures()}{getTextures()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}}$<$ sf\+::\+Texture $>$ $>$ \& Utils\+::\+Resource\+Manager\+::get\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get textures. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_utils_1_1_resource_holder}{Resource\+Holder}} -\/ textures 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_resource_manager_a97aba066a1ffceddd064ae8ef985d6fb}\label{class_utils_1_1_resource_manager_a97aba066a1ffceddd064ae8ef985d6fb}} 
+\index{Utils::ResourceManager@{Utils::ResourceManager}!operator=@{operator=}}
+\index{operator=@{operator=}!Utils::ResourceManager@{Utils::ResourceManager}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_utils_1_1_resource_manager}{Resource\+Manager}} \& Utils\+::\+Resource\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_utils_1_1_resource_manager}{Resource\+Manager}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted assignment operator. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_utils_1_1_resource_manager}{Resource\+Manager}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_resource_manager_a96ee3cfd9ad0dc4db6d582d4672ad784}\label{class_utils_1_1_resource_manager_a96ee3cfd9ad0dc4db6d582d4672ad784}} 
+\index{Utils::ResourceManager@{Utils::ResourceManager}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!Utils::ResourceManager@{Utils::ResourceManager}}
+\doxysubsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void Utils\+::\+Resource\+Manager\+::set\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}}}]{type,  }\item[{\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}}}]{to\+Set }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+@briefn Assign one texture to another 
+\begin{DoxyParams}{Parameters}
+{\em type} & \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} -\/ type of texture to change \\
+\hline
+{\em to\+Set} & \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} -\/ type of texture to change will get this one\textquotesingle{}s texture assigned \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/include/util/Resource\+Manager.\+h\end{DoxyCompactItemize}

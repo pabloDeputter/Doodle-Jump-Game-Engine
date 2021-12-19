@@ -1,0 +1,75 @@
+\hypertarget{_shop_state_8h_source}{}\doxysection{Shop\+State.\+h}
+\label{_shop_state_8h_source}\index{game/include/state/ShopState.h@{game/include/state/ShopState.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 19/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_SHOPSTATE\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_SHOPSTATE\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Game.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}Settings.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}State.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{18 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_states}{States}} \{}
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{class_states_1_1_shop_state}{ShopState}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_state}{State}}}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24 \textcolor{keyword}{private}:}
+\DoxyCodeLine{25         \textcolor{keyword}{struct }Item}
+\DoxyCodeLine{26         \{}
+\DoxyCodeLine{27                 std::unique\_ptr<sf::Sprite> mSprite; }
+\DoxyCodeLine{28                 std::unique\_ptr<sf::Sprite> mRectangle; }
+\DoxyCodeLine{29                 std::unique\_ptr<sf::Text> mText; }
+\DoxyCodeLine{33                 Item()}
+\DoxyCodeLine{34                 \{}
+\DoxyCodeLine{35                         mSprite = std::make\_unique<sf::Sprite>();}
+\DoxyCodeLine{36                         mRectangle = std::make\_unique<sf::Sprite>();}
+\DoxyCodeLine{37                         mText = std::make\_unique<sf::Text>();}
+\DoxyCodeLine{38                 \}}
+\DoxyCodeLine{42                 \string~Item() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{47                 \textcolor{keywordtype}{void} draw(\textcolor{keyword}{const} std::shared\_ptr<sf::RenderWindow>\& window)\textcolor{keyword}{ const}}
+\DoxyCodeLine{48 \textcolor{keyword}{                }\{}
+\DoxyCodeLine{49                         window-\/>draw(*mRectangle);}
+\DoxyCodeLine{50                         window-\/>draw(*mSprite);}
+\DoxyCodeLine{51                         window-\/>draw(*mText);}
+\DoxyCodeLine{52                 \}}
+\DoxyCodeLine{57                 \textcolor{keywordtype}{void} setColor(sf::Color color)}
+\DoxyCodeLine{58                 \{}
+\DoxyCodeLine{59                         mText-\/>setFillColor(color);}
+\DoxyCodeLine{60                         \textcolor{keywordflow}{if} (color != sf::Color::White)}
+\DoxyCodeLine{61                         \{}
+\DoxyCodeLine{62                                 mRectangle-\/>setColor(sf::Color(255, 100, 100, 255));}
+\DoxyCodeLine{63                                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{64                         \}}
+\DoxyCodeLine{65                         mRectangle-\/>setColor(sf::Color(255, 255, 255, 255));}
+\DoxyCodeLine{66                 \}}
+\DoxyCodeLine{67         \};}
+\DoxyCodeLine{68 \textcolor{keyword}{private}:}
+\DoxyCodeLine{69         std::pair<unsigned int, unsigned int> mSelected; }
+\DoxyCodeLine{70         std::vector<std::vector<std::shared\_ptr<Item>>> mItems; }
+\DoxyCodeLine{71         std::vector<std::shared\_ptr<sf::Text>> mInfo; }
+\DoxyCodeLine{72 \textcolor{keyword}{private}:}
+\DoxyCodeLine{76         \textcolor{keywordtype}{void} render() \textcolor{keyword}{const override};}
+\DoxyCodeLine{80         \textcolor{keywordtype}{void} update() \textcolor{keyword}{override};}
+\DoxyCodeLine{86         \textcolor{keywordtype}{void} handleInput(sf::Keyboard::Key key, \textcolor{keywordtype}{bool} isPressed);}
+\DoxyCodeLine{90         \textcolor{keywordtype}{void} processEvents() \textcolor{keyword}{override};}
+\DoxyCodeLine{95         [[nodiscard]] \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} eShop; \}}
+\DoxyCodeLine{104         std::shared\_ptr<Item> createItem(\textcolor{keyword}{const} std::string\& text, \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils::Type}} type, \textcolor{keywordtype}{float} factorHorizontal = 1.f, \textcolor{keywordtype}{float} factorVertical = 1.f);}
+\DoxyCodeLine{105 \textcolor{keyword}{public}:}
+\DoxyCodeLine{111         \mbox{\hyperlink{class_states_1_1_shop_state_a72df1b59fcf5084893adb2128460a054}{ShopState}}(std::shared\_ptr<sf::RenderWindow> window, \mbox{\hyperlink{class_game}{Game}}\& game);}
+\DoxyCodeLine{115         \mbox{\hyperlink{class_states_1_1_shop_state_af0b3392ffbd2a5247b7b4b5739760962}{\string~ShopState}}()\textcolor{keyword}{ override}}
+\DoxyCodeLine{116 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{117                 mItems.clear();}
+\DoxyCodeLine{118                 mInfo.clear();}
+\DoxyCodeLine{119         \}}
+\DoxyCodeLine{120 \};}
+\DoxyCodeLine{121 \} \textcolor{comment}{// namespace States}}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_SHOPSTATE\_H}}
+
+\end{DoxyCode}

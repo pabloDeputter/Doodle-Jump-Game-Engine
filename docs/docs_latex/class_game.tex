@@ -1,0 +1,104 @@
+\hypertarget{class_game}{}\doxysection{Game Class Reference}
+\label{class_game}\index{Game@{Game}}
+
+
+Class for \mbox{\hyperlink{class_game}{Game}}.  
+
+
+
+
+{\ttfamily \#include $<$Game.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_a19b33a4d2543265ffc63aa4d3ca20a1b}{Game}} (unsigned int width=800, unsigned int height=1440)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_game}{Game}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a3d09cd0b68ef69107d36360ca903e023}\label{class_game_a3d09cd0b68ef69107d36360ca903e023}} 
+{\bfseries $\sim$\+Game} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{class_game}{Game}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}\label{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}} 
+void {\bfseries run} ()
+\begin{DoxyCompactList}\small\item\em Run main \mbox{\hyperlink{class_game}{Game}} loop. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_factory_1_1_abstract_factory}{Factory\+::\+Abstract\+Factory}} $>$ \& \mbox{\hyperlink{class_game_a1f9cb62eae22a61ad3c1c4e0780e6c03}{get\+Factory}} ()
+\begin{DoxyCompactList}\small\item\em Get factory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a43420379c3014d06b7f971317610c0d6}{push\+State}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_state}{State}} $>$ \&state)
+\begin{DoxyCompactList}\small\item\em Push state onto Game\+States stack. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a4b33dd67adef59bebadba8a234282c88}\label{class_game_a4b33dd67adef59bebadba8a234282c88}} 
+void {\bfseries pop\+State} ()
+\begin{DoxyCompactList}\small\item\em Pop \mbox{\hyperlink{class_state}{State}} from Game\+States stack. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_state}{State}} $>$ \& \mbox{\hyperlink{class_game_a27767a1d60b8eff2fe8f1062e4cce7a5}{peek\+State}} ()
+\begin{DoxyCompactList}\small\item\em Get top of Game\+States stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for \mbox{\hyperlink{class_game}{Game}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_a19b33a4d2543265ffc63aa4d3ca20a1b}\label{class_game_a19b33a4d2543265ffc63aa4d3ca20a1b}} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}\item[{unsigned int}]{width = {\ttfamily 800},  }\item[{unsigned int}]{height = {\ttfamily 1440} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for \mbox{\hyperlink{class_game}{Game}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & unsigned int -\/ width of screen, standard = 800 \\
+\hline
+{\em height} & unsigned int -\/ height of screen, standard = 1440 \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_a1f9cb62eae22a61ad3c1c4e0780e6c03}\label{class_game_a1f9cb62eae22a61ad3c1c4e0780e6c03}} 
+\index{Game@{Game}!getFactory@{getFactory}}
+\index{getFactory@{getFactory}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{getFactory()}{getFactory()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_factory_1_1_abstract_factory}{Factory\+::\+Abstract\+Factory}} $>$ \& Game\+::get\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get factory. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_factory_1_1_abstract_factory}{Factory\+::\+Abstract\+Factory}} -\/ factory 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a27767a1d60b8eff2fe8f1062e4cce7a5}\label{class_game_a27767a1d60b8eff2fe8f1062e4cce7a5}} 
+\index{Game@{Game}!peekState@{peekState}}
+\index{peekState@{peekState}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{peekState()}{peekState()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_state}{State}} $>$ \& Game\+::peek\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get top of Game\+States stack. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_state}{State}} -\/ top of stack 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a43420379c3014d06b7f971317610c0d6}\label{class_game_a43420379c3014d06b7f971317610c0d6}} 
+\index{Game@{Game}!pushState@{pushState}}
+\index{pushState@{pushState}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{pushState()}{pushState()}}
+{\footnotesize\ttfamily void Game\+::push\+State (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_state}{State}} $>$ \&}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Push state onto Game\+States stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{\hyperlink{class_state}{State}} -\/ state to be pushed \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+game/include/Game.\+h\item 
+game/src/Game.\+cpp\end{DoxyCompactItemize}

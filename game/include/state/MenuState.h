@@ -26,11 +26,12 @@ namespace States {
 class MenuState : public State
 {
 private:
-        sf::Sprite mTitle;             /**< sf::Sprite - Title logo */
-        std::vector<sf::Text> mScores; /**< std::vector<sf::Text> - std::vector containing high scores */
+        std::unique_ptr<sf::Sprite> mTitle; /**< sf::Sprite - Title logo */
+        std::vector<std::unique_ptr<sf::Text>>
+            mScores; /**< std::vector<sf::Text> - std::vector containing high scores */
 
-        std::vector<sf::Text> mInfo; /**< std::vector<sf::Text> - std::vector containing info */
-        unsigned int mSelected;      /**< unsigned int - index of selected info */
+        std::vector<std::shared_ptr<sf::Text>> mInfo; /**< std::vector<sf::Text> - std::vector containing info */
+        unsigned int mSelected;                       /**< unsigned int - index of selected info */
 
         unsigned int mIndex; /**< unsigned int - index of new high score that was achieved */
         bool mEnterName;     /**< bool - true if we are entering a name */
@@ -38,7 +39,10 @@ private:
 
         unsigned int mDiff; /**< unsigned int - selected difficulty */
 
-        sf::Sound mSound;
+        std::unique_ptr<sf::Text> mCoinsText; /**< sf::Text - text for coins */
+        int mCoins;                           /**< int - total coins collected */
+
+        std::unique_ptr<sf::Sound> mSound;
 
 private:
         /**
@@ -89,6 +93,11 @@ private:
          * @param diff unsigned int - new difficulty
          */
         void setNewDiff(unsigned int diff) override { mDiff = diff; }
+        /**
+         * @brief Add coins to inventory
+         * @param coins int - coins to be added
+         */
+        virtual void addCoins(int coins) override;
 
 public:
         /**

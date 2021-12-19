@@ -1,0 +1,196 @@
+\hypertarget{_events_8h_source}{}\doxysection{Events.\+h}
+\label{_events_8h_source}\index{engine/include/observer/Events.h@{engine/include/observer/Events.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 08/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_EVENTS\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_EVENTS\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Settings.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// Forward declaration}}
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{17 \textcolor{keyword}{class }Entity;}
+\DoxyCodeLine{18 \textcolor{keyword}{class }Player;}
+\DoxyCodeLine{19 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{24 \textcolor{keyword}{enum class} EventType}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26         OUT\_OF\_VIEW = 0,}
+\DoxyCodeLine{27         DRAW,}
+\DoxyCodeLine{28         NEW\_MAX\_HEIGHT,}
+\DoxyCodeLine{29         COLLISION,}
+\DoxyCodeLine{30         KEY\_PRESSED,}
+\DoxyCodeLine{31         MOVE,}
+\DoxyCodeLine{32         STOP\_BONUS,}
+\DoxyCodeLine{33         NEW\_DIFFICULTY}
+\DoxyCodeLine{34 \};}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{// Forward declaration of different Event}}
+\DoxyCodeLine{37 \textcolor{keyword}{class }\mbox{\hyperlink{class_event}{Event}};}
+\DoxyCodeLine{38 \textcolor{keyword}{class }\mbox{\hyperlink{class_draw_event}{DrawEvent}};}
+\DoxyCodeLine{39 \textcolor{keyword}{class }\mbox{\hyperlink{class_out_of_view_event}{OutOfViewEvent}};}
+\DoxyCodeLine{40 \textcolor{keyword}{class }\mbox{\hyperlink{class_new_max_height_event}{NewMaxHeightEvent}};}
+\DoxyCodeLine{41 \textcolor{keyword}{class }\mbox{\hyperlink{class_collision_event}{CollisionEvent}};}
+\DoxyCodeLine{42 \textcolor{keyword}{class }\mbox{\hyperlink{class_key_pressed_event}{KeyPressedEvent}};}
+\DoxyCodeLine{43 \textcolor{keyword}{class }\mbox{\hyperlink{class_move_event}{MoveEvent}};}
+\DoxyCodeLine{44 \textcolor{keyword}{class }\mbox{\hyperlink{class_stop_bonus_event}{StopBonusEvent}};}
+\DoxyCodeLine{45 \textcolor{keyword}{class }\mbox{\hyperlink{class_new_difficulty_event}{NewDifficultyEvent}};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{50 \textcolor{keyword}{class }\mbox{\hyperlink{class_i_event_handler}{IEventHandler}}}
+\DoxyCodeLine{51 \{}
+\DoxyCodeLine{52 \textcolor{keyword}{public}:}
+\DoxyCodeLine{57         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_event_handler_a94db60a598b86a8f9d068df349658d51}{handleEvent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_event}{Event}}\& event) \{\}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{63         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_event_handler_a2fcdcb645f626ce599612216c4b35bfc}{handleEvent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_draw_event}{DrawEvent}}\& event) \{\}}
+\DoxyCodeLine{68         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_event_handler_a1a3dc79f40ef4e68d3ad99e8fb938e01}{handleEvent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_out_of_view_event}{OutOfViewEvent}}\& event) \{\}}
+\DoxyCodeLine{73         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_event_handler_a4b84758e8cdb843278c80081bebf6530}{handleEvent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_new_max_height_event}{NewMaxHeightEvent}}\& event) \{\}}
+\DoxyCodeLine{78         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_event_handler_a555623e7bf47080604a77ccd7fcad8e1}{handleEvent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_collision_event}{CollisionEvent}}\& event) \{\}}
+\DoxyCodeLine{83         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_event_handler_a7f0bee15a6af48b973e40b384087c185}{handleEvent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_key_pressed_event}{KeyPressedEvent}}\& event) \{\}}
+\DoxyCodeLine{88         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_event_handler_ad0bf8690d729a9265504a51e253887a3}{handleEvent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_move_event}{MoveEvent}}\& event) \{\}}
+\DoxyCodeLine{93         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_event_handler_a6b2ca9f0b2edf130175198807aa2d734}{handleEvent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_stop_bonus_event}{StopBonusEvent}}\& event) \{\}}
+\DoxyCodeLine{98         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_event_handler_a4756d5b35a8b6be968f5c40738908cda}{handleEvent}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_new_difficulty_event}{NewDifficultyEvent}}\& event) \{\}}
+\DoxyCodeLine{99 \};}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{104 \textcolor{keyword}{class }\mbox{\hyperlink{class_event}{Event}}}
+\DoxyCodeLine{105 \{}
+\DoxyCodeLine{106 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{107         EventType \mbox{\hyperlink{class_event_a20b5f3a472f5bca344f4fbae3c735217}{mEvent}}; }
+\DoxyCodeLine{109 \textcolor{keyword}{public}:}
+\DoxyCodeLine{114         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_event_a1779d31d27dd71bff8eaee90fede037d}{Event}}(EventType \mbox{\hyperlink{class_event_a20b5f3a472f5bca344f4fbae3c735217}{mEvent}}) : \mbox{\hyperlink{class_event_a20b5f3a472f5bca344f4fbae3c735217}{mEvent}}(\mbox{\hyperlink{class_event_a20b5f3a472f5bca344f4fbae3c735217}{mEvent}}) \{\}}
+\DoxyCodeLine{118         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_event_a105223995bbf1a1e4714d0c77f91cf0b}{\string~Event}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{123         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a04a3e1df8940aac80356667450cbd2ba}{send}}(\mbox{\hyperlink{class_i_event_handler}{IEventHandler}}\& handler)\textcolor{keyword}{ const }\{ handler.\mbox{\hyperlink{class_i_event_handler_a94db60a598b86a8f9d068df349658d51}{handleEvent}}(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{128         \textcolor{comment}{//        [[maybe\_unused]] [[nodiscard]] EventType getEvent() const \{ return mEvent; \}}}
+\DoxyCodeLine{129 \};}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{134 \textcolor{keyword}{class }\mbox{\hyperlink{class_draw_event}{DrawEvent}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_event}{Event}}}
+\DoxyCodeLine{135 \{}
+\DoxyCodeLine{136 \textcolor{keyword}{private}:}
+\DoxyCodeLine{137         \textcolor{keywordtype}{void} send(\mbox{\hyperlink{class_i_event_handler}{IEventHandler}}\& handler)\textcolor{keyword}{ const override }\{ handler.\mbox{\hyperlink{class_i_event_handler_a94db60a598b86a8f9d068df349658d51}{handleEvent}}(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139 \textcolor{keyword}{public}:}
+\DoxyCodeLine{143         \mbox{\hyperlink{class_draw_event_a4c090c6d106ed45c4086e0261178edf3}{DrawEvent}}() : \mbox{\hyperlink{class_event}{Event}}(EventType::DRAW) \{\}}
+\DoxyCodeLine{144         \mbox{\hyperlink{class_draw_event}{\string~DrawEvent}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{145 \};}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{150 \textcolor{keyword}{class }\mbox{\hyperlink{class_out_of_view_event}{OutOfViewEvent}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_event}{Event}}}
+\DoxyCodeLine{151 \{}
+\DoxyCodeLine{152 \textcolor{keyword}{private}:}
+\DoxyCodeLine{153         \textcolor{keywordtype}{void} send(\mbox{\hyperlink{class_i_event_handler}{IEventHandler}}\& handler)\textcolor{keyword}{ const override }\{ handler.\mbox{\hyperlink{class_i_event_handler_a94db60a598b86a8f9d068df349658d51}{handleEvent}}(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155 \textcolor{keyword}{public}:}
+\DoxyCodeLine{159         \mbox{\hyperlink{class_out_of_view_event_a0202aaec194ac77d525ca77eb2026b91}{OutOfViewEvent}}() : \mbox{\hyperlink{class_event}{Event}}(EventType::OUT\_OF\_VIEW) \{\}}
+\DoxyCodeLine{160         \mbox{\hyperlink{class_out_of_view_event}{\string~OutOfViewEvent}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{161 \};}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{166 \textcolor{keyword}{class }\mbox{\hyperlink{class_new_max_height_event}{NewMaxHeightEvent}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_event}{Event}}}
+\DoxyCodeLine{167 \{}
+\DoxyCodeLine{168 \textcolor{keyword}{private}:}
+\DoxyCodeLine{169         \textcolor{keywordtype}{float} mLastHeight; }
+\DoxyCodeLine{170         \textcolor{keywordtype}{float} mNewHeight;  }
+\DoxyCodeLine{171 \textcolor{keyword}{private}:}
+\DoxyCodeLine{172         \textcolor{keywordtype}{void} send(\mbox{\hyperlink{class_i_event_handler}{IEventHandler}}\& handler)\textcolor{keyword}{ const override }\{ handler.\mbox{\hyperlink{class_i_event_handler_a94db60a598b86a8f9d068df349658d51}{handleEvent}}(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174 \textcolor{keyword}{public}:}
+\DoxyCodeLine{180         \mbox{\hyperlink{class_new_max_height_event_acaf4a3920e7796943ff918cef9304727}{NewMaxHeightEvent}}(\textcolor{keywordtype}{float} lastHeight, \textcolor{keywordtype}{float} newHeight)}
+\DoxyCodeLine{181             : \mbox{\hyperlink{class_event}{Event}}(EventType::NEW\_MAX\_HEIGHT), mLastHeight(lastHeight), mNewHeight(newHeight)}
+\DoxyCodeLine{182         \{}
+\DoxyCodeLine{183         \}}
+\DoxyCodeLine{184         \mbox{\hyperlink{class_new_max_height_event}{\string~NewMaxHeightEvent}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{189         [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_new_max_height_event_abdf023fb94b06a0660bc61a448b2420f}{getLastHeight}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mLastHeight; \}}
+\DoxyCodeLine{194         [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_new_max_height_event_a1df4232667c6f2e0610aca2a31f5b5c3}{getNewHeight}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mNewHeight; \}}
+\DoxyCodeLine{195 \};}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{200 \textcolor{keyword}{class }\mbox{\hyperlink{class_collision_event}{CollisionEvent}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_event}{Event}}}
+\DoxyCodeLine{201 \{}
+\DoxyCodeLine{202 \textcolor{keyword}{private}:}
+\DoxyCodeLine{203         std::shared\_ptr<Model::Entity> mEntity; }
+\DoxyCodeLine{204         std::shared\_ptr<Model::Player> mPlayer; }
+\DoxyCodeLine{205 \textcolor{keyword}{private}:}
+\DoxyCodeLine{206         \textcolor{keywordtype}{void} send(\mbox{\hyperlink{class_i_event_handler}{IEventHandler}}\& handler)\textcolor{keyword}{ const override }\{ handler.\mbox{\hyperlink{class_i_event_handler_a94db60a598b86a8f9d068df349658d51}{handleEvent}}(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208 \textcolor{keyword}{public}:}
+\DoxyCodeLine{214         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_collision_event_a73ab06df83f70d4dee20d0c3a7b42812}{CollisionEvent}}(std::shared\_ptr<Model::Entity> entity, std::shared\_ptr<Model::Player> player)}
+\DoxyCodeLine{215             : \mbox{\hyperlink{class_event}{Event}}(EventType::COLLISION), mEntity(std::move(entity)), mPlayer(std::move(player))}
+\DoxyCodeLine{216         \{}
+\DoxyCodeLine{217         \}}
+\DoxyCodeLine{218         \mbox{\hyperlink{class_collision_event}{\string~CollisionEvent}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{223         [[nodiscard]] \textcolor{keyword}{const} std::shared\_ptr<Model::Entity>\& \mbox{\hyperlink{class_collision_event_a99e8b9718493a30635119d59f7e85da8}{getEntity}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mEntity; \}}
+\DoxyCodeLine{228         [[nodiscard]] \textcolor{keyword}{const} std::shared\_ptr<Model::Player>\& \mbox{\hyperlink{class_collision_event_a9171a16a827420111fb52201aae235c3}{getPlayer}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mPlayer; \}}
+\DoxyCodeLine{229 \};}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{234 \textcolor{keyword}{class }\mbox{\hyperlink{class_key_pressed_event}{KeyPressedEvent}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_event}{Event}}}
+\DoxyCodeLine{235 \{}
+\DoxyCodeLine{236 \textcolor{keyword}{private}:}
+\DoxyCodeLine{237         std::string mKey; }
+\DoxyCodeLine{238         \textcolor{keywordtype}{bool} mIsPressed;  }
+\DoxyCodeLine{239 \textcolor{keyword}{private}:}
+\DoxyCodeLine{240         \textcolor{keywordtype}{void} send(\mbox{\hyperlink{class_i_event_handler}{IEventHandler}}\& handler)\textcolor{keyword}{ const override }\{ handler.\mbox{\hyperlink{class_i_event_handler_a94db60a598b86a8f9d068df349658d51}{handleEvent}}(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{241 }
+\DoxyCodeLine{242 \textcolor{keyword}{public}:}
+\DoxyCodeLine{248         \mbox{\hyperlink{class_key_pressed_event_a79221cbffbd1d2d5d5706d133e84ed28}{KeyPressedEvent}}(std::string key, \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_key_pressed_event_a6efe5fc57301eee46c5ceecd699e61cd}{isPressed}})}
+\DoxyCodeLine{249             : \mbox{\hyperlink{class_event}{Event}}(EventType::KEY\_PRESSED), mKey(std::move(key)), mIsPressed(\mbox{\hyperlink{class_key_pressed_event_a6efe5fc57301eee46c5ceecd699e61cd}{isPressed}})}
+\DoxyCodeLine{250         \{}
+\DoxyCodeLine{251         \}}
+\DoxyCodeLine{252         \mbox{\hyperlink{class_key_pressed_event}{\string~KeyPressedEvent}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{257         [[nodiscard]] \textcolor{keyword}{const} std::string\& \mbox{\hyperlink{class_key_pressed_event_a3d140eda46c99634907696a5d5efb74f}{getKey}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mKey; \}}
+\DoxyCodeLine{262         [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_key_pressed_event_a6efe5fc57301eee46c5ceecd699e61cd}{isPressed}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mIsPressed; \}}
+\DoxyCodeLine{263 \};}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{268 \textcolor{keyword}{class }\mbox{\hyperlink{class_move_event}{MoveEvent}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_event}{Event}}}
+\DoxyCodeLine{269 \{}
+\DoxyCodeLine{270 \textcolor{keyword}{private}:}
+\DoxyCodeLine{271         \textcolor{keywordtype}{bool} mCollided; }
+\DoxyCodeLine{272 \textcolor{keyword}{private}:}
+\DoxyCodeLine{273         \textcolor{keywordtype}{void} send(\mbox{\hyperlink{class_i_event_handler}{IEventHandler}}\& handler)\textcolor{keyword}{ const override }\{ handler.\mbox{\hyperlink{class_i_event_handler_a94db60a598b86a8f9d068df349658d51}{handleEvent}}(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{274 }
+\DoxyCodeLine{275 \textcolor{keyword}{public}:}
+\DoxyCodeLine{280         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_move_event_ab9a458a91230271866f774aec9039455}{MoveEvent}}(\textcolor{keywordtype}{bool} collided) : \mbox{\hyperlink{class_event}{Event}}(EventType::MOVE), mCollided(collided) \{\}}
+\DoxyCodeLine{281         \mbox{\hyperlink{class_move_event}{\string~MoveEvent}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{286         [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_move_event_ae52af8996afac8c06c4876125df6c534}{isCollided}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mCollided; \}}
+\DoxyCodeLine{287 \};}
+\DoxyCodeLine{288 }
+\DoxyCodeLine{292 \textcolor{keyword}{class }\mbox{\hyperlink{class_stop_bonus_event}{StopBonusEvent}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_event}{Event}}}
+\DoxyCodeLine{293 \{}
+\DoxyCodeLine{294 \textcolor{keyword}{private}:}
+\DoxyCodeLine{295         std::shared\_ptr<Model::Entity> mBonus; }
+\DoxyCodeLine{296 \textcolor{keyword}{private}:}
+\DoxyCodeLine{297         \textcolor{keywordtype}{void} send(\mbox{\hyperlink{class_i_event_handler}{IEventHandler}}\& handler)\textcolor{keyword}{ const override }\{ handler.\mbox{\hyperlink{class_i_event_handler_a94db60a598b86a8f9d068df349658d51}{handleEvent}}(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{298 }
+\DoxyCodeLine{299 \textcolor{keyword}{public}:}
+\DoxyCodeLine{304         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_stop_bonus_event_ae6d574eb1242bd551fdf59691d28e244}{StopBonusEvent}}(std::shared\_ptr<Model::Entity> bonus)}
+\DoxyCodeLine{305             : \mbox{\hyperlink{class_event}{Event}}(EventType::STOP\_BONUS), mBonus(std::move(bonus))}
+\DoxyCodeLine{306         \{}
+\DoxyCodeLine{307         \}}
+\DoxyCodeLine{308         \mbox{\hyperlink{class_stop_bonus_event}{\string~StopBonusEvent}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{313         [[nodiscard]] \textcolor{keyword}{const} std::shared\_ptr<Model::Entity>\& \mbox{\hyperlink{class_stop_bonus_event_a219dd0e2d213b2e114f0fb65d234b0f4}{getBonus}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mBonus; \}}
+\DoxyCodeLine{314 \};}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{319 \textcolor{keyword}{class }\mbox{\hyperlink{class_new_difficulty_event}{NewDifficultyEvent}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_event}{Event}}}
+\DoxyCodeLine{320 \{}
+\DoxyCodeLine{321 \textcolor{keyword}{private}:}
+\DoxyCodeLine{322         \mbox{\hyperlink{namespace_settings_ab03c07a7c54964db4b281d86b6a345c2}{Settings::Difficulty}} mDifficulty;}
+\DoxyCodeLine{323 }
+\DoxyCodeLine{324 \textcolor{keyword}{private}:}
+\DoxyCodeLine{325         \textcolor{keywordtype}{void} send(\mbox{\hyperlink{class_i_event_handler}{IEventHandler}}\& handler)\textcolor{keyword}{ const override }\{ handler.\mbox{\hyperlink{class_i_event_handler_a94db60a598b86a8f9d068df349658d51}{handleEvent}}(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{327 \textcolor{keyword}{public}:}
+\DoxyCodeLine{332         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_new_difficulty_event_af4a42c4b9e47843164dfb43be7648b0d}{NewDifficultyEvent}}(\mbox{\hyperlink{namespace_settings_ab03c07a7c54964db4b281d86b6a345c2}{Settings::Difficulty}} difficulty)}
+\DoxyCodeLine{333             : \mbox{\hyperlink{class_event}{Event}}(EventType::NEW\_DIFFICULTY), mDifficulty(difficulty)}
+\DoxyCodeLine{334         \{}
+\DoxyCodeLine{335         \}}
+\DoxyCodeLine{336         \mbox{\hyperlink{class_new_difficulty_event}{\string~NewDifficultyEvent}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{341         [[nodiscard]] \mbox{\hyperlink{namespace_settings_ab03c07a7c54964db4b281d86b6a345c2}{Settings::Difficulty}} \mbox{\hyperlink{class_new_difficulty_event_a608ada314955c278f06e045105a6b6a0}{getDifficulty}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mDifficulty; \}}
+\DoxyCodeLine{342 \};}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{344 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_EVENTS\_H}}
+
+\end{DoxyCode}

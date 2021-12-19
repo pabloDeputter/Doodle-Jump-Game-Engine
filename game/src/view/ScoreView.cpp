@@ -8,6 +8,7 @@
 #include "util/Utilities.h"
 
 using namespace View;
+using namespace Utils;
 
 ScoreView::ScoreView(std::shared_ptr<Model::Score>& entity, const std::shared_ptr<sf::RenderWindow>& window)
     : IView(entity, window)
@@ -20,6 +21,9 @@ ScoreView::ScoreView(std::shared_ptr<Model::Score>& entity, const std::shared_pt
         mScoreText = std::make_unique<sf::Text>();
         mScoreText->setFont(*font);
         mScoreText->setFillColor(sf::Color::Black);
+
+        mCoinsText = std::make_unique<sf::Text>();
+        Utilities::initText(*font, sf::Color::Black, 30, *mCoinsText, "");
 
         mDiffText = std::make_unique<sf::Text>();
         mDiffText->setFont(*font);
@@ -51,6 +55,12 @@ void ScoreView::handleEvent(const DrawEvent& event)
         mScoreText->setPosition(sf::Vector2f(pos.first - bounds.width / 2.f, pos.second));
         // Draw mScoreText
         mWindow->draw(*mScoreText);
+
+        mCoinsText->setString(std::to_string(mEntity->getCoins()));
+        sf::FloatRect boundsCoins = mCoinsText->getLocalBounds();
+        mCoinsText->setPosition(sf::Vector2f(mWindow->getSize().x * 0.95f, mWindow->getSize().y * 0.02f));
+        // Draw mCoinsText
+        mWindow->draw(*mCoinsText);
 
         // Check if difficulty text needs to be displayed
         if (Utils::Stopwatch::getInstance().checkTimer(Model::eScore)) {

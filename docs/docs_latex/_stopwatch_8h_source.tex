@@ -1,0 +1,46 @@
+\hypertarget{_stopwatch_8h_source}{}\doxysection{Stopwatch.\+h}
+\label{_stopwatch_8h_source}\index{engine/include/util/Stopwatch.h@{engine/include/util/Stopwatch.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 14/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_STOPWATCH\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_STOPWATCH\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}model/Entity.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <cfloat>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{18 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_utils}{Utils}} \{}
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}}}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24 \textcolor{keyword}{private}:}
+\DoxyCodeLine{25         std::chrono::high\_resolution\_clock::time\_point mTime; }
+\DoxyCodeLine{26         \textcolor{keywordtype}{float} mDeltaTime; }
+\DoxyCodeLine{27         std::map<Model::Type, std::pair<float, std::chrono::high\_resolution\_clock::time\_point>>}
+\DoxyCodeLine{28             mTimers; }
+\DoxyCodeLine{29 \textcolor{keyword}{public}:}
+\DoxyCodeLine{33         \mbox{\hyperlink{class_utils_1_1_stopwatch_ad8adec7a659a5d2b8655eff555de8773}{Stopwatch}}() : mDeltaTime(0.f) \{\}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{keyword}{public}:}
+\DoxyCodeLine{39         \mbox{\hyperlink{class_utils_1_1_stopwatch_aa35de65d973aeee37c5aca8b43858e1d}{\string~Stopwatch}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{43         \mbox{\hyperlink{class_utils_1_1_stopwatch_aa5fb996ba9294c3fb3b87d2f320caef2}{Stopwatch}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{48         \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}}\& \mbox{\hyperlink{class_utils_1_1_stopwatch_a779f0703719552fbbd7bacf03329c3e2}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{53         \textcolor{keyword}{static} \mbox{\hyperlink{class_utils_1_1_stopwatch}{Stopwatch}}\& \mbox{\hyperlink{class_utils_1_1_stopwatch_ae8cfd6ad5161541a7dc62fe3b3e1ca6b}{getInstance}}();}
+\DoxyCodeLine{57         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_utils_1_1_stopwatch_a788d23d6a15d890a7c433dad7254621c}{start}}() \{ mTime = std::chrono::high\_resolution\_clock::now(); \}}
+\DoxyCodeLine{62         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_utils_1_1_stopwatch_ab807e758c2d027cc226fefc8b6da5cfb}{lap}}();}
+\DoxyCodeLine{67         [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_utils_1_1_stopwatch_ab7b3d6a4e4a81f500532ac4a90f9f803}{getDelta}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mDeltaTime; \}}
+\DoxyCodeLine{71         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_utils_1_1_stopwatch_ae7f0fe3f547e1b28ace1d6d6a4526af9}{reset}}() \{ mTimers.clear(); \}}
+\DoxyCodeLine{77         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_utils_1_1_stopwatch_a5cb30d36025d7dc53c94d7f657cc2a91}{addTimer}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} key, \textcolor{keywordtype}{float} amount);}
+\DoxyCodeLine{83         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_utils_1_1_stopwatch_a08701ca69da36f1f6f92285d36f77a84}{checkTimer}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{84 \};}
+\DoxyCodeLine{85 \} \textcolor{comment}{// namespace Utils}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_STOPWATCH\_H}}
+
+\end{DoxyCode}

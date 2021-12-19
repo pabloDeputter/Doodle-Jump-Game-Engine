@@ -1,0 +1,55 @@
+\hypertarget{_i_view_8h_source}{}\doxysection{IView.\+h}
+\label{_i_view_8h_source}\index{game/include/view/IView.h@{game/include/view/IView.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 19/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_IVIEW\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_IVIEW\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}model/Bonus.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}model/Player.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}util/Camera.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}util/ResourceManager.h"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}observer/Events.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}observer/Observer.h"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{25 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_view}{View}} \{}
+\DoxyCodeLine{29 \textcolor{keyword}{class }\mbox{\hyperlink{class_view_1_1_i_view}{IView}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_observer_1_1_observer}{Observer::Observer}}, \textcolor{keyword}{public} \mbox{\hyperlink{class_i_event_handler}{IEventHandler}}}
+\DoxyCodeLine{30 \{}
+\DoxyCodeLine{31 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{32         std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_view_1_1_i_view_adf9072a4f1b4fb6aa0649c9b8a5719f2}{mEntity}};             }
+\DoxyCodeLine{33         std::unique\_ptr<sf::Sprite> \mbox{\hyperlink{class_view_1_1_i_view_a9c38b5e60c7e47d4c80ef3e5064c602c}{mSprite}};                }
+\DoxyCodeLine{34         std::shared\_ptr<sf::RenderWindow> \mbox{\hyperlink{class_view_1_1_i_view_a8f01dc5df401c030ae42673d6c47b812}{mWindow}};          }
+\DoxyCodeLine{35 \textcolor{keyword}{private}:}
+\DoxyCodeLine{41         \textcolor{keywordtype}{void} onTrigger(EventType type, \textcolor{keyword}{const} std::shared\_ptr<Event>\& event)\textcolor{keyword}{ override }\{ \textcolor{keyword}{event}-\/>send(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{46         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_draw_event}{DrawEvent}}\& event) \textcolor{keyword}{override};}
+\DoxyCodeLine{51         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_out_of_view_event}{OutOfViewEvent}}\& event) \textcolor{keyword}{override};}
+\DoxyCodeLine{56         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_collision_event}{CollisionEvent}}\& event)\textcolor{keyword}{ override }\{\}}
+\DoxyCodeLine{61         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_new_difficulty_event}{NewDifficultyEvent}}\& event)\textcolor{keyword}{ override }\{\}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63         \textcolor{comment}{//        void handleEvent(const MoveEvent \&event) override \{\}}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{keyword}{public}:}
+\DoxyCodeLine{71         \mbox{\hyperlink{class_view_1_1_i_view_ab7332ce60e17e48192d3ff676dcacb32}{IView}}(\textcolor{keyword}{const} std::shared\_ptr<Model::Entity>\& entity, \textcolor{keyword}{const} std::shared\_ptr<sf::RenderWindow>\& window)}
+\DoxyCodeLine{72         \{}
+\DoxyCodeLine{73                 \mbox{\hyperlink{class_view_1_1_i_view_adf9072a4f1b4fb6aa0649c9b8a5719f2}{mEntity}} = entity;}
+\DoxyCodeLine{74                 \mbox{\hyperlink{class_view_1_1_i_view_a8f01dc5df401c030ae42673d6c47b812}{mWindow}} = window;}
+\DoxyCodeLine{75                 \mbox{\hyperlink{class_view_1_1_i_view_a9c38b5e60c7e47d4c80ef3e5064c602c}{mSprite}} = std::make\_unique<sf::Sprite>();}
+\DoxyCodeLine{76         \}}
+\DoxyCodeLine{80         \mbox{\hyperlink{class_view_1_1_i_view_ab0c65d6e38cc7fd490897ac6750c4044}{\string~IView}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{81 \};}
+\DoxyCodeLine{82 \} \textcolor{comment}{// namespace View}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_IVIEW\_H}}
+
+\end{DoxyCode}

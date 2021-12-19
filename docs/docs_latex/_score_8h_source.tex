@@ -1,0 +1,42 @@
+\hypertarget{_score_8h_source}{}\doxysection{Score.\+h}
+\label{_score_8h_source}\index{engine/include/model/Score.h@{engine/include/model/Score.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 07/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_SCORE\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_SCORE\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}model/Entity.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}observer/Events.h"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}observer/Subject.h"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{17 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_score}{Score}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_model_1_1_entity}{Entity}}, \textcolor{keyword}{public} \mbox{\hyperlink{class_observer_1_1_observer}{Observer::Observer}}, \textcolor{keyword}{public} \mbox{\hyperlink{class_i_event_handler}{IEventHandler}}}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23 \textcolor{keyword}{private}:}
+\DoxyCodeLine{24         std::weak\_ptr<Model::Entity> mLastCollision; }
+\DoxyCodeLine{25         \textcolor{keywordtype}{int} mCoins; }
+\DoxyCodeLine{26 \textcolor{keyword}{private}:}
+\DoxyCodeLine{32         \textcolor{keywordtype}{void} onTrigger(EventType type, \textcolor{keyword}{const} std::shared\_ptr<Event>\& event)\textcolor{keyword}{ override }\{ \textcolor{keyword}{event}-\/>send(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{37         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_new_max_height_event}{NewMaxHeightEvent}}\& event) \textcolor{keyword}{override};}
+\DoxyCodeLine{42         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_collision_event}{CollisionEvent}}\& event) \textcolor{keyword}{override};}
+\DoxyCodeLine{47         [[nodiscard]] \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} Model::eScore; \}}
+\DoxyCodeLine{52         \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{bool} collision)\textcolor{keyword}{ override }\{\}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keyword}{public}:}
+\DoxyCodeLine{58         \mbox{\hyperlink{class_model_1_1_score_a1401e4ff109d43ddcfb2ed405e91d4ac}{Score}}() : mCoins(0) \{\}}
+\DoxyCodeLine{62         \mbox{\hyperlink{class_model_1_1_score_a792855a0b9ab6871a21860e9046c20c2}{\string~Score}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{67         [[nodiscard]] \textcolor{keywordtype}{int} \mbox{\hyperlink{class_model_1_1_score_a86759bc31a8aa208bba4859b922c647f}{getScore}}()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_model_1_1_entity_af20a215eb2577b7bf98c08fba32db414}{mScore}}; \}}
+\DoxyCodeLine{72         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_score_a267864dde6af13f0ff1581ca4ac2649d}{setScore}}(\textcolor{keywordtype}{int} score)\textcolor{keyword}{ override }\{ \mbox{\hyperlink{class_model_1_1_entity_af20a215eb2577b7bf98c08fba32db414}{Score::mScore}} += score; \}}
+\DoxyCodeLine{77         [[nodiscard]] \textcolor{keywordtype}{int} \mbox{\hyperlink{class_model_1_1_score_a7bf44022f30592395cd7b74f9b8339b2}{getCoins}}()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} mCoins; \}}
+\DoxyCodeLine{78 \};}
+\DoxyCodeLine{79 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_SCORE\_H}}
+
+\end{DoxyCode}

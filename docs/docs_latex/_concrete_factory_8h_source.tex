@@ -1,0 +1,62 @@
+\hypertarget{_concrete_factory_8h_source}{}\doxysection{Concrete\+Factory.\+h}
+\label{_concrete_factory_8h_source}\index{game/include/ConcreteFactory.h@{game/include/ConcreteFactory.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 21/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_CONCRETEFACTORY\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_CONCRETEFACTORY\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}AbstractFactory.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}model/Background.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}model/HorizontalPlatform.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}model/Jetpack.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}model/Player.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}model/Score.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}model/Spring.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}model/Coin.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}model/StaticPlatform.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}model/TemporaryPlatform.h"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}model/VerticalPlatform.h"{}}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}controller/BonusController.h"{}}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include "{}controller/PlatformController.h"{}}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include "{}controller/PlayerController.h"{}}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include "{}view/BackgroundView.h"{}}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}view/BonusView.h"{}}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include "{}view/IView.h"{}}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include "{}view/PlatformView.h"{}}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include "{}view/PlayerView.h"{}}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include "{}view/ScoreView.h"{}}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{37 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_factory}{Factory}} \{}
+\DoxyCodeLine{41 \textcolor{keyword}{class }\mbox{\hyperlink{class_factory_1_1_concrete_factory}{ConcreteFactory}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_factory_1_1_abstract_factory}{Factory::AbstractFactory}}}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43 \textcolor{keyword}{private}:}
+\DoxyCodeLine{44         std::shared\_ptr<sf::RenderWindow> mWindow; }
+\DoxyCodeLine{45 \textcolor{keyword}{public}:}
+\DoxyCodeLine{49         \mbox{\hyperlink{class_factory_1_1_concrete_factory_abfa4792dd8f2e0412d744adc20964601}{ConcreteFactory}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{54         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_factory_1_1_concrete_factory_af52d2b57ae2cd2350820997f9676c73d}{ConcreteFactory}}(\textcolor{keyword}{const} std::shared\_ptr<sf::RenderWindow>\& window) : mWindow(window) \{\}}
+\DoxyCodeLine{58         \mbox{\hyperlink{class_factory_1_1_concrete_factory_ac6d97686180d4371c7fb5275e1e7b252}{\string~ConcreteFactory}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{63         std::shared\_ptr<Model::Player> \mbox{\hyperlink{class_factory_1_1_concrete_factory_a299b1c16908fccbe332fb66d775fd90a}{createPlayer}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{68         std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_concrete_factory_a12e4ce3e73459240cb8199a531b528ef}{createStaticPlatform}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{73         std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_concrete_factory_ae8fff536172b42028fe57165661a46d0}{createHorizontalPlatform}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{78         std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_concrete_factory_a8035cca478499efb4a9836c47b654f48}{createVerticalPlatform}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{83         std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_concrete_factory_ae4874cb96174e69a7f5a2d42a181f10d}{createTemporaryPlatform}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{88         std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_concrete_factory_a04cc4f3bc7c8201bf9f0316b370b4db3}{createSpring}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{93         std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_concrete_factory_a7cfb732fb75e5b5e811fefc03ed295a1}{createJetpack}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{98         std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_concrete_factory_a04be6304f20e50e7af657c19bfda1576}{createBackground}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{103         std::shared\_ptr<Model::Score> \mbox{\hyperlink{class_factory_1_1_concrete_factory_acbbd7ca51f4d3e35fce7abf27b4b5976}{createScore}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{108         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_concrete_factory_aa827828a16aa1e960ddf8a5bafc1a551}{createCoin}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{109 \};}
+\DoxyCodeLine{110 \} \textcolor{comment}{// namespace View}}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_CONCRETEFACTORY\_H}}
+
+\end{DoxyCode}

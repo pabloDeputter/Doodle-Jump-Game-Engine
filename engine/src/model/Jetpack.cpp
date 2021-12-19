@@ -21,7 +21,7 @@ void Jetpack::visit(Model::Player& player)
                 return;
         }
         // Add countdown timer for Jetpack Bonus
-        Utils::Stopwatch::getInstance().addTimer(Model::eJetpack, 1.f);
+        Utils::Stopwatch::getInstance().addTimer(Model::eJetpack, 4.5f);
         // Set state of Player to flying and decrease drag
         player.setState(Player::eFlying);
         player.setDrag(0.003f);

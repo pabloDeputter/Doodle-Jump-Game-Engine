@@ -1,0 +1,33 @@
+\hypertarget{_jetpack_8h_source}{}\doxysection{Jetpack.\+h}
+\label{_jetpack_8h_source}\index{engine/include/model/Jetpack.h@{engine/include/model/Jetpack.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 06/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_JETPACK\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_JETPACK\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Bonus.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}Player.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_jetpack}{Jetpack}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_model_1_1_bonus}{Bonus}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20 \textcolor{keyword}{private}:}
+\DoxyCodeLine{25         \textcolor{keywordtype}{void} visit(\mbox{\hyperlink{class_model_1_1_player}{Model::Player}}\& player) \textcolor{keyword}{override};}
+\DoxyCodeLine{30         [[nodiscard]] \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} Model::eJetpack; \}}
+\DoxyCodeLine{35         [[nodiscard]] \textcolor{keywordtype}{bool} isRemovable() \textcolor{keyword}{const override};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{keyword}{public}:}
+\DoxyCodeLine{43         \mbox{\hyperlink{class_model_1_1_jetpack_a4a0a5989134a93f94a12ec2d47515364}{Jetpack}}(\textcolor{keywordtype}{int} score, \textcolor{keywordtype}{bool} started) : \mbox{\hyperlink{class_model_1_1_bonus}{Bonus}}(score, started) \{\}}
+\DoxyCodeLine{48         \mbox{\hyperlink{class_model_1_1_jetpack_af03fba30ecf8dbb4c3763fcd819147a9}{Jetpack}}() : \mbox{\hyperlink{class_model_1_1_bonus}{Bonus}}(25, false) \{\}}
+\DoxyCodeLine{53         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_model_1_1_jetpack_acd94aeacbff4062c06d41bb98008de9f}{Jetpack}}(\textcolor{keywordtype}{bool} started) : \mbox{\hyperlink{class_model_1_1_bonus}{Bonus}}(started) \{\}}
+\DoxyCodeLine{57         \mbox{\hyperlink{class_model_1_1_jetpack_ac77f0efa7eea64ef64cf1fd951fc40e4}{\string~Jetpack}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{58 \};}
+\DoxyCodeLine{59 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_JETPACK\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,87 @@
+\hypertarget{class_utils_1_1_random}{}\doxysection{Utils\+::Random Class Reference}
+\label{class_utils_1_1_random}\index{Utils::Random@{Utils::Random}}
+
+
+Class for \mbox{\hyperlink{class_utils_1_1_random}{Random}} implemented using singleton pattern.  
+
+
+
+
+{\ttfamily \#include $<$Random.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_utils_1_1_random_acf15388839a8bab9ab99e67bc6b91ea8}\label{class_utils_1_1_random_acf15388839a8bab9ab99e67bc6b91ea8}} 
+{\bfseries $\sim$\+Random} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor for \mbox{\hyperlink{class_utils_1_1_random}{Random}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utils_1_1_random_a827f3ae65d05a46dac990445857307d2}\label{class_utils_1_1_random_a827f3ae65d05a46dac990445857307d2}} 
+{\bfseries Random} (const \mbox{\hyperlink{class_utils_1_1_random}{Random}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_utils_1_1_random}{Random}} \& \mbox{\hyperlink{class_utils_1_1_random_afdae55cfeb53ec6f35f7fc422a53f9c9}{operator=}} (const \mbox{\hyperlink{class_utils_1_1_random}{Random}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted assignment operator. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_utils_1_1_random_ae2398e09da5b92e0abe0cfc54cff61eb}{random}} (float a, float b)
+\begin{DoxyCompactList}\small\item\em Get random float in given interval. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_utils_1_1_random}{Random}} \& \mbox{\hyperlink{class_utils_1_1_random_a2aa30d2f678fc76f75efc60356c6ea4d}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Get instance of \mbox{\hyperlink{class_utils_1_1_random}{Random}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for \mbox{\hyperlink{class_utils_1_1_random}{Random}} implemented using singleton pattern. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_utils_1_1_random_a2aa30d2f678fc76f75efc60356c6ea4d}\label{class_utils_1_1_random_a2aa30d2f678fc76f75efc60356c6ea4d}} 
+\index{Utils::Random@{Utils::Random}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Utils::Random@{Utils::Random}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_utils_1_1_random}{Random}} \& Random\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get instance of \mbox{\hyperlink{class_utils_1_1_random}{Random}}. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_utils_1_1_random}{Random}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_random_afdae55cfeb53ec6f35f7fc422a53f9c9}\label{class_utils_1_1_random_afdae55cfeb53ec6f35f7fc422a53f9c9}} 
+\index{Utils::Random@{Utils::Random}!operator=@{operator=}}
+\index{operator=@{operator=}!Utils::Random@{Utils::Random}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_utils_1_1_random}{Random}} \& Utils\+::\+Random\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_utils_1_1_random}{Random}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted assignment operator. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_utils_1_1_random}{Random}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_utils_1_1_random_ae2398e09da5b92e0abe0cfc54cff61eb}\label{class_utils_1_1_random_ae2398e09da5b92e0abe0cfc54cff61eb}} 
+\index{Utils::Random@{Utils::Random}!random@{random}}
+\index{random@{random}!Utils::Random@{Utils::Random}}
+\doxysubsubsection{\texorpdfstring{random()}{random()}}
+{\footnotesize\ttfamily float Random\+::random (\begin{DoxyParamCaption}\item[{float}]{a,  }\item[{float}]{b }\end{DoxyParamCaption})}
+
+
+
+Get random float in given interval. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & float -\/ begin interval \\
+\hline
+{\em b} & float -\/ end interval \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/util/Random.\+h\item 
+engine/src/util/Random.\+cpp\end{DoxyCompactItemize}

@@ -30,6 +30,7 @@ void PlayState::update()
         // If Player is dead
         if (!mWorld->isPlaying()) {
                 const int score = mWorld->getScore()->getScore();
+                const int coins = mWorld->getScore()->getCoins();
                 // Push ePlayState off gameState stack
                 mGame.popState();
                 // Add score to HighScore buffer if it is a new high score and switch game state
@@ -39,6 +40,7 @@ void PlayState::update()
                         HighScore::getInstance().add(score);
                         mGame.peekState()->newHighScore();
                 }
+                mGame.peekState()->addCoins(coins);
         }
 }
 

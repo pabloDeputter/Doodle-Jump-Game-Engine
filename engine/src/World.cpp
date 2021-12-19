@@ -99,6 +99,8 @@ void World::update()
 
                         // Move Entity with event payload that there was a collision between Entity and Player
                         i->trigger(EventType::MOVE, std::make_shared<MoveEvent>(collided));
+                        // TODO - specific??? ubuntu pure virtula
+                        i->trigger(EventType::COLLISION, std::make_shared<CollisionEvent>(i, mPlayer));
                 }
                 // If there is no collision between Entity and Player we just move the Entity
                 else {
@@ -214,7 +216,7 @@ void World::spawnPlatform(float x, float y)
 
 void World::spawnBonus(float x, float y)
 {
-        float sum = CHANCE_SPRING + CHANCE_JETPACK;
+        float sum = CHANCE_SPRING + CHANCE_JETPACK + CHANCE_COIN;
         // Get random value between [0, 1]
         float rand = Utils::Random::getInstance().random(0.f, sum);
 
@@ -223,6 +225,8 @@ void World::spawnBonus(float x, float y)
                 spawnEntity(x, y, Model::eSpring);
         } else if (Utils::Utilities::checkWeight(rand, CHANCE_JETPACK)) {
                 spawnEntity(x, y, Model::eJetpack);
+        } else if (Utils::Utilities::checkWeight(rand, CHANCE_COIN)) {
+                spawnEntity(x, y, Model::eCoin);
         }
         // Dead weight, can normally not happen --> Create Spring
         else {
@@ -254,6 +258,9 @@ void World::spawnEntity(float x, float y, Model::Type type)
                 break;
         case Model::eSpring:
                 entity = mFactory->createSpring();
+                break;
+        case Model::eCoin:
+                entity = mFactory->createCoin();
                 break;
         // Otherwise error
         case Model::ePlayer:
@@ -288,7 +295,7 @@ bool World::checkDifficulty()
         // Lambda function to check if new Difficulty can be set
         auto setDifficulty = [this](const float min, const float max, const float height,
                                     Settings::Difficulty diff) -> bool {
-                if (height > min && height <= max && mDifficulty != diff) {
+                if (height > min && height <= max && mDifficulty != diff && mDifficulty < diff) {
                         mDifficulty = diff;
                         return Settings::setDifficulty(diff);
                 }

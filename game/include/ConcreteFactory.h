@@ -8,6 +8,7 @@
 #include "AbstractFactory.h"
 
 #include "model/Background.h"
+#include "model/Coin.h"
 #include "model/HorizontalPlatform.h"
 #include "model/Jetpack.h"
 #include "model/Player.h"
@@ -100,6 +101,11 @@ public:
          * @return Model::Entity - pointer to Entity
          */
         std::shared_ptr<Model::Score> createScore() override;
+        /**
+         * @brief Create Coin object
+         * @return Model::Entity - pointer to Entity
+         */
+        virtual std::shared_ptr<Model::Entity> createCoin() override;
 };
 } // namespace View
 

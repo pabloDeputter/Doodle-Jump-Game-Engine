@@ -1,0 +1,62 @@
+\hypertarget{_camera_8h_source}{}\doxysection{Camera.\+h}
+\label{_camera_8h_source}\index{engine/include/util/Camera.h@{engine/include/util/Camera.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 19/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_CAMERA\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_CAMERA\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}observer/Subject.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_utils}{Utils}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{class_utils_1_1_camera}{Camera}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_observer_1_1_subject}{Observer::Subject}}}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22 \textcolor{keyword}{private}:}
+\DoxyCodeLine{23         \textcolor{keywordtype}{float} mWorldLeft;   }
+\DoxyCodeLine{24         \textcolor{keywordtype}{float} mWorldRight;  }
+\DoxyCodeLine{25         \textcolor{keywordtype}{float} mWorldTop;    }
+\DoxyCodeLine{26         \textcolor{keywordtype}{float} mWorldBottom; }
+\DoxyCodeLine{28         \textcolor{keywordtype}{float} mWindowLeft;   }
+\DoxyCodeLine{29         \textcolor{keywordtype}{float} mWindowRight;  }
+\DoxyCodeLine{30         \textcolor{keywordtype}{float} mWindowTop;    }
+\DoxyCodeLine{31         \textcolor{keywordtype}{float} mWindowBottom; }
+\DoxyCodeLine{33         \textcolor{keywordtype}{float} mCameraX; }
+\DoxyCodeLine{34         \textcolor{keywordtype}{float} mCameraY; }
+\DoxyCodeLine{36         \textcolor{keywordtype}{float} mLastMaxHeight; }
+\DoxyCodeLine{37         \textcolor{keywordtype}{float} mMaxHeight;     }
+\DoxyCodeLine{42         \mbox{\hyperlink{class_utils_1_1_camera}{Camera}}()}
+\DoxyCodeLine{43             : mWorldLeft(0.f), mWorldRight(0.f), mWorldTop(0.f), mWorldBottom(0.f), mWindowLeft(0.f), mWindowRight(0.f),}
+\DoxyCodeLine{44               mWindowTop(0.f), mWindowBottom(0.f), mCameraX(0.f), mCameraY(0.f), mLastMaxHeight(0.f), mMaxHeight(0.f)}
+\DoxyCodeLine{45         \{}
+\DoxyCodeLine{46         \}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{keyword}{public}:}
+\DoxyCodeLine{52         \mbox{\hyperlink{class_utils_1_1_camera_a1933e6cfdab4375d81665e4541ee3a8d}{\string~Camera}}()\textcolor{keyword}{ override }\{ \mbox{\hyperlink{class_observer_1_1_subject_a7c2fc9a2e17121ba8c73e50fd47374cd}{Observer::Subject::clear}}(); \}}
+\DoxyCodeLine{56         \mbox{\hyperlink{class_utils_1_1_camera_aae9aaa8d8b6ae2474dd20481196af63d}{Camera}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_utils_1_1_camera}{Camera}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{61         \mbox{\hyperlink{class_utils_1_1_camera}{Camera}}\& \mbox{\hyperlink{class_utils_1_1_camera_a26e17c57af42719c8ec87c473bb95427}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_utils_1_1_camera}{Camera}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{66         \textcolor{keyword}{static} \mbox{\hyperlink{class_utils_1_1_camera}{Camera}}\& \mbox{\hyperlink{class_utils_1_1_camera_aa84baebe5d771ddfd82a5b55bd3fde39}{getInstance}}();}
+\DoxyCodeLine{70         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_utils_1_1_camera_a02be8aa0dbef77e02dddc715a726fb67}{reset}}();}
+\DoxyCodeLine{75         [[nodiscard]] std::pair<float, float> \mbox{\hyperlink{class_utils_1_1_camera_a569ec5e0a5d79fb46cf7eab2c78df9d9}{getWorldDimensions}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \{mWorldRight, mWorldTop\}; \}}
+\DoxyCodeLine{83         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_utils_1_1_camera_ac19167645734b0290f614e3a2c6b494e}{setWorldDimensions}}(\textcolor{keywordtype}{float} right, \textcolor{keywordtype}{float} top, \textcolor{keywordtype}{float} left = 0.f, \textcolor{keywordtype}{float} bottom = 0.f);}
+\DoxyCodeLine{88         [[nodiscard]] std::pair<float, float> \mbox{\hyperlink{class_utils_1_1_camera_a6ffecbc62f72960047bb02d10b9064f9}{getWindowDimensions}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \{mWindowRight, mWindowBottom\}; \}}
+\DoxyCodeLine{96         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_utils_1_1_camera_a653ccdaf5aaf6c6421ed5d96a889da5b}{setWindowDimensions}}(\textcolor{keywordtype}{float} right, \textcolor{keywordtype}{float} bottom, \textcolor{keywordtype}{float} left = 0.f, \textcolor{keywordtype}{float} top = 0.f);}
+\DoxyCodeLine{103         [[nodiscard]] std::pair<float, float> \mbox{\hyperlink{class_utils_1_1_camera_a182c811e6f8b6779e3bb66e46608d44e}{transform}}(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} left = 0.f, \textcolor{keywordtype}{float} top = 0.f) \textcolor{keyword}{const};}
+\DoxyCodeLine{110         [[nodiscard]] std::pair<float, float> \mbox{\hyperlink{class_utils_1_1_camera_a2a924f585d5d0dfc494e7b493cc63669}{inverseTransform}}(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y) \textcolor{keyword}{const};}
+\DoxyCodeLine{116         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_utils_1_1_camera_ae05729c1de90c268d78a03f7c0dbd3e9}{move}}(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y);}
+\DoxyCodeLine{121         \textcolor{comment}{//        [[maybe\_unused]] [[nodiscard]] float getX() const \{ return mCameraX; \}}}
+\DoxyCodeLine{126 \textcolor{comment}{}        [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_utils_1_1_camera_a8dbcb2f67360e39568de4c1cd2a4e136}{getY}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mCameraY; \}}
+\DoxyCodeLine{131         [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_utils_1_1_camera_a0964963bd1a3a09e293693fe1953811e}{getMaxHeight}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mMaxHeight; \}}
+\DoxyCodeLine{136         \textcolor{comment}{//        [[maybe\_unused]] [[nodiscard]] float getLastMaxHeight() const \{ return mLastMaxHeight; \}}}
+\DoxyCodeLine{142 \textcolor{comment}{}        \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_utils_1_1_camera_ad640a8e71db1cc3d7d05ec27e534643a}{isMaxHeight}}(\textcolor{keywordtype}{float} height);}
+\DoxyCodeLine{143 \};}
+\DoxyCodeLine{144 \} \textcolor{comment}{// namespace Utils}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_CAMERA\_H}}
+
+\end{DoxyCode}

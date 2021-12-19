@@ -1,0 +1,42 @@
+\hypertarget{_subject_8h_source}{}\doxysection{Subject.\+h}
+\label{_subject_8h_source}\index{engine/include/observer/Subject.h@{engine/include/observer/Subject.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 14/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_SUBJECT\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_SUBJECT\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Observer.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{17 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_observer}{Observer}} \{}
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{class_observer_1_1_subject}{Subject}}}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{24         std::vector<std::shared\_ptr<Observer>> \mbox{\hyperlink{class_observer_1_1_subject_a154c6a733eb1c5d2982eadea83f9593b}{mObservers}}; }
+\DoxyCodeLine{25 \textcolor{keyword}{public}:}
+\DoxyCodeLine{29         \mbox{\hyperlink{class_observer_1_1_subject_a5a7bfe1e229eb167379eb8de0854f992}{Subject}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{33         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_observer_1_1_subject_a5527a1dcd0cd3572a1451da34df90ffb}{\string~Subject}}() \{ \mbox{\hyperlink{class_observer_1_1_subject_a154c6a733eb1c5d2982eadea83f9593b}{mObservers}}.clear(); \}}
+\DoxyCodeLine{38         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_observer_1_1_subject_ab638a92272921ec5645f5b8c20fb906c}{add}}(\textcolor{keyword}{const} std::shared\_ptr<Observer>\& observer) \{ \mbox{\hyperlink{class_observer_1_1_subject_a154c6a733eb1c5d2982eadea83f9593b}{mObservers}}.emplace\_back(observer); \}}
+\DoxyCodeLine{43         [[nodiscard]] \textcolor{keyword}{const} std::vector<std::shared\_ptr<Observer>>\& \mbox{\hyperlink{class_observer_1_1_subject_af6d3e7062fc5aefa6d878ef5d9cc9327}{getObservers}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_observer_1_1_subject_a154c6a733eb1c5d2982eadea83f9593b}{mObservers}}; \}}
+\DoxyCodeLine{47         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_observer_1_1_subject_a7c2fc9a2e17121ba8c73e50fd47374cd}{clear}}() \{ \mbox{\hyperlink{class_observer_1_1_subject_a154c6a733eb1c5d2982eadea83f9593b}{mObservers}}.clear(); \}}
+\DoxyCodeLine{51         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_observer_1_1_subject_a7588781632ff0fde93ad003b002d28a5}{trigger}}(EventType type, \textcolor{keyword}{const} std::shared\_ptr<Event>\& event)\textcolor{keyword}{ const}}
+\DoxyCodeLine{52 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{53                 \textcolor{comment}{// Traverse registered observers}}
+\DoxyCodeLine{54                 \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& i : \mbox{\hyperlink{class_observer_1_1_subject_a154c6a733eb1c5d2982eadea83f9593b}{mObservers}}) \{}
+\DoxyCodeLine{55                         \textcolor{comment}{// Trigger event}}
+\DoxyCodeLine{56                         i-\/>onTrigger(type, event);}
+\DoxyCodeLine{57                 \}}
+\DoxyCodeLine{58         \}}
+\DoxyCodeLine{59 \};}
+\DoxyCodeLine{60 \} \textcolor{comment}{// namespace Observer}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_SUBJECT\_H}}
+
+\end{DoxyCode}

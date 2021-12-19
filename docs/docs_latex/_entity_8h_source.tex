@@ -1,0 +1,79 @@
+\hypertarget{_entity_8h_source}{}\doxysection{Entity.\+h}
+\label{_entity_8h_source}\index{engine/include/model/Entity.h@{engine/include/model/Entity.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 13/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ENTITY\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ENTITY\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}util/Camera.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}observer/IVisitor.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}observer/Subject.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{enum} \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Type}}}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22         ePlayer = 0,}
+\DoxyCodeLine{23         eBonus,}
+\DoxyCodeLine{24         eStatic,}
+\DoxyCodeLine{25         eHorizontal,}
+\DoxyCodeLine{26         eVertical,}
+\DoxyCodeLine{27         eTemporary,}
+\DoxyCodeLine{28         eBackground,}
+\DoxyCodeLine{29         eJetpack,}
+\DoxyCodeLine{30         eSpring,}
+\DoxyCodeLine{31         eScore,}
+\DoxyCodeLine{32         eCoin}
+\DoxyCodeLine{33 \};}
+\DoxyCodeLine{37 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_entity}{Entity}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_observer_1_1_subject}{Observer::Subject}}, \textcolor{keyword}{public} \mbox{\hyperlink{class_visitor_1_1_i_visitor}{Visitor::IVisitor}}}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{40         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_ab1f97bf2c2df05fd01bcbf9e360626bb}{mX}};         }
+\DoxyCodeLine{41         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a9b7785e8ac627fc2759a2dfa30001726}{mY}};         }
+\DoxyCodeLine{42         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a71582b670ef3e1a32d54ad4eb9aa95b9}{mWidth}};     }
+\DoxyCodeLine{43         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a9643050b6738467a28ce2b35a478bdd1}{mHeight}};    }
+\DoxyCodeLine{44         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_model_1_1_entity_a6eb59a9bb70f5e1c5d77e9e54c84c73a}{mRemoveFlag}}; }
+\DoxyCodeLine{45         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_model_1_1_entity_af20a215eb2577b7bf98c08fba32db414}{mScore}};       }
+\DoxyCodeLine{47 \textcolor{keyword}{public}:}
+\DoxyCodeLine{52         \mbox{\hyperlink{class_model_1_1_entity_a05c02a53f0df48302551799846b28306}{Entity}}() : \mbox{\hyperlink{class_model_1_1_entity_ab1f97bf2c2df05fd01bcbf9e360626bb}{mX}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a9b7785e8ac627fc2759a2dfa30001726}{mY}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a71582b670ef3e1a32d54ad4eb9aa95b9}{mWidth}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a9643050b6738467a28ce2b35a478bdd1}{mHeight}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a6eb59a9bb70f5e1c5d77e9e54c84c73a}{mRemoveFlag}}(false), \mbox{\hyperlink{class_model_1_1_entity_af20a215eb2577b7bf98c08fba32db414}{mScore}}(0) \{\}}
+\DoxyCodeLine{57         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_model_1_1_entity_a0a7ce18e796935cb0fcc4960a5fe28aa}{Entity}}(\textcolor{keywordtype}{int} score) : \mbox{\hyperlink{class_model_1_1_entity_ab1f97bf2c2df05fd01bcbf9e360626bb}{mX}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a9b7785e8ac627fc2759a2dfa30001726}{mY}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a71582b670ef3e1a32d54ad4eb9aa95b9}{mWidth}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a9643050b6738467a28ce2b35a478bdd1}{mHeight}}(0.f), \mbox{\hyperlink{class_model_1_1_entity_a6eb59a9bb70f5e1c5d77e9e54c84c73a}{mRemoveFlag}}(false), \mbox{\hyperlink{class_model_1_1_entity_af20a215eb2577b7bf98c08fba32db414}{mScore}}(score) \{\}}
+\DoxyCodeLine{61         \mbox{\hyperlink{class_model_1_1_entity_a58261252dbfc0662460f4c0acd31c26c}{\string~Entity}}()\textcolor{keyword}{ override }\{ \mbox{\hyperlink{class_model_1_1_entity_a1bddda3fb4c39e0917785d304d41b23f}{onDestroy}}(); \}}
+\DoxyCodeLine{66         [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a54b6523bc1c0150c4b7b5e9d89d6d4cd}{getX}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_model_1_1_entity_ab1f97bf2c2df05fd01bcbf9e360626bb}{mX}}; \}}
+\DoxyCodeLine{71         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a0d62dc9e38997266a93848eddc093f78}{setX}}(\textcolor{keywordtype}{float} x) \{ \mbox{\hyperlink{class_model_1_1_entity_ab1f97bf2c2df05fd01bcbf9e360626bb}{mX}} = x; \}}
+\DoxyCodeLine{76         [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a6d788269f7ed005f7c0f2730d61427ec}{getY}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_model_1_1_entity_a9b7785e8ac627fc2759a2dfa30001726}{mY}}; \}}
+\DoxyCodeLine{81         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_af3e51adb976d1dde3f89b4a86279e725}{setY}}(\textcolor{keywordtype}{float} y) \{ \mbox{\hyperlink{class_model_1_1_entity_a9b7785e8ac627fc2759a2dfa30001726}{mY}} = y; \}}
+\DoxyCodeLine{86         [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a8226c8db4d2cadbcb6cbf3a781d5e89b}{getWidth}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_model_1_1_entity_a71582b670ef3e1a32d54ad4eb9aa95b9}{mWidth}}; \}}
+\DoxyCodeLine{91         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a999af435d886450da5e154750bf35314}{setWidth}}(\textcolor{keywordtype}{float} width) \{ \mbox{\hyperlink{class_model_1_1_entity_a71582b670ef3e1a32d54ad4eb9aa95b9}{mWidth}} = width; \}}
+\DoxyCodeLine{96         [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_entity_a89440b3a3ee09786d79e3daa1035452a}{getHeight}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_model_1_1_entity_a9643050b6738467a28ce2b35a478bdd1}{mHeight}}; \}}
+\DoxyCodeLine{101         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a2826be72b5fc0de644e185e8eb306804}{setHeight}}(\textcolor{keywordtype}{float} height) \{ \mbox{\hyperlink{class_model_1_1_entity_a9643050b6738467a28ce2b35a478bdd1}{mHeight}} = height; \}}
+\DoxyCodeLine{106         [[maybe\_unused]] [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_model_1_1_entity_abe5d449979e4205d75c9c2d9e0a3816f}{getRemovable}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_model_1_1_entity_a6eb59a9bb70f5e1c5d77e9e54c84c73a}{mRemoveFlag}}; \}}
+\DoxyCodeLine{111         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a33279e9959e845cc7307610de0af78d4}{setRemoveFlag}}(\textcolor{keywordtype}{bool} flag) \{ \mbox{\hyperlink{class_model_1_1_entity_a6eb59a9bb70f5e1c5d77e9e54c84c73a}{mRemoveFlag}} = flag; \}}
+\DoxyCodeLine{116         [[nodiscard]] \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_model_1_1_entity_add3179a8108506335300938ba4b18c52}{isRemovable}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_model_1_1_entity_a6eb59a9bb70f5e1c5d77e9e54c84c73a}{mRemoveFlag}}; \}}
+\DoxyCodeLine{121         [[nodiscard]] \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_model_1_1_entity_a15429a474dac594c28f24942c6b62981}{getScore}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_model_1_1_entity_af20a215eb2577b7bf98c08fba32db414}{mScore}}; \}}
+\DoxyCodeLine{126         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a27d88d355b4820883ac4695bcea1c6f1}{setScore}}(\textcolor{keywordtype}{int} score) \{ \mbox{\hyperlink{class_model_1_1_entity_af20a215eb2577b7bf98c08fba32db414}{mScore}} = score; \}}
+\DoxyCodeLine{131         \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_model_1_1_entity_a96ee81757826e0c23f0ba3fc9a34d880}{getCoins}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} 0; \}}
+\DoxyCodeLine{136         [[nodiscard]] \textcolor{keyword}{virtual} \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} \mbox{\hyperlink{class_model_1_1_entity_a853ec96fa9fe4f79f5a06a0fb2b5ed2e}{getType}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{140         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a0321e5a582d7d374c3a1183532158de2}{move}}(\textcolor{keywordtype}{bool} collision) = 0;}
+\DoxyCodeLine{146         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a593906f90d1923c4c49bc661bf9cee26}{move}}(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y)}
+\DoxyCodeLine{147         \{}
+\DoxyCodeLine{148                 \mbox{\hyperlink{class_model_1_1_entity_ab1f97bf2c2df05fd01bcbf9e360626bb}{mX}} += x;}
+\DoxyCodeLine{149                 \mbox{\hyperlink{class_model_1_1_entity_a9b7785e8ac627fc2759a2dfa30001726}{mY}} += y;}
+\DoxyCodeLine{150         \}}
+\DoxyCodeLine{155         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_ad6ba1ebe70f8750c3174b1324dc31cf4}{setIsMovingLeft}}(\textcolor{keywordtype}{bool} flag) \{\}}
+\DoxyCodeLine{160         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_ac173e1a50d3eabfd8df442e103be1b3f}{setIsMovingRight}}(\textcolor{keywordtype}{bool} flag) \{\}}
+\DoxyCodeLine{164         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_afee1a2d7ab6d897c6e586d0598c26acd}{setIsMovingUp}}(\textcolor{keywordtype}{bool} flag) \{\} \textcolor{comment}{// TODO}}
+\DoxyCodeLine{168 \textcolor{comment}{}        \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a1bddda3fb4c39e0917785d304d41b23f}{onDestroy}}() \{ \mbox{\hyperlink{class_observer_1_1_subject_a7c2fc9a2e17121ba8c73e50fd47374cd}{Observer::Subject::clear}}(); \}}
+\DoxyCodeLine{173         [[nodiscard]] \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_model_1_1_entity_aecd7f844633fd693e6dc9c2163b9a06a}{isBonus}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \}}
+\DoxyCodeLine{178         [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_model_1_1_entity_ab1fc45f88d8b43f3462819dbc6f9bec7}{isOutOfView}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_model_1_1_entity_a9b7785e8ac627fc2759a2dfa30001726}{mY}} < \mbox{\hyperlink{class_utils_1_1_camera_aa84baebe5d771ddfd82a5b55bd3fde39}{Utils::Camera::getInstance}}().\mbox{\hyperlink{class_utils_1_1_camera_a8dbcb2f67360e39568de4c1cd2a4e136}{getY}}(); \}}
+\DoxyCodeLine{183         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a0f723bfe650f78af8f7c3af0e4e7f12f}{visit}}(\mbox{\hyperlink{class_model_1_1_player}{Model::Player}}\& player)\textcolor{keyword}{ override }\{\}}
+\DoxyCodeLine{188         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_entity_a3ed9ace4789a939d223e7fd8089a61a9}{accept}}(\textcolor{keyword}{const} std::shared\_ptr<Visitor::IVisitor>\& visitor) \{\}}
+\DoxyCodeLine{189 \};}
+\DoxyCodeLine{190 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ENTITY\_H}}
+
+\end{DoxyCode}

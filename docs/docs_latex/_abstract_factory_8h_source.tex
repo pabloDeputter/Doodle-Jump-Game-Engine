@@ -1,0 +1,36 @@
+\hypertarget{_abstract_factory_8h_source}{}\doxysection{Abstract\+Factory.\+h}
+\label{_abstract_factory_8h_source}\index{engine/include/AbstractFactory.h@{engine/include/AbstractFactory.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 21/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ABSTRACTFACTORY\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ABSTRACTFACTORY\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}model/Entity.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}model/Score.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_factory}{Factory}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{class_factory_1_1_abstract_factory}{AbstractFactory}}}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22 \textcolor{keyword}{public}:}
+\DoxyCodeLine{26         \mbox{\hyperlink{class_factory_1_1_abstract_factory_addfa72f733cde67ebf98485f0c262a8d}{AbstractFactory}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{30         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_factory_1_1_abstract_factory_a3f923860231215157aef9eb466d748bd}{\string~AbstractFactory}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{35         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Player> \mbox{\hyperlink{class_factory_1_1_abstract_factory_a5513098e1e90de969320fc519da508ea}{createPlayer}}() = 0;}
+\DoxyCodeLine{40         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_abstract_factory_ac54cbacd76f1cb041537afb1808b7742}{createStaticPlatform}}() = 0;}
+\DoxyCodeLine{45         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_abstract_factory_a014bb238155317a2bd5046f80609683b}{createHorizontalPlatform}}() = 0;}
+\DoxyCodeLine{50         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_abstract_factory_a157b99ee09d1183985503b4cec8d9c6b}{createVerticalPlatform}}() = 0;}
+\DoxyCodeLine{55         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_abstract_factory_a4ac5d94d07a55a04358e3b5aa965e07d}{createTemporaryPlatform}}() = 0;}
+\DoxyCodeLine{60         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_abstract_factory_a4b325bd01971712b3884e717f064e49f}{createSpring}}() = 0;}
+\DoxyCodeLine{65         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_abstract_factory_a9cf8862b7930084c743f453b5bfcbceb}{createJetpack}}() = 0;}
+\DoxyCodeLine{70         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_abstract_factory_aa8940ed29d3910aa9c07efb6be759658}{createBackground}}() = 0;}
+\DoxyCodeLine{75         \textcolor{keyword}{virtual} std::shared\_ptr<Model::Score> \mbox{\hyperlink{class_factory_1_1_abstract_factory_a7e5248cd74752677510aa6318acaa277}{createScore}}() = 0;}
+\DoxyCodeLine{80          \textcolor{keyword}{virtual} std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_factory_1_1_abstract_factory_ab2b9a38e72d567414478c266b46a3531}{createCoin}}() = 0;}
+\DoxyCodeLine{81 \};}
+\DoxyCodeLine{82 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ABSTRACTFACTORY\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,38 @@
+\hypertarget{_state_8h_source}{}\doxysection{State.\+h}
+\label{_state_8h_source}\index{game/include/state/State.h@{game/include/state/State.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 14/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_STATE\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_STATE\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{comment}{// Forward declaration}}
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_game}{Game}};}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{class_state}{State}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{21         \mbox{\hyperlink{class_game}{Game}}\& \mbox{\hyperlink{class_state_a0bb6d2b26463c0ec46e3bbf5193bee6e}{mGame}};                               }
+\DoxyCodeLine{22         std::shared\_ptr<sf::RenderWindow> \mbox{\hyperlink{class_state_a7a4cf52432eba5ee1e6971f22fe09db5}{mWindow}}; }
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{29         \mbox{\hyperlink{class_state_a730e7beb4103e2c15a66aa450bbf0447}{State}}(std::shared\_ptr<sf::RenderWindow> window, \mbox{\hyperlink{class_game}{Game}}\& game) : \mbox{\hyperlink{class_state_a0bb6d2b26463c0ec46e3bbf5193bee6e}{mGame}}(game), \mbox{\hyperlink{class_state_a7a4cf52432eba5ee1e6971f22fe09db5}{mWindow}}(std::move(window)) \{\}}
+\DoxyCodeLine{33         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_state_a783d52422b544bb226e13de8ecfd6ad6}{\string~State}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{37         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_state_a83754426c60832f48f24ded27ee74312}{render}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{41         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_state_a06315e7e44aadfa576cbf7e6c1c7d87f}{update}}() = 0;}
+\DoxyCodeLine{45         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_state_aca4323ee20660cd00e1cf4d9799de782}{processEvents}}() = 0;}
+\DoxyCodeLine{50         [[nodiscard]] \textcolor{keyword}{virtual} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_state_a6dcf889e804095b6d84ff2b4d0b61812}{getType}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{54         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_state_a57bb1cfac5b00443addec26e79200383}{newHighScore}}() \{\}}
+\DoxyCodeLine{59         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_state_ac1a7b3ce8c7c6f3a6ed4aa93069e2423}{setNewDiff}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} diff) \{\}}
+\DoxyCodeLine{64         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_state_a82e41dd626c1e63488cd7cb4012a7f34}{addCoins}}(\textcolor{keywordtype}{int} coins) \{\}}
+\DoxyCodeLine{65 \};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_STATE\_H}}
+
+\end{DoxyCode}

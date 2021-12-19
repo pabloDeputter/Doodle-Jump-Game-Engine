@@ -1,0 +1,84 @@
+\hypertarget{class_collision_event}{}\doxysection{Collision\+Event Class Reference}
+\label{class_collision_event}\index{CollisionEvent@{CollisionEvent}}
+
+
+Class for when Entity collides with other Player.  
+
+
+
+
+{\ttfamily \#include $<$Events.\+h$>$}
+
+Inheritance diagram for Collision\+Event\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_collision_event}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collision_event_a73ab06df83f70d4dee20d0c3a7b42812}{Collision\+Event}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ entity, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} $>$ player)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_collision_event}{Collision\+Event}} object. \end{DoxyCompactList}\item 
+const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \& \mbox{\hyperlink{class_collision_event_a99e8b9718493a30635119d59f7e85da8}{get\+Entity}} () const
+\begin{DoxyCompactList}\small\item\em Get Entity. \end{DoxyCompactList}\item 
+const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} $>$ \& \mbox{\hyperlink{class_collision_event_a9171a16a827420111fb52201aae235c3}{get\+Player}} () const
+\begin{DoxyCompactList}\small\item\em Get Player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class for when Entity collides with other Player. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_collision_event_a73ab06df83f70d4dee20d0c3a7b42812}\label{class_collision_event_a73ab06df83f70d4dee20d0c3a7b42812}} 
+\index{CollisionEvent@{CollisionEvent}!CollisionEvent@{CollisionEvent}}
+\index{CollisionEvent@{CollisionEvent}!CollisionEvent@{CollisionEvent}}
+\doxysubsubsection{\texorpdfstring{CollisionEvent()}{CollisionEvent()}}
+{\footnotesize\ttfamily Collision\+Event\+::\+Collision\+Event (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$}]{entity,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} $>$}]{player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor for \mbox{\hyperlink{class_collision_event}{Collision\+Event}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity \\
+\hline
+{\em player} & \mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} -\/ pointer to Player \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_collision_event_a99e8b9718493a30635119d59f7e85da8}\label{class_collision_event_a99e8b9718493a30635119d59f7e85da8}} 
+\index{CollisionEvent@{CollisionEvent}!getEntity@{getEntity}}
+\index{getEntity@{getEntity}!CollisionEvent@{CollisionEvent}}
+\doxysubsubsection{\texorpdfstring{getEntity()}{getEntity()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \& Collision\+Event\+::get\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get Entity. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_collision_event_a9171a16a827420111fb52201aae235c3}\label{class_collision_event_a9171a16a827420111fb52201aae235c3}} 
+\index{CollisionEvent@{CollisionEvent}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!CollisionEvent@{CollisionEvent}}
+\doxysubsubsection{\texorpdfstring{getPlayer()}{getPlayer()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} $>$ \& Collision\+Event\+::get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get Player. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} -\/ pointer to Player 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/observer/Events.\+h\end{DoxyCompactItemize}

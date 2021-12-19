@@ -1,0 +1,113 @@
+\hypertarget{struct_high_score_data}{}\doxysection{High\+Score\+Data Struct Reference}
+\label{struct_high_score_data}\index{HighScoreData@{HighScoreData}}
+
+
+{\ttfamily \#include $<$High\+Score.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_high_score_data_aa45483b09ae8592143addc2372af934d}\label{struct_high_score_data_aa45483b09ae8592143addc2372af934d}} 
+{\bfseries High\+Score\+Data} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_high_score_data_af3d056a490a0d1fe2c65a7bd957cef68}{High\+Score\+Data}} (int score, std\+::string name)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_high_score_data_a8ca47f3e2b83d559640707733188eb8e}\label{struct_high_score_data_a8ca47f3e2b83d559640707733188eb8e}} 
+virtual {\bfseries $\sim$\+High\+Score\+Data} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor of \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_high_score_data_a924bab35c2ab960f32b01f140d4e5300}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Convert data to std\+::string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_high_score_data_ab954bf606075a35d40f2d7a05df3ca42}{m\+Score}}
+\item 
+std\+::string \mbox{\hyperlink{struct_high_score_data_a1089b754b68d36dc64708a19a861ad35}{m\+Name}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{struct_high_score_data_a83ce317b9d12e53ff80f0688151588eb}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} \&score)
+\begin{DoxyCompactList}\small\item\em Overloaded \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} operator, implemented to write to file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct for High Score data 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_high_score_data_af3d056a490a0d1fe2c65a7bd957cef68}\label{struct_high_score_data_af3d056a490a0d1fe2c65a7bd957cef68}} 
+\index{HighScoreData@{HighScoreData}!HighScoreData@{HighScoreData}}
+\index{HighScoreData@{HighScoreData}!HighScoreData@{HighScoreData}}
+\doxysubsubsection{\texorpdfstring{HighScoreData()}{HighScoreData()}}
+{\footnotesize\ttfamily High\+Score\+Data\+::\+High\+Score\+Data (\begin{DoxyParamCaption}\item[{int}]{score,  }\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score} & int -\/ score achieved \\
+\hline
+{\em name} & std\+::string -\/ name of Player \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_high_score_data_a924bab35c2ab960f32b01f140d4e5300}\label{struct_high_score_data_a924bab35c2ab960f32b01f140d4e5300}} 
+\index{HighScoreData@{HighScoreData}!toString@{toString}}
+\index{toString@{toString}!HighScoreData@{HighScoreData}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string High\+Score\+Data\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convert data to std\+::string. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string -\/ \mbox{\hyperlink{class_high_score}{High\+Score}} in std\+::string form 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{struct_high_score_data_a83ce317b9d12e53ff80f0688151588eb}\label{struct_high_score_data_a83ce317b9d12e53ff80f0688151588eb}} 
+\index{HighScoreData@{HighScoreData}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!HighScoreData@{HighScoreData}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} \&}]{score }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloaded \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} operator, implemented to write to file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & std\+::ostream \\
+\hline
+{\em score} & \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} -\/ to be written \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::ostream 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_high_score_data_a1089b754b68d36dc64708a19a861ad35}\label{struct_high_score_data_a1089b754b68d36dc64708a19a861ad35}} 
+\index{HighScoreData@{HighScoreData}!mName@{mName}}
+\index{mName@{mName}!HighScoreData@{HighScoreData}}
+\doxysubsubsection{\texorpdfstring{mName}{mName}}
+{\footnotesize\ttfamily std\+::string High\+Score\+Data\+::m\+Name}
+
+Name of Player who achieve the High Score \mbox{\Hypertarget{struct_high_score_data_ab954bf606075a35d40f2d7a05df3ca42}\label{struct_high_score_data_ab954bf606075a35d40f2d7a05df3ca42}} 
+\index{HighScoreData@{HighScoreData}!mScore@{mScore}}
+\index{mScore@{mScore}!HighScoreData@{HighScoreData}}
+\doxysubsubsection{\texorpdfstring{mScore}{mScore}}
+{\footnotesize\ttfamily int High\+Score\+Data\+::m\+Score}
+
+Score 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/High\+Score.\+h\end{DoxyCompactItemize}

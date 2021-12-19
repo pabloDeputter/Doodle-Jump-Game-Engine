@@ -33,4 +33,8 @@ void Score::handleEvent(const CollisionEvent& event)
         }
         // Assign Entity to be last seen collision
         mLastCollision = event.getEntity();
+        // If we collect coin add to coin count
+        if (event.getEntity()->getType() == Model::eCoin) {
+                mCoins++;
+        }
 }

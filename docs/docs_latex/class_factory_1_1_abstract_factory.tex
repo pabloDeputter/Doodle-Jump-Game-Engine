@@ -1,0 +1,227 @@
+\hypertarget{class_factory_1_1_abstract_factory}{}\doxysection{Factory\+::Abstract\+Factory Class Reference}
+\label{class_factory_1_1_abstract_factory}\index{Factory::AbstractFactory@{Factory::AbstractFactory}}
+
+
+Class for Abstract \mbox{\hyperlink{namespace_factory}{Factory}}, used by \mbox{\hyperlink{class_world}{World}} to create new entities without knowing anything SFML-\/related. The \mbox{\hyperlink{class_game}{Game}} class shall provide a \mbox{\hyperlink{class_factory_1_1_concrete_factory}{Concrete\+Factory}} pointer to world, such it can create entities that have already the correct view attached.  
+
+
+
+
+{\ttfamily \#include $<$Abstract\+Factory.\+h$>$}
+
+Inheritance diagram for Factory\+::Abstract\+Factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_factory_1_1_abstract_factory}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_factory_1_1_abstract_factory_addfa72f733cde67ebf98485f0c262a8d}\label{class_factory_1_1_abstract_factory_addfa72f733cde67ebf98485f0c262a8d}} 
+{\bfseries Abstract\+Factory} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{class_factory_1_1_abstract_factory}{Abstract\+Factory}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_factory_1_1_abstract_factory_a3f923860231215157aef9eb466d748bd}\label{class_factory_1_1_abstract_factory_a3f923860231215157aef9eb466d748bd}} 
+virtual {\bfseries $\sim$\+Abstract\+Factory} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor for \mbox{\hyperlink{class_factory_1_1_abstract_factory}{Abstract\+Factory}} object. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} $>$ \mbox{\hyperlink{class_factory_1_1_abstract_factory_a5513098e1e90de969320fc519da508ea}{create\+Player}} ()=0
+\begin{DoxyCompactList}\small\item\em Create Player object. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_abstract_factory_ac54cbacd76f1cb041537afb1808b7742}{create\+Static\+Platform}} ()=0
+\begin{DoxyCompactList}\small\item\em Create Static\+Platform object -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_abstract_factory_a014bb238155317a2bd5046f80609683b}{create\+Horizontal\+Platform}} ()=0
+\begin{DoxyCompactList}\small\item\em Create Horizontal\+Platform object -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_abstract_factory_a157b99ee09d1183985503b4cec8d9c6b}{create\+Vertical\+Platform}} ()=0
+\begin{DoxyCompactList}\small\item\em Create Vertical\+Platform object -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_abstract_factory_a4ac5d94d07a55a04358e3b5aa965e07d}{create\+Temporary\+Platform}} ()=0
+\begin{DoxyCompactList}\small\item\em Create Temporary\+Platform object -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_abstract_factory_a4b325bd01971712b3884e717f064e49f}{create\+Spring}} ()=0
+\begin{DoxyCompactList}\small\item\em Create Spring object -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_abstract_factory_a9cf8862b7930084c743f453b5bfcbceb}{create\+Jetpack}} ()=0
+\begin{DoxyCompactList}\small\item\em Create Jetpack object -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_abstract_factory_aa8940ed29d3910aa9c07efb6be759658}{create\+Background}} ()=0
+\begin{DoxyCompactList}\small\item\em Create Background object -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_score}{Model\+::\+Score}} $>$ \mbox{\hyperlink{class_factory_1_1_abstract_factory_a7e5248cd74752677510aa6318acaa277}{create\+Score}} ()=0
+\begin{DoxyCompactList}\small\item\em Create Score object -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_factory_1_1_abstract_factory_ab2b9a38e72d567414478c266b46a3531}{create\+Coin}} ()=0
+\begin{DoxyCompactList}\small\item\em Create Coin object -\/ PURE VIRTUAL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for Abstract \mbox{\hyperlink{namespace_factory}{Factory}}, used by \mbox{\hyperlink{class_world}{World}} to create new entities without knowing anything SFML-\/related. The \mbox{\hyperlink{class_game}{Game}} class shall provide a \mbox{\hyperlink{class_factory_1_1_concrete_factory}{Concrete\+Factory}} pointer to world, such it can create entities that have already the correct view attached. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_factory_1_1_abstract_factory_aa8940ed29d3910aa9c07efb6be759658}\label{class_factory_1_1_abstract_factory_aa8940ed29d3910aa9c07efb6be759658}} 
+\index{Factory::AbstractFactory@{Factory::AbstractFactory}!createBackground@{createBackground}}
+\index{createBackground@{createBackground}!Factory::AbstractFactory@{Factory::AbstractFactory}}
+\doxysubsubsection{\texorpdfstring{createBackground()}{createBackground()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Factory\+::\+Abstract\+Factory\+::create\+Background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create Background object -\/ PURE VIRTUAL. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_factory_1_1_concrete_factory_a04be6304f20e50e7af657c19bfda1576}{Factory\+::\+Concrete\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_abstract_factory_ab2b9a38e72d567414478c266b46a3531}\label{class_factory_1_1_abstract_factory_ab2b9a38e72d567414478c266b46a3531}} 
+\index{Factory::AbstractFactory@{Factory::AbstractFactory}!createCoin@{createCoin}}
+\index{createCoin@{createCoin}!Factory::AbstractFactory@{Factory::AbstractFactory}}
+\doxysubsubsection{\texorpdfstring{createCoin()}{createCoin()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Factory\+::\+Abstract\+Factory\+::create\+Coin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create Coin object -\/ PURE VIRTUAL. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_factory_1_1_concrete_factory_aa827828a16aa1e960ddf8a5bafc1a551}{Factory\+::\+Concrete\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_abstract_factory_a014bb238155317a2bd5046f80609683b}\label{class_factory_1_1_abstract_factory_a014bb238155317a2bd5046f80609683b}} 
+\index{Factory::AbstractFactory@{Factory::AbstractFactory}!createHorizontalPlatform@{createHorizontalPlatform}}
+\index{createHorizontalPlatform@{createHorizontalPlatform}!Factory::AbstractFactory@{Factory::AbstractFactory}}
+\doxysubsubsection{\texorpdfstring{createHorizontalPlatform()}{createHorizontalPlatform()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Factory\+::\+Abstract\+Factory\+::create\+Horizontal\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create Horizontal\+Platform object -\/ PURE VIRTUAL. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_factory_1_1_concrete_factory_ae8fff536172b42028fe57165661a46d0}{Factory\+::\+Concrete\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_abstract_factory_a9cf8862b7930084c743f453b5bfcbceb}\label{class_factory_1_1_abstract_factory_a9cf8862b7930084c743f453b5bfcbceb}} 
+\index{Factory::AbstractFactory@{Factory::AbstractFactory}!createJetpack@{createJetpack}}
+\index{createJetpack@{createJetpack}!Factory::AbstractFactory@{Factory::AbstractFactory}}
+\doxysubsubsection{\texorpdfstring{createJetpack()}{createJetpack()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Factory\+::\+Abstract\+Factory\+::create\+Jetpack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create Jetpack object -\/ PURE VIRTUAL. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_factory_1_1_concrete_factory_a7cfb732fb75e5b5e811fefc03ed295a1}{Factory\+::\+Concrete\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_abstract_factory_a5513098e1e90de969320fc519da508ea}\label{class_factory_1_1_abstract_factory_a5513098e1e90de969320fc519da508ea}} 
+\index{Factory::AbstractFactory@{Factory::AbstractFactory}!createPlayer@{createPlayer}}
+\index{createPlayer@{createPlayer}!Factory::AbstractFactory@{Factory::AbstractFactory}}
+\doxysubsubsection{\texorpdfstring{createPlayer()}{createPlayer()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} $>$ Factory\+::\+Abstract\+Factory\+::create\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create Player object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_player}{Model\+::\+Player}} -\/ pointer to Player 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_factory_1_1_concrete_factory_a299b1c16908fccbe332fb66d775fd90a}{Factory\+::\+Concrete\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_abstract_factory_a7e5248cd74752677510aa6318acaa277}\label{class_factory_1_1_abstract_factory_a7e5248cd74752677510aa6318acaa277}} 
+\index{Factory::AbstractFactory@{Factory::AbstractFactory}!createScore@{createScore}}
+\index{createScore@{createScore}!Factory::AbstractFactory@{Factory::AbstractFactory}}
+\doxysubsubsection{\texorpdfstring{createScore()}{createScore()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_score}{Model\+::\+Score}} $>$ Factory\+::\+Abstract\+Factory\+::create\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create Score object -\/ PURE VIRTUAL. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_factory_1_1_concrete_factory_acbbd7ca51f4d3e35fce7abf27b4b5976}{Factory\+::\+Concrete\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_abstract_factory_a4b325bd01971712b3884e717f064e49f}\label{class_factory_1_1_abstract_factory_a4b325bd01971712b3884e717f064e49f}} 
+\index{Factory::AbstractFactory@{Factory::AbstractFactory}!createSpring@{createSpring}}
+\index{createSpring@{createSpring}!Factory::AbstractFactory@{Factory::AbstractFactory}}
+\doxysubsubsection{\texorpdfstring{createSpring()}{createSpring()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Factory\+::\+Abstract\+Factory\+::create\+Spring (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create Spring object -\/ PURE VIRTUAL. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_factory_1_1_concrete_factory_a04cc4f3bc7c8201bf9f0316b370b4db3}{Factory\+::\+Concrete\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_abstract_factory_ac54cbacd76f1cb041537afb1808b7742}\label{class_factory_1_1_abstract_factory_ac54cbacd76f1cb041537afb1808b7742}} 
+\index{Factory::AbstractFactory@{Factory::AbstractFactory}!createStaticPlatform@{createStaticPlatform}}
+\index{createStaticPlatform@{createStaticPlatform}!Factory::AbstractFactory@{Factory::AbstractFactory}}
+\doxysubsubsection{\texorpdfstring{createStaticPlatform()}{createStaticPlatform()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Factory\+::\+Abstract\+Factory\+::create\+Static\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create Static\+Platform object -\/ PURE VIRTUAL. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_factory_1_1_concrete_factory_a12e4ce3e73459240cb8199a531b528ef}{Factory\+::\+Concrete\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_abstract_factory_a4ac5d94d07a55a04358e3b5aa965e07d}\label{class_factory_1_1_abstract_factory_a4ac5d94d07a55a04358e3b5aa965e07d}} 
+\index{Factory::AbstractFactory@{Factory::AbstractFactory}!createTemporaryPlatform@{createTemporaryPlatform}}
+\index{createTemporaryPlatform@{createTemporaryPlatform}!Factory::AbstractFactory@{Factory::AbstractFactory}}
+\doxysubsubsection{\texorpdfstring{createTemporaryPlatform()}{createTemporaryPlatform()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Factory\+::\+Abstract\+Factory\+::create\+Temporary\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create Temporary\+Platform object -\/ PURE VIRTUAL. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_factory_1_1_concrete_factory_ae4874cb96174e69a7f5a2d42a181f10d}{Factory\+::\+Concrete\+Factory}}.
+
+\mbox{\Hypertarget{class_factory_1_1_abstract_factory_a157b99ee09d1183985503b4cec8d9c6b}\label{class_factory_1_1_abstract_factory_a157b99ee09d1183985503b4cec8d9c6b}} 
+\index{Factory::AbstractFactory@{Factory::AbstractFactory}!createVerticalPlatform@{createVerticalPlatform}}
+\index{createVerticalPlatform@{createVerticalPlatform}!Factory::AbstractFactory@{Factory::AbstractFactory}}
+\doxysubsubsection{\texorpdfstring{createVerticalPlatform()}{createVerticalPlatform()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Factory\+::\+Abstract\+Factory\+::create\+Vertical\+Platform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create Vertical\+Platform object -\/ PURE VIRTUAL. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_factory_1_1_concrete_factory_a8035cca478499efb4a9836c47b654f48}{Factory\+::\+Concrete\+Factory}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/Abstract\+Factory.\+h\end{DoxyCompactItemize}

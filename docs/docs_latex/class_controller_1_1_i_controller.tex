@@ -1,0 +1,86 @@
+\hypertarget{class_controller_1_1_i_controller}{}\doxysection{Controller\+::IController Class Reference}
+\label{class_controller_1_1_i_controller}\index{Controller::IController@{Controller::IController}}
+
+
+Abstract class for \mbox{\hyperlink{namespace_controller}{Controller}}.  
+
+
+
+
+{\ttfamily \#include $<$IController.\+h$>$}
+
+Inheritance diagram for Controller\+::IController\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_controller_1_1_i_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_controller_1_1_i_controller_a3d839e44f15bc455fac3c15d8459f90c}\label{class_controller_1_1_i_controller_a3d839e44f15bc455fac3c15d8459f90c}} 
+{\bfseries IController} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{class_controller_1_1_i_controller}{IController}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_controller_1_1_i_controller_a4833ca746d5ca8361d8121967d8a4fc6}{IController}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \&entity)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_controller_1_1_i_controller}{IController}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_controller_1_1_i_controller_a8c26b455427f2ca6795e63d0f07103cc}\label{class_controller_1_1_i_controller_a8c26b455427f2ca6795e63d0f07103cc}} 
+{\bfseries $\sim$\+IController} () override=default
+\begin{DoxyCompactList}\small\item\em Default destructor for \mbox{\hyperlink{class_controller_1_1_i_controller}{IController}} object. \end{DoxyCompactList}\item 
+const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \& \mbox{\hyperlink{class_controller_1_1_i_controller_af9ecabb00a6358bba27ed3946be21480}{get\+Entity}} () const
+\begin{DoxyCompactList}\small\item\em Get Entity \mbox{\hyperlink{class_controller_1_1_i_controller}{IController}} holds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_controller_1_1_i_controller_accc2fde03898be0a2ca5d4ee0afd8231}{m\+Entity}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class for \mbox{\hyperlink{namespace_controller}{Controller}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_controller_1_1_i_controller_a4833ca746d5ca8361d8121967d8a4fc6}\label{class_controller_1_1_i_controller_a4833ca746d5ca8361d8121967d8a4fc6}} 
+\index{Controller::IController@{Controller::IController}!IController@{IController}}
+\index{IController@{IController}!Controller::IController@{Controller::IController}}
+\doxysubsubsection{\texorpdfstring{IController()}{IController()}}
+{\footnotesize\ttfamily Controller\+::\+IController\+::\+IController (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor for \mbox{\hyperlink{class_controller_1_1_i_controller}{IController}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity to be controlled \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_controller_1_1_i_controller_af9ecabb00a6358bba27ed3946be21480}\label{class_controller_1_1_i_controller_af9ecabb00a6358bba27ed3946be21480}} 
+\index{Controller::IController@{Controller::IController}!getEntity@{getEntity}}
+\index{getEntity@{getEntity}!Controller::IController@{Controller::IController}}
+\doxysubsubsection{\texorpdfstring{getEntity()}{getEntity()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \& Controller\+::\+IController\+::get\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get Entity \mbox{\hyperlink{class_controller_1_1_i_controller}{IController}} holds. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} -\/ pointer to Entity 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_controller_1_1_i_controller_accc2fde03898be0a2ca5d4ee0afd8231}\label{class_controller_1_1_i_controller_accc2fde03898be0a2ca5d4ee0afd8231}} 
+\index{Controller::IController@{Controller::IController}!mEntity@{mEntity}}
+\index{mEntity@{mEntity}!Controller::IController@{Controller::IController}}
+\doxysubsubsection{\texorpdfstring{mEntity}{mEntity}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}$>$ Controller\+::\+IController\+::m\+Entity\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pointer to Entity 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/controller/IController.\+h\end{DoxyCompactItemize}

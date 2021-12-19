@@ -14,7 +14,7 @@ Game::Game(unsigned int width, unsigned int height)
         Utils::Camera::getInstance().setWindowDimensions((float)width, (float)height);
         // Initialize AbstractFactory with ConcreteFactory
         mFactory = std::make_shared<Factory::ConcreteFactory>(mWindow);
-        //        mWindow->setFramerateLimit(60);
+        //        mWindow->setFramerateLimit(20);
         mWindow->setVerticalSyncEnabled(true);
         // Initialize resources
         Game::initializeResources();
@@ -29,8 +29,8 @@ void Game::initializeResources()
         // Try loading resources
         try {
                 // Textures - entities
-                Utils::ResourceManager::getInstance().addTexture(Utils::Type::eBackground, "/image/background.png");
-                Utils::ResourceManager::getInstance().addTexture(Utils::Type::ePlayer, "/image/player.png");
+                Utils::ResourceManager::getInstance().addTexture(Utils::Type::eBackground, "/image/background_1.png");
+                Utils::ResourceManager::getInstance().addTexture(Utils::Type::ePlayer, "/image/character_1.png");
                 Utils::ResourceManager::getInstance().addTexture(Utils::Type::eStatic, "/image/platformStatic.png");
                 Utils::ResourceManager::getInstance().addTexture(Utils::Type::eHorizontal,
                                                                  "/image/platformHorizontal.png");
@@ -39,19 +39,24 @@ void Game::initializeResources()
                                                                  "/image/platformTemporary.png");
                 Utils::ResourceManager::getInstance().addTexture(Utils::Type::eSpring, "/image/spring.png");
                 Utils::ResourceManager::getInstance().addTexture(Utils::Type::eJetpack, "/image/jetpack.png");
+                Utils::ResourceManager::getInstance().addTexture(Utils::Type::eCoin, "/image/coin.png");
                 // Fonts - entities
                 Utils::ResourceManager::getInstance().addFont(Utils::Type::eScore, "/font/super_mario_bros.ttf");
-                // Sounds - entities
-                Utils::ResourceManager::getInstance().addSound(Utils::Type::eStatic, "/audio/cartoon-jump-6462.wav");
 
                 // Textures - menu
                 Utils::ResourceManager::getInstance().addTexture(Utils::Type::eMenuLogo, "/image/doodleJump.png");
-                Utils::ResourceManager::getInstance().addTexture(Utils::Type::eMenuCursor, "/image/cursor.png");
+                Utils::ResourceManager::getInstance().addTexture(Utils::Type::eMenuItemBack, "/image/rectangle.png");
+                Utils::ResourceManager::getInstance().addTexture(Utils::Type::eShopCh1, "/image/character_1.png");
+                Utils::ResourceManager::getInstance().addTexture(Utils::Type::eShopCh2, "/image/character_2.png");
+                Utils::ResourceManager::getInstance().addTexture(Utils::Type::eShopCh3, "/image/character_3.png");
+                Utils::ResourceManager::getInstance().addTexture(Utils::Type::eShopBg1, "/image/background_1.png");
+                Utils::ResourceManager::getInstance().addTexture(Utils::Type::eShopBg2, "/image/background_2.png");
+                Utils::ResourceManager::getInstance().addTexture(Utils::Type::eShopBg3, "/image/background_3.png");
+
                 // Fonts - menu
                 Utils::ResourceManager::getInstance().addFont(Utils::Type::eMenuHighScores,
                                                               "/font/super_mario_bros.ttf");
                 Utils::ResourceManager::getInstance().addFont(Utils::Type::eMenuInfo, "/font/alagard.ttf");
-                Utils::ResourceManager::getInstance().addFont(Utils::Type::eMenuSettings, "/font/alagard.ttf");
                 // Sound - menu
                 Utils::ResourceManager::getInstance().addSound(Utils::Type::eMenuInfo, "/audio/theme.wav");
 

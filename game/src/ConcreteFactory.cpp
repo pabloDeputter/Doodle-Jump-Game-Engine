@@ -107,3 +107,13 @@ std::shared_ptr<Model::Score> ConcreteFactory::createScore()
 
         return score;
 }
+std::shared_ptr<Model::Entity> ConcreteFactory::createCoin()
+{
+        std::shared_ptr<Model::Entity> coin = std::make_shared<Model::Coin>();
+        std::shared_ptr<View::IView> coinView = std::make_shared<View::BonusView>(coin, mWindow);
+        std::shared_ptr<Controller::IController> coinController = std::make_shared<Controller::BonusController>(coin);
+        coin->add(coinView);
+        coin->add(coinController);
+
+        return coin;
+}

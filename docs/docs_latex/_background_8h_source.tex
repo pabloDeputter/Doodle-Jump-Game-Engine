@@ -1,0 +1,29 @@
+\hypertarget{_background_8h_source}{}\doxysection{Background.\+h}
+\label{_background_8h_source}\index{engine/include/model/Background.h@{engine/include/model/Background.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 29/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_BACKGROUND\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_BACKGROUND\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Entity.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_background}{Background}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_model_1_1_entity}{Entity}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{23         \mbox{\hyperlink{class_model_1_1_background_ab585983054f6e5f59bdfe51559808488}{Background}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{27         \mbox{\hyperlink{class_model_1_1_background_a61a766db06356085ab86c444c7451ad0}{\string~Background}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keyword}{private}:}
+\DoxyCodeLine{34         [[nodiscard]] \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} Model::eBackground; \}}
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{bool} collision)\textcolor{keyword}{ override }\{\}}
+\DoxyCodeLine{40 \};}
+\DoxyCodeLine{41 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_BACKGROUND\_H}}
+
+\end{DoxyCode}

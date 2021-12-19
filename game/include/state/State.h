@@ -57,6 +57,11 @@ public:
          * @param diff unsigned int - new difficulty
          */
         virtual void setNewDiff(unsigned int diff) {}
+        /**
+         * @brief Add coins to inventory
+         * @param coins int - coins to be added
+         */
+        virtual void addCoins(int coins) {}
 };
 
 #endif // DOODLEJUMP_STATE_H

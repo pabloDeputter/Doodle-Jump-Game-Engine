@@ -18,4 +18,5 @@ void Spring::visit(Player& player)
         setX(Utils::Camera::getInstance().getWorldDimensions().first * 2.f);
         // Spring can be removed next time active Entities are cleared
         setRemoveFlag(true);
+        mStarted = true;
 }

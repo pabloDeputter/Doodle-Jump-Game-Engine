@@ -112,7 +112,7 @@ public:
         void destroy();
         /**
          * @brief Get current score of game
-         * @return Pointer to Model::Score object
+         * @return Model::Score - Pointer to Model::Score object
          */
         [[nodiscard]] const std::shared_ptr<Model::Score>& getScore() const { return mScore; }
         /**

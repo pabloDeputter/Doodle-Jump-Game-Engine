@@ -1,0 +1,64 @@
+\hypertarget{_world_8h_source}{}\doxysection{World.\+h}
+\label{_world_8h_source}\index{engine/include/World.h@{engine/include/World.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 18/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_WORLD\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_WORLD\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}model/Entity.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}model/Player.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}AbstractFactory.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}util/Camera.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}util/Random.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}util/Utilities.h"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}Settings.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}model/Score.h"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}observer/Events.h"{}}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{27 \textcolor{keyword}{class }\mbox{\hyperlink{class_world}{World}}}
+\DoxyCodeLine{28 \{}
+\DoxyCodeLine{29 \textcolor{keyword}{private}:}
+\DoxyCodeLine{30         std::shared\_ptr<Model::Player> mPlayer;                }
+\DoxyCodeLine{31         std::vector<std::shared\_ptr<Model::Entity>> mEntities; }
+\DoxyCodeLine{32         std::shared\_ptr<Factory::AbstractFactory>}
+\DoxyCodeLine{33             mFactory; }
+\DoxyCodeLine{34         std::vector<std::shared\_ptr<Model::Entity>> mBackground; }
+\DoxyCodeLine{35         std::shared\_ptr<Model::Score> mScore;                    }
+\DoxyCodeLine{36         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} mActivePlatforms;                           }
+\DoxyCodeLine{37         \mbox{\hyperlink{namespace_settings_ab03c07a7c54964db4b281d86b6a345c2}{Settings::Difficulty}} mDifficulty;                        }
+\DoxyCodeLine{38         \textcolor{keywordtype}{bool} mPlaying;                                           }
+\DoxyCodeLine{40 \textcolor{keyword}{private}:}
+\DoxyCodeLine{44         \textcolor{keywordtype}{void} generateEntity();}
+\DoxyCodeLine{50         \textcolor{keywordtype}{void} spawnPlatform(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y);}
+\DoxyCodeLine{56         \textcolor{keywordtype}{void} spawnBonus(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y);}
+\DoxyCodeLine{63         \textcolor{keywordtype}{void} spawnEntity(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} type);}
+\DoxyCodeLine{68         \textcolor{keywordtype}{bool} checkDifficulty();}
+\DoxyCodeLine{73         \textcolor{keywordtype}{void} addEntity(\textcolor{keyword}{const} std::shared\_ptr<Model::Entity>\& entity) \{ mEntities.emplace\_back(entity); \}}
+\DoxyCodeLine{77         \textcolor{keywordtype}{void} removeEntities();}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{keyword}{public}:}
+\DoxyCodeLine{85         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_world_a3c679c627674f9eab2a684fb163d0a10}{World}}(std::shared\_ptr<Factory::AbstractFactory>\& factory, \textcolor{keywordtype}{bool} playing,}
+\DoxyCodeLine{86                        \mbox{\hyperlink{namespace_settings_ab03c07a7c54964db4b281d86b6a345c2}{Settings::Difficulty}} diff = Settings::eEasy);}
+\DoxyCodeLine{90         \mbox{\hyperlink{class_world_a8c73fba541a5817fff65147ba47cd827}{\string~World}}() \{ \mbox{\hyperlink{class_world_a02d69ed7161ba4b4cb07471eb1bf2ec9}{destroy}}(); \}}
+\DoxyCodeLine{94         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_world_aed4c6c402fd61214f42509cb4f3b00b1}{initWorld}}();}
+\DoxyCodeLine{100         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_world_aa4383998d557af1d365d1eae6037d5b9}{events}}(\textcolor{keyword}{const} std::string\& move, \textcolor{keywordtype}{bool} isPressed) \textcolor{keyword}{const};}
+\DoxyCodeLine{104         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_world_aac8c1fde63c06577ffc648aaefdb37f0}{update}}();}
+\DoxyCodeLine{108         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_world_a6452e0fbfe12a1b4f71416bce15be9b2}{render}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{112         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_world_a02d69ed7161ba4b4cb07471eb1bf2ec9}{destroy}}();}
+\DoxyCodeLine{117         [[nodiscard]] \textcolor{keyword}{const} std::shared\_ptr<Model::Score>\& \mbox{\hyperlink{class_world_a84e3c636922b0130bc886acd8036f67f}{getScore}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mScore; \}}
+\DoxyCodeLine{122         [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_world_ac42af7a92b7f70724e8ae59da1308704}{isPlaying}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mPlaying; \}}
+\DoxyCodeLine{123 \};}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_WORLD\_H}}
+
+\end{DoxyCode}

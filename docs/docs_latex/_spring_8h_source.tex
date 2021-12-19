@@ -1,0 +1,33 @@
+\hypertarget{_spring_8h_source}{}\doxysection{Spring.\+h}
+\label{_spring_8h_source}\index{engine/include/model/Spring.h@{engine/include/model/Spring.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 06/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_SPRING\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_SPRING\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Bonus.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}Player.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_spring}{Spring}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_model_1_1_bonus}{Bonus}}}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22 \textcolor{keyword}{private}:}
+\DoxyCodeLine{27         \textcolor{keywordtype}{void} visit(\mbox{\hyperlink{class_model_1_1_player}{Model::Player}}\& player) \textcolor{keyword}{override};}
+\DoxyCodeLine{32         [[nodiscard]] \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} Model::eSpring; \}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{public}:}
+\DoxyCodeLine{40         \mbox{\hyperlink{class_model_1_1_spring_a922bc9133f02951feb60a78030d6ba7f}{Spring}}(\textcolor{keywordtype}{int} score, \textcolor{keywordtype}{bool} started) : \mbox{\hyperlink{class_model_1_1_bonus}{Bonus}}(score, started)\{\};}
+\DoxyCodeLine{45         \mbox{\hyperlink{class_model_1_1_spring_a26b8a7b6c19b67a8487ff3a76d4b1e98}{Spring}}() : \mbox{\hyperlink{class_model_1_1_bonus}{Bonus}}(15, false)\{\};}
+\DoxyCodeLine{49         \mbox{\hyperlink{class_model_1_1_spring_a65e7bdcee7a0ffc951ba5fb1e439f02c}{\string~Spring}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{50 \};}
+\DoxyCodeLine{51 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_SPRING\_H}}
+
+\end{DoxyCode}

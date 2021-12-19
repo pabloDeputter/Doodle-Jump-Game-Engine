@@ -28,7 +28,8 @@ enum Type
         eBackground,
         eJetpack,
         eSpring,
-        eScore
+        eScore,
+        eCoin
 };
 /**
  * @brief Class for Entity object
@@ -123,6 +124,11 @@ public:
          * @param score int - new score
          */
         virtual void setScore(int score) { mScore = score; }
+        /**
+         * @brief Get coins, used by Score
+         * @return int - coins
+         */
+        virtual int getCoins() const { return 0; }
         /**
          * @brief Get type of Entity
          * @return Model::Type - type of Entity

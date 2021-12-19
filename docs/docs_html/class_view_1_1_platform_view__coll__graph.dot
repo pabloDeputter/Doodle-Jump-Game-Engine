@@ -1,0 +1,14 @@
+digraph "View::PlatformView"
+    {
+    // LATEX_PDF_SIZE
+  bgcolor = "transparent";
+edge [fontname = "Helvetica",fontsize = "10",labelfontname = "Helvetica",labelfontsize = "10"];
+node [fontname = "Helvetica",fontsize = "10",shape = record];
+Node1 [label = "View::PlatformView",height = 0.2,width = 0.4,color = "black", fillcolor = "grey75", style = "filled", fontcolor = "black",tooltip = "Class for View of Platform Entity."];
+Node2 -> Node1 [dir = "back",color = "midnightblue",fontsize = "10",style = "solid",fontname = "Helvetica"];
+Node2 [label = "View::IView",height = 0.2,width = 0.4,color = "black",URL = "$class_view_1_1_i_view.html",tooltip = "Abstract class for View."];
+Node3 -> Node2 [dir = "back",color = "midnightblue",fontsize = "10",style = "solid",fontname = "Helvetica"];
+Node3 [label = "Observer::Observer",height = 0.2,width = 0.4,color = "black",URL = "$class_observer_1_1_observer.html",tooltip = "Class for Observer of Observer pattern."];
+Node4 -> Node2 [dir = "back",color = "midnightblue",fontsize = "10",style = "solid",fontname = "Helvetica"];
+Node4 [label = "IEventHandler",height = 0.2,width = 0.4,color = "black",URL = "$class_i_event_handler.html",tooltip = "Abstract IEventHandler class."];
+}

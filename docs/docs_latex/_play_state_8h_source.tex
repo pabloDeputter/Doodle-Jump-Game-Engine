@@ -1,0 +1,41 @@
+\hypertarget{_play_state_8h_source}{}\doxysection{Play\+State.\+h}
+\label{_play_state_8h_source}\index{game/include/state/PlayState.h@{game/include/state/PlayState.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 14/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_PLAYSTATE\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_PLAYSTATE\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}World.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}Game.h"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}MenuState.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}State.h"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{20 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_states}{States}} \{}
+\DoxyCodeLine{24 \textcolor{keyword}{class }\mbox{\hyperlink{class_states_1_1_play_state}{PlayState}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_state}{State}}}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26 \textcolor{keyword}{private}:}
+\DoxyCodeLine{27         std::unique\_ptr<World> mWorld; }
+\DoxyCodeLine{28 \textcolor{keyword}{private}:}
+\DoxyCodeLine{32         \textcolor{keywordtype}{void} render() \textcolor{keyword}{const override};}
+\DoxyCodeLine{36         \textcolor{keywordtype}{void} update() \textcolor{keyword}{override};}
+\DoxyCodeLine{42         \textcolor{keywordtype}{void} handleInput(sf::Keyboard::Key key, \textcolor{keywordtype}{bool} isPressed) \textcolor{keyword}{const};}
+\DoxyCodeLine{46         \textcolor{keywordtype}{void} processEvents() \textcolor{keyword}{override};}
+\DoxyCodeLine{51         [[nodiscard]] \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} ePlay; \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{keyword}{public}:}
+\DoxyCodeLine{60         \mbox{\hyperlink{class_states_1_1_play_state_a425928903c123a4689abe1a9431d1dec}{PlayState}}(std::unique\_ptr<World> world, std::shared\_ptr<sf::RenderWindow> window, \mbox{\hyperlink{class_game}{Game}}\& game);}
+\DoxyCodeLine{64         \mbox{\hyperlink{class_states_1_1_play_state_a70557fcf0509285115eee213c428e69f}{\string~PlayState}}()\textcolor{keyword}{ override }\{ mWorld-\/>destroy(); \}}
+\DoxyCodeLine{65 \};}
+\DoxyCodeLine{66 \} \textcolor{comment}{// namespace States}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_PLAYSTATE\_H}}
+
+\end{DoxyCode}

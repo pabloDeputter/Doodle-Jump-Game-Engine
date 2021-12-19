@@ -21,11 +21,7 @@ private:
          * @brief Handle CollisionEvent event
          * @param event CollisionEvent - event to handle
          */
-        void handleEvent(const CollisionEvent& event) override
-        {
-                // TODO - threads leaks
-                //                mSound->play();
-        }
+        void handleEvent(const CollisionEvent& event) override {}
 
 public:
         /**

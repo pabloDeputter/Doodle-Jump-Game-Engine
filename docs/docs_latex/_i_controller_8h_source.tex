@@ -1,0 +1,52 @@
+\hypertarget{_i_controller_8h_source}{}\doxysection{IController.\+h}
+\label{_i_controller_8h_source}\index{engine/include/controller/IController.h@{engine/include/controller/IController.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 19/11/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ICONTROLLER\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ICONTROLLER\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}model/Entity.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}model/Player.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}util/Camera.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{18 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_controller}{Controller}} \{}
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{class_controller_1_1_i_controller}{IController}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_observer_1_1_observer}{Observer::Observer}}, \textcolor{keyword}{public} \mbox{\hyperlink{class_i_event_handler}{IEventHandler}}}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{25         std::shared\_ptr<Model::Entity> \mbox{\hyperlink{class_controller_1_1_i_controller_accc2fde03898be0a2ca5d4ee0afd8231}{mEntity}}; }
+\DoxyCodeLine{27 \textcolor{keyword}{private}:}
+\DoxyCodeLine{33         \textcolor{keywordtype}{void} onTrigger(EventType type, \textcolor{keyword}{const} std::shared\_ptr<Event>\& event)\textcolor{keyword}{ override }\{ \textcolor{keyword}{event}-\/>send(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{38         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_key_pressed_event}{KeyPressedEvent}}\& event)\textcolor{keyword}{ override }\{\}}
+\DoxyCodeLine{43         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_move_event}{MoveEvent}}\& event)\textcolor{keyword}{ override}}
+\DoxyCodeLine{44 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{45                 \textcolor{comment}{// Move registered Entity}}
+\DoxyCodeLine{46                 \mbox{\hyperlink{class_controller_1_1_i_controller_accc2fde03898be0a2ca5d4ee0afd8231}{mEntity}}-\/>move(event.\mbox{\hyperlink{class_move_event_ae52af8996afac8c06c4876125df6c534}{isCollided}}());}
+\DoxyCodeLine{47                 \textcolor{comment}{// If Entity is out of view -\/-\/> Entity can be removed}}
+\DoxyCodeLine{48                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_controller_1_1_i_controller_accc2fde03898be0a2ca5d4ee0afd8231}{mEntity}}-\/>isOutOfView()) \{}
+\DoxyCodeLine{49                         \mbox{\hyperlink{class_controller_1_1_i_controller_accc2fde03898be0a2ca5d4ee0afd8231}{mEntity}}-\/>setRemoveFlag(\textcolor{keyword}{true});}
+\DoxyCodeLine{50                         \textcolor{comment}{// Clear registered observers if Entity is removable (some Entities are still used,}}
+\DoxyCodeLine{51                         \textcolor{comment}{// also if they are out of view of the Camera)}}
+\DoxyCodeLine{52                         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_controller_1_1_i_controller_accc2fde03898be0a2ca5d4ee0afd8231}{mEntity}}-\/>isRemovable()) \{}
+\DoxyCodeLine{53                                 \mbox{\hyperlink{class_controller_1_1_i_controller_accc2fde03898be0a2ca5d4ee0afd8231}{mEntity}}-\/>clear();}
+\DoxyCodeLine{54                         \}}
+\DoxyCodeLine{55                 \}}
+\DoxyCodeLine{56         \}}
+\DoxyCodeLine{61         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_collision_event}{CollisionEvent}}\& event)\textcolor{keyword}{ override }\{\}}
+\DoxyCodeLine{62 \textcolor{keyword}{public}:}
+\DoxyCodeLine{66         \mbox{\hyperlink{class_controller_1_1_i_controller_a3d839e44f15bc455fac3c15d8459f90c}{IController}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{71         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_controller_1_1_i_controller_a4833ca746d5ca8361d8121967d8a4fc6}{IController}}(std::shared\_ptr<Model::Entity>\& entity) : \mbox{\hyperlink{class_controller_1_1_i_controller_accc2fde03898be0a2ca5d4ee0afd8231}{mEntity}}(entity) \{\}}
+\DoxyCodeLine{75         \mbox{\hyperlink{class_controller_1_1_i_controller_a8c26b455427f2ca6795e63d0f07103cc}{\string~IController}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{80         [[maybe\_unused]] [[nodiscard]] \textcolor{keyword}{const} std::shared\_ptr<Model::Entity>\& \mbox{\hyperlink{class_controller_1_1_i_controller_af9ecabb00a6358bba27ed3946be21480}{getEntity}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_controller_1_1_i_controller_accc2fde03898be0a2ca5d4ee0afd8231}{mEntity}}; \}}
+\DoxyCodeLine{81 \};}
+\DoxyCodeLine{82 \} \textcolor{comment}{// namespace Controller}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_ICONTROLLER\_H}}
+
+\end{DoxyCode}

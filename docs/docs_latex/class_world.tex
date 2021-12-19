@@ -1,0 +1,112 @@
+\hypertarget{class_world}{}\doxysection{World Class Reference}
+\label{class_world}\index{World@{World}}
+
+
+Class for \mbox{\hyperlink{class_world}{World}}, holds all the entities and is used for the overall game logic.  
+
+
+
+
+{\ttfamily \#include $<$World.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_world_a3c679c627674f9eab2a684fb163d0a10}{World}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_factory_1_1_abstract_factory}{Factory\+::\+Abstract\+Factory}} $>$ \&factory, bool playing, \mbox{\hyperlink{namespace_settings_ab03c07a7c54964db4b281d86b6a345c2}{Settings\+::\+Difficulty}} diff=Settings\+::e\+Easy)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_world}{World}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_a8c73fba541a5817fff65147ba47cd827}\label{class_world_a8c73fba541a5817fff65147ba47cd827}} 
+{\bfseries $\sim$\+World} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{class_world}{World}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_aed4c6c402fd61214f42509cb4f3b00b1}\label{class_world_aed4c6c402fd61214f42509cb4f3b00b1}} 
+void {\bfseries init\+World} ()
+\begin{DoxyCompactList}\small\item\em Initialize starting-\/world, such as starting platforms, background, ... \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_aa4383998d557af1d365d1eae6037d5b9}{events}} (const std\+::string \&move, bool is\+Pressed) const
+\begin{DoxyCompactList}\small\item\em Process events such as player input. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_aac8c1fde63c06577ffc648aaefdb37f0}\label{class_world_aac8c1fde63c06577ffc648aaefdb37f0}} 
+void {\bfseries update} ()
+\begin{DoxyCompactList}\small\item\em Gets called every tick from \mbox{\hyperlink{class_game}{Game}} loop, updates ever \mbox{\hyperlink{namespace_model}{Model}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_a6452e0fbfe12a1b4f71416bce15be9b2}\label{class_world_a6452e0fbfe12a1b4f71416bce15be9b2}} 
+void {\bfseries render} () const
+\begin{DoxyCompactList}\small\item\em Render all entities on screen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_a02d69ed7161ba4b4cb07471eb1bf2ec9}\label{class_world_a02d69ed7161ba4b4cb07471eb1bf2ec9}} 
+void {\bfseries destroy} ()
+\begin{DoxyCompactList}\small\item\em Destroy \mbox{\hyperlink{class_world}{World}}. \end{DoxyCompactList}\item 
+const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_score}{Model\+::\+Score}} $>$ \& \mbox{\hyperlink{class_world_a84e3c636922b0130bc886acd8036f67f}{get\+Score}} () const
+\begin{DoxyCompactList}\small\item\em Get current score of game. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_world_ac42af7a92b7f70724e8ae59da1308704}{is\+Playing}} () const
+\begin{DoxyCompactList}\small\item\em Check if Player is not dead. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for \mbox{\hyperlink{class_world}{World}}, holds all the entities and is used for the overall game logic. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_world_a3c679c627674f9eab2a684fb163d0a10}\label{class_world_a3c679c627674f9eab2a684fb163d0a10}} 
+\index{World@{World}!World@{World}}
+\index{World@{World}!World@{World}}
+\doxysubsubsection{\texorpdfstring{World()}{World()}}
+{\footnotesize\ttfamily World\+::\+World (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_factory_1_1_abstract_factory}{Factory\+::\+Abstract\+Factory}} $>$ \&}]{factory,  }\item[{bool}]{playing,  }\item[{\mbox{\hyperlink{namespace_settings_ab03c07a7c54964db4b281d86b6a345c2}{Settings\+::\+Difficulty}}}]{diff = {\ttfamily Settings\+:\+:eEasy} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for \mbox{\hyperlink{class_world}{World}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em factory} & Pointer to Model\+::\+Abstract\+Factory \\
+\hline
+{\em playing} & bool -\/ Player is not dead \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_world_aa4383998d557af1d365d1eae6037d5b9}\label{class_world_aa4383998d557af1d365d1eae6037d5b9}} 
+\index{World@{World}!events@{events}}
+\index{events@{events}!World@{World}}
+\doxysubsubsection{\texorpdfstring{events()}{events()}}
+{\footnotesize\ttfamily void World\+::events (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{move,  }\item[{bool}]{is\+Pressed }\end{DoxyParamCaption}) const}
+
+
+
+Process events such as player input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & std\+::string -\/ which key is pressed \\
+\hline
+{\em is\+Pressed} & bool -\/ is key pressed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_world_a84e3c636922b0130bc886acd8036f67f}\label{class_world_a84e3c636922b0130bc886acd8036f67f}} 
+\index{World@{World}!getScore@{getScore}}
+\index{getScore@{getScore}!World@{World}}
+\doxysubsubsection{\texorpdfstring{getScore()}{getScore()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_score}{Model\+::\+Score}} $>$ \& World\+::get\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get current score of game. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model_1_1_score}{Model\+::\+Score}} -\/ Pointer to \mbox{\hyperlink{class_model_1_1_score}{Model\+::\+Score}} object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_world_ac42af7a92b7f70724e8ae59da1308704}\label{class_world_ac42af7a92b7f70724e8ae59da1308704}} 
+\index{World@{World}!isPlaying@{isPlaying}}
+\index{isPlaying@{isPlaying}!World@{World}}
+\doxysubsubsection{\texorpdfstring{isPlaying()}{isPlaying()}}
+{\footnotesize\ttfamily bool World\+::is\+Playing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if Player is not dead. 
+
+\begin{DoxyReturn}{Returns}
+bool -\/ true if Player is not dead 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/World.\+h\item 
+engine/src/World.\+cpp\end{DoxyCompactItemize}

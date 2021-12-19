@@ -1,0 +1,80 @@
+\hypertarget{_high_score_8h_source}{}\doxysection{High\+Score.\+h}
+\label{_high_score_8h_source}\index{engine/include/HighScore.h@{engine/include/HighScore.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 13/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_HIGHSCORE\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_HIGHSCORE\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}util/Exception.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{21 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_high_score_data}{HighScoreData}}}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{24         \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_high_score_data_ab954bf606075a35d40f2d7a05df3ca42}{mScore}};        }
+\DoxyCodeLine{25         std::string \mbox{\hyperlink{struct_high_score_data_a1089b754b68d36dc64708a19a861ad35}{mName}}; }
+\DoxyCodeLine{27 \textcolor{keyword}{public}:}
+\DoxyCodeLine{31         \mbox{\hyperlink{struct_high_score_data_aa45483b09ae8592143addc2372af934d}{HighScoreData}}() : \mbox{\hyperlink{struct_high_score_data_ab954bf606075a35d40f2d7a05df3ca42}{mScore}}(0), \mbox{\hyperlink{struct_high_score_data_a1089b754b68d36dc64708a19a861ad35}{mName}}(std::string()) \{\}}
+\DoxyCodeLine{37         \mbox{\hyperlink{struct_high_score_data_af3d056a490a0d1fe2c65a7bd957cef68}{HighScoreData}}(\textcolor{keywordtype}{int} score, std::string name) : \mbox{\hyperlink{struct_high_score_data_ab954bf606075a35d40f2d7a05df3ca42}{mScore}}(score), \mbox{\hyperlink{struct_high_score_data_a1089b754b68d36dc64708a19a861ad35}{mName}}(std::move(name)) \{\}}
+\DoxyCodeLine{41         \textcolor{keyword}{virtual} \mbox{\hyperlink{struct_high_score_data_a8ca47f3e2b83d559640707733188eb8e}{\string~HighScoreData}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{46         [[nodiscard]] std::string \mbox{\hyperlink{struct_high_score_data_a924bab35c2ab960f32b01f140d4e5300}{toString}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_high_score_data_a1089b754b68d36dc64708a19a861ad35}{mName}} + \textcolor{stringliteral}{"{} -\/ "{}} + std::to\_string(\mbox{\hyperlink{struct_high_score_data_ab954bf606075a35d40f2d7a05df3ca42}{mScore}}); \}}
+\DoxyCodeLine{53         \textcolor{keyword}{friend} std::ostream\& \mbox{\hyperlink{struct_high_score_data_a83ce317b9d12e53ff80f0688151588eb}{operator<<}}(std::ostream\& os, \textcolor{keyword}{const} \mbox{\hyperlink{struct_high_score_data}{HighScoreData}}\& score)}
+\DoxyCodeLine{54         \{}
+\DoxyCodeLine{55                 os << score.\mbox{\hyperlink{struct_high_score_data_a1089b754b68d36dc64708a19a861ad35}{mName}} << \textcolor{stringliteral}{"{} -\/ "{}} << score.\mbox{\hyperlink{struct_high_score_data_ab954bf606075a35d40f2d7a05df3ca42}{mScore}} << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{56                 \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{57         \}}
+\DoxyCodeLine{58 \};}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{63 \textcolor{keyword}{class }\mbox{\hyperlink{class_high_score}{HighScore}}}
+\DoxyCodeLine{64 \{}
+\DoxyCodeLine{65 \textcolor{keyword}{private}:}
+\DoxyCodeLine{66         std::string mPath;                                   }
+\DoxyCodeLine{67         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} mQuantity;                              }
+\DoxyCodeLine{68         std::vector<std::shared\_ptr<HighScoreData>> mScores; }
+\DoxyCodeLine{69         \textcolor{keywordtype}{int} mToAdd;                                          }
+\DoxyCodeLine{71 \textcolor{keyword}{private}:}
+\DoxyCodeLine{77         \mbox{\hyperlink{class_high_score}{HighScore}}(std::string path, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} quantity) : mPath(std::move(path)), mQuantity(quantity), mToAdd(0)}
+\DoxyCodeLine{78         \{}
+\DoxyCodeLine{79                 \textcolor{comment}{// Try loading the given file, otherwise throw exception}}
+\DoxyCodeLine{80                 \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{81                         \mbox{\hyperlink{class_high_score_a5412036800a4fcf34debb8148a9ca6fd}{load}}();}
+\DoxyCodeLine{82                 \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& exc) \{}
+\DoxyCodeLine{83                         std::cerr << exc.what();}
+\DoxyCodeLine{84                 \}}
+\DoxyCodeLine{85         \}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{keyword}{public}:}
+\DoxyCodeLine{91         \mbox{\hyperlink{class_high_score_a7ef745f5ed4bc39d04ce8656db818233}{HighScore}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_high_score}{HighScore}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{96         \mbox{\hyperlink{class_high_score}{HighScore}}\& \mbox{\hyperlink{class_high_score_a2c79ed36f7dd049a10ac8f897a501baf}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_high_score}{HighScore}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{100         \mbox{\hyperlink{class_high_score_a979a1776ad5fc85a1b92215861e4db65}{\string~HighScore}}()}
+\DoxyCodeLine{101         \{}
+\DoxyCodeLine{102                 \mbox{\hyperlink{class_high_score_a1f5a65d2ec6f7cfd6a3d442386214911}{save}}();}
+\DoxyCodeLine{103                 \mbox{\hyperlink{class_high_score_a380ae8387b7cb5c81abc704337ea3bf2}{clear}}();}
+\DoxyCodeLine{104         \}}
+\DoxyCodeLine{109         \textcolor{keyword}{static} \mbox{\hyperlink{class_high_score}{HighScore}}\& \mbox{\hyperlink{class_high_score_af70bb7b7f4aff79556082fef9474d7bf}{getInstance}}();}
+\DoxyCodeLine{113         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_high_score_a5412036800a4fcf34debb8148a9ca6fd}{load}}();}
+\DoxyCodeLine{117         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_high_score_a1f5a65d2ec6f7cfd6a3d442386214911}{save}}();}
+\DoxyCodeLine{121         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_high_score_a380ae8387b7cb5c81abc704337ea3bf2}{clear}}() \{ mScores.clear(); \}}
+\DoxyCodeLine{127         [[nodiscard]] \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_high_score_a114d821fa0b6d0c3b526f9242ebf11a9}{add}}(\textcolor{keyword}{const} std::shared\_ptr<HighScoreData>\& score);}
+\DoxyCodeLine{132         [[nodiscard]] \textcolor{keyword}{const} std::vector<std::shared\_ptr<HighScoreData>>\& \mbox{\hyperlink{class_high_score_a1cb057836de517d91f39fb12299d8a28}{getScores}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mScores; \}}
+\DoxyCodeLine{137         \textcolor{comment}{//        [[maybe\_unused]] [[nodiscard]] int getHighScore() const;}}
+\DoxyCodeLine{143 \textcolor{comment}{}        [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_high_score_a86c12438bd9005ea590d463f4662f11b}{isHighScore}}(\textcolor{keywordtype}{int} score) \textcolor{keyword}{const};}
+\DoxyCodeLine{148         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_high_score_a947910d72dc8748b14773ce1bdcdd9bd}{add}}(\textcolor{keywordtype}{int} score) \{ mToAdd = score; \}}
+\DoxyCodeLine{153         [[nodiscard]] \textcolor{keywordtype}{int} \mbox{\hyperlink{class_high_score_ad59644860bfffd3c90a58374671aff06}{getToAdd}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mToAdd; \}}
+\DoxyCodeLine{159         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_high_score_a2a4523b89783c73ba90d375f805514cf}{changeName}}(\textcolor{keyword}{const} std::string\& newName, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index);}
+\DoxyCodeLine{160 \};}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_HIGHSCORE\_H}}
+
+\end{DoxyCode}

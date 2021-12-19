@@ -8,19 +8,21 @@
 
 #include "state/PlayState.h"
 #include "state/SettingState.h"
+#include "state/ShopState.h"
 
 using namespace States;
 using namespace Utils;
 
 MenuState::MenuState(std::shared_ptr<sf::RenderWindow> window, Game& game)
-    : State(std::move(window), game), mSelected(0), mEnterName(false), mDiff(0)
+    : State(std::move(window), game), mSelected(0), mIndex(0), mEnterName(false), mDiff(0), mCoins(0)
 {
         // Set title logo
-        mTitle.setTexture(*Utils::ResourceManager::getInstance().getTextures()->get(Utils::Type::eMenuLogo));
-        mTitle.scale(.5f, .5f);
-        const auto bounds = mTitle.getLocalBounds();
-        mTitle.setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);
-        mTitle.setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 0.15f);
+        mTitle = std::make_unique<sf::Sprite>();
+        mTitle->setTexture(*Utils::ResourceManager::getInstance().getTextures()->get(Utils::Type::eMenuLogo));
+        mTitle->scale(.5f, .5f);
+        const auto bounds = mTitle->getLocalBounds();
+        mTitle->setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);
+        mTitle->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 0.15f);
 
         // Create scores
         createScores();
@@ -36,40 +38,57 @@ MenuState::MenuState(std::shared_ptr<sf::RenderWindow> window, Game& game)
         // Create text for settings "button"
         sf::Text infoSave;
         Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
-                            35, infoSave, "SAVE");
+                            35, infoSave, "SAVE SCORES");
         // Create text for settings "button"
         sf::Text infoSettings;
         Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
                             35, infoSettings, "SETTINGS");
+        // Create text for shop "button"
+        sf::Text infoShop;
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
+                            35, infoShop, "SHOP");
 
         // Insert into std::vector
-        mInfo = {infoPlay, infoClear, infoSave, infoSettings};
+        mInfo = {std::make_unique<sf::Text>(infoPlay), std::make_unique<sf::Text>(infoClear),
+                 std::make_unique<sf::Text>(infoSave), std::make_unique<sf::Text>(infoSettings),
+                 std::make_unique<sf::Text>(infoShop)};
 
         // Spacing between each info displayed
         float factor_info = 1.f;
         // Positioning of info
         for (auto& i : mInfo) {
-                i.setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 1.1f * factor_info);
+                i->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 1.1f * factor_info);
                 factor_info += .075f;
         }
 
-        mSound.setBuffer(*Utils::ResourceManager::getInstance().getSounds()->get(Type::eMenuInfo));
-        mSound.play();
+        // Create text for coins
+        mCoinsText = std::make_unique<sf::Text>();
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo),
+                            sf::Color(255, 215, 0), 45, *mCoinsText, "COINS: " + std::to_string(mCoins));
+        mCoinsText->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 1.6f);
+
+        // Sound
+        mSound = std::make_unique<sf::Sound>();
+        mSound->setBuffer(*Utils::ResourceManager::getInstance().getSounds()->get(Type::eMenuInfo));
+        mSound->setVolume(15.f);
+        mSound->setLoop(true);
+        mSound->play();
 }
 
 void MenuState::render() const
 {
         mWindow->clear(sf::Color::Black);
         // Draw title logo
-        mWindow->draw(mTitle);
+        mWindow->draw(*mTitle);
         // Draw scores text
         for (const auto& i : mScores) {
-                mWindow->draw(i);
+                mWindow->draw(*i);
         }
         // Draw info text
         for (const auto& i : mInfo) {
-                mWindow->draw(i);
+                mWindow->draw(*i);
         }
+        mWindow->draw(*mCoinsText);
         // Display that what is drawn on screen
         mWindow->display();
 }
@@ -147,28 +166,28 @@ void MenuState::createScores()
                 Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuHighScores),
                                     sf::Color::White, 20, a, i->toString());
                 a.setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 0.15f * factor_a);
-                mScores.emplace_back(a);
+                mScores.emplace_back(std::make_unique<sf::Text>(a));
                 factor_a += 0.5f;
         }
         // Set colors
         if (!mScores.empty()) {
-                mScores[0].setFillColor(sf::Color(204, 46, 30));
+                mScores[0]->setFillColor(sf::Color(204, 46, 30));
         }
         if (mScores.size() >= 2) {
-                mScores[1].setFillColor(sf::Color(250, 160, 58));
+                mScores[1]->setFillColor(sf::Color(250, 160, 58));
         }
         if (mScores.size() >= 3) {
-                mScores[2].setFillColor(sf::Color(251, 240, 80));
+                mScores[2]->setFillColor(sf::Color(251, 240, 80));
         }
         if (mScores.size() >= 4) {
-                mScores[3].setFillColor(sf::Color(113, 246, 75));
+                mScores[3]->setFillColor(sf::Color(113, 246, 75));
         }
         if (mScores.size() >= 5) {
-                mScores[4].setFillColor(sf::Color(90, 196, 250));
+                mScores[4]->setFillColor(sf::Color(90, 196, 250));
         }
         for (unsigned int i = 5; i < mScores.size(); i++) {
                 if (mScores.size() >= i) {
-                        mScores[i].setFillColor(sf::Color(150, 30, 150));
+                        mScores[i]->setFillColor(sf::Color(150, 30, 150));
                 } else {
                         break;
                 }
@@ -178,22 +197,22 @@ void MenuState::createScores()
 void MenuState::updateScoreName()
 {
         // Get score to update
-        sf::Text& toUpdate = mScores[mIndex];
+        const auto& toUpdate = mScores[mIndex];
         // Update string
-        toUpdate.setString(HighScore::getInstance().getScores()[mIndex]->toString());
+        toUpdate->setString(HighScore::getInstance().getScores()[mIndex]->toString());
         // Update position
-        const auto bounds = toUpdate.getLocalBounds();
-        toUpdate.setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);
+        const auto bounds = toUpdate->getLocalBounds();
+        toUpdate->setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);
 }
 
 void MenuState::updateInfo()
 {
         // Set color of every sf::Text info to white
         for (auto& i : mInfo) {
-                i.setFillColor(sf::Color::White);
+                i->setFillColor(sf::Color::White);
         }
         // Highlight selected info to RED
-        mInfo[mSelected].setFillColor(sf::Color(204, 46, 30));
+        mInfo[mSelected]->setFillColor(sf::Color(204, 46, 30));
 }
 
 void MenuState::onSelect()
@@ -212,6 +231,9 @@ void MenuState::onSelect()
         } else if (mSelected == 3) {
                 // Push SettingState on stack
                 mGame.pushState(std::make_shared<SettingState>(mWindow, mGame, Settings::Difficulty(mDiff)));
+        } else if (mSelected == 4) {
+                // Push ShopState on stack
+                mGame.pushState(std::make_shared<ShopState>(mWindow, mGame));
         }
 }
 
@@ -224,6 +246,15 @@ void MenuState::newHighScore()
         if (achievedScore != 0) {
                 mIndex = HighScore::getInstance().add(std::make_shared<HighScoreData>(achievedScore, "ENTER NAME"));
                 mEnterName = true;
+                std::cout << mIndex << "\n";
                 createScores();
         }
+}
+
+void MenuState::addCoins(int coins)
+{
+        mCoins += coins;
+        mCoinsText->setString("COINS: " + std::to_string(mCoins));
+        // Update position
+        mCoinsText->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 1.6f);
 }

@@ -1,0 +1,183 @@
+\hypertarget{class_high_score}{}\doxysection{High\+Score Class Reference}
+\label{class_high_score}\index{HighScore@{HighScore}}
+
+
+Class for \mbox{\hyperlink{class_high_score}{High\+Score}} implemented using singleton pattern.  
+
+
+
+
+{\ttfamily \#include $<$High\+Score.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_high_score_a7ef745f5ed4bc39d04ce8656db818233}\label{class_high_score_a7ef745f5ed4bc39d04ce8656db818233}} 
+{\bfseries High\+Score} (const \mbox{\hyperlink{class_high_score}{High\+Score}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_high_score}{High\+Score}} \& \mbox{\hyperlink{class_high_score_a2c79ed36f7dd049a10ac8f897a501baf}{operator=}} (const \mbox{\hyperlink{class_high_score}{High\+Score}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted assignment operator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_high_score_a979a1776ad5fc85a1b92215861e4db65}\label{class_high_score_a979a1776ad5fc85a1b92215861e4db65}} 
+{\bfseries $\sim$\+High\+Score} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{class_high_score}{High\+Score}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_high_score_a5412036800a4fcf34debb8148a9ca6fd}\label{class_high_score_a5412036800a4fcf34debb8148a9ca6fd}} 
+void {\bfseries load} ()
+\begin{DoxyCompactList}\small\item\em Load high score file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_high_score_a1f5a65d2ec6f7cfd6a3d442386214911}\label{class_high_score_a1f5a65d2ec6f7cfd6a3d442386214911}} 
+void {\bfseries save} ()
+\begin{DoxyCompactList}\small\item\em Save stored high scores to file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_high_score_a380ae8387b7cb5c81abc704337ea3bf2}\label{class_high_score_a380ae8387b7cb5c81abc704337ea3bf2}} 
+void {\bfseries clear} ()
+\begin{DoxyCompactList}\small\item\em Clear stored high scores. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_high_score_a114d821fa0b6d0c3b526f9242ebf11a9}{add}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} $>$ \&score)
+\begin{DoxyCompactList}\small\item\em Add new high score. \end{DoxyCompactList}\item 
+const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} $>$ $>$ \& \mbox{\hyperlink{class_high_score_a1cb057836de517d91f39fb12299d8a28}{get\+Scores}} () const
+\begin{DoxyCompactList}\small\item\em Get stored scores. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_high_score_a86c12438bd9005ea590d463f4662f11b}{is\+High\+Score}} (int score) const
+\begin{DoxyCompactList}\small\item\em Get highest high score. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_high_score_a947910d72dc8748b14773ce1bdcdd9bd}{add}} (int score)
+\begin{DoxyCompactList}\small\item\em Add score to buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_high_score_ad59644860bfffd3c90a58374671aff06}{get\+To\+Add}} () const
+\begin{DoxyCompactList}\small\item\em Get score stored in buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_high_score_a2a4523b89783c73ba90d375f805514cf}{change\+Name}} (const std\+::string \&new\+Name, unsigned int index)
+\begin{DoxyCompactList}\small\item\em Change name of score. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_high_score}{High\+Score}} \& \mbox{\hyperlink{class_high_score_af70bb7b7f4aff79556082fef9474d7bf}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Get instance of \mbox{\hyperlink{class_high_score}{High\+Score}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for \mbox{\hyperlink{class_high_score}{High\+Score}} implemented using singleton pattern. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_high_score_a114d821fa0b6d0c3b526f9242ebf11a9}\label{class_high_score_a114d821fa0b6d0c3b526f9242ebf11a9}} 
+\index{HighScore@{HighScore}!add@{add}}
+\index{add@{add}!HighScore@{HighScore}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily unsigned int High\+Score\+::add (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} $>$ \&}]{score }\end{DoxyParamCaption})}
+
+
+
+Add new high score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score} & \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} -\/ score to be added \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned int -\/ index of newly inserted score 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_high_score_a947910d72dc8748b14773ce1bdcdd9bd}\label{class_high_score_a947910d72dc8748b14773ce1bdcdd9bd}} 
+\index{HighScore@{HighScore}!add@{add}}
+\index{add@{add}!HighScore@{HighScore}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void High\+Score\+::add (\begin{DoxyParamCaption}\item[{int}]{score }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add score to buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score} & int -\/ score to be added \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_high_score_a2a4523b89783c73ba90d375f805514cf}\label{class_high_score_a2a4523b89783c73ba90d375f805514cf}} 
+\index{HighScore@{HighScore}!changeName@{changeName}}
+\index{changeName@{changeName}!HighScore@{HighScore}}
+\doxysubsubsection{\texorpdfstring{changeName()}{changeName()}}
+{\footnotesize\ttfamily void High\+Score\+::change\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{new\+Name,  }\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+Change name of score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Name} & std\+::string -\/ new name to be added \\
+\hline
+{\em index} & unsigned int -\/ index of score to be edited \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_high_score_af70bb7b7f4aff79556082fef9474d7bf}\label{class_high_score_af70bb7b7f4aff79556082fef9474d7bf}} 
+\index{HighScore@{HighScore}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!HighScore@{HighScore}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_high_score}{High\+Score}} \& High\+Score\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get instance of \mbox{\hyperlink{class_high_score}{High\+Score}} object. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_high_score}{High\+Score}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_high_score_a1cb057836de517d91f39fb12299d8a28}\label{class_high_score_a1cb057836de517d91f39fb12299d8a28}} 
+\index{HighScore@{HighScore}!getScores@{getScores}}
+\index{getScores@{getScores}!HighScore@{HighScore}}
+\doxysubsubsection{\texorpdfstring{getScores()}{getScores()}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} $>$ $>$ \& High\+Score\+::get\+Scores (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get stored scores. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+High\+Score\+Data$>$ -\/ std\+::vector containing pointers to stored scores 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_high_score_ad59644860bfffd3c90a58374671aff06}\label{class_high_score_ad59644860bfffd3c90a58374671aff06}} 
+\index{HighScore@{HighScore}!getToAdd@{getToAdd}}
+\index{getToAdd@{getToAdd}!HighScore@{HighScore}}
+\doxysubsubsection{\texorpdfstring{getToAdd()}{getToAdd()}}
+{\footnotesize\ttfamily int High\+Score\+::get\+To\+Add (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get score stored in buffer. 
+
+\begin{DoxyReturn}{Returns}
+int -\/ score stored in buffer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_high_score_a86c12438bd9005ea590d463f4662f11b}\label{class_high_score_a86c12438bd9005ea590d463f4662f11b}} 
+\index{HighScore@{HighScore}!isHighScore@{isHighScore}}
+\index{isHighScore@{isHighScore}!HighScore@{HighScore}}
+\doxysubsubsection{\texorpdfstring{isHighScore()}{isHighScore()}}
+{\footnotesize\ttfamily bool High\+Score\+::is\+High\+Score (\begin{DoxyParamCaption}\item[{int}]{score }\end{DoxyParamCaption}) const}
+
+
+
+Get highest high score. 
+
+\begin{DoxyReturn}{Returns}
+int -\/ score
+\end{DoxyReturn}
+Check if given score is high score 
+\begin{DoxyParams}{Parameters}
+{\em score} & int -\/ score to be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/ true if new high score 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_high_score_a2c79ed36f7dd049a10ac8f897a501baf}\label{class_high_score_a2c79ed36f7dd049a10ac8f897a501baf}} 
+\index{HighScore@{HighScore}!operator=@{operator=}}
+\index{operator=@{operator=}!HighScore@{HighScore}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_high_score}{High\+Score}} \& High\+Score\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_high_score}{High\+Score}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted assignment operator. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_high_score}{High\+Score}} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/High\+Score.\+h\item 
+engine/src/High\+Score.\+cpp\end{DoxyCompactItemize}

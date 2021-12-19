@@ -1,0 +1,40 @@
+\hypertarget{_setting_state_8h_source}{}\doxysection{Setting\+State.\+h}
+\label{_setting_state_8h_source}\index{game/include/state/SettingState.h@{game/include/state/SettingState.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 18/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_SETTINGSTATE\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_SETTINGSTATE\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Game.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}Settings.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}State.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{18 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_states}{States}} \{}
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{class_states_1_1_setting_state}{SettingState}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_state}{State}}}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24 \textcolor{keyword}{private}:}
+\DoxyCodeLine{25         std::vector<std::shared\_ptr<sf::Text>> mSettings; }
+\DoxyCodeLine{26         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} mSelected; }
+\DoxyCodeLine{27 \textcolor{keyword}{private}:}
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} render() \textcolor{keyword}{const override};}
+\DoxyCodeLine{35         \textcolor{keywordtype}{void} update() \textcolor{keyword}{override};}
+\DoxyCodeLine{41         \textcolor{keywordtype}{void} handleInput(sf::Keyboard::Key key, \textcolor{keywordtype}{bool} isPressed);}
+\DoxyCodeLine{45         \textcolor{keywordtype}{void} processEvents() \textcolor{keyword}{override};}
+\DoxyCodeLine{50         [[nodiscard]] \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} eSettings; \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{keyword}{public}:}
+\DoxyCodeLine{59         \mbox{\hyperlink{class_states_1_1_setting_state_ad697f1a0a6afd5438e151bf15791f289}{SettingState}}(std::shared\_ptr<sf::RenderWindow> window, \mbox{\hyperlink{class_game}{Game}}\& game, \mbox{\hyperlink{namespace_settings_ab03c07a7c54964db4b281d86b6a345c2}{Settings::Difficulty}} diff);}
+\DoxyCodeLine{63         \mbox{\hyperlink{class_states_1_1_setting_state_a896810b9869cc32b53b06f533095631e}{\string~SettingState}}()\textcolor{keyword}{ override }\{ mSettings.clear(); \}}
+\DoxyCodeLine{64 \};}
+\DoxyCodeLine{65 \} \textcolor{comment}{// namespace States}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_SETTINGSTATE\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,16 @@
+digraph "Model::Jetpack"
+    {
+    // LATEX_PDF_SIZE
+  bgcolor = "transparent";
+edge [fontname = "Helvetica",fontsize = "10",labelfontname = "Helvetica",labelfontsize = "10"];
+node [fontname = "Helvetica",fontsize = "10",shape = record];
+Node1 [label = "Model::Jetpack",height = 0.2,width = 0.4,color = "black", fillcolor = "grey75", style = "filled", fontcolor = "black",tooltip = "Class for Jetpack object."];
+Node2 -> Node1 [dir = "back",color = "midnightblue",fontsize = "10",style = "solid"];
+Node2 [label = "Model::Bonus",height = 0.2,width = 0.4,color = "black",URL = "$class_model_1_1_bonus.html",tooltip = "Class for Bonus."];
+Node3 -> Node2 [dir = "back",color = "midnightblue",fontsize = "10",style = "solid"];
+Node3 [label = "Model::Entity",height = 0.2,width = 0.4,color = "black",URL = "$class_model_1_1_entity.html",tooltip = "Class for Entity object."];
+Node4 -> Node3 [dir = "back",color = "midnightblue",fontsize = "10",style = "solid"];
+Node4 [label = "Observer::Subject",height = 0.2,width = 0.4,color = "black",URL = "$class_observer_1_1_subject.html",tooltip = "Class for Subject / Observable of observer pattern."];
+Node5 -> Node3 [dir = "back",color = "midnightblue",fontsize = "10",style = "solid"];
+Node5 [label = "Visitor::IVisitor",height = 0.2,width = 0.4,color = "black",URL = "$class_visitor_1_1_i_visitor.html",tooltip = "Class for abstract Visitor."];
+}

@@ -1,0 +1,40 @@
+\hypertarget{_exception_8h_source}{}\doxysection{Exception.\+h}
+\label{_exception_8h_source}\index{engine/include/util/Exception.h@{engine/include/util/Exception.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 09/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_EXCEPTION\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_EXCEPTION\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <exception>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_utils}{Utils}} \{}
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{class_utils_1_1_exception}{Exception}} : \textcolor{keyword}{public} std::exception}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{21         std::string \mbox{\hyperlink{class_utils_1_1_exception_ade5015abb908229b78a36baf986d96d5}{mValue}}; }
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{28         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_utils_1_1_exception_a5dc7ed3002b18fc9bfac378753555822}{Exception}}(std::string value) : \mbox{\hyperlink{class_utils_1_1_exception_ade5015abb908229b78a36baf986d96d5}{mValue}}(std::move(value)) \{\}}
+\DoxyCodeLine{32         \mbox{\hyperlink{class_utils_1_1_exception_a60503aefbd01598b4d944fbcd373bb7c}{Exception}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{36         \mbox{\hyperlink{class_utils_1_1_exception_ac783568d7a4fd09960256edb416956d3}{\string~Exception}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{41         [[nodiscard]] \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{class_utils_1_1_exception_a256af185779384db8b493a1fa9de117c}{what}}() const noexcept\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_utils_1_1_exception_ade5015abb908229b78a36baf986d96d5}{mValue}}.c\_str(); \}}
+\DoxyCodeLine{42 \};}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{47 \textcolor{keyword}{class }\mbox{\hyperlink{class_utils_1_1_file_exception}{FileException}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_utils_1_1_exception}{Exception}}}
+\DoxyCodeLine{48 \{}
+\DoxyCodeLine{49 \textcolor{keyword}{public}:}
+\DoxyCodeLine{55         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_utils_1_1_file_exception_a609c49bd1d40799edfe8d05a90d3d723}{FileException}}(std::string file, std::string sort)}
+\DoxyCodeLine{56             : \mbox{\hyperlink{class_utils_1_1_exception}{Exception}}(\textcolor{stringliteral}{"{}Failed to load "{}} + std::move(sort) + \textcolor{stringliteral}{"{} '"{}} + std::move(file) + \textcolor{stringliteral}{"{}'. File is missing.\(\backslash\)n"{}})}
+\DoxyCodeLine{57         \{}
+\DoxyCodeLine{58         \}}
+\DoxyCodeLine{62         \mbox{\hyperlink{class_utils_1_1_file_exception_ac8e138c07ad7f38284604026331ba0b6}{\string~FileException}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{63 \};}
+\DoxyCodeLine{64 \} \textcolor{comment}{// namespace Utils}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_EXCEPTION\_H}}
+
+\end{DoxyCode}

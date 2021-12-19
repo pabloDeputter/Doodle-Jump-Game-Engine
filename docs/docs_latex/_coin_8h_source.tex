@@ -1,0 +1,39 @@
+\hypertarget{_coin_8h_source}{}\doxysection{Coin.\+h}
+\label{_coin_8h_source}\index{engine/include/model/Coin.h@{engine/include/model/Coin.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 19/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_COIN\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_COIN\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Bonus.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}Player.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_model}{Model}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{class_model_1_1_coin}{Coin}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_model_1_1_bonus}{Bonus}}}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22 \textcolor{keyword}{private}:}
+\DoxyCodeLine{27         \textcolor{keywordtype}{void} visit(\mbox{\hyperlink{class_model_1_1_player}{Model::Player}}\& player)\textcolor{keyword}{ override}}
+\DoxyCodeLine{28 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{29                 \textcolor{comment}{// Move out of world to avoid further collisions}}
+\DoxyCodeLine{30                 \mbox{\hyperlink{class_model_1_1_entity_a0d62dc9e38997266a93848eddc093f78}{setX}}(\mbox{\hyperlink{class_utils_1_1_camera_aa84baebe5d771ddfd82a5b55bd3fde39}{Utils::Camera::getInstance}}().getWorldDimensions().first * 2.f);}
+\DoxyCodeLine{31                 \textcolor{comment}{// Coin can be removed next time active Entities are cleared}}
+\DoxyCodeLine{32                 \mbox{\hyperlink{class_model_1_1_entity_a33279e9959e845cc7307610de0af78d4}{setRemoveFlag}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{33                 mStarted = \textcolor{keyword}{true};}
+\DoxyCodeLine{34         \}}
+\DoxyCodeLine{39         [[nodiscard]] \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} Model::eCoin; \}}
+\DoxyCodeLine{40 \textcolor{keyword}{public}:}
+\DoxyCodeLine{46         \mbox{\hyperlink{class_model_1_1_coin_ac0af44c8ed661362391bff480b798eac}{Coin}}(\textcolor{keywordtype}{int} score, \textcolor{keywordtype}{bool} started) : \mbox{\hyperlink{class_model_1_1_bonus}{Bonus}}(score, started)\{\};}
+\DoxyCodeLine{51         \mbox{\hyperlink{class_model_1_1_coin_a2fc95d940f456c1230ffa6126cbb55a3}{Coin}}() : \mbox{\hyperlink{class_model_1_1_bonus}{Bonus}}(20, false)\{\};}
+\DoxyCodeLine{55         \mbox{\hyperlink{class_model_1_1_coin_a8c1f1de3e7ef9f464e664fd77015f1e7}{\string~Coin}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{56 \};}
+\DoxyCodeLine{57 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_COIN\_H}}
+
+\end{DoxyCode}
