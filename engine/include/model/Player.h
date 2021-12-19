@@ -26,7 +26,6 @@ public:
         {
                 eNormal = 0,
                 eFlying,
-                eJump
         };
 
 private:
@@ -135,16 +134,6 @@ public:
          * @param flag bool
          */
         void setIsMovingRight(bool flag) override { mIsMovingRight = flag; }
-        // TODO
-        void setIsMovingUp(bool flag) override
-        {
-                if (flag) {
-                        mState = eJump;
-                        //                        Utils::Stopwatch::getInstance().addTimer(Type::ePlayer, 1.f);
-                } else {
-                        mState = eNormal;
-                }
-        }
         /**
          * @brief Set state of Player
          * @param state PlayerState - new state of Player

@@ -13,12 +13,10 @@ void PlayerController::handleEvent(const KeyPressedEvent& event)
         const std::string& key = event.getKey();
         bool isPressed = event.isPressed();
         // Set correct moving state of Player
-        if (key == "Q")
+        if (key == "A")
                 mEntity->setIsMovingLeft(isPressed);
         else if (key == "D")
                 mEntity->setIsMovingRight(isPressed);
-        else if (key == "SPACE")
-                mEntity->setIsMovingUp(isPressed);
 }
 
 void PlayerController::handleEvent(const MoveEvent& event)

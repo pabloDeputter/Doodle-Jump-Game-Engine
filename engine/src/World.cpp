@@ -99,7 +99,6 @@ void World::update()
 
                         // Move Entity with event payload that there was a collision between Entity and Player
                         i->trigger(EventType::MOVE, std::make_shared<MoveEvent>(collided));
-                        // TODO - specific??? ubuntu pure virtula
                         i->trigger(EventType::COLLISION, std::make_shared<CollisionEvent>(i, mPlayer));
                 }
                 // If there is no collision between Entity and Player we just move the Entity
@@ -154,7 +153,6 @@ void World::render() const
                 i->trigger(EventType::DRAW, std::make_shared<DrawEvent>());
         }
 
-        // TODO - animation
         // Render player
         mPlayer->trigger(EventType::DRAW, std::make_shared<DrawEvent>());
 
