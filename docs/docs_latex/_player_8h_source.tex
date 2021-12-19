@@ -21,60 +21,49 @@
 \DoxyCodeLine{26         \{}
 \DoxyCodeLine{27                 eNormal = 0,}
 \DoxyCodeLine{28                 eFlying,}
-\DoxyCodeLine{29                 eJump}
-\DoxyCodeLine{30         \};}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32 \textcolor{keyword}{private}:}
-\DoxyCodeLine{33         std::pair<float, float> mVelocity;  }
-\DoxyCodeLine{34         std::pair<float, float> mDirection; }
-\DoxyCodeLine{35         \textcolor{keyword}{const} \textcolor{keywordtype}{float} mMaxVelocity = 0.20f;   }
-\DoxyCodeLine{36         \textcolor{keyword}{const} \textcolor{keywordtype}{float} mAcceleration = 0.015f; }
-\DoxyCodeLine{37         \textcolor{keywordtype}{float} mDrag = 0.005f;               }
-\DoxyCodeLine{39         \textcolor{keywordtype}{bool} mIsMovingLeft;  }
-\DoxyCodeLine{40         \textcolor{keywordtype}{bool} mIsMovingRight; }
-\DoxyCodeLine{41         \mbox{\hyperlink{class_model_1_1_player_a02f2a249107ac9de5ba115d783df29c9}{PlayerState}} mState;  }
-\DoxyCodeLine{43 \textcolor{keyword}{private}:}
-\DoxyCodeLine{49         \textcolor{keywordtype}{void} onTrigger(EventType type, \textcolor{keyword}{const} std::shared\_ptr<Event>\& event)\textcolor{keyword}{ override }\{ \textcolor{keyword}{event}-\/>send(*\textcolor{keyword}{this}); \}}
-\DoxyCodeLine{54         \textcolor{keywordtype}{void} accept(\textcolor{keyword}{const} std::shared\_ptr<Visitor::IVisitor>\& visitor)\textcolor{keyword}{ override }\{ visitor-\/>visit(*\textcolor{keyword}{this}); \}}
-\DoxyCodeLine{59         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_stop_bonus_event}{StopBonusEvent}}\& event)\textcolor{keyword}{ override }\{ accept(event.\mbox{\hyperlink{class_stop_bonus_event_a219dd0e2d213b2e114f0fb65d234b0f4}{getBonus}}()); \}}
-\DoxyCodeLine{64         [[nodiscard]] \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} Model::ePlayer; \}}
-\DoxyCodeLine{69         \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{bool} collision) \textcolor{keyword}{override};}
-\DoxyCodeLine{70 }
-\DoxyCodeLine{71 \textcolor{keyword}{public}:}
-\DoxyCodeLine{75         \mbox{\hyperlink{class_model_1_1_player_adcb903c9886e296959c677d1f172f1e3}{Player}}()}
-\DoxyCodeLine{76             : mVelocity(\{0.f, 0.f\}), mDirection(\{0.f, 0.f\}), mIsMovingLeft(\textcolor{keyword}{false}), mIsMovingRight(\textcolor{keyword}{false}),}
-\DoxyCodeLine{77               mState(eNormal)}
-\DoxyCodeLine{78         \{}
-\DoxyCodeLine{79         \}}
-\DoxyCodeLine{83         \mbox{\hyperlink{class_model_1_1_player_a83a2b0fd0935288e0ef7ca5dbab1578b}{\string~Player}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
-\DoxyCodeLine{84 }
-\DoxyCodeLine{85 \textcolor{keyword}{public}:}
-\DoxyCodeLine{90         [[nodiscard]] \textcolor{keyword}{const} std::pair<float, float>\& \mbox{\hyperlink{class_model_1_1_player_ac46003606603463b5186658ac85953b5}{getVelocity}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mVelocity; \}}
-\DoxyCodeLine{95         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_ab9df0088ac8d23b5537984f23d1d01d7}{setVelocity}}(\textcolor{keyword}{const} std::pair<float, float>\& velocity) \{ mVelocity = velocity; \}}
-\DoxyCodeLine{100         \textcolor{comment}{//        [[maybe\_unused]] [[nodiscard]] const std::pair<float, float>\& getDirection() const \{ return}}
-\DoxyCodeLine{101         \textcolor{comment}{//        mDirection; \}}}
-\DoxyCodeLine{106 \textcolor{comment}{}        \textcolor{comment}{//        [[maybe\_unused]] void setDirection(const std::pair<float, float>\& direction) \{ mDirection = direction;}}
-\DoxyCodeLine{107         \textcolor{comment}{//        \}}}
-\DoxyCodeLine{112 \textcolor{comment}{}        [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_player_ae2c87c73033d728512a555d707e32163}{getMaxVelocity}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mMaxVelocity; \}}
-\DoxyCodeLine{117         \textcolor{comment}{//        [[maybe\_unused]] [[nodiscard]] float getAcceleration() const \{ return mAcceleration; \}}}
-\DoxyCodeLine{122 \textcolor{comment}{}        [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_player_a85b6ad23f853fb2493ae36d81f37311d}{getDrag}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mDrag; \}}
-\DoxyCodeLine{127         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_a70859a376c63291fa57bf8828c23c9ca}{setDrag}}(\textcolor{keywordtype}{float} drag) \{ mDrag = drag; \}}
-\DoxyCodeLine{132         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_a82fe1daa8fecfeebdac235c6fe3bbc2b}{setIsMovingLeft}}(\textcolor{keywordtype}{bool} flag)\textcolor{keyword}{ override }\{ mIsMovingLeft = flag; \}}
-\DoxyCodeLine{137         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_a5a779643684b806741aaa5f4d25aa769}{setIsMovingRight}}(\textcolor{keywordtype}{bool} flag)\textcolor{keyword}{ override }\{ mIsMovingRight = flag; \}}
-\DoxyCodeLine{138         \textcolor{comment}{// TODO}}
-\DoxyCodeLine{139         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_a38d155e7f1b96aead426aada835f324d}{setIsMovingUp}}(\textcolor{keywordtype}{bool} flag)\textcolor{keyword}{ override}}
-\DoxyCodeLine{140 \textcolor{keyword}{        }\{}
-\DoxyCodeLine{141                 \textcolor{keywordflow}{if} (flag) \{}
-\DoxyCodeLine{142                         mState = eJump;}
-\DoxyCodeLine{143                         \textcolor{comment}{//                        Utils::Stopwatch::getInstance().addTimer(Type::ePlayer, 1.f);}}
-\DoxyCodeLine{144                 \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{145                         mState = eNormal;}
-\DoxyCodeLine{146                 \}}
-\DoxyCodeLine{147         \}}
-\DoxyCodeLine{152         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_a5cc56292375ea7b486cc4b1d396d3db6}{setState}}(\mbox{\hyperlink{class_model_1_1_player_a02f2a249107ac9de5ba115d783df29c9}{PlayerState}} state) \{ mState = state; \}}
-\DoxyCodeLine{153 \};}
-\DoxyCodeLine{154 \} \textcolor{comment}{// namespace Model}}
-\DoxyCodeLine{155 }
-\DoxyCodeLine{156 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_PLAYER\_H}}
+\DoxyCodeLine{29         \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{private}:}
+\DoxyCodeLine{32         std::pair<float, float> mVelocity;  }
+\DoxyCodeLine{33         std::pair<float, float> mDirection; }
+\DoxyCodeLine{34         \textcolor{keyword}{const} \textcolor{keywordtype}{float} mMaxVelocity = 0.20f;   }
+\DoxyCodeLine{35         \textcolor{keyword}{const} \textcolor{keywordtype}{float} mAcceleration = 0.015f; }
+\DoxyCodeLine{36         \textcolor{keywordtype}{float} mDrag = 0.005f;               }
+\DoxyCodeLine{38         \textcolor{keywordtype}{bool} mIsMovingLeft;  }
+\DoxyCodeLine{39         \textcolor{keywordtype}{bool} mIsMovingRight; }
+\DoxyCodeLine{40         \mbox{\hyperlink{class_model_1_1_player_a02f2a249107ac9de5ba115d783df29c9}{PlayerState}} mState;  }
+\DoxyCodeLine{42 \textcolor{keyword}{private}:}
+\DoxyCodeLine{48         \textcolor{keywordtype}{void} onTrigger(EventType type, \textcolor{keyword}{const} std::shared\_ptr<Event>\& event)\textcolor{keyword}{ override }\{ \textcolor{keyword}{event}-\/>send(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{53         \textcolor{keywordtype}{void} accept(\textcolor{keyword}{const} std::shared\_ptr<Visitor::IVisitor>\& visitor)\textcolor{keyword}{ override }\{ visitor-\/>visit(*\textcolor{keyword}{this}); \}}
+\DoxyCodeLine{58         \textcolor{keywordtype}{void} handleEvent(\textcolor{keyword}{const} \mbox{\hyperlink{class_stop_bonus_event}{StopBonusEvent}}\& event)\textcolor{keyword}{ override }\{ accept(event.\mbox{\hyperlink{class_stop_bonus_event_a219dd0e2d213b2e114f0fb65d234b0f4}{getBonus}}()); \}}
+\DoxyCodeLine{63         [[nodiscard]] \mbox{\hyperlink{namespace_model_a704990bea21287d993439d3bdf1755bf}{Model::Type}} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} Model::ePlayer; \}}
+\DoxyCodeLine{68         \textcolor{keywordtype}{void} move(\textcolor{keywordtype}{bool} collision) \textcolor{keyword}{override};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{keyword}{public}:}
+\DoxyCodeLine{74         \mbox{\hyperlink{class_model_1_1_player_adcb903c9886e296959c677d1f172f1e3}{Player}}()}
+\DoxyCodeLine{75             : mVelocity(\{0.f, 0.f\}), mDirection(\{0.f, 0.f\}), mIsMovingLeft(\textcolor{keyword}{false}), mIsMovingRight(\textcolor{keyword}{false}),}
+\DoxyCodeLine{76               mState(eNormal)}
+\DoxyCodeLine{77         \{}
+\DoxyCodeLine{78         \}}
+\DoxyCodeLine{82         \mbox{\hyperlink{class_model_1_1_player_a83a2b0fd0935288e0ef7ca5dbab1578b}{\string~Player}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{keyword}{public}:}
+\DoxyCodeLine{89         [[nodiscard]] \textcolor{keyword}{const} std::pair<float, float>\& \mbox{\hyperlink{class_model_1_1_player_ac46003606603463b5186658ac85953b5}{getVelocity}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mVelocity; \}}
+\DoxyCodeLine{94         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_ab9df0088ac8d23b5537984f23d1d01d7}{setVelocity}}(\textcolor{keyword}{const} std::pair<float, float>\& velocity) \{ mVelocity = velocity; \}}
+\DoxyCodeLine{99         \textcolor{comment}{//        [[maybe\_unused]] [[nodiscard]] const std::pair<float, float>\& getDirection() const \{ return}}
+\DoxyCodeLine{100         \textcolor{comment}{//        mDirection; \}}}
+\DoxyCodeLine{105 \textcolor{comment}{}        \textcolor{comment}{//        [[maybe\_unused]] void setDirection(const std::pair<float, float>\& direction) \{ mDirection = direction;}}
+\DoxyCodeLine{106         \textcolor{comment}{//        \}}}
+\DoxyCodeLine{111 \textcolor{comment}{}        [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_player_ae2c87c73033d728512a555d707e32163}{getMaxVelocity}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mMaxVelocity; \}}
+\DoxyCodeLine{116         \textcolor{comment}{//        [[maybe\_unused]] [[nodiscard]] float getAcceleration() const \{ return mAcceleration; \}}}
+\DoxyCodeLine{121 \textcolor{comment}{}        [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{class_model_1_1_player_a85b6ad23f853fb2493ae36d81f37311d}{getDrag}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mDrag; \}}
+\DoxyCodeLine{126         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_a70859a376c63291fa57bf8828c23c9ca}{setDrag}}(\textcolor{keywordtype}{float} drag) \{ mDrag = drag; \}}
+\DoxyCodeLine{131         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_a82fe1daa8fecfeebdac235c6fe3bbc2b}{setIsMovingLeft}}(\textcolor{keywordtype}{bool} flag)\textcolor{keyword}{ override }\{ mIsMovingLeft = flag; \}}
+\DoxyCodeLine{136         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_a5a779643684b806741aaa5f4d25aa769}{setIsMovingRight}}(\textcolor{keywordtype}{bool} flag)\textcolor{keyword}{ override }\{ mIsMovingRight = flag; \}}
+\DoxyCodeLine{141         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_1_1_player_a5cc56292375ea7b486cc4b1d396d3db6}{setState}}(\mbox{\hyperlink{class_model_1_1_player_a02f2a249107ac9de5ba115d783df29c9}{PlayerState}} state) \{ mState = state; \}}
+\DoxyCodeLine{142 \};}
+\DoxyCodeLine{143 \} \textcolor{comment}{// namespace Model}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_PLAYER\_H}}
 
 \end{DoxyCode}

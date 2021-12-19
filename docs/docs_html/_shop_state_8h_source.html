@@ -160,77 +160,81 @@
         <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> mText-&gt;setFillColor(color);
         </div>
         <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> <span class="keywordflow">if</span>
-            (color != sf::Color::White)
+            (color != sf::Color::White) {
         </div>
-        <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> {</div>
-        <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> mRectangle-&gt;setColor(sf::Color(255,
+        <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> mRectangle-&gt;setColor(sf::Color(255,
             100, 100, 255));
         </div>
-        <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> <span class="keywordflow">return</span>;
+        <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> <span class="keywordflow">return</span>;
         </div>
-        <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> }</div>
-        <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> mRectangle-&gt;setColor(sf::Color(255,
+        <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> }</div>
+        <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> mRectangle-&gt;setColor(sf::Color(255,
             255, 255, 255));
         </div>
-        <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> }</div>
-        <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> };</div>
+        <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> }</div>
+        <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> };</div>
+        <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span></div>
         <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">private</span>:
         </div>
         <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> std::pair&lt;unsigned int,
-            unsigned int&gt; mSelected;
+            unsigned int&gt;
         </div>
-        <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> std::vector&lt;std::vector&lt;std::shared_ptr&lt;Item&gt;&gt;&gt;
+        <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> mSelected;</div>
+        <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> std::vector&lt;std::vector&lt;std::shared_ptr&lt;Item&gt;&gt;&gt;
             mItems;
         </div>
-        <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> std::vector&lt;std::shared_ptr&lt;sf::Text&gt;&gt;
+        <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> std::vector&lt;std::shared_ptr&lt;sf::Text&gt;&gt;
             mInfo;
         </div>
-        <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">private</span>:
+        <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">private</span>:
         </div>
-        <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> <span class="keywordtype">void</span>
+        <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> <span class="keywordtype">void</span>
             render() <span class="keyword">const override</span>;
         </div>
-        <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> <span class="keywordtype">void</span>
+        <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> <span class="keywordtype">void</span>
             update() <span class="keyword">override</span>;
         </div>
-        <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> <span class="keywordtype">void</span>
+        <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> <span class="keywordtype">void</span>
             handleInput(sf::Keyboard::Key key, <span class="keywordtype">bool</span> isPressed);
         </div>
-        <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> <span class="keywordtype">void</span>
+        <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> <span class="keywordtype">void</span>
             processEvents() <span class="keyword">override</span>;
         </div>
-        <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> [[nodiscard]] <span
+        <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> [[nodiscard]] <span
                 class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getType()<span class="keyword"> const override </span>{
             <span class="keywordflow">return</span> eShop; }
         </div>
-        <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> std::shared_ptr&lt;Item&gt;
+        <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> std::shared_ptr&lt;Item&gt;
             createItem(<span class="keyword">const</span> std::string&amp; text, <a class="code hl_enumeration"
                                                                                     href="namespace_utils.html#a4694eb8597365f09dc72f9b4bd92bae4">Utils::Type</a>
-            type, <span class="keywordtype">float</span> factorHorizontal = 1.f, <span class="keywordtype">float</span>
+            type, <span class="keywordtype">float</span> factorHorizontal = 1.f,
+        </div>
+        <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> <span class="keywordtype">float</span>
             factorVertical = 1.f);
         </div>
-        <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span
+        <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span></div>
+        <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span
                 class="keyword">public</span>:
         </div>
-        <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> <a class="code hl_function"
+        <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> <a class="code hl_function"
                                                                                                 href="class_states_1_1_shop_state.html#a72df1b59fcf5084893adb2128460a054">ShopState</a>(std::shared_ptr&lt;sf::RenderWindow&gt;
             window, <a class="code hl_class" href="class_game.html">Game</a>&amp; game);
         </div>
-        <div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line"
-                                                                                   href="class_states_1_1_shop_state.html#af0b3392ffbd2a5247b7b4b5739760962">  115</a></span>
+        <div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line"
+                                                                                   href="class_states_1_1_shop_state.html#af0b3392ffbd2a5247b7b4b5739760962">  118</a></span>
             <a class="code hl_function" href="class_states_1_1_shop_state.html#af0b3392ffbd2a5247b7b4b5739760962">~ShopState</a>()<span
                     class="keyword"> override</span></div>
-        <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span
+        <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span
                 class="keyword">        </span>{
         </div>
-        <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> mItems.clear();</div>
-        <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> mInfo.clear();</div>
-        <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> }</div>
-        <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>};</div>
-        <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>} <span class="comment">// namespace States</span>
+        <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> mItems.clear();</div>
+        <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> mInfo.clear();</div>
+        <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> }</div>
+        <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>};</div>
+        <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>} <span class="comment">// namespace States</span>
         </div>
-        <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span></div>
-        <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="preprocessor">#endif </span><span
+        <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span></div>
+        <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif </span><span
                 class="comment">// DOODLEJUMP_SHOPSTATE_H</span></div>
         <div class="ttc" id="aclass_game_html">
             <div class="ttname"><a href="class_game.html">Game</a></div>
@@ -259,7 +263,7 @@
             </div>
             <div class="ttdeci">~ShopState() override</div>
             <div class="ttdoc">Destructor for ShopState object.</div>
-            <div class="ttdef"><b>Definition:</b> ShopState.h:115</div>
+            <div class="ttdef"><b>Definition:</b> ShopState.h:118</div>
         </div>
         <div class="ttc" id="anamespace_states_html">
             <div class="ttname"><a href="namespace_states.html">States</a></div>
