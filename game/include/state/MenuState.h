@@ -124,6 +124,7 @@ public:
                 save(j);
                 mScores.clear();
                 mInfo.clear();
+                mItems.clear();
         }
 };
 } // namespace States

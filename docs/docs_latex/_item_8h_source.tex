@@ -1,0 +1,118 @@
+\hypertarget{_item_8h_source}{}\doxysection{Item.\+h}
+\label{_item_8h_source}\index{game/include/state/Item.h@{game/include/state/Item.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Pablo Deputter on 22/12/2021.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef DOODLEJUMP\_ITEM\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define DOODLEJUMP\_ITEM\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}State.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}util/Utilities.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespace_utils}{Utils}};}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_states}{States}} \{}
+\DoxyCodeLine{17 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_states_1_1_item}{Item}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19         std::unique\_ptr<sf::Sprite> \mbox{\hyperlink{struct_states_1_1_item_aba3778b13457106748d14e76fa00d7b3}{mSprite}};    }
+\DoxyCodeLine{20         std::unique\_ptr<sf::Sprite> \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}}; }
+\DoxyCodeLine{21         std::unique\_ptr<sf::Text> \mbox{\hyperlink{struct_states_1_1_item_a148d59b1e45e8d5cc8162cce849dfda9}{mText}};        }
+\DoxyCodeLine{22         std::unique\_ptr<sf::Text> \mbox{\hyperlink{struct_states_1_1_item_a0f832e3fa0297732354c6124aea81226}{mCostText}};    }
+\DoxyCodeLine{23         \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_states_1_1_item_a13f119a57cca127a6a66c6f461bb7283}{mCost}};                              }
+\DoxyCodeLine{24         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_states_1_1_item_a6383918b8c650e94cc3d22b45ae766c9}{mType}};                     }
+\DoxyCodeLine{25         \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_states_1_1_item_a4925c2d1334b1bb2a3412a3e6f070de2}{mUnlocked}};                         }
+\DoxyCodeLine{30         \mbox{\hyperlink{struct_states_1_1_item_a522c70c724afd8f70bb2c961ac8d3929}{Item}}()}
+\DoxyCodeLine{31         \{}
+\DoxyCodeLine{32                 \mbox{\hyperlink{struct_states_1_1_item_aba3778b13457106748d14e76fa00d7b3}{mSprite}} = std::make\_unique<sf::Sprite>();}
+\DoxyCodeLine{33                 \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}} = std::make\_unique<sf::Sprite>();}
+\DoxyCodeLine{34                 \mbox{\hyperlink{struct_states_1_1_item_a148d59b1e45e8d5cc8162cce849dfda9}{mText}} = std::make\_unique<sf::Text>();}
+\DoxyCodeLine{35                 \mbox{\hyperlink{struct_states_1_1_item_a0f832e3fa0297732354c6124aea81226}{mCostText}} = std::make\_unique<sf::Text>();}
+\DoxyCodeLine{36                 \mbox{\hyperlink{struct_states_1_1_item_a13f119a57cca127a6a66c6f461bb7283}{mCost}} = 0;}
+\DoxyCodeLine{37                 \mbox{\hyperlink{struct_states_1_1_item_a6383918b8c650e94cc3d22b45ae766c9}{mType}} = 0;}
+\DoxyCodeLine{38                 \mbox{\hyperlink{struct_states_1_1_item_a4925c2d1334b1bb2a3412a3e6f070de2}{mUnlocked}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{39         \}}
+\DoxyCodeLine{50         \mbox{\hyperlink{struct_states_1_1_item_aaa4bdc9ee10190d7325f36b59737b339}{Item}}(\textcolor{keyword}{const} std::string\& text, \textcolor{keywordtype}{int} cost, \textcolor{keywordtype}{bool} unlocked, \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils::Type}} type, \textcolor{keywordtype}{float} factorHorizontal,}
+\DoxyCodeLine{51              \textcolor{keywordtype}{float} factorVertical, \textcolor{keyword}{const} std::shared\_ptr<sf::RenderWindow>\& window)}
+\DoxyCodeLine{52         \{}
+\DoxyCodeLine{53                 \mbox{\hyperlink{struct_states_1_1_item_a13f119a57cca127a6a66c6f461bb7283}{mCost}} = cost;}
+\DoxyCodeLine{54                 \mbox{\hyperlink{struct_states_1_1_item_a4925c2d1334b1bb2a3412a3e6f070de2}{mUnlocked}} = unlocked;}
+\DoxyCodeLine{55                 \mbox{\hyperlink{struct_states_1_1_item_a6383918b8c650e94cc3d22b45ae766c9}{mType}} = type;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57                 \mbox{\hyperlink{struct_states_1_1_item_aba3778b13457106748d14e76fa00d7b3}{mSprite}} = std::make\_unique<sf::Sprite>();}
+\DoxyCodeLine{58                 \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}} = std::make\_unique<sf::Sprite>();}
+\DoxyCodeLine{59                 \mbox{\hyperlink{struct_states_1_1_item_a148d59b1e45e8d5cc8162cce849dfda9}{mText}} = std::make\_unique<sf::Text>();}
+\DoxyCodeLine{60                 \mbox{\hyperlink{struct_states_1_1_item_a0f832e3fa0297732354c6124aea81226}{mCostText}} = std::make\_unique<sf::Text>();}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62                 \textcolor{comment}{// Initialize background rectangle}}
+\DoxyCodeLine{63                 \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}}-\/>setTexture(*\mbox{\hyperlink{class_utils_1_1_resource_manager_a7a8809ec27403ca1c58944d2d33042cb}{Utils::ResourceManager::getInstance}}().getTextures()-\/>get(Type::eMenuItemBack));}
+\DoxyCodeLine{64                 \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}}-\/>scale(.75, .75);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66                 \textcolor{comment}{// Initialize sprite}}
+\DoxyCodeLine{67                 \textcolor{keyword}{const} \textcolor{keyword}{auto}\& tex = *\mbox{\hyperlink{class_utils_1_1_resource_manager_a7a8809ec27403ca1c58944d2d33042cb}{Utils::ResourceManager::getInstance}}().\mbox{\hyperlink{class_utils_1_1_resource_manager_a3f513bbae6872338cf7b9628ee246ea2}{getTextures}}()-\/>get(type);}
+\DoxyCodeLine{68                 \textcolor{keyword}{const} \textcolor{keyword}{auto} texSize = tex.getSize();}
+\DoxyCodeLine{69                 \mbox{\hyperlink{struct_states_1_1_item_aba3778b13457106748d14e76fa00d7b3}{mSprite}}-\/>setTexture(tex);}
+\DoxyCodeLine{70                 \mbox{\hyperlink{struct_states_1_1_item_aba3778b13457106748d14e76fa00d7b3}{mSprite}}-\/>scale(sf::Vector2f(75.f / (\textcolor{keywordtype}{float})texSize.x, 75.f / (\textcolor{keywordtype}{float})texSize.y));}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72                 \textcolor{comment}{// Initialize text}}
+\DoxyCodeLine{73                 Utilities::initText(*\mbox{\hyperlink{class_utils_1_1_resource_manager_a7a8809ec27403ca1c58944d2d33042cb}{Utils::ResourceManager::getInstance}}().getFonts()-\/>get(Type::eMenuInfo),}
+\DoxyCodeLine{74                                     sf::Color::White, 30, *\mbox{\hyperlink{struct_states_1_1_item_a148d59b1e45e8d5cc8162cce849dfda9}{mText}}, text);}
+\DoxyCodeLine{75                 Utilities::initText(*\mbox{\hyperlink{class_utils_1_1_resource_manager_a7a8809ec27403ca1c58944d2d33042cb}{Utils::ResourceManager::getInstance}}().getFonts()-\/>get(Type::eMenuInfo),}
+\DoxyCodeLine{76                                     sf::Color(255, 215, 0), 28, *\mbox{\hyperlink{struct_states_1_1_item_a0f832e3fa0297732354c6124aea81226}{mCostText}}, std::to\_string(cost));}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78                 \textcolor{comment}{// Positioning rectangle}}
+\DoxyCodeLine{79                 \textcolor{keyword}{const} \textcolor{keyword}{auto} boundsRectangle = \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}}-\/>getLocalBounds();}
+\DoxyCodeLine{80                 \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}}-\/>setOrigin(boundsRectangle.left + boundsRectangle.width / 2.f,}
+\DoxyCodeLine{81                                       boundsRectangle.top + boundsRectangle.height / 2.f);}
+\DoxyCodeLine{82                 \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}}-\/>setPosition((\textcolor{keywordtype}{float})window-\/>getSize().x * 0.25f * factorHorizontal,}
+\DoxyCodeLine{83                                         (\textcolor{keywordtype}{float})window-\/>getSize().y * 0.20f * factorVertical);}
+\DoxyCodeLine{84                 \textcolor{keyword}{const} \textcolor{keyword}{auto} posRectangle = \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}}-\/>getPosition();}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86                 \textcolor{comment}{// Positioning sprite}}
+\DoxyCodeLine{87                 \textcolor{keyword}{const} \textcolor{keyword}{auto} boundsSprite = \mbox{\hyperlink{struct_states_1_1_item_aba3778b13457106748d14e76fa00d7b3}{mSprite}}-\/>getLocalBounds();}
+\DoxyCodeLine{88                 \mbox{\hyperlink{struct_states_1_1_item_aba3778b13457106748d14e76fa00d7b3}{mSprite}}-\/>setOrigin(boundsSprite.left + boundsSprite.width / 2.f,}
+\DoxyCodeLine{89                                    boundsSprite.top + boundsSprite.height / 2.f);}
+\DoxyCodeLine{90                 \mbox{\hyperlink{struct_states_1_1_item_aba3778b13457106748d14e76fa00d7b3}{mSprite}}-\/>setPosition(posRectangle.x, posRectangle.y * 1.02f);}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92                 \textcolor{comment}{// Positioning text}}
+\DoxyCodeLine{93                 \textcolor{keyword}{const} \textcolor{keyword}{auto} boundsText = \mbox{\hyperlink{struct_states_1_1_item_a148d59b1e45e8d5cc8162cce849dfda9}{mText}}-\/>getLocalBounds();}
+\DoxyCodeLine{94                 \mbox{\hyperlink{struct_states_1_1_item_a148d59b1e45e8d5cc8162cce849dfda9}{mText}}-\/>setOrigin(boundsText.left + boundsText.width / 2.f, boundsText.top + boundsText.height / 2.f);}
+\DoxyCodeLine{95                 \mbox{\hyperlink{struct_states_1_1_item_a148d59b1e45e8d5cc8162cce849dfda9}{mText}}-\/>setPosition(posRectangle.x, posRectangle.y + boundsRectangle.height * .50f);}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97                 \textcolor{keyword}{const} \textcolor{keyword}{auto} boundsCost = \mbox{\hyperlink{struct_states_1_1_item_a0f832e3fa0297732354c6124aea81226}{mCostText}}-\/>getLocalBounds();}
+\DoxyCodeLine{98                 \mbox{\hyperlink{struct_states_1_1_item_a0f832e3fa0297732354c6124aea81226}{mCostText}}-\/>setOrigin(boundsCost.left + boundsCost.width / 2.f,}
+\DoxyCodeLine{99                                      boundsCost.top + boundsCost.height / 2.f);}
+\DoxyCodeLine{100                 \mbox{\hyperlink{struct_states_1_1_item_a0f832e3fa0297732354c6124aea81226}{mCostText}}-\/>setPosition(posRectangle.x, posRectangle.y + boundsRectangle.height * .65f);}
+\DoxyCodeLine{101         \}}
+\DoxyCodeLine{105         \mbox{\hyperlink{struct_states_1_1_item_a3b67318fedb33a6c905989987dcc5759}{\string~Item}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{110         \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_states_1_1_item_a44b76736aa82696192ca473ea4cee640}{draw}}(\textcolor{keyword}{const} std::shared\_ptr<sf::RenderWindow>\& window)\textcolor{keyword}{ const}}
+\DoxyCodeLine{111 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{112                 window-\/>draw(*\mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}});}
+\DoxyCodeLine{113                 window-\/>draw(*\mbox{\hyperlink{struct_states_1_1_item_aba3778b13457106748d14e76fa00d7b3}{mSprite}});}
+\DoxyCodeLine{114                 window-\/>draw(*\mbox{\hyperlink{struct_states_1_1_item_a148d59b1e45e8d5cc8162cce849dfda9}{mText}});}
+\DoxyCodeLine{115                 window-\/>draw(*\mbox{\hyperlink{struct_states_1_1_item_a0f832e3fa0297732354c6124aea81226}{mCostText}});}
+\DoxyCodeLine{116         \}}
+\DoxyCodeLine{122         \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_states_1_1_item_ac4588875317cafbc7054865861113d6f}{setColor}}(sf::Color color, \textcolor{keywordtype}{int} coins)\textcolor{keyword}{ const}}
+\DoxyCodeLine{123 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{124                 \mbox{\hyperlink{struct_states_1_1_item_a148d59b1e45e8d5cc8162cce849dfda9}{mText}}-\/>setFillColor(color);}
+\DoxyCodeLine{125                 \textcolor{comment}{// GREEN}}
+\DoxyCodeLine{126                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{struct_states_1_1_item_a4925c2d1334b1bb2a3412a3e6f070de2}{mUnlocked}}) \{}
+\DoxyCodeLine{127                         \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}}-\/>setColor(sf::Color(13, 131, 4, 255));}
+\DoxyCodeLine{128                 \}}
+\DoxyCodeLine{129                 \textcolor{comment}{// ORANGE}}
+\DoxyCodeLine{130                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\mbox{\hyperlink{struct_states_1_1_item_a4925c2d1334b1bb2a3412a3e6f070de2}{mUnlocked}} \&\& coins >= \mbox{\hyperlink{struct_states_1_1_item_a13f119a57cca127a6a66c6f461bb7283}{mCost}}) \{}
+\DoxyCodeLine{131                         \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}}-\/>setColor(sf::Color(255, 145, 0, 255));}
+\DoxyCodeLine{132                 \}}
+\DoxyCodeLine{133                 \textcolor{comment}{// RED}}
+\DoxyCodeLine{134                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{135                         \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{mRectangle}}-\/>setColor(sf::Color(255, 100, 100, 255));}
+\DoxyCodeLine{136                 \}}
+\DoxyCodeLine{137         \}}
+\DoxyCodeLine{138 \};}
+\DoxyCodeLine{139 \} \textcolor{comment}{// namespace States}}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_ITEM\_H}}
+
+\end{DoxyCode}

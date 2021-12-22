@@ -1,0 +1,161 @@
+\hypertarget{struct_states_1_1_item}{}\doxysection{States\+::Item Struct Reference}
+\label{struct_states_1_1_item}\index{States::Item@{States::Item}}
+
+
+Struct for \mbox{\hyperlink{class_states_1_1_shop_state}{Shop\+State}} item, can be a character or background that is unlock-\/able.  
+
+
+
+
+{\ttfamily \#include $<$Item.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_states_1_1_item_a522c70c724afd8f70bb2c961ac8d3929}\label{struct_states_1_1_item_a522c70c724afd8f70bb2c961ac8d3929}} 
+{\bfseries Item} ()
+\begin{DoxyCompactList}\small\item\em Constructor for item object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_states_1_1_item_aaa4bdc9ee10190d7325f36b59737b339}{Item}} (const std\+::string \&text, int cost, bool unlocked, \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} type, float factor\+Horizontal, float factor\+Vertical, const std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ \&window)
+\begin{DoxyCompactList}\small\item\em Create item to be viewed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_states_1_1_item_a3b67318fedb33a6c905989987dcc5759}\label{struct_states_1_1_item_a3b67318fedb33a6c905989987dcc5759}} 
+{\bfseries $\sim$\+Item} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{struct_states_1_1_item}{Item}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_states_1_1_item_a44b76736aa82696192ca473ea4cee640}{draw}} (const std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ \&window) const
+\begin{DoxyCompactList}\small\item\em Draw all object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_states_1_1_item_ac4588875317cafbc7054865861113d6f}{set\+Color}} (sf\+::\+Color color, int coins) const
+\begin{DoxyCompactList}\small\item\em Set color to objects of \mbox{\hyperlink{struct_states_1_1_item}{Item}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ sf\+::\+Sprite $>$ \mbox{\hyperlink{struct_states_1_1_item_aba3778b13457106748d14e76fa00d7b3}{m\+Sprite}}
+\item 
+std\+::unique\+\_\+ptr$<$ sf\+::\+Sprite $>$ \mbox{\hyperlink{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}{m\+Rectangle}}
+\item 
+std\+::unique\+\_\+ptr$<$ sf\+::\+Text $>$ \mbox{\hyperlink{struct_states_1_1_item_a148d59b1e45e8d5cc8162cce849dfda9}{m\+Text}}
+\item 
+std\+::unique\+\_\+ptr$<$ sf\+::\+Text $>$ \mbox{\hyperlink{struct_states_1_1_item_a0f832e3fa0297732354c6124aea81226}{m\+Cost\+Text}}
+\item 
+int \mbox{\hyperlink{struct_states_1_1_item_a13f119a57cca127a6a66c6f461bb7283}{m\+Cost}}
+\item 
+unsigned int \mbox{\hyperlink{struct_states_1_1_item_a6383918b8c650e94cc3d22b45ae766c9}{m\+Type}}
+\item 
+bool \mbox{\hyperlink{struct_states_1_1_item_a4925c2d1334b1bb2a3412a3e6f070de2}{m\+Unlocked}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct for \mbox{\hyperlink{class_states_1_1_shop_state}{Shop\+State}} item, can be a character or background that is unlock-\/able. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_states_1_1_item_aaa4bdc9ee10190d7325f36b59737b339}\label{struct_states_1_1_item_aaa4bdc9ee10190d7325f36b59737b339}} 
+\index{States::Item@{States::Item}!Item@{Item}}
+\index{Item@{Item}!States::Item@{States::Item}}
+\doxysubsubsection{\texorpdfstring{Item()}{Item()}}
+{\footnotesize\ttfamily States\+::\+Item\+::\+Item (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text,  }\item[{int}]{cost,  }\item[{bool}]{unlocked,  }\item[{\mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}}}]{type,  }\item[{float}]{factor\+Horizontal,  }\item[{float}]{factor\+Vertical,  }\item[{const std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Create item to be viewed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & sf\+::\+Text -\/ text to be shown \\
+\hline
+{\em cost} & int -\/ cost of item \\
+\hline
+{\em unlocked} & bool -\/ is item already unlocked by Player \\
+\hline
+{\em type} & \mbox{\hyperlink{namespace_utils_a4694eb8597365f09dc72f9b4bd92bae4}{Utils\+::\+Type}} -\/ type of item to be shown, used to get the right texture to show in Shop \\
+\hline
+{\em factor\+Horizontal} & float -\/ horizontal spacing \\
+\hline
+{\em factor\+Vertical} & float -\/ vertical spacing \\
+\hline
+{\em window} & sf\+::\+Render\+Window -\/ window where \mbox{\hyperlink{struct_states_1_1_item}{Item}} will be rendered on \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_states_1_1_item_a44b76736aa82696192ca473ea4cee640}\label{struct_states_1_1_item_a44b76736aa82696192ca473ea4cee640}} 
+\index{States::Item@{States::Item}!draw@{draw}}
+\index{draw@{draw}!States::Item@{States::Item}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void States\+::\+Item\+::draw (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ \&}]{window }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Draw all object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & sf\+::\+Render\+Window -\/ window where objects are drawn on \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_states_1_1_item_ac4588875317cafbc7054865861113d6f}\label{struct_states_1_1_item_ac4588875317cafbc7054865861113d6f}} 
+\index{States::Item@{States::Item}!setColor@{setColor}}
+\index{setColor@{setColor}!States::Item@{States::Item}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily void States\+::\+Item\+::set\+Color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color,  }\item[{int}]{coins }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set color to objects of \mbox{\hyperlink{struct_states_1_1_item}{Item}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & sf\+::\+Color -\/ color to be set \\
+\hline
+{\em coins} & int -\/ amount of coins Player has available \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_states_1_1_item_a13f119a57cca127a6a66c6f461bb7283}\label{struct_states_1_1_item_a13f119a57cca127a6a66c6f461bb7283}} 
+\index{States::Item@{States::Item}!mCost@{mCost}}
+\index{mCost@{mCost}!States::Item@{States::Item}}
+\doxysubsubsection{\texorpdfstring{mCost}{mCost}}
+{\footnotesize\ttfamily int States\+::\+Item\+::m\+Cost}
+
+int -\/ cost of item \mbox{\Hypertarget{struct_states_1_1_item_a0f832e3fa0297732354c6124aea81226}\label{struct_states_1_1_item_a0f832e3fa0297732354c6124aea81226}} 
+\index{States::Item@{States::Item}!mCostText@{mCostText}}
+\index{mCostText@{mCostText}!States::Item@{States::Item}}
+\doxysubsubsection{\texorpdfstring{mCostText}{mCostText}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$sf\+::\+Text$>$ States\+::\+Item\+::m\+Cost\+Text}
+
+sf\+::\+Text -\/ cost of item text \mbox{\Hypertarget{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}\label{struct_states_1_1_item_a46e9e02b025e1fdc894c733b35d99412}} 
+\index{States::Item@{States::Item}!mRectangle@{mRectangle}}
+\index{mRectangle@{mRectangle}!States::Item@{States::Item}}
+\doxysubsubsection{\texorpdfstring{mRectangle}{mRectangle}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$sf\+::\+Sprite$>$ States\+::\+Item\+::m\+Rectangle}
+
+sf\+::\+Sprite -\/ rectangle around sprite \mbox{\Hypertarget{struct_states_1_1_item_aba3778b13457106748d14e76fa00d7b3}\label{struct_states_1_1_item_aba3778b13457106748d14e76fa00d7b3}} 
+\index{States::Item@{States::Item}!mSprite@{mSprite}}
+\index{mSprite@{mSprite}!States::Item@{States::Item}}
+\doxysubsubsection{\texorpdfstring{mSprite}{mSprite}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$sf\+::\+Sprite$>$ States\+::\+Item\+::m\+Sprite}
+
+sf\+::\+Sprite -\/ sprite \mbox{\Hypertarget{struct_states_1_1_item_a148d59b1e45e8d5cc8162cce849dfda9}\label{struct_states_1_1_item_a148d59b1e45e8d5cc8162cce849dfda9}} 
+\index{States::Item@{States::Item}!mText@{mText}}
+\index{mText@{mText}!States::Item@{States::Item}}
+\doxysubsubsection{\texorpdfstring{mText}{mText}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$sf\+::\+Text$>$ States\+::\+Item\+::m\+Text}
+
+sf\+::\+Text -\/ text describing item \mbox{\Hypertarget{struct_states_1_1_item_a6383918b8c650e94cc3d22b45ae766c9}\label{struct_states_1_1_item_a6383918b8c650e94cc3d22b45ae766c9}} 
+\index{States::Item@{States::Item}!mType@{mType}}
+\index{mType@{mType}!States::Item@{States::Item}}
+\doxysubsubsection{\texorpdfstring{mType}{mType}}
+{\footnotesize\ttfamily unsigned int States\+::\+Item\+::m\+Type}
+
+unsigned int -\/ type of \mbox{\hyperlink{struct_states_1_1_item}{Item}} to find matching texture \mbox{\Hypertarget{struct_states_1_1_item_a4925c2d1334b1bb2a3412a3e6f070de2}\label{struct_states_1_1_item_a4925c2d1334b1bb2a3412a3e6f070de2}} 
+\index{States::Item@{States::Item}!mUnlocked@{mUnlocked}}
+\index{mUnlocked@{mUnlocked}!States::Item@{States::Item}}
+\doxysubsubsection{\texorpdfstring{mUnlocked}{mUnlocked}}
+{\footnotesize\ttfamily bool States\+::\+Item\+::m\+Unlocked}
+
+bool -\/ is item already unlocked 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/include/state/Item.\+h\end{DoxyCompactItemize}

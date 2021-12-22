@@ -76,4 +76,7 @@ void Game::run()
                 // Render to screen
                 mStates.top()->render();
         }
+        while (!mStates.empty()) {
+                mStates.pop();
+        }
 }

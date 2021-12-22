@@ -80,7 +80,7 @@ int HighScore::add(const std::shared_ptr<HighScoreData>& score)
                 mScores.erase(std::end(mScores) - 1);
         }
         // Find index of new element added
-        for (int i = 0; i < mScores.size(); i++) {
+        for (int i = 0; i < (int)mScores.size(); i++) {
                 if (mScores[i] == score) {
                         return i;
                 }

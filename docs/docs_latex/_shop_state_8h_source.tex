@@ -11,9 +11,9 @@
 \DoxyCodeLine{7 }
 \DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Game.h"{}}}
 \DoxyCodeLine{9 }
-\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}Settings.h"{}}}
-\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}State.h"{}}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Item.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}Item.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}Settings.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}State.h"{}}}
 \DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}json.hpp"{}}}
 \DoxyCodeLine{14 }
 \DoxyCodeLine{15 \textcolor{preprocessor}{\#include <vector>}}
@@ -28,9 +28,9 @@
 \DoxyCodeLine{30             mSelected; }
 \DoxyCodeLine{31         std::vector<std::vector<std::shared\_ptr<Item>>> mItems; }
 \DoxyCodeLine{32         std::vector<std::shared\_ptr<sf::Text>> mInfo;           }
-\DoxyCodeLine{34         \textcolor{keywordtype}{bool} mBuying; }
+\DoxyCodeLine{34         \textcolor{keywordtype}{bool} mBuying;                          }
 \DoxyCodeLine{35         std::unique\_ptr<sf::Text> mBuyingText; }
-\DoxyCodeLine{37         \textcolor{keywordtype}{int}\& mCoins; }
+\DoxyCodeLine{37         \textcolor{keywordtype}{int}\& mCoins;                          }
 \DoxyCodeLine{38         std::unique\_ptr<sf::Text> mCoinsText; }
 \DoxyCodeLine{39 \textcolor{keyword}{private}:}
 \DoxyCodeLine{43         \textcolor{keywordtype}{void} render() \textcolor{keyword}{const override};}
@@ -40,15 +40,15 @@
 \DoxyCodeLine{63         \textcolor{keywordtype}{void} menuMove(sf::Keyboard::Key key, \textcolor{keywordtype}{bool} isPressed);}
 \DoxyCodeLine{67         \textcolor{keywordtype}{void} processEvents() \textcolor{keyword}{override};}
 \DoxyCodeLine{72         [[nodiscard]] \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} getType()\textcolor{keyword}{ const override }\{ \textcolor{keywordflow}{return} eShop; \}}
-\DoxyCodeLine{73 \textcolor{keyword}{public}:}
-\DoxyCodeLine{81         \mbox{\hyperlink{class_states_1_1_shop_state_ab2a5d55d4dab0f8e6aefb251a00bf934}{ShopState}}(std::shared\_ptr<sf::RenderWindow> window, \mbox{\hyperlink{class_game}{Game}}\& game,}
-\DoxyCodeLine{82                   std::vector<std::vector<std::shared\_ptr<Item>>> items, \textcolor{keywordtype}{int}\& coins);}
-\DoxyCodeLine{86         \mbox{\hyperlink{class_states_1_1_shop_state_af0b3392ffbd2a5247b7b4b5739760962}{\string~ShopState}}()\textcolor{keyword}{ override}}
-\DoxyCodeLine{87 \textcolor{keyword}{        }\{}
-\DoxyCodeLine{88                 mItems.clear();}
-\DoxyCodeLine{89                 mInfo.clear();}
-\DoxyCodeLine{90         \}}
-\DoxyCodeLine{91 }
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{keyword}{public}:}
+\DoxyCodeLine{82         \mbox{\hyperlink{class_states_1_1_shop_state_ab2a5d55d4dab0f8e6aefb251a00bf934}{ShopState}}(std::shared\_ptr<sf::RenderWindow> window, \mbox{\hyperlink{class_game}{Game}}\& game,}
+\DoxyCodeLine{83                   std::vector<std::vector<std::shared\_ptr<Item>>> items, \textcolor{keywordtype}{int}\& coins);}
+\DoxyCodeLine{87         \mbox{\hyperlink{class_states_1_1_shop_state_af0b3392ffbd2a5247b7b4b5739760962}{\string~ShopState}}()\textcolor{keyword}{ override}}
+\DoxyCodeLine{88 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{89                 mItems.clear();}
+\DoxyCodeLine{90                 mInfo.clear();}
+\DoxyCodeLine{91         \}}
 \DoxyCodeLine{92 \};}
 \DoxyCodeLine{93 \} \textcolor{comment}{// namespace States}}
 \DoxyCodeLine{94 }

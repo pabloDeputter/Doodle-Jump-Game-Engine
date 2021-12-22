@@ -15,15 +15,15 @@
 \DoxyCodeLine{11 }
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Game.h"{}}}
 \DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}HighScore.h"{}}}
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}State.h"{}}}
-\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}Item.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}Item.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}State.h"{}}}
 \DoxyCodeLine{16 }
 \DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}json.hpp"{}}}
 \DoxyCodeLine{18 }
-\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <utility>}}
-\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <memory>}}
-\DoxyCodeLine{22 \textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include <vector>}}
 \DoxyCodeLine{23 }
 \DoxyCodeLine{24 \textcolor{keyword}{using} json = nlohmann::json;}
 \DoxyCodeLine{25 }
@@ -43,7 +43,7 @@
 \DoxyCodeLine{49         std::unique\_ptr<sf::Text> mCoinsText; }
 \DoxyCodeLine{50         \textcolor{keywordtype}{int} mCoins;                           }
 \DoxyCodeLine{52         std::string mPath; }
-\DoxyCodeLine{54         std::unique\_ptr<sf::Sound> mSound; }
+\DoxyCodeLine{54         std::unique\_ptr<sf::Sound> mSound;                      }
 \DoxyCodeLine{55         std::vector<std::vector<std::shared\_ptr<Item>>> mItems; }
 \DoxyCodeLine{56 \textcolor{keyword}{private}:}
 \DoxyCodeLine{60         \textcolor{keywordtype}{void} render() \textcolor{keyword}{const override};}
@@ -58,19 +58,20 @@
 \DoxyCodeLine{99         \textcolor{keywordtype}{void} newHighScore(\textcolor{keywordtype}{int} coins) \textcolor{keyword}{override};}
 \DoxyCodeLine{104         \textcolor{keywordtype}{void} setNewDiff(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} diff)\textcolor{keyword}{ override }\{ mDiff = diff; \}}
 \DoxyCodeLine{109         \textcolor{keywordtype}{void} save(json\& j) \textcolor{keyword}{const};}
-\DoxyCodeLine{110 \textcolor{keyword}{public}:}
-\DoxyCodeLine{116         \mbox{\hyperlink{class_states_1_1_menu_state_ade114e80253bf07f92c90c593addf9c9}{MenuState}}(std::shared\_ptr<sf::RenderWindow> window, \mbox{\hyperlink{class_game}{Game}}\& game);}
-\DoxyCodeLine{120         \mbox{\hyperlink{class_states_1_1_menu_state_aaf8f0a44d9177dba45d880b8adf6d133}{\string~MenuState}}()\textcolor{keyword}{ override}}
-\DoxyCodeLine{121 \textcolor{keyword}{        }\{}
-\DoxyCodeLine{122                 json j = \mbox{\hyperlink{class_high_score_af70bb7b7f4aff79556082fef9474d7bf}{HighScore::getInstance}}().\mbox{\hyperlink{class_high_score_a9a2b2f176d834e7fb16908d9334f832d}{save}}();}
-\DoxyCodeLine{123                 save(j);}
-\DoxyCodeLine{124                 mScores.clear();}
-\DoxyCodeLine{125                 mInfo.clear();}
-\DoxyCodeLine{126 }
-\DoxyCodeLine{127         \}}
-\DoxyCodeLine{128 \};}
-\DoxyCodeLine{129 \} \textcolor{comment}{// namespace States}}
-\DoxyCodeLine{130 }
-\DoxyCodeLine{131 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_MENUSTATE\_H}}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111 \textcolor{keyword}{public}:}
+\DoxyCodeLine{117         \mbox{\hyperlink{class_states_1_1_menu_state_ade114e80253bf07f92c90c593addf9c9}{MenuState}}(std::shared\_ptr<sf::RenderWindow> window, \mbox{\hyperlink{class_game}{Game}}\& game);}
+\DoxyCodeLine{121         \mbox{\hyperlink{class_states_1_1_menu_state_aaf8f0a44d9177dba45d880b8adf6d133}{\string~MenuState}}()\textcolor{keyword}{ override}}
+\DoxyCodeLine{122 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{123                 json j = \mbox{\hyperlink{class_high_score_af70bb7b7f4aff79556082fef9474d7bf}{HighScore::getInstance}}().\mbox{\hyperlink{class_high_score_a9a2b2f176d834e7fb16908d9334f832d}{save}}();}
+\DoxyCodeLine{124                 save(j);}
+\DoxyCodeLine{125                 mScores.clear();}
+\DoxyCodeLine{126                 mInfo.clear();}
+\DoxyCodeLine{127                 mItems.clear();}
+\DoxyCodeLine{128         \}}
+\DoxyCodeLine{129 \};}
+\DoxyCodeLine{130 \} \textcolor{comment}{// namespace States}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// DOODLEJUMP\_MENUSTATE\_H}}
 
 \end{DoxyCode}

@@ -42,18 +42,17 @@
 \DoxyCodeLine{53         \textcolor{keyword}{explicit} \mbox{\hyperlink{class_game_a19b33a4d2543265ffc63aa4d3ca20a1b}{Game}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} width = 800, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} height = 1440);}
 \DoxyCodeLine{57         \mbox{\hyperlink{class_game_ae3d112ca6e0e55150d2fdbc704474530}{\string~Game}}()}
 \DoxyCodeLine{58         \{}
-\DoxyCodeLine{59                 \textcolor{keywordflow}{while} (!mStates.empty())}
-\DoxyCodeLine{60                 \{}
-\DoxyCodeLine{61                         mStates.pop();}
-\DoxyCodeLine{62                 \}}
-\DoxyCodeLine{63         \}}
-\DoxyCodeLine{67         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}}();}
-\DoxyCodeLine{72         std::shared\_ptr<Factory::AbstractFactory>\& \mbox{\hyperlink{class_game_a1f9cb62eae22a61ad3c1c4e0780e6c03}{getFactory}}() \{ \textcolor{keywordflow}{return} mFactory; \}}
-\DoxyCodeLine{77         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_a43420379c3014d06b7f971317610c0d6}{pushState}}(\textcolor{keyword}{const} std::shared\_ptr<State>\& state) \{ mStates.push(state); \}}
-\DoxyCodeLine{81         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_a4b33dd67adef59bebadba8a234282c88}{popState}}() \{ mStates.pop(); \}}
-\DoxyCodeLine{86         std::shared\_ptr<State>\& \mbox{\hyperlink{class_game_a27767a1d60b8eff2fe8f1062e4cce7a5}{peekState}}() \{ \textcolor{keywordflow}{return} mStates.top(); \}}
-\DoxyCodeLine{87 \};}
-\DoxyCodeLine{88 }
-\DoxyCodeLine{89 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_GAME\_H}}
+\DoxyCodeLine{59                 \textcolor{keywordflow}{while} (!mStates.empty()) \{}
+\DoxyCodeLine{60                         mStates.pop();}
+\DoxyCodeLine{61                 \}}
+\DoxyCodeLine{62         \}}
+\DoxyCodeLine{66         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}}();}
+\DoxyCodeLine{71         std::shared\_ptr<Factory::AbstractFactory>\& \mbox{\hyperlink{class_game_a1f9cb62eae22a61ad3c1c4e0780e6c03}{getFactory}}() \{ \textcolor{keywordflow}{return} mFactory; \}}
+\DoxyCodeLine{76         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_a43420379c3014d06b7f971317610c0d6}{pushState}}(\textcolor{keyword}{const} std::shared\_ptr<State>\& state) \{ mStates.push(state); \}}
+\DoxyCodeLine{80         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_a4b33dd67adef59bebadba8a234282c88}{popState}}() \{ mStates.pop(); \}}
+\DoxyCodeLine{85         std::shared\_ptr<State>\& \mbox{\hyperlink{class_game_a27767a1d60b8eff2fe8f1062e4cce7a5}{peekState}}() \{ \textcolor{keywordflow}{return} mStates.top(); \}}
+\DoxyCodeLine{86 \};}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ADVANCED\_PROGRAMMING\_DOODLEJUMP\_GAME\_H}}
 
 \end{DoxyCode}

@@ -305,7 +305,6 @@ void MenuState::newHighScore(int coins)
         // New high score achieved
         if (achievedScore != 0) {
                 mIndex = HighScore::getInstance().add(std::make_shared<HighScoreData>(achievedScore, "ENTER NAME"));
-                std::cout << mIndex << "\n";
                 mEnterName = true;
                 createScores();
         }

@@ -156,42 +156,41 @@
         </div>
         <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> {</div>
         <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> <span class="keywordflow">while</span>
-            (!mStates.empty())
+            (!mStates.empty()) {
         </div>
-        <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> {</div>
-        <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> mStates.pop();</div>
+        <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> mStates.pop();</div>
+        <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> }</div>
         <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> }</div>
-        <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> }</div>
-        <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> <span class="keywordtype">void</span>
+        <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> <span class="keywordtype">void</span>
             <a class="code hl_function" href="class_game.html#a1ab78f5ed0d5ea879157357cf2fb2afa">run</a>();
         </div>
-        <div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line"
-                                                                                   href="class_game.html#a1f9cb62eae22a61ad3c1c4e0780e6c03">   72</a></span>
+        <div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line"
+                                                                                   href="class_game.html#a1f9cb62eae22a61ad3c1c4e0780e6c03">   71</a></span>
             std::shared_ptr&lt;Factory::AbstractFactory&gt;&amp; <a class="code hl_function"
                                                                     href="class_game.html#a1f9cb62eae22a61ad3c1c4e0780e6c03">getFactory</a>()
             { <span class="keywordflow">return</span> mFactory; }
         </div>
-        <div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line"
-                                                                                   href="class_game.html#a43420379c3014d06b7f971317610c0d6">   77</a></span>
+        <div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line"
+                                                                                   href="class_game.html#a43420379c3014d06b7f971317610c0d6">   76</a></span>
             <span class="keywordtype">void</span> <a class="code hl_function"
                                                      href="class_game.html#a43420379c3014d06b7f971317610c0d6">pushState</a>(<span
                     class="keyword">const</span> std::shared_ptr&lt;State&gt;&amp; state) { mStates.push(state); }
         </div>
-        <div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line"
-                                                                                   href="class_game.html#a4b33dd67adef59bebadba8a234282c88">   81</a></span>
+        <div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line"
+                                                                                   href="class_game.html#a4b33dd67adef59bebadba8a234282c88">   80</a></span>
             <span class="keywordtype">void</span> <a class="code hl_function"
                                                      href="class_game.html#a4b33dd67adef59bebadba8a234282c88">popState</a>()
             { mStates.pop(); }
         </div>
-        <div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line"
-                                                                                   href="class_game.html#a27767a1d60b8eff2fe8f1062e4cce7a5">   86</a></span>
+        <div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line"
+                                                                                   href="class_game.html#a27767a1d60b8eff2fe8f1062e4cce7a5">   85</a></span>
             std::shared_ptr&lt;State&gt;&amp; <a class="code hl_function"
                                                  href="class_game.html#a27767a1d60b8eff2fe8f1062e4cce7a5">peekState</a>()
             { <span class="keywordflow">return</span> mStates.top(); }
         </div>
-        <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
-        <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span></div>
-        <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif </span><span
+        <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>};</div>
+        <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span></div>
+        <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#endif </span><span
                 class="comment">// ADVANCED_PROGRAMMING_DOODLEJUMP_GAME_H</span></div>
         <div class="ttc" id="aclass_game_html">
             <div class="ttname"><a href="class_game.html">Game</a></div>
@@ -214,25 +213,25 @@
             <div class="ttname"><a href="class_game.html#a1f9cb62eae22a61ad3c1c4e0780e6c03">Game::getFactory</a></div>
             <div class="ttdeci">std::shared_ptr&lt; Factory::AbstractFactory &gt; &amp; getFactory()</div>
             <div class="ttdoc">Get factory.</div>
-            <div class="ttdef"><b>Definition:</b> Game.h:72</div>
+            <div class="ttdef"><b>Definition:</b> Game.h:71</div>
         </div>
         <div class="ttc" id="aclass_game_html_a27767a1d60b8eff2fe8f1062e4cce7a5">
             <div class="ttname"><a href="class_game.html#a27767a1d60b8eff2fe8f1062e4cce7a5">Game::peekState</a></div>
             <div class="ttdeci">std::shared_ptr&lt; State &gt; &amp; peekState()</div>
             <div class="ttdoc">Get top of GameStates stack.</div>
-            <div class="ttdef"><b>Definition:</b> Game.h:86</div>
+            <div class="ttdef"><b>Definition:</b> Game.h:85</div>
         </div>
         <div class="ttc" id="aclass_game_html_a43420379c3014d06b7f971317610c0d6">
             <div class="ttname"><a href="class_game.html#a43420379c3014d06b7f971317610c0d6">Game::pushState</a></div>
             <div class="ttdeci">void pushState(const std::shared_ptr&lt; State &gt; &amp;state)</div>
             <div class="ttdoc">Push state onto GameStates stack.</div>
-            <div class="ttdef"><b>Definition:</b> Game.h:77</div>
+            <div class="ttdef"><b>Definition:</b> Game.h:76</div>
         </div>
         <div class="ttc" id="aclass_game_html_a4b33dd67adef59bebadba8a234282c88">
             <div class="ttname"><a href="class_game.html#a4b33dd67adef59bebadba8a234282c88">Game::popState</a></div>
             <div class="ttdeci">void popState()</div>
             <div class="ttdoc">Pop State from GameStates stack.</div>
-            <div class="ttdef"><b>Definition:</b> Game.h:81</div>
+            <div class="ttdef"><b>Definition:</b> Game.h:80</div>
         </div>
         <div class="ttc" id="aclass_game_html_ae3d112ca6e0e55150d2fdbc704474530">
             <div class="ttname"><a href="class_game.html#ae3d112ca6e0e55150d2fdbc704474530">Game::~Game</a></div>
