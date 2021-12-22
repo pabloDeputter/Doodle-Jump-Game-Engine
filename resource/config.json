@@ -16,7 +16,7 @@
       "cost": 100,
       "name": "lAVA",
       "type": 22,
-      "unlocked": true
+      "unlocked": false
     }
   ],
   "characters": [
@@ -24,13 +24,13 @@
       "cost": 0,
       "name": "ROBOT",
       "type": 17,
-      "unlocked": true
+      "unlocked": false
     },
     {
       "cost": 50,
       "name": "CHAINSAW MAN",
       "type": 18,
-      "unlocked": true
+      "unlocked": false
     },
     {
       "cost": 100,
@@ -39,23 +39,47 @@
       "unlocked": true
     }
   ],
-  "coins": 752,
+  "coins": 0,
   "scores": [
     {
-      "name": "pablo",
-      "score": 519
+      "name": "ENTER NAME",
+      "score": 649
     },
     {
       "name": "pablo",
-      "score": 199
+      "score": 518
     },
     {
       "name": "ENTER NAME",
-      "score": 195
+      "score": 397
     },
     {
       "name": "ENTER NAME",
-      "score": 108
+      "score": 201
+    },
+    {
+      "name": "ENTER NAME",
+      "score": 188
+    },
+    {
+      "name": "ENTER NAME",
+      "score": 158
+    },
+    {
+      "name": "ENTER NAME",
+      "score": 126
+    },
+    {
+      "name": "ENTER NAME",
+      "score": 122
+    },
+    {
+      "name": "ENTER NAME",
+      "score": 95
+    },
+    {
+      "name": "ENTER NAME",
+      "score": 92
     }
   ]
 }

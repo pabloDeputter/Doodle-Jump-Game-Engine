@@ -105,7 +105,7 @@ void ShopState::handleInput(sf::Keyboard::Key key, bool isPressed)
                 if (mBuying) {
                         mBuying = false;
                         // If Player has enough coins it can buy the new Item
-                        if (mCoins > selectedItem->mCost) {
+                        if (mCoins >= selectedItem->mCost) {
                                 selectedItem->mUnlocked = true;
                                 mCoins -= selectedItem->mCost;
                                 selectItem();
@@ -120,7 +120,7 @@ void ShopState::handleInput(sf::Keyboard::Key key, bool isPressed)
                 else {
                         mBuying = true;
                         // Player has enough coins to buy Item
-                        if (mCoins > selectedItem->mCost) {
+                        if (mCoins >= selectedItem->mCost) {
                                 mBuyingText->setString("Buying " + selectedItem->mText->getString() + " for " +
                                                        std::to_string(selectedItem->mCost) + " coins...");
                         }
@@ -148,7 +148,7 @@ void ShopState::selectItem()
                         Utils::ResourceManager::getInstance().setTexture(Utils::eShopCh1, Utils::ePlayer);
                 } else if (mSelected.second == 1 && mItems[0][1]->mUnlocked) {
                         Utils::ResourceManager::getInstance().setTexture(Utils::eShopCh2, Utils::ePlayer);
-                } else if (mSelected.second == 2 && mItems[0][1]->mUnlocked) {
+                } else if (mSelected.second == 2 && mItems[0][2]->mUnlocked) {
                         Utils::ResourceManager::getInstance().setTexture(Utils::eShopCh3, Utils::ePlayer);
                 }
 

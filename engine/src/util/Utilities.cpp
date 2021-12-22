@@ -10,12 +10,12 @@ bool Utilities::checkCollision(const std::shared_ptr<Model::Entity>& l, const st
 {
         // We use basic rectangles to check collisions between entities and create these so that the position of
         // the model is the center of the collision rectangle.
-        if (l->getX() - (l->getWidth() / 2.f) + l->getWidth() >=
+        if (l->getX() + (l->getWidth() / 2.f) >=
                 r->getX() - (r->getWidth() / 2.f) && // l right edge is past r left edge
             l->getX() - (l->getWidth() / 2.f) <=
-                r->getX() - (r->getWidth() / 2.f) + r->getWidth() && // l left edge is past r right edge
-            l->getY() + l->getHeight() >= r->getY() &&  // l top edge is past r bottom edge
-            l->getY() <= r->getY() + r->getHeight())                 // l bottom edge is past r top edge
+                r->getX() + (r->getWidth() / 2.f) &&                              // l left edge is past r right edge
+            l->getY() + l->getHeight() / 2.f >= r->getY() &&                      // l top edge is past r bottom edge
+            l->getY() - l->getHeight() / 2.f <= r->getY() + r->getHeight() / 2.f) // l bottom edge is past r top edge
         {
                 return true;
         }

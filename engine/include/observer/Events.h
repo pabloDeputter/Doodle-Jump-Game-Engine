@@ -55,7 +55,6 @@ public:
          * @param event Event - event to be handled
          */
         virtual void handleEvent(const Event& event) {}
-
         /**
          * @brief Handle DrawEvent Event
          * @param event DrawEvent - event to be handled
