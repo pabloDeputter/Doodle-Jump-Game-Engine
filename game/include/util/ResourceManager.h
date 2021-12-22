@@ -26,7 +26,6 @@ namespace Utils {
  */
 enum Type
 {
-        // TODO
         // Entities
         ePlayer = 0,
         eBonus,
@@ -183,7 +182,7 @@ public:
          */
         [[nodiscard]] const std::shared_ptr<ResourceHolder<sf::SoundBuffer>>& getSounds() const { return mSounds; }
         /**
-         * @briefn Assign one texture to another
+         * @brief Assign one texture to another
          * @param type Utils::Type - type of texture to change
          * @param toSet Utils::Type - type of texture to change will get this one's texture assigned
          */

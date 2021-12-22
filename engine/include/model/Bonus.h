@@ -20,7 +20,7 @@ protected:
         std::pair<float, float> mBounds; /**< Move bounds */
         bool mMovingDown;                /**< Is moving down */
         bool mInit;                      /**< Are bounds initialized */
-        bool mStarted;                   /** Is Bonus started */
+        bool mStarted;                   /**< Is Bonus started */
 
 private:
         /**

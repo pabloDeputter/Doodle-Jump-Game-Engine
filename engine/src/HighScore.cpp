@@ -8,50 +8,57 @@
 
 HighScore& HighScore::getInstance()
 {
-        static HighScore instance("resource/highscore.txt", 10);
+        static HighScore instance("resource/config.json", 10);
         return instance;
 }
 
 void HighScore::load()
 {
         // Open file as input
+        json j;
         std::ifstream file(mPath);
         // If file can't be opened, throw exception and return
         if (!file.is_open()) {
                 throw(Utils::FileException(std::move(mPath), "HighScore"));
                 return;
         }
-        // Read file
-        std::string line;
-        while (std::getline(file, line)) {
-                // Find name and score in line
-                std::string name = line.substr(0, line.find(" -"));
-                line.erase(0, line.find(" -") + 2);
-                std::string score = line.substr(1, line.find('-'));
-                // Create new score
-                std::shared_ptr<HighScoreData> newScore = std::make_shared<HighScoreData>(std::stoi(score), name);
+        // Read data into json
+        file >> j;
+        // Close file
+        file.close();
+        // Find scores element in json
+        json scores = j["scores"];
+        auto it = std::begin(scores);
+        while (it != std::end(scores)) {
+                // Create new Score and add this to std::vector
+                const std::string name = (*it)["name"];
+                const int score = (*it)["score"];
+                std::shared_ptr<HighScoreData> newScore = std::make_shared<HighScoreData>(score, name);
                 add(newScore);
+                it++;
         }
-        file.close();
 }
 
-void HighScore::save()
+json HighScore::save()
 {
-        // Open file as output
-        std::ofstream file(mPath);
-        // If file can't be opened, throw exception and return
-        if (!file.is_open()) {
-                throw(Utils::FileException(std::move(mPath), "HighScore"));
-                return;
-        }
-        // Write every high score to file
+        // Create new json array
+        json scores = json::array();
         for (const auto& i : mScores) {
-                file << *i;
+                // Create new score json element
+                json score;
+                score["name"] = i->mName;
+                score["score"] = i->mScore;
+                scores.emplace_back(score);
         }
-        file.close();
+        json j;
+        j["scores"] = scores;
+        //        std::ofstream file(mPath);
+        //        file << j.dump(4);
+        //        file.close();
+        return j;
 }
 
-unsigned int HighScore::add(const std::shared_ptr<HighScoreData>& score)
+int HighScore::add(const std::shared_ptr<HighScoreData>& score)
 {
         // If new Score is less or equal to last score, return
         if (mScores.size() == mQuantity && mScores.back()->mScore >= score->mScore) {
@@ -72,7 +79,14 @@ unsigned int HighScore::add(const std::shared_ptr<HighScoreData>& score)
         if (mScores.size() > mQuantity) {
                 mScores.erase(std::end(mScores) - 1);
         }
-        return index - std::begin(mScores);
+        // Find index of new element added
+        for (int i = 0; i < mScores.size(); i++) {
+                if (mScores[i] == score) {
+                        return i;
+                }
+        }
+        // Not found
+        return -1;
 }
 
 //[[maybe_unused]] int HighScore::getHighScore() const

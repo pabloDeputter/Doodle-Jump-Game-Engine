@@ -18,7 +18,7 @@ Inheritance diagram for States\+::Shop\+State\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_states_1_1_shop_state_a72df1b59fcf5084893adb2128460a054}{Shop\+State}} (std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ window, \mbox{\hyperlink{class_game}{Game}} \&game)
+\mbox{\hyperlink{class_states_1_1_shop_state_ab2a5d55d4dab0f8e6aefb251a00bf934}{Shop\+State}} (std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ window, \mbox{\hyperlink{class_game}{Game}} \&game, std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_states_1_1_item}{Item}} $>$ $>$ $>$ items, int \&coins)
 \begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_states_1_1_shop_state}{Shop\+State}} object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_states_1_1_shop_state_af0b3392ffbd2a5247b7b4b5739760962}\label{class_states_1_1_shop_state_af0b3392ffbd2a5247b7b4b5739760962}} 
 {\bfseries $\sim$\+Shop\+State} () override
@@ -30,11 +30,11 @@ Inheritance diagram for States\+::Shop\+State\+:\begin{figure}[H]
 Class for when in Shop. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_states_1_1_shop_state_a72df1b59fcf5084893adb2128460a054}\label{class_states_1_1_shop_state_a72df1b59fcf5084893adb2128460a054}} 
+\mbox{\Hypertarget{class_states_1_1_shop_state_ab2a5d55d4dab0f8e6aefb251a00bf934}\label{class_states_1_1_shop_state_ab2a5d55d4dab0f8e6aefb251a00bf934}} 
 \index{States::ShopState@{States::ShopState}!ShopState@{ShopState}}
 \index{ShopState@{ShopState}!States::ShopState@{States::ShopState}}
 \doxysubsubsection{\texorpdfstring{ShopState()}{ShopState()}}
-{\footnotesize\ttfamily Shop\+State\+::\+Shop\+State (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$}]{window,  }\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{game }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Shop\+State\+::\+Shop\+State (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$}]{window,  }\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{game,  }\item[{std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_states_1_1_item}{Item}} $>$ $>$ $>$}]{items,  }\item[{int \&}]{coins }\end{DoxyParamCaption})}
 
 
 
@@ -45,6 +45,10 @@ Constructor for \mbox{\hyperlink{class_states_1_1_shop_state}{Shop\+State}} obje
 {\em window} & sf\+::\+Render\+Window -\/ pointer to window where state will on draw \\
 \hline
 {\em game} & \mbox{\hyperlink{class_game}{Game}} -\/ current game \\
+\hline
+{\em items} & 2D array containing all items \\
+\hline
+{\em coins} & int -\/ total amount of coins Player has available by reference \\
 \hline
 \end{DoxyParams}
 

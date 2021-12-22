@@ -75,7 +75,6 @@
 </div><!-- top -->
 <div class="header">
     <div class="summary">
-        <a href="#nested-classes">Classes</a> &#124;
         <a href="#pub-methods">Public Member Functions</a> &#124;
         <a href="class_states_1_1_shop_state-members.html">List of all members</a></div>
     <div class="headertitle">
@@ -105,20 +104,22 @@
             <td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
                 Public Member Functions</h2></td>
         </tr>
-        <tr class="memitem:a72df1b59fcf5084893adb2128460a054">
+        <tr class="memitem:ab2a5d55d4dab0f8e6aefb251a00bf934">
             <td class="memItemLeft" align="right" valign="top">&#160;</td>
             <td class="memItemRight" valign="bottom"><a class="el"
-                                                        href="class_states_1_1_shop_state.html#a72df1b59fcf5084893adb2128460a054">ShopState</a>
-                (std::shared_ptr&lt; sf::RenderWindow &gt; window, <a class="el" href="class_game.html">Game</a> &amp;game)
+                                                        href="class_states_1_1_shop_state.html#ab2a5d55d4dab0f8e6aefb251a00bf934">ShopState</a>
+                (std::shared_ptr&lt; sf::RenderWindow &gt; window, <a class="el" href="class_game.html">Game</a> &amp;game,
+                std::vector&lt; std::vector&lt; std::shared_ptr&lt; <a class="el" href="struct_states_1_1_item.html">Item</a>
+                &gt; &gt; &gt; items, int &amp;coins)
             </td>
         </tr>
-        <tr class="memdesc:a72df1b59fcf5084893adb2128460a054">
+        <tr class="memdesc:ab2a5d55d4dab0f8e6aefb251a00bf934">
             <td class="mdescLeft">&#160;</td>
             <td class="mdescRight">Constructor for <a class="el" href="class_states_1_1_shop_state.html"
                                                       title="Class for when in Shop.">ShopState</a> object. <a
-                    href="class_states_1_1_shop_state.html#a72df1b59fcf5084893adb2128460a054">More...</a><br/></td>
+                    href="class_states_1_1_shop_state.html#ab2a5d55d4dab0f8e6aefb251a00bf934">More...</a><br/></td>
         </tr>
-        <tr class="separator:a72df1b59fcf5084893adb2128460a054">
+        <tr class="separator:ab2a5d55d4dab0f8e6aefb251a00bf934">
             <td class="memSeparator" colspan="2">&#160;</td>
         </tr>
         <tr class="memitem:af0b3392ffbd2a5247b7b4b5739760962">
@@ -172,18 +173,18 @@
         <tr class="separator:a783d52422b544bb226e13de8ecfd6ad6 inherit pub_methods_class_state">
             <td class="memSeparator" colspan="2">&#160;</td>
         </tr>
-        <tr class="memitem:a57bb1cfac5b00443addec26e79200383 inherit pub_methods_class_state">
-            <td class="memItemLeft" align="right" valign="top"><a id="a57bb1cfac5b00443addec26e79200383"
-                                                                  name="a57bb1cfac5b00443addec26e79200383"></a>
+        <tr class="memitem:a1e9c78495ff353f2fbb0bfcbbd28dfe2 inherit pub_methods_class_state">
+            <td class="memItemLeft" align="right" valign="top"><a id="a1e9c78495ff353f2fbb0bfcbbd28dfe2"
+                                                                  name="a1e9c78495ff353f2fbb0bfcbbd28dfe2"></a>
                 virtual void&#160;
             </td>
-            <td class="memItemRight" valign="bottom"><b>newHighScore</b> ()</td>
+            <td class="memItemRight" valign="bottom"><b>newHighScore</b> (int coins)</td>
         </tr>
-        <tr class="memdesc:a57bb1cfac5b00443addec26e79200383 inherit pub_methods_class_state">
+        <tr class="memdesc:a1e9c78495ff353f2fbb0bfcbbd28dfe2 inherit pub_methods_class_state">
             <td class="mdescLeft">&#160;</td>
             <td class="mdescRight">Gets called when a new high score is achieved. <br/></td>
         </tr>
-        <tr class="separator:a57bb1cfac5b00443addec26e79200383 inherit pub_methods_class_state">
+        <tr class="separator:a1e9c78495ff353f2fbb0bfcbbd28dfe2 inherit pub_methods_class_state">
             <td class="memSeparator" colspan="2">&#160;</td>
         </tr>
         <tr class="memitem:ac1a7b3ce8c7c6f3a6ed4aa93069e2423 inherit pub_methods_class_state">
@@ -199,21 +200,6 @@
             </td>
         </tr>
         <tr class="separator:ac1a7b3ce8c7c6f3a6ed4aa93069e2423 inherit pub_methods_class_state">
-            <td class="memSeparator" colspan="2">&#160;</td>
-        </tr>
-        <tr class="memitem:a82e41dd626c1e63488cd7cb4012a7f34 inherit pub_methods_class_state">
-            <td class="memItemLeft" align="right" valign="top">virtual void&#160;</td>
-            <td class="memItemRight" valign="bottom"><a class="el"
-                                                        href="class_state.html#a82e41dd626c1e63488cd7cb4012a7f34">addCoins</a>
-                (int coins)
-            </td>
-        </tr>
-        <tr class="memdesc:a82e41dd626c1e63488cd7cb4012a7f34 inherit pub_methods_class_state">
-            <td class="mdescLeft">&#160;</td>
-            <td class="mdescRight">Add coins to inventory. <a href="class_state.html#a82e41dd626c1e63488cd7cb4012a7f34">More...</a><br/>
-            </td>
-        </tr>
-        <tr class="separator:a82e41dd626c1e63488cd7cb4012a7f34 inherit pub_methods_class_state">
             <td class="memSeparator" colspan="2">&#160;</td>
         </tr>
     </table>
@@ -252,8 +238,8 @@
     <div class="textblock"><p>Class for when in Shop. </p>
     </div>
     <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-    <a id="a72df1b59fcf5084893adb2128460a054" name="a72df1b59fcf5084893adb2128460a054"></a>
-    <h2 class="memtitle"><span class="permalink"><a href="#a72df1b59fcf5084893adb2128460a054">&#9670;&nbsp;</a></span>ShopState()
+    <a id="ab2a5d55d4dab0f8e6aefb251a00bf934" name="ab2a5d55d4dab0f8e6aefb251a00bf934"></a>
+    <h2 class="memtitle"><span class="permalink"><a href="#ab2a5d55d4dab0f8e6aefb251a00bf934">&#9670;&nbsp;</a></span>ShopState()
     </h2>
 
     <div class="memitem">
@@ -269,7 +255,22 @@
                     <td class="paramkey"></td>
                     <td></td>
                     <td class="paramtype"><a class="el" href="class_game.html">Game</a> &amp;&#160;</td>
-                    <td class="paramname"><em>game</em>&#160;</td>
+                    <td class="paramname"><em>game</em>,</td>
+                </tr>
+                <tr>
+                    <td class="paramkey"></td>
+                    <td></td>
+                    <td class="paramtype">std::vector&lt; std::vector&lt; std::shared_ptr&lt; <a class="el"
+                                                                                                 href="struct_states_1_1_item.html">Item</a>
+                        &gt; &gt; &gt;&#160;
+                    </td>
+                    <td class="paramname"><em>items</em>,</td>
+                </tr>
+                <tr>
+                    <td class="paramkey"></td>
+                    <td></td>
+                    <td class="paramtype">int &amp;&#160;</td>
+                    <td class="paramname"><em>coins</em>&#160;</td>
                 </tr>
                 <tr>
                     <td></td>
@@ -295,6 +296,14 @@
                             <td class="paramname">game</td>
                             <td><a class="el" href="class_game.html" title="Class for Game.">Game</a> - current game
                             </td>
+                        </tr>
+                        <tr>
+                            <td class="paramname">items</td>
+                            <td>2D array containing all items</td>
+                        </tr>
+                        <tr>
+                            <td class="paramname">coins</td>
+                            <td>int - total amount of coins Player has available by reference</td>
                         </tr>
                     </table>
                 </dd>

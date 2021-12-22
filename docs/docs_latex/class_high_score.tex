@@ -23,13 +23,12 @@ Class for \mbox{\hyperlink{class_high_score}{High\+Score}} implemented using sin
 \mbox{\Hypertarget{class_high_score_a5412036800a4fcf34debb8148a9ca6fd}\label{class_high_score_a5412036800a4fcf34debb8148a9ca6fd}} 
 void {\bfseries load} ()
 \begin{DoxyCompactList}\small\item\em Load high score file. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_high_score_a1f5a65d2ec6f7cfd6a3d442386214911}\label{class_high_score_a1f5a65d2ec6f7cfd6a3d442386214911}} 
-void {\bfseries save} ()
-\begin{DoxyCompactList}\small\item\em Save stored high scores to file. \end{DoxyCompactList}\item 
+json \mbox{\hyperlink{class_high_score_a9a2b2f176d834e7fb16908d9334f832d}{save}} ()
+\begin{DoxyCompactList}\small\item\em Save stored high scores to json. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_high_score_a380ae8387b7cb5c81abc704337ea3bf2}\label{class_high_score_a380ae8387b7cb5c81abc704337ea3bf2}} 
 void {\bfseries clear} ()
 \begin{DoxyCompactList}\small\item\em Clear stored high scores. \end{DoxyCompactList}\item 
-unsigned int \mbox{\hyperlink{class_high_score_a114d821fa0b6d0c3b526f9242ebf11a9}{add}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} $>$ \&score)
+int \mbox{\hyperlink{class_high_score_a252490b682ac94d15e066f027dc539bf}{add}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} $>$ \&score)
 \begin{DoxyCompactList}\small\item\em Add new high score. \end{DoxyCompactList}\item 
 const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} $>$ $>$ \& \mbox{\hyperlink{class_high_score_a1cb057836de517d91f39fb12299d8a28}{get\+Scores}} () const
 \begin{DoxyCompactList}\small\item\em Get stored scores. \end{DoxyCompactList}\item 
@@ -52,11 +51,11 @@ static \mbox{\hyperlink{class_high_score}{High\+Score}} \& \mbox{\hyperlink{clas
 Class for \mbox{\hyperlink{class_high_score}{High\+Score}} implemented using singleton pattern. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_high_score_a114d821fa0b6d0c3b526f9242ebf11a9}\label{class_high_score_a114d821fa0b6d0c3b526f9242ebf11a9}} 
+\mbox{\Hypertarget{class_high_score_a252490b682ac94d15e066f027dc539bf}\label{class_high_score_a252490b682ac94d15e066f027dc539bf}} 
 \index{HighScore@{HighScore}!add@{add}}
 \index{add@{add}!HighScore@{HighScore}}
 \doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily unsigned int High\+Score\+::add (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} $>$ \&}]{score }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int High\+Score\+::add (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_high_score_data}{High\+Score\+Data}} $>$ \&}]{score }\end{DoxyParamCaption})}
 
 
 
@@ -174,6 +173,19 @@ Deleted assignment operator.
 
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{class_high_score}{High\+Score}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_high_score_a9a2b2f176d834e7fb16908d9334f832d}\label{class_high_score_a9a2b2f176d834e7fb16908d9334f832d}} 
+\index{HighScore@{HighScore}!save@{save}}
+\index{save@{save}!HighScore@{HighScore}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily json High\+Score\+::save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Save stored high scores to json. 
+
+\begin{DoxyReturn}{Returns}
+json 
 \end{DoxyReturn}
 
 

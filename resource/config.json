@@ -1,0 +1,57 @@
+{
+  "backgrounds": [
+    {
+      "cost": 0,
+      "name": "SKY",
+      "type": 20,
+      "unlocked": true
+    },
+    {
+      "cost": 50,
+      "name": "PURPLE",
+      "type": 21,
+      "unlocked": true
+    },
+    {
+      "cost": 100,
+      "name": "lAVA",
+      "type": 22,
+      "unlocked": true
+    }
+  ],
+  "characters": [
+    {
+      "cost": 0,
+      "name": "ROBOT",
+      "type": 17,
+      "unlocked": true
+    },
+    {
+      "cost": 50,
+      "name": "CHAINSAW MAN",
+      "type": 18,
+      "unlocked": true
+    },
+    {
+      "cost": 100,
+      "name": "KIRBY",
+      "type": 19,
+      "unlocked": true
+    }
+  ],
+  "coins": 752,
+  "scores": [
+    {
+      "name": "pablo",
+      "score": 519
+    },
+    {
+      "name": "pablo",
+      "score": 199
+    },
+    {
+      "name": "ENTER NAME",
+      "score": 195
+    }
+  ]
+}

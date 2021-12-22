@@ -13,5 +13,6 @@ var searchData =
         ['isplaying_10', ['isPlaying', ['../class_world.html#ac42af7a92b7f70724e8ae59da1308704', 1, 'World']]],
         ['ispressed_11', ['isPressed', ['../class_key_pressed_event.html#a6efe5fc57301eee46c5ceecd699e61cd', 1, 'KeyPressedEvent']]],
         ['isremovable_12', ['isRemovable', ['../class_model_1_1_entity.html#add3179a8108506335300938ba4b18c52', 1, 'Model::Entity']]],
-        ['iview_13', ['IView', ['../class_view_1_1_i_view.html#ab7332ce60e17e48192d3ff676dcacb32', 1, 'View::IView']]]
+        ['item_13', ['Item', ['../struct_states_1_1_item.html#a522c70c724afd8f70bb2c961ac8d3929', 1, 'States::Item::Item()'], ['../struct_states_1_1_item.html#aaa4bdc9ee10190d7325f36b59737b339', 1, 'States::Item::Item(const std::string &amp;text, int cost, bool unlocked, Utils::Type type, float factorHorizontal, float factorVertical, const std::shared_ptr&lt; sf::RenderWindow &gt; &amp;window)']]],
+        ['iview_14', ['IView', ['../class_view_1_1_i_view.html#ab7332ce60e17e48192d3ff676dcacb32', 1, 'View::IView']]]
     ];

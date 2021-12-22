@@ -34,13 +34,11 @@ virtual void {\bfseries process\+Events} ()=0
 \begin{DoxyCompactList}\small\item\em Process events -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
 virtual unsigned int \mbox{\hyperlink{class_state_a6dcf889e804095b6d84ff2b4d0b61812}{get\+Type}} () const =0
 \begin{DoxyCompactList}\small\item\em Get type of \mbox{\hyperlink{class_state}{State}} -\/ PURE VIRTUAL. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_state_a57bb1cfac5b00443addec26e79200383}\label{class_state_a57bb1cfac5b00443addec26e79200383}} 
-virtual void {\bfseries new\+High\+Score} ()
+\mbox{\Hypertarget{class_state_a1e9c78495ff353f2fbb0bfcbbd28dfe2}\label{class_state_a1e9c78495ff353f2fbb0bfcbbd28dfe2}} 
+virtual void {\bfseries new\+High\+Score} (int coins)
 \begin{DoxyCompactList}\small\item\em Gets called when a new high score is achieved. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_state_ac1a7b3ce8c7c6f3a6ed4aa93069e2423}{set\+New\+Diff}} (unsigned int diff)
-\begin{DoxyCompactList}\small\item\em Set new difficulty. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_state_a82e41dd626c1e63488cd7cb4012a7f34}{add\+Coins}} (int coins)
-\begin{DoxyCompactList}\small\item\em Add coins to inventory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set new difficulty. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -74,21 +72,6 @@ Constructor for \mbox{\hyperlink{class_state}{State}} object.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_state_a82e41dd626c1e63488cd7cb4012a7f34}\label{class_state_a82e41dd626c1e63488cd7cb4012a7f34}} 
-\index{State@{State}!addCoins@{addCoins}}
-\index{addCoins@{addCoins}!State@{State}}
-\doxysubsubsection{\texorpdfstring{addCoins()}{addCoins()}}
-{\footnotesize\ttfamily virtual void State\+::add\+Coins (\begin{DoxyParamCaption}\item[{int}]{coins }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
-
-
-
-Add coins to inventory. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em coins} & int -\/ coins to be added \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{class_state_a6dcf889e804095b6d84ff2b4d0b61812}\label{class_state_a6dcf889e804095b6d84ff2b4d0b61812}} 
 \index{State@{State}!getType@{getType}}
 \index{getType@{getType}!State@{State}}

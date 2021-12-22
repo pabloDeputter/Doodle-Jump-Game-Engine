@@ -14,7 +14,8 @@ using namespace States;
 using namespace Utils;
 
 MenuState::MenuState(std::shared_ptr<sf::RenderWindow> window, Game& game)
-    : State(std::move(window), game), mSelected(0), mIndex(0), mEnterName(false), mDiff(0), mCoins(0)
+    : State(std::move(window), game), mSelected(0), mIndex(0), mEnterName(false), mDiff(0), mCoins(0),
+      mPath("resource/config.json")
 {
         // Set title logo
         mTitle = std::make_unique<sf::Sprite>();
@@ -43,15 +44,19 @@ MenuState::MenuState(std::shared_ptr<sf::RenderWindow> window, Game& game)
         sf::Text infoSettings;
         Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
                             35, infoSettings, "SETTINGS");
+        // Create text for music "button
+        sf::Text infoMusic;
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
+                            35, infoMusic, "PAUSE MUSIC");
         // Create text for shop "button"
         sf::Text infoShop;
         Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
                             35, infoShop, "SHOP");
 
         // Insert into std::vector
-        mInfo = {std::make_unique<sf::Text>(infoPlay), std::make_unique<sf::Text>(infoClear),
-                 std::make_unique<sf::Text>(infoSave), std::make_unique<sf::Text>(infoSettings),
-                 std::make_unique<sf::Text>(infoShop)};
+        mInfo = {std::make_unique<sf::Text>(infoPlay),  std::make_unique<sf::Text>(infoClear),
+                 std::make_unique<sf::Text>(infoSave),  std::make_unique<sf::Text>(infoSettings),
+                 std::make_unique<sf::Text>(infoMusic), std::make_unique<sf::Text>(infoShop)};
 
         // Spacing between each info displayed
         float factor_info = 1.f;
@@ -61,13 +66,48 @@ MenuState::MenuState(std::shared_ptr<sf::RenderWindow> window, Game& game)
                 factor_info += .075f;
         }
 
+        // Open file as input
+        json j;
+        std::ifstream file(mPath);
+        // If file can't be opened, throw exception and return
+        if (!file.is_open()) {
+                throw(Utils::FileException(std::move(mPath), "ConfigFile"));
+                return;
+        }
+        // Read data into json
+        file >> j;
+        // Close file
+        file.close();
+        // Find coins in json
+        mCoins = j["coins"];
+
         // Create text for coins
         mCoinsText = std::make_unique<sf::Text>();
         Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo),
                             sf::Color(255, 215, 0), 45, *mCoinsText, "COINS: " + std::to_string(mCoins));
         mCoinsText->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 1.6f);
 
-        // Sound
+        // Initialize std::vector of Items with 2 rows and 3 columns
+        mItems = std::vector(2, std::vector<std::shared_ptr<Item>>(3, nullptr));
+        // Lambda function to generate Items from json file
+        auto fillItems = [this, j](const std::string& id, unsigned int row, float horizontalSpacing = 1.f,
+                                   const float verticalSpacing = 1.f) -> void {
+                const auto& array = j[id];
+                auto it = std::begin(array);
+                unsigned int column = 0;
+                while (it != std::end(array)) {
+                        Utils::Type type((*it)["type"]);
+                        mItems[row][column] = std::make_shared<Item>((*it)["name"], (*it)["cost"], (*it)["unlocked"],
+                                                                     type, horizontalSpacing, verticalSpacing, mWindow);
+                        column++;
+                        horizontalSpacing += 1.f;
+                        it++;
+                }
+        };
+        fillItems("characters", 0, 1.f);
+        fillItems("backgrounds", 1, 1.f, 2.7);
+
+        // Sound that will be playing until it is paused or window i closed
         mSound = std::make_unique<sf::Sound>();
         mSound->setBuffer(*Utils::ResourceManager::getInstance().getSounds()->get(Type::eMenuInfo));
         mSound->setVolume(15.f);
@@ -98,6 +138,10 @@ void MenuState::update()
         if (!mEnterName) {
                 updateInfo();
         }
+        mCoinsText->setString("COINS: " + std::to_string(mCoins));
+        // Update position
+        const auto boundCoins = mCoinsText->getLocalBounds();
+        mCoinsText->setOrigin(boundCoins.left + boundCoins.width / 2.f, boundCoins.top + boundCoins.height / 2.f);
 }
 
 void MenuState::handleInput(sf::Keyboard::Key key, bool isPressed)
@@ -232,12 +276,28 @@ void MenuState::onSelect()
                 // Push SettingState on stack
                 mGame.pushState(std::make_shared<SettingState>(mWindow, mGame, Settings::Difficulty(mDiff)));
         } else if (mSelected == 4) {
+                // Get selected sf::Text, what is that one for Music
+                auto& selected = mInfo[mSelected];
+                // Is music was playing, we pause it and change sf::Text to "RESUME MUSIC"
+                if (mSound->getStatus() == sf::Sound::Playing) {
+                        mSound->pause();
+                        selected->setString("RESUME MUSIC");
+                }
+                // Is music was paused, we let it play and change sf::Text to "PAUSE MUSIC"
+                else {
+                        mSound->play();
+                        selected->setString("PAUSE MUSIC");
+                }
+                // Update position
+                const auto boundMusic = selected->getLocalBounds();
+                selected->setOrigin(boundMusic.left + boundMusic.width / 2.f, boundMusic.top + boundMusic.height / 2.f);
+        } else if (mSelected == 5) {
                 // Push ShopState on stack
-                mGame.pushState(std::make_shared<ShopState>(mWindow, mGame));
+                mGame.pushState(std::make_shared<ShopState>(mWindow, mGame, mItems, mCoins));
         }
 }
 
-void MenuState::newHighScore()
+void MenuState::newHighScore(int coins)
 {
         mName.clear();
         // Get achieved score
@@ -245,16 +305,43 @@ void MenuState::newHighScore()
         // New high score achieved
         if (achievedScore != 0) {
                 mIndex = HighScore::getInstance().add(std::make_shared<HighScoreData>(achievedScore, "ENTER NAME"));
-                mEnterName = true;
                 std::cout << mIndex << "\n";
+                mEnterName = true;
                 createScores();
         }
-}
-
-void MenuState::addCoins(int coins)
-{
         mCoins += coins;
         mCoinsText->setString("COINS: " + std::to_string(mCoins));
         // Update position
         mCoinsText->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 1.6f);
+}
+
+void MenuState::save(json& j) const
+{
+        // Save coins to json
+        j["coins"] = mCoins;
+
+        // Save items to json
+        auto createJson = [](const std::string& id, const std::vector<std::shared_ptr<Item>>& items, json& toAdd) {
+                // Create new json array
+                json array = json::array();
+                for (const auto& i : items) {
+                        // Create new element
+                        json item;
+                        item["name"] = i->mText->getString();
+                        item["cost"] = i->mCost;
+                        item["unlocked"] = i->mUnlocked;
+                        item["type"] = i->mType;
+                        array.emplace_back(item);
+                }
+                toAdd[id] = array;
+        };
+        // Create array for character items
+        createJson("characters", mItems[0], j);
+        // Create array for background items
+        createJson("backgrounds", mItems[1], j);
+
+        // Save json to file
+        std::ofstream file(mPath);
+        file << j.dump(4);
+        file.close();
 }

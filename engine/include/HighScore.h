@@ -7,6 +7,8 @@
 
 #include "util/Exception.h"
 
+#include "json.hpp"
+
 #include <fstream>
 #include <iostream>
 #include <memory>
@@ -15,6 +17,7 @@
 #include <utility>
 #include <vector>
 
+using json = nlohmann::json;
 /**
  * Struct for High Score data
  */
@@ -99,7 +102,6 @@ public:
          */
         ~HighScore()
         {
-                save();
                 clear();
         }
         /**
@@ -112,9 +114,10 @@ public:
          */
         void load();
         /**
-         * @brief Save stored high scores to file
+         * @brief Save stored high scores to json
+         * @return json
          */
-        void save();
+        json save();
         /**
          * @brief Clear stored high scores
          */
@@ -124,7 +127,7 @@ public:
          * @param score HighScoreData - score to be added
          * @return unsigned int - index of newly inserted score
          */
-        [[nodiscard]] unsigned int add(const std::shared_ptr<HighScoreData>& score);
+        int add(const std::shared_ptr<HighScoreData>& score);
         /**
          * @brief Get stored scores
          * @return std::vector<HighScoreData> - std::vector containing pointers to stored scores

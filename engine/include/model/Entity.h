@@ -15,7 +15,7 @@
  */
 namespace Model {
 /**
- * @Brief Enum containing all type of Entities
+ * @brief Enum containing all type of Entities
  */
 enum Type
 {

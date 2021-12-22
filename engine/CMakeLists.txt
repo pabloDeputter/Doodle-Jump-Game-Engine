@@ -16,7 +16,7 @@ SET(SRC
         src/controller/BonusController.cpp
         src/model/Score.cpp
         src/HighScore.cpp
-        include/model/Coin.h)
+        )
 
 ADD_LIBRARY(engine SHARED ${SRC})
 

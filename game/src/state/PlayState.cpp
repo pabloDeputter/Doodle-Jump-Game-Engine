@@ -38,9 +38,8 @@ void PlayState::update()
                 // the eMenu state.
                 if (HighScore::getInstance().isHighScore(score)) {
                         HighScore::getInstance().add(score);
-                        mGame.peekState()->newHighScore();
+                        mGame.peekState()->newHighScore(coins);
                 }
-                mGame.peekState()->addCoins(coins);
         }
 }
 

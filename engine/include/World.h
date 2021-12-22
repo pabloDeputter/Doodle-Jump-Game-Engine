@@ -81,6 +81,7 @@ public:
          * @brief Constructor for World object
          * @param factory Pointer to Model::AbstractFactory
          * @param playing bool - Player is not dead
+         * @param diff Settings::Difficulty - difficulty of game
          */
         explicit World(std::shared_ptr<Factory::AbstractFactory>& factory, bool playing,
                        Settings::Difficulty diff = Settings::eEasy);

@@ -57,7 +57,6 @@ void ScoreView::handleEvent(const DrawEvent& event)
         mWindow->draw(*mScoreText);
 
         mCoinsText->setString(std::to_string(mEntity->getCoins()));
-        sf::FloatRect boundsCoins = mCoinsText->getLocalBounds();
         mCoinsText->setPosition(sf::Vector2f(mWindow->getSize().x * 0.95f, mWindow->getSize().y * 0.02f));
         // Draw mCoinsText
         mWindow->draw(*mCoinsText);

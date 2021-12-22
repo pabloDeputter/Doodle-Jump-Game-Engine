@@ -5,7 +5,6 @@
 #include "Game.h"
 
 #include "state/MenuState.h"
-#include "state/PlayState.h"
 
 Game::Game(unsigned int width, unsigned int height)
 {
@@ -19,8 +18,6 @@ Game::Game(unsigned int width, unsigned int height)
         // Initialize resources
         Game::initializeResources();
         // Enter game State
-        mStateType = eMenu;
-        mState = std::make_shared<States::MenuState>(mWindow, *this);
         mStates.push(std::make_shared<States::MenuState>(mWindow, *this));
 }
 

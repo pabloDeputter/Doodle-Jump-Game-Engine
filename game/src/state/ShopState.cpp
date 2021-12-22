@@ -11,130 +11,163 @@
 using namespace States;
 using namespace Utils;
 
-std::shared_ptr<ShopState::Item> ShopState::createItem(const std::string& text, Utils::Type type,
-                                                       float factorHorizontal, float factorVertical)
+ShopState::ShopState(std::shared_ptr<sf::RenderWindow> window, Game& game,
+                     std::vector<std::vector<std::shared_ptr<Item>>> items, int& coins)
+    : State(std::move(window), game), mSelected({0, 0}), mBuying(false), mCoins(coins)
 {
-        // Create new item
-        std::shared_ptr<Item> item = std::make_shared<Item>();
-
-        // Initialize background rectangle
-        item->mRectangle->setTexture(*Utils::ResourceManager::getInstance().getTextures()->get(Type::eMenuItemBack));
-        item->mRectangle->scale(.75, .75);
-
-        // Initialize sprite
-        const auto& tex = *Utils::ResourceManager::getInstance().getTextures()->get(type);
-        const auto texSize = tex.getSize();
-        item->mSprite->setTexture(tex);
-        item->mSprite->scale(sf::Vector2f(75.f / (float)texSize.x, 75.f / (float)texSize.y));
-
-        // Initialize text
-        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuSettings),
-                            sf::Color::White, 30, *item->mText, text);
-
-        // Positioning rectangle
-        const auto boundsRectangle = item->mRectangle->getLocalBounds();
-        item->mRectangle->setOrigin(boundsRectangle.left + boundsRectangle.width / 2.f,
-                                    boundsRectangle.top + boundsRectangle.height / 2.f);
-        item->mRectangle->setPosition((float)mWindow->getSize().x * 0.25f * factorHorizontal,
-                                      (float)mWindow->getSize().y * 0.20f * factorVertical);
-        const auto posRectangle = item->mRectangle->getPosition();
-
-        // Positioning sprite
-        const auto boundsSprite = item->mSprite->getLocalBounds();
-        item->mSprite->setOrigin(boundsSprite.left + boundsSprite.width / 2.f,
-                                 boundsSprite.top + boundsSprite.height / 2.f);
-        item->mSprite->setPosition(posRectangle.x, posRectangle.y * 1.02f);
-
-        // Positioning text
-        const auto boundsText = item->mText->getLocalBounds();
-        item->mText->setOrigin(boundsText.left + boundsText.width / 2.f, boundsText.top + boundsText.height / 2.f);
-        item->mText->setPosition(posRectangle.x, posRectangle.y + boundsRectangle.height * .50f);
-
-        return item;
-}
-
-ShopState::ShopState(std::shared_ptr<sf::RenderWindow> window, Game& game)
-    : State(std::move(window), game), mSelected({0, 0})
-{
-        // Initialize std::vector with 2 rows and 3 columns
-        mItems = std::vector(2, std::vector<std::shared_ptr<Item>>(3, nullptr));
-        // Create character items, first row
-        mItems[0][0] = createItem("FROGGY", Utils::eShopCh1, 1.f);
-        mItems[0][1] = createItem("CHAINSAW MAN", Utils::eShopCh2, 2.f);
-        mItems[0][2] = createItem("KIRBY", Utils::eShopCh3, 3.f);
-
-        // Create background items, second row
-        mItems[1][0] = createItem("CLOUDS", Utils::eShopBg1, 1.f, 2.5f);
-        mItems[1][1] = createItem("PURPLE", Utils::eShopBg2, 2.f, 2.5f);
-        mItems[1][2] = createItem("LAVA", Utils::eShopBg3, 3.f, 2.5f);
+        // Generate items
+        mItems = std::move(items);
 
         // Create info text
         std::shared_ptr<sf::Text> textCh = std::make_shared<sf::Text>();
         std::shared_ptr<sf::Text> textBg = std::make_shared<sf::Text>();
         // Initialize text
-        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuSettings),
-                            sf::Color::White, 40, *textCh, "- CHARACTERS -");
-        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuSettings),
-                            sf::Color::White, 40, *textBg, "- BACKGROUNDS -");
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
+                            40, *textCh, "- CHARACTERS -");
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo), sf::Color::White,
+                            40, *textBg, "- BACKGROUNDS -");
         // Position text
         textCh->setPosition((float)mWindow->getSize().x / 2.f, mItems[0][0]->mRectangle->getPosition().y * .5f);
-        textBg->setPosition((float)mWindow->getSize().x / 2.f, mItems[1][0]->mRectangle->getPosition().y * .80f);
+        textBg->setPosition((float)mWindow->getSize().x / 2.f, mItems[1][0]->mRectangle->getPosition().y * .82f);
         mInfo = {textCh, textBg};
+
+        // Create text for coins
+        mCoinsText = std::make_unique<sf::Text>();
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo),
+                            sf::Color(255, 215, 0), 45, *mCoinsText, "COINS: " + std::to_string(mCoins));
+        mCoinsText->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 1.6f);
+
+        // Create text for when Item is bought
+        mBuyingText = std::make_unique<sf::Text>();
+        Utilities::initText(*Utils::ResourceManager::getInstance().getFonts()->get(Type::eMenuInfo),
+                            sf::Color(204, 46, 30), 35, *mBuyingText, "LOL");
+        mBuyingText->setPosition(mWindow->getView().getCenter().x, mWindow->getView().getCenter().y * 1.75f);
 }
 
 void ShopState::render() const
 {
         mWindow->clear(sf::Color::Black);
+        // Render all items
         for (const auto& i : mItems) {
                 for (const auto& j : i) {
                         j->draw(mWindow);
                 }
         }
+        // Render info sf::Text
         for (const auto& i : mInfo) {
                 mWindow->draw(*i);
+        }
+        // Render available coins
+        mWindow->draw(*mCoinsText);
+        // If we are in a buying state --> draw sf::Text for buying
+        if (mBuying) {
+                mWindow->draw(*mBuyingText);
         }
         mWindow->display();
 }
 
 void ShopState::update()
 {
-        // Set color of every sf::Text setting to white
+        // Set color of every sf::Text or texture setting according color:
+        // WHITE - text
+        // GREEN - unlocked
+        // RED - not yet unlocked
+        // ORANGE - unlock-able
         for (auto& i : mItems) {
                 for (auto& j : i) {
-                        j->setColor(sf::Color::White);
+                        j->setColor(sf::Color::White, mCoins);
                 }
         }
         // Highlight selected setting to RED
-        mItems[mSelected.first][mSelected.second]->setColor(sf::Color(204, 46, 30));
+        mItems[mSelected.first][mSelected.second]->setColor(sf::Color(204, 46, 30), mCoins);
+
+        mCoinsText->setString("COINS: " + std::to_string(mCoins));
+        // Update position
+        const auto boundCoins = mCoinsText->getLocalBounds();
+        mCoinsText->setOrigin(boundCoins.left + boundCoins.width / 2.f, boundCoins.top + boundCoins.height / 2.f);
 }
 
 void ShopState::handleInput(sf::Keyboard::Key key, bool isPressed)
 {
         if (key == sf::Keyboard::Escape && isPressed) {
-                mGame.popState();
+                // In buying state of Item
+                if (mBuying) {
+                        mBuying = false;
+                }
+                // Pop ShopState of stack
+                else {
+                        mGame.popState();
+                }
         } else if (key == sf::Keyboard::Return && isPressed) {
-                // Chosen character
-                if (mSelected.first == 0) {
-                        if (mSelected.second == 0) {
-                                Utils::ResourceManager::getInstance().setTexture(Utils::eShopCh1, Utils::ePlayer);
-                        } else if (mSelected.second == 1) {
-                                Utils::ResourceManager::getInstance().setTexture(Utils::eShopCh2, Utils::ePlayer);
-                        } else if (mSelected.second == 2) {
-                                Utils::ResourceManager::getInstance().setTexture(Utils::eShopCh3, Utils::ePlayer);
+                // Selected Item
+                const auto& selectedItem = mItems[mSelected.first][mSelected.second];
+                // In state of buying of an Item
+                if (mBuying) {
+                        mBuying = false;
+                        // If Player has enough coins it can buy the new Item
+                        if (mCoins > selectedItem->mCost) {
+                                selectedItem->mUnlocked = true;
+                                mCoins -= selectedItem->mCost;
+                                selectItem();
                         }
+                }
 
+                // Chosen item is already unlocked
+                else if (selectedItem->mUnlocked) {
+                        selectItem();
                 }
-                // Chosen background
-                else if (mSelected.first == 1) {
-                        if (mSelected.second == 0) {
-                                Utils::ResourceManager::getInstance().setTexture(Utils::eShopBg1, Utils::eBackground);
-                        } else if (mSelected.second == 1) {
-                                Utils::ResourceManager::getInstance().setTexture(Utils::eShopBg2, Utils::eBackground);
-                        } else if (mSelected.second == 2) {
-                                Utils::ResourceManager::getInstance().setTexture(Utils::eShopBg3, Utils::eBackground);
+                // Chosen item is not yet unlocked
+                else {
+                        mBuying = true;
+                        // Player has enough coins to buy Item
+                        if (mCoins > selectedItem->mCost) {
+                                mBuyingText->setString("Buying " + selectedItem->mText->getString() + " for " +
+                                                       std::to_string(selectedItem->mCost) + " coins...");
                         }
+                        // Player has not enough coins to buy Item
+                        else {
+                                mBuyingText->setString("Not enough coins for " + selectedItem->mText->getString() +
+                                                       " ...");
+                        }
+                        // Update position
+                        const auto bounds = mBuyingText->getLocalBounds();
+                        mBuyingText->setOrigin(bounds.left + bounds.width / 2.f, bounds.top + bounds.height / 2.f);
                 }
-        } else if (key == sf::Keyboard::Right && isPressed) {
+        }
+        // Move around in menu with arrow keys
+        else if (!mBuying) {
+                menuMove(key, isPressed);
+        }
+}
+
+void ShopState::selectItem()
+{
+        // Chosen character
+        if (mSelected.first == 0) {
+                if (mSelected.second == 0 && mItems[0][0]->mUnlocked) {
+                        Utils::ResourceManager::getInstance().setTexture(Utils::eShopCh1, Utils::ePlayer);
+                } else if (mSelected.second == 1 && mItems[0][1]->mUnlocked) {
+                        Utils::ResourceManager::getInstance().setTexture(Utils::eShopCh2, Utils::ePlayer);
+                } else if (mSelected.second == 2 && mItems[0][1]->mUnlocked) {
+                        Utils::ResourceManager::getInstance().setTexture(Utils::eShopCh3, Utils::ePlayer);
+                }
+
+        }
+        // Chosen background
+        else if (mSelected.first == 1) {
+                if (mSelected.second == 0 && mItems[1][0]->mUnlocked) {
+                        Utils::ResourceManager::getInstance().setTexture(Utils::eShopBg1, Utils::eBackground);
+                } else if (mSelected.second == 1 && mItems[1][1]->mUnlocked) {
+                        Utils::ResourceManager::getInstance().setTexture(Utils::eShopBg2, Utils::eBackground);
+                } else if (mSelected.second == 2 && mItems[1][2]->mUnlocked) {
+                        Utils::ResourceManager::getInstance().setTexture(Utils::eShopBg3, Utils::eBackground);
+                }
+        }
+}
+
+void ShopState::menuMove(sf::Keyboard::Key key, bool isPressed)
+{
+        if (key == sf::Keyboard::Right && isPressed) {
                 mSelected.second++;
                 if (mSelected.second > mItems[mSelected.first].size() - 1) {
                         mSelected.second = 0;

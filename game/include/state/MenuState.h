@@ -11,10 +11,17 @@
 
 #include "Game.h"
 #include "HighScore.h"
+#include "Item.h"
 #include "State.h"
 
+#include "json.hpp"
+
+#include <memory>
+#include <ostream>
 #include <utility>
 #include <vector>
+
+using json = nlohmann::json;
 
 /**
  * @brief Namespace holds all States
@@ -42,8 +49,10 @@ private:
         std::unique_ptr<sf::Text> mCoinsText; /**< sf::Text - text for coins */
         int mCoins;                           /**< int - total coins collected */
 
-        std::unique_ptr<sf::Sound> mSound;
+        std::string mPath; /**< std::string - path to config file */
 
+        std::unique_ptr<sf::Sound> mSound;                      /**< sf::Sound - menu sound */
+        std::vector<std::vector<std::shared_ptr<Item>>> mItems; /**< 2D array containing items */
 private:
         /**
          * @brief Render state
@@ -87,17 +96,17 @@ private:
         /**
          * @brief Gets called when a new high score is achieved
          */
-        void newHighScore() override;
+        void newHighScore(int coins) override;
         /**
          * @brief Set new difficulty
          * @param diff unsigned int - new difficulty
          */
         void setNewDiff(unsigned int diff) override { mDiff = diff; }
         /**
-         * @brief Add coins to inventory
-         * @param coins int - coins to be added
+         * @brief Save coins, high scores, items, ... to json
+         * @param j json - json containing highs cores
          */
-        virtual void addCoins(int coins) override;
+        void save(json& j) const;
 
 public:
         /**
@@ -111,6 +120,8 @@ public:
          */
         ~MenuState() override
         {
+                json j = HighScore::getInstance().save();
+                save(j);
                 mScores.clear();
                 mInfo.clear();
         }

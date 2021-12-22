@@ -36,8 +36,6 @@ class Game
 private:
         std::shared_ptr<sf::RenderWindow> mWindow;          /**< Pointer to window */
         std::shared_ptr<Factory::AbstractFactory> mFactory; /**< Pointer to Factory */
-        std::shared_ptr<State> mState;                      /**< Pointer to current State */
-        GameStates mStateType;                              /**< Type of current State */
         std::stack<std::shared_ptr<State>> mStates;         /**< Stack of states */
 
 private:
@@ -56,7 +54,12 @@ public:
         /**
          * @brief Destructor for Game object
          */
-        ~Game() = default;
+        ~Game()
+        {
+                while (!mStates.empty()) {
+                        mStates.pop();
+                }
+        }
         /**
          * @brief Run main Game loop
          */

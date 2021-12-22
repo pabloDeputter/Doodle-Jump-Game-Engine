@@ -51,17 +51,12 @@ public:
         /**
          * @brief Gets called when a new high score is achieved
          */
-        virtual void newHighScore() {}
+        virtual void newHighScore(int coins) {}
         /**
          * @brief Set new difficulty
          * @param diff unsigned int - new difficulty
          */
         virtual void setNewDiff(unsigned int diff) {}
-        /**
-         * @brief Add coins to inventory
-         * @param coins int - coins to be added
-         */
-        virtual void addCoins(int coins) {}
 };
 
 #endif // DOODLEJUMP_STATE_H

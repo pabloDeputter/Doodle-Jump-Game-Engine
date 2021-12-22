@@ -179,53 +179,53 @@
         <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span
                 class="keyword">public</span>:
         </div>
-        <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> <span class="keyword">explicit</span>
+        <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> <span class="keyword">explicit</span>
             <a class="code hl_function" href="class_world.html#a3c679c627674f9eab2a684fb163d0a10">World</a>(std::shared_ptr&lt;Factory::AbstractFactory&gt;&amp;
             factory, <span class="keywordtype">bool</span> playing,
         </div>
-        <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> <a
+        <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> <a
                 class="code hl_enumeration" href="namespace_settings.html#ab03c07a7c54964db4b281d86b6a345c2">Settings::Difficulty</a>
             diff = Settings::eEasy);
         </div>
-        <div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line"
-                                                                                   href="class_world.html#a8c73fba541a5817fff65147ba47cd827">   90</a></span>
+        <div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line"
+                                                                                   href="class_world.html#a8c73fba541a5817fff65147ba47cd827">   91</a></span>
             <a class="code hl_function" href="class_world.html#a8c73fba541a5817fff65147ba47cd827">~World</a>() { <a
                     class="code hl_function" href="class_world.html#a02d69ed7161ba4b4cb07471eb1bf2ec9">destroy</a>(); }
         </div>
-        <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> <span class="keywordtype">void</span>
+        <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> <span class="keywordtype">void</span>
             <a class="code hl_function" href="class_world.html#aed4c6c402fd61214f42509cb4f3b00b1">initWorld</a>();
         </div>
-        <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> <span class="keywordtype">void</span>
+        <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> <span class="keywordtype">void</span>
             <a class="code hl_function" href="class_world.html#aa4383998d557af1d365d1eae6037d5b9">events</a>(<span
                     class="keyword">const</span> std::string&amp; move, <span class="keywordtype">bool</span> isPressed)
             <span class="keyword">const</span>;
         </div>
-        <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> <span class="keywordtype">void</span>
+        <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> <span class="keywordtype">void</span>
             <a class="code hl_function" href="class_world.html#aac8c1fde63c06577ffc648aaefdb37f0">update</a>();
         </div>
-        <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> <span class="keywordtype">void</span>
+        <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> <span class="keywordtype">void</span>
             <a class="code hl_function" href="class_world.html#a6452e0fbfe12a1b4f71416bce15be9b2">render</a>() <span
                     class="keyword">const</span>;
         </div>
-        <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> <span class="keywordtype">void</span>
+        <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> <span class="keywordtype">void</span>
             <a class="code hl_function" href="class_world.html#a02d69ed7161ba4b4cb07471eb1bf2ec9">destroy</a>();
         </div>
-        <div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line"
-                                                                                   href="class_world.html#a84e3c636922b0130bc886acd8036f67f">  117</a></span>
+        <div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line"
+                                                                                   href="class_world.html#a84e3c636922b0130bc886acd8036f67f">  118</a></span>
             [[nodiscard]] <span class="keyword">const</span> std::shared_ptr&lt;Model::Score&gt;&amp; <a
                     class="code hl_function"
                     href="class_world.html#a84e3c636922b0130bc886acd8036f67f">getScore</a>()<span
                     class="keyword"> const </span>{ <span class="keywordflow">return</span> mScore; }
         </div>
-        <div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line"
-                                                                                   href="class_world.html#ac42af7a92b7f70724e8ae59da1308704">  122</a></span>
+        <div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line"
+                                                                                   href="class_world.html#ac42af7a92b7f70724e8ae59da1308704">  123</a></span>
             [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function"
                                                                    href="class_world.html#ac42af7a92b7f70724e8ae59da1308704">isPlaying</a>()<span
                     class="keyword"> const </span>{ <span class="keywordflow">return</span> mPlaying; }
         </div>
-        <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>};</div>
-        <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span></div>
-        <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#endif </span><span
+        <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>};</div>
+        <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span></div>
+        <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif </span><span
                 class="comment">// ADVANCED_PROGRAMMING_DOODLEJUMP_WORLD_H</span></div>
         <div class="ttc" id="aclass_world_html">
             <div class="ttname"><a href="class_world.html">World</a></div>
@@ -256,13 +256,13 @@
             <div class="ttname"><a href="class_world.html#a84e3c636922b0130bc886acd8036f67f">World::getScore</a></div>
             <div class="ttdeci">const std::shared_ptr&lt; Model::Score &gt; &amp; getScore() const</div>
             <div class="ttdoc">Get current score of game.</div>
-            <div class="ttdef"><b>Definition:</b> World.h:117</div>
+            <div class="ttdef"><b>Definition:</b> World.h:118</div>
         </div>
         <div class="ttc" id="aclass_world_html_a8c73fba541a5817fff65147ba47cd827">
             <div class="ttname"><a href="class_world.html#a8c73fba541a5817fff65147ba47cd827">World::~World</a></div>
             <div class="ttdeci">~World()</div>
             <div class="ttdoc">Destructor for World object.</div>
-            <div class="ttdef"><b>Definition:</b> World.h:90</div>
+            <div class="ttdef"><b>Definition:</b> World.h:91</div>
         </div>
         <div class="ttc" id="aclass_world_html_aa4383998d557af1d365d1eae6037d5b9">
             <div class="ttname"><a href="class_world.html#aa4383998d557af1d365d1eae6037d5b9">World::events</a></div>
@@ -280,7 +280,7 @@
             <div class="ttname"><a href="class_world.html#ac42af7a92b7f70724e8ae59da1308704">World::isPlaying</a></div>
             <div class="ttdeci">bool isPlaying() const</div>
             <div class="ttdoc">Check if Player is not dead.</div>
-            <div class="ttdef"><b>Definition:</b> World.h:122</div>
+            <div class="ttdef"><b>Definition:</b> World.h:123</div>
         </div>
         <div class="ttc" id="aclass_world_html_aed4c6c402fd61214f42509cb4f3b00b1">
             <div class="ttname"><a href="class_world.html#aed4c6c402fd61214f42509cb4f3b00b1">World::initWorld</a></div>
@@ -291,6 +291,7 @@
         <div class="ttc" id="anamespace_model_html_a704990bea21287d993439d3bdf1755bf">
             <div class="ttname"><a href="namespace_model.html#a704990bea21287d993439d3bdf1755bf">Model::Type</a></div>
             <div class="ttdeci">Type</div>
+            <div class="ttdoc">Enum containing all type of Entities.</div>
             <div class="ttdef"><b>Definition:</b> Entity.h:21</div>
         </div>
         <div class="ttc" id="anamespace_settings_html_ab03c07a7c54964db4b281d86b6a345c2">
