@@ -50,7 +50,7 @@ The update function shall see if there are any collisions between the player and
 The final function renders every active entity inside the world and recycles background tiles from bottom to top when one is outside the field of view of the camera.
 
 \section{State pattern}
-I used a simplified version of the state pattern for the game menus, so we have an abstract class State that has a pointer to the Game class and a pointer to the render window to display things on the screen. The Game class holds a stack of states with derived versions of the abstract State class. Inside the main game loop, we will always update, process events and render the state on top of this stack.
+I used a simplified version of the state pattern for the game menus, so we have an abstract class State that has a pointer to the Game class and a pointer to the render window to display things on the screen. In this case we have a backreference to the context / Game class so that we can fetch required info or initiate state transitions when needed. It also has some abstract methods like render(), update(), ... that are implemented in the concrete states. The context/Game class holds a stack of these concrete states. Inside the main game loop, we will always update, process events and render the state on top of this stack.
 
 \begin{figure}[!tbp]
   \centering

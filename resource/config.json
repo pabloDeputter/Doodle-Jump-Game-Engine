@@ -24,7 +24,7 @@
       "cost": 0,
       "name": "ROBOT",
       "type": 17,
-      "unlocked": false
+      "unlocked": true
     },
     {
       "cost": 50,
@@ -39,47 +39,6 @@
       "unlocked": true
     }
   ],
-  "coins": 0,
-  "scores": [
-    {
-      "name": "ENTER NAME",
-      "score": 649
-    },
-    {
-      "name": "pablo",
-      "score": 518
-    },
-    {
-      "name": "ENTER NAME",
-      "score": 397
-    },
-    {
-      "name": "ENTER NAME",
-      "score": 201
-    },
-    {
-      "name": "ENTER NAME",
-      "score": 188
-    },
-    {
-      "name": "ENTER NAME",
-      "score": 158
-    },
-    {
-      "name": "ENTER NAME",
-      "score": 126
-    },
-    {
-      "name": "ENTER NAME",
-      "score": 122
-    },
-    {
-      "name": "ENTER NAME",
-      "score": 95
-    },
-    {
-      "name": "ENTER NAME",
-      "score": 92
-    }
-  ]
+  "coins": 4,
+  "scores": []
 }
