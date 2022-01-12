@@ -10,7 +10,7 @@
       "cost": 50,
       "name": "PURPLE",
       "type": 21,
-      "unlocked": true
+      "unlocked": false
     },
     {
       "cost": 100,
@@ -36,9 +36,9 @@
       "cost": 100,
       "name": "KIRBY",
       "type": 19,
-      "unlocked": true
+      "unlocked": false
     }
   ],
-  "coins": 4,
+  "coins": 999,
   "scores": []
 }
